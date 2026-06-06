@@ -1,0 +1,1707 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 25/06/2013 05:48:36 PM -->
+<Window x:Class="Hospitalizacion.Vista.VistaRegistrosalida"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloRegistroSalida, Source={StaticResource HOS_Locator}}"
+        Title="Registro de salida o egreso"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="900"
+        Height="724"
+        Name="ADMRegistroSalida"
+        ShowInTaskbar="False"
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              	Source= "/Sistema;component/Skins/EstiloSistema.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#66000E0E">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="900"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Height="724" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="14" />
+                <RowDefinition Height="42" />
+                <RowDefinition />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+            </Border>
+            <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="899"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+            <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+            <TextBlock Text="Registro de salida o egreso"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+            <Image MouseDown="btnCerrar_KeyDown"
+               Style="{StaticResource styleImgButtonCerrarForm}"
+               Source="/Sistema;component/Imagenes/sis_cerrar40.png"
+               Grid.Row="1"
+               IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+               Cursor="Hand"/>
+            <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,0,-3"
+               VerticalAlignment="Top"
+               Grid.Row="3"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+            <!-- Filtro -->
+            <Button Content="Filtro..."
+         	Height="26"
+           	HorizontalAlignment="Left"
+           	Margin="395,7,0,0"
+           	Name="cmdFilVista1"
+           	VerticalAlignment="Top"
+           	Width="89"
+           	Visibility="Hidden"
+           	Command="{Binding CmdFILTRO}" Grid.RowSpan="2"/>
+            <!-- Fin Filtro-->
+            <!-- Filtro -->
+            <Button Content="Filtro..."
+         	Height="26"
+           	HorizontalAlignment="Left"
+           	Margin="395,7,0,0"
+           	Name="cmdFilVista2"
+           	VerticalAlignment="Top"
+           	Width="89"
+           	Visibility="Hidden"
+           	Command="{Binding CmdFILREL}" Grid.RowSpan="2"/>
+            <!-- Fin Filtro-->
+            <!-- Perfil Usuario -->
+            <TextBox Name="lblSysUsuIdUsuario"
+           	HorizontalAlignment="Left"
+           	Visibility="Hidden"
+           	Text="{Binding Path=GcrUsuIDUsuario,UpdateSourceTrigger=PropertyChanged}"
+           	VerticalAlignment="Top"
+         	Height="23"
+           	Width="89" Grid.RowSpan="2"/>
+            <TextBox Name="lblSysUsuCodigoPerfil"
+           	HorizontalAlignment="Left"
+           	Visibility="Hidden"
+           	Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+           	VerticalAlignment="Top"
+         	Height="23"
+           	Width="89" Grid.RowSpan="2"/>
+            <!-- Fin Perfil Usuario -->
+            <!-- Control modo edicion formulario -->
+            <TextBox Name="lblFormModoPopup"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrSIS_FormModoPopup,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+            <!-- Fin Control modo edicion formulario -->
+            <Grid Grid.Row="2" Margin="1,3,-1,-3" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="149*" />
+                    <RowDefinition Height="519*" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <GroupBox Header="Datos del Paciente" 
+            	HorizontalAlignment="Left" 
+            	Height="138" Margin="5,8,0,0" 
+            	VerticalAlignment="Top" 
+            	Width="891" 
+            	Foreground="#FF148BAE" Background="White"/>
+                    <TextBlock x:Name="lblG1sia_idesec_usua"
+            	Width="61"
+            	Margin="13,32,0,0"
+            	Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Paciente"/></TextBlock>
+                    <TextBox x:Name="txtG1Sia_nomusu_usua"
+            	        Width="359"
+            	        Margin="67,28,0,0"
+            	        TabIndex="102"
+            	        Text="{Binding G1Sia_nomusu_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	        Style="{StaticResource styleTextBoxForm}"
+            	        IsEnabled="False"
+            	        KeyDown="fcvMoverFocus_KeyDown"
+            	        GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1adm_secadm_rgad"
+            	            Width="51"
+            	            Margin="443,29,0,0"
+            	            Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Admisión"/></TextBlock>
+                    <TextBox x:Name="txtG1Adm_secadm_rgad"
+            	         Width="135"
+            	         Margin="494,28,0,0"
+            	         TabIndex="1"
+            	         Text="{Binding G1Adm_secadm_rgad, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	         Style="{StaticResource styleTextBoxForm}"
+                         IsEnabled="{Binding Path=GlgSIS_ModoAdicion}"
+            	         KeyDown="txtG1Adm_secadm_rgad_KeyDown"
+            	         GotFocus="fcvTextBox_GotFocus"/>
+                    <Grid Margin="633,26,0,0"
+                      Width="143"
+                      Style="{StaticResource styleDatePickerGrid}">
+                        <Border Style="{StaticResource styleDatePickerBorder}"/>
+                        <TextBox Name="txtG1Adm_fecadm_rgad"
+                             TabIndex="5"
+                             Text="{Binding Path=G1Adm_fecadm_rgad, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxFormFecha}"
+                             IsEnabled="False"
+                             TextChanged="fcvActualizarDatePicker"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+                        <DatePicker Name="dpkG1Adm_fecadm_rgad"
+                            IsEnabled="False"
+                            Style="{StaticResource styleDatePickerForm}"/>
+                    </Grid>
+                    <TextBox x:Name="txtG1Adm_horadm_rgad"
+                          Width="108"
+                          Margin="781,28,0,0"
+                          TabIndex="2"
+                          Text="{Binding G1Adm_horadm_rgad, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                          Style="{StaticResource styleTextBoxForm}"
+                          TextChanged="fcvCapturaHora"
+                          IsEnabled="False"
+                          KeyDown="fcvMoverFocus_KeyDown"
+                          GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBox x:Name="txtG1Sia_idesec_usua"
+            	        Width="157"
+            	        Margin="13,70,0,0"
+            	        TabIndex="2"
+            	        Text="{Binding G1Sia_idesec_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	        Style="{StaticResource styleTextBoxForm}"
+            	        IsEnabled="False"
+            	        KeyDown="fcvMoverFocus_KeyDown"
+            	        GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBox x:Name="txtG1Sia_deside_tide"
+            	        Width="172"
+            	        Margin="207,70,0,0"
+            	        TabIndex="103"
+            	        Text="{Binding G1Sia_deside_tide, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	        Style="{StaticResource styleTextBoxForm}"
+            	        IsEnabled="False"
+            	        KeyDown="fcvMoverFocus_KeyDown"
+            	        GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sia_tipide_tide"
+            	            Width="102"
+            	            Margin="13,52,0,0"
+            	            Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Id Unica Sistema"/></TextBlock>
+                    <TextBox x:Name="txtG1Sia_tipide_tide"
+            	        Width="30"
+            	        Margin="175,70,0,0"
+            	        TabIndex="3"
+            	        Text="{Binding G1Sia_tipide_tide, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	        Style="{StaticResource styleTextBoxForm}"
+            	        IsEnabled="False"
+            	        KeyDown="fcvMoverFocus_KeyDown"
+            	        GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sia_nroide_usua"
+            	                Width="172"
+            	                Margin="176,52,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Numero de Identificación"/></TextBlock>
+                    <TextBox x:Name="txtG1Sia_nroide_usua"
+            	            Width="184"
+            	            Margin="384,70,0,0"
+            	            TabIndex="4"
+            	            Text="{Binding G1Sia_nroide_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sia_fecnac_usua"
+            	                Width="102"
+            	                Margin="574,52,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}">
+                        <Run Language="es-co" Text="Fecha nacimiento"/>
+                    </TextBlock>
+                    <TextBox x:Name="txtG1Sia_fecnac_usua"
+            	            Width="111"
+            	            Margin="574,70,0,0"
+            	            TabIndex="8"
+            	            Text="{Binding G1Sia_fecnac_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sis_codsex_sexo"
+            	                Width="29"
+            	                Margin="691,52,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Sexo"/>
+                    </TextBlock>
+                    <TextBox x:Name="txtG1Sis_codsex_sexo"
+            	                Width="30"
+            	                Margin="690,70,0,0"
+            	                TabIndex="9"
+            	                Text="{Binding G1Sis_codsex_sexo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	                Style="{StaticResource styleTextBoxForm}"
+            	                IsEnabled="False"
+            	                KeyDown="fcvMoverFocus_KeyDown"
+            	                GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sia_edaymd_usua"
+            	                Width="102"
+            	                Margin="725,52,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}">
+                        <Run Language="es-co" Text="Edad paciente"/>
+                    </TextBlock>
+                    <TextBox x:Name="txtG1Sia_edaymd_usua"
+            	            Width="164"
+            	            Margin="725,70,0,0"
+            	            TabIndex="10"
+            	            Text="{Binding G1Sia_edaymd_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sis_coddep_dpto"
+            	                Width="102"
+            	                Margin="13,96,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Departamento"/></TextBlock>
+                    <TextBox x:Name="txtG1Sis_coddep_dpto"
+            	            Width="55"
+            	            Margin="13,113,0,0"
+            	            TabIndex="16"
+            	            Text="{Binding G1Sis_coddep_dpto, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBox x:Name="txtG1Sis_desdep_dpto"
+            	            Width="204"
+            	            Margin="70,113,0,0"
+            	            TabIndex="16"
+            	            Text="{Binding G1Sis_desdep_dpto, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sis_codmun_muni"
+            	                Width="77"
+            	                Margin="279,96,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}">
+                        <Run Language="es-co" Text="Municipio"/>
+                    </TextBlock>
+                    <TextBox x:Name="txtG1Sis_codmun_muni"
+            	                Width="53"
+            	                Margin="277,113,0,0"
+            	                TabIndex="17"
+            	                Text="{Binding G1Sis_codmun_muni, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	                Style="{StaticResource styleTextBoxForm}"
+            	                IsEnabled="False"
+            	                KeyDown="fcvMoverFocus_KeyDown"
+            	                GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBox x:Name="txtG1Sis_desmun_muni"
+            	            Width="173"
+            	            Margin="332,113,0,0"
+            	            TabIndex="17"
+            	            Text="{Binding G1Sis_desmun_muni, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBox x:Name="txtG1Sia_deseps_teps"
+            	                Width="296"
+            	                Margin="593,113,0,0"
+            	                TabIndex="113"
+            	                Text="{Binding G1Sia_deseps_teps, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	                Style="{StaticResource styleTextBoxForm}"
+            	                IsEnabled="False"
+            	                KeyDown="fcvMoverFocus_KeyDown"
+            	                GotFocus="fcvTextBox_GotFocus"/>
+                    <TextBlock x:Name="lblG1sia_codeps_teps"
+            	                Width="102"
+            	                Margin="510,94,0,0"
+            	                Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="EPS Aseguradora"/>
+                    </TextBlock>
+                    <TextBox x:Name="txtG1Sia_codeps_teps"
+            	            Width="78"
+            	            Margin="510,113,0,0"
+            	            TabIndex="13"
+            	            Text="{Binding G1Sia_codeps_teps, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	            Style="{StaticResource styleTextBoxForm}"
+            	            IsEnabled="False"
+            	            KeyDown="fcvMoverFocus_KeyDown"
+            	            GotFocus="fcvTextBox_GotFocus"/>
+                </Grid>
+                <TabControl Name="pagG1"
+                        Style="{StaticResource styleTabControlZonaForm}"
+                        TabIndex="11"
+                        Grid.Row="1" Margin="10,0,10,60">
+                    <TabItem Name="pagTABS2"
+                     Header="Datos del egreso"
+                     Style="{StaticResource styleTabItemZonaForm}">
+                        <Grid Style="{StaticResource styleGridTabItemZona}">
+                            <Grid Margin="0,0,0,10">
+                                <TextBlock x:Name="lblG1adm_secegr_regr"
+                    			Width="137"
+                    			Margin="8,12,0,0"
+                    			ToolTip="Secuencial registro de egreso"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Secuencial egreso"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_secegr_regr"
+                    			Width="138"
+                    			Margin="150,8,0,0"
+                    			TabIndex="1"
+                    			Text="{Binding G1Adm_secegr_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Sis_despro_espr"
+            	                        Width="105"
+            	                        Margin="325,8,0,0"
+            	                        TabIndex="120"
+            	                        Text="{Binding G1Sis_despro_espr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	                        Style="{StaticResource styleTextBoxForm}"
+            	                        IsEnabled="False"
+            	                        KeyDown="fcvMoverFocus_KeyDown"
+            	                        GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Sis_estpro_espr"
+            	                    Width="33"
+            	                    Margin="290,8,0,0"
+            	                    TabIndex="20"
+            	                    Text="{Binding G1Sis_estpro_espr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            	                    Style="{StaticResource styleTextBoxForm}"
+            	                    IsEnabled="False"
+            	                    KeyDown="fcvMoverFocus_KeyDown"
+            	                    GotFocus="fcvTextBox_GotFocus"/>
+
+                                <TextBlock x:Name="lblG1hcl_nrohis_hicl"
+                    			Width="137"
+                    			Margin="8,37,0,0"
+                    			ToolTip="Numero o codigo de la Ficha de Historias Clinicas"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Numero historia clinica"/></TextBlock>
+                                <TextBox x:Name="txtG1Hcl_nrohis_hicl"
+                    			Width="280"
+                    			Margin="150,33,0,0"
+                    			TabIndex="2"
+                    			Text="{Binding G1Hcl_nrohis_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_fecegr_regr"
+                    			Width="137"
+                    			Margin="8,62,0,0"
+                    			ToolTip="Fecha de egreso del servicio de hospitalizacion u Observacion en urgencia"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Fecha salida (dd/mm/aaaa)"/></TextBlock>
+                                <Grid Margin="150,58,0,0"
+                    			Width="280"
+                    			Style="{StaticResource styleDatePickerGrid}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox x:Name="txtG1Adm_fecegr_regr"
+                    				TabIndex="3"
+                    				Text="{Binding G1Adm_fecegr_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    				Style="{StaticResource styleTextBoxFormFecha}"
+                    				IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    				TextChanged="fcvActualizarDatePicker"
+                    				KeyDown="fcvMoverFocus_KeyDown"
+                    				GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker x:Name="dpkG1Adm_fecegr_regr"
+                    				IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    				Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <TextBlock x:Name="lblG1adm_horegr_regr"
+                    			Width="137"
+                    			Margin="8,87,0,0"
+                    			ToolTip="Hora  egreso en formato militar  (HH) ejm: 16"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Hora de salida"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_horegr_regr"
+                    			Width="280"
+                    			Margin="150,83,0,0"
+                    			TabIndex="4"
+                    			Text="{Binding G1Adm_horegr_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="fcvCapturaHora"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_diases_regr"
+                    			Width="137"
+                    			Margin="8,112,0,0"
+                    			ToolTip="Numero dias de estancia en la IPS"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Dias de estancia"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_diases_regr"
+                    			Width="280"
+                    			Margin="150,108,0,0"
+                    			TabIndex="5"
+                    			Text="{Binding G1Adm_diases_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_horase_regr"
+                    			Width="137"
+                    			Margin="8,137,0,0"
+                    			ToolTip="Numero hora total  en estancia en la IPS"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Horas de estancia"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_horase_regr"
+                    			Width="280"
+                    			Margin="150,133,0,0"
+                    			TabIndex="6"
+                    			Text="{Binding G1Adm_horase_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_secaut_aegr"
+                    			Width="137"
+                    			Margin="435,10,0,0"
+                    			ToolTip="Numero Secuencial Autorizacion de egreso paciente"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Autorización salida"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_secaut_aegr"
+                    			Width="280"
+                    			Margin="577,6,0,0"
+                    			TabIndex="7"
+                    			Text="{Binding G1Adm_secaut_aegr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="txtG1Adm_secaut_aegr_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Sia_nompro_prof"
+                    			Width="205"
+                    			Margin="225,157,0,0"
+                    			TabIndex="108"
+                    			Text="{Binding G1Sia_nompro_prof, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_codpfa_prof"
+                    			Width="137"
+                    			Margin="8,161,0,0"
+                    			ToolTip="Codigo Profesional Que Autoriza egreso o presta servicio ambulatorio"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Codigo Profesional Autoriza"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_codpfa_prof"
+                    			Width="70"
+                    			Margin="150,157,0,0"
+                    			TabIndex="8"
+                    			Text="{Binding G1Sia_codpfa_prof, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_codpfa_prof_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Desia_dixing_tdia"
+                    			Width="205"
+                    			Margin="225,182,0,0"
+                    			TabIndex="109"
+                    			Text="{Binding G1Desia_dixing_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixing_tdia"
+                    			Width="137"
+                    			Margin="8,186,0,0"
+                    			ToolTip="Diagnostico de Ingreso a hospitalizacion/Urgencias con Observacion (si no se digito en admision) según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico Ingreso"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixing_tdia"
+                    			Width="70"
+                    			Margin="150,182,0,0"
+                    			TabIndex="9"
+                    			Text="{Binding G1Sia_dixing_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_dixing_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Sia_desdia_tdia"
+                    			Width="205"
+                    			Margin="225,207,0,0"
+                    			TabIndex="110"
+                    			Text="{Binding G1Sia_desdia_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixsal_tdia"
+                    			Width="137"
+                    			Margin="8,211,0,0"
+                    			ToolTip="Diagnostico de salida de hospitalizacion/Urgencias con Observacion según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico salida"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixsal_tdia"
+                    			Width="70"
+                    			Margin="150,207,0,0"
+                    			TabIndex="10"
+                    			Text="{Binding G1Sia_dixsal_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_dixsal_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Sia_desdxp_tdix"
+                    			Width="205"
+                    			Margin="225,232,0,0"
+                    			TabIndex="111"
+                    			Text="{Binding G1Sia_desdxp_tdix, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_tipdxp_tdix"
+                    			Width="137"
+                    			Margin="8,236,0,0"
+                    			ToolTip="Tipo de diagnostico principal"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Tipo diagnostico principal"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_tipdxp_tdix"
+                    			Width="70"
+                    			Margin="150,232,0,0"
+                    			TabIndex="11"
+                    			Text="{Binding G1Sia_tipdxp_tdix, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_tipdxp_tdix_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Desia_dixre1_tdia"
+                    			Width="205"
+                    			Margin="225,257,0,0"
+                    			TabIndex="112"
+                    			Text="{Binding G1Desia_dixre1_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixre1_tdia"
+                    			Width="137"
+                    			Margin="8,261,0,0"
+                    			ToolTip="Diagnostico relacionado 1 según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico relación 1"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixre1_tdia"
+                    			Width="70"
+                    			Margin="150,257,0,0"
+                    			TabIndex="12"
+                    			Text="{Binding G1Sia_dixre1_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_dixre1_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Desia_dixre2_tdia"
+                    			Width="205"
+                    			Margin="225,282,0,0"
+                    			TabIndex="113"
+                    			Text="{Binding G1Desia_dixre2_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixre2_tdia"
+                    			Width="137"
+                    			Margin="8,286,0,0"
+                    			ToolTip="Diagnostico relacionado 2 según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico relación 2"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixre2_tdia"
+                    			Width="70"
+                    			Margin="150,282,0,0"
+                    			TabIndex="13"
+                    			Text="{Binding G1Sia_dixre2_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_dixre2_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Desia_dixre3_tdia"
+                    			Width="205"
+                    			Margin="225,307,0,0"
+                    			TabIndex="114"
+                    			Text="{Binding G1Desia_dixre3_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixre3_tdia"
+                    			Width="137"
+                    			Margin="8,311,0,0"
+                    			ToolTip="Diagnostico relacionado 2 según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico relación 3"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixre3_tdia"
+                    			Width="70"
+                    			Margin="150,307,0,0"
+                    			TabIndex="14"
+                    			Text="{Binding G1Sia_dixre3_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_dixre3_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Desia_dixcom_tdia"
+                    			Width="205"
+                    			Margin="225,332,0,0"
+                    			TabIndex="115"
+                    			Text="{Binding G1Desia_dixcom_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixcom_tdia"
+                    			Width="137"
+                    			Margin="8,336,0,0"
+                    			ToolTip="Diagnostico de la complicacion cuando exista según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagn. complicación"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixcom_tdia"
+                    			Width="70"
+                    			Margin="150,332,0,0"
+                    			TabIndex="15"
+                    			Text="{Binding G1Sia_dixcom_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_dixcom_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG1Adm_estsal_regr"
+                    			Width="205"
+                    			Margin="652,31,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_estsal_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_estsal_regr"
+                    			Width="137"
+                    			Margin="435,35,0,0"
+                    			ToolTip="Estado al salir: 1=Vivo 2= Muerto"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Estado al salir"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_estsal_regr"
+                    			Width="70"
+                    			Margin="577,31,0,0"
+                    			TabIndex="16"
+                    			Text="{Binding G1Adm_estsal_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG1Adm_dessal_regr"
+                    			Width="205"
+                    			Margin="652,56,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_dessal_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_dessal_regr"
+                    			Width="137"
+                    			Margin="435,60,0,0"
+                    			ToolTip="Destino al salir: 1=Alta (salida) 2= Remision a otro nivel 3 = Hospitalizacion"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Destino al salir"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_dessal_regr"
+                    			Width="70"
+                    			Margin="577,56,0,0"
+                    			TabIndex="17"
+                    			Text="{Binding G1Adm_dessal_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Sia_desdis_tdis"
+                    			Width="205"
+                    			Margin="652,81,0,0"
+                    			TabIndex="118"
+                    			Text="{Binding G1Sia_desdis_tdis, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_tipdis_tdis"
+                    			Width="137"
+                    			Margin="435,85,0,0"
+                    			ToolTip="Tipo de Discapacidad postenfermedad al momento de la salida cuando aplique ejm: 1=Visual, 2=Motriz y mas"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Discapacidad postenfermedad"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_tipdis_tdis"
+                    			Width="70"
+                    			Margin="577,81,0,0"
+                    			TabIndex="18"
+                    			Text="{Binding G1Sia_tipdis_tdis, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="txtG1Sia_tipdis_tdis_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG1Adm_tipmue_regr"
+                    			Width="205"
+                    			Margin="652,106,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtFallecido}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_tipmue_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_tipmue_regr"
+                    			Width="137"
+                    			Margin="435,110,0,0"
+                    			ToolTip="Muerte intrahospitalaria de pacientes admitidos: 1=En las primeras 48 horas 2= Despues de 48 horas"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Muerte intrahospitalaria"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_tipmue_regr"
+                    			Width="70"
+                    			Margin="577,106,0,0"
+                    			TabIndex="19"
+                    			Text="{Binding G1Adm_tipmue_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtFallecido}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG1Desia_dixmue_tdia"
+                    			Width="205"
+                    			Margin="652,131,0,0"
+                    			TabIndex="120"
+                    			Text="{Binding G1Desia_dixmue_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="False"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1sia_dixmue_tdia"
+                    			Width="137"
+                    			Margin="435,135,0,0"
+                    			ToolTip="Diagnostico de causa muerte cuando exista según CIE-10"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico de muerte"/></TextBlock>
+                                <TextBox x:Name="txtG1Sia_dixmue_tdia"
+                    			Width="70"
+                    			Margin="577,131,0,0"
+                    			TabIndex="20"
+                    			Text="{Binding G1Sia_dixmue_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtFallecido}"
+                    			KeyDown="txtG1Sia_dixmue_tdia_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_fecmue_regr"
+                    			Width="142"
+                    			Margin="435,160,0,0"
+                    			ToolTip="Fecha muerte dentro del servicio de hospitalizacion u Observacion en urgencia"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Fecha muerte (dd/mm/aaaa)"/></TextBlock>
+                                <Grid Margin="577,156,0,0"
+                    			Width="280"
+                    			Style="{StaticResource styleDatePickerGrid}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox x:Name="txtG1Adm_fecmue_regr"
+                    				TabIndex="21"
+                    				Text="{Binding G1Adm_fecmue_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    				Style="{StaticResource styleTextBoxFormFecha}"
+                    				IsEnabled="{Binding GlgSIS_ModoEdtFallecido}"
+                    				TextChanged="fcvActualizarDatePicker"
+                    				KeyDown="fcvMoverFocus_KeyDown"
+                    				GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker x:Name="dpkG1Adm_fecmue_regr"
+                    				IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    				Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <TextBlock x:Name="lblG1adm_hormue_regr"
+                    			Width="137"
+                    			Margin="435,187,0,0"
+                    			ToolTip="Hora  muerte en formato militar  (HH) ejm: 16"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Hora de muerte"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_hormue_regr"
+                    			Width="280"
+                    			Margin="577,183,0,0"
+                    			TabIndex="22"
+                    			Text="{Binding G1Adm_hormue_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="fcvCapturaHora"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtFallecido}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG1Adm_aparto_regr"
+                    			Width="205"
+                    			Margin="652,208,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_aparto_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_aparto_regr"
+                    			Width="137"
+                    			Margin="435,212,0,0"
+                    			ToolTip="Hubo atencion del parto : 1=SI 2=NO"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Atención parto (SI/NO)"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_aparto_regr"
+                    			Width="70"
+                    			Margin="577,208,0,0"
+                    			TabIndex="23"
+                    			Text="{Binding G1Adm_aparto_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG1Adm_tippar_regr"
+                    			Width="205"
+                    			Margin="652,233,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_tippar_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_tippar_regr"
+                    			Width="137"
+                    			Margin="435,237,0,0"
+                    			ToolTip="Tipo atencion del parto : 1=Parto 2=Aborto"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Parto o Aborto"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_tippar_regr"
+                    			Width="70"
+                    			Margin="577,233,0,0"
+                    			TabIndex="24"
+                    			Text="{Binding G1Adm_tippar_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG1Adm_actpar_regr"
+                    			Width="205"
+                    			Margin="652,258,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_actpar_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_actpar_regr"
+                    			Width="137"
+                    			Margin="435,262,0,0"
+                    			ToolTip="Tipo acto asistencia del parto : 1=Asistencia parto  normal  2=Parto quirugico (cesarea)"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Tipo asistencia parto"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_actpar_regr"
+                    			Width="70"
+                    			Margin="577,258,0,0"
+                    			TabIndex="25"
+                    			Text="{Binding G1Adm_actpar_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_semges_regr"
+                    			Width="137"
+                    			Margin="435,287,0,0"
+                    			ToolTip="Numero semanas de gestación"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Semanas gestación"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_semges_regr"
+                    			Width="280"
+                    			Margin="577,283,0,0"
+                    			TabIndex="26"
+                    			Text="{Binding G1Adm_semges_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_fecpar_regr"
+                    			Width="137"
+                    			Margin="435,312,0,0"
+                    			ToolTip="Fecha en que se realizo la atencion del parto"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Fecha parto (dd/mm/aaaa)"/></TextBlock>
+                                <Grid Margin="577,308,0,0"
+                    			Width="280"
+                    			Style="{StaticResource styleDatePickerGrid}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox x:Name="txtG1Adm_fecpar_regr"
+                    				TabIndex="27"
+                    				Text="{Binding G1Adm_fecpar_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    				Style="{StaticResource styleTextBoxFormFecha}"
+                    				IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    				TextChanged="fcvActualizarDatePicker"
+                    				KeyDown="fcvMoverFocus_KeyDown"
+                    				GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker x:Name="dpkG1Adm_fecpar_regr"
+                    				IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    				Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <ComboBox x:Name="cboG1Adm_contrl_regr"
+                    			Width="205"
+                    			Margin="652,333,0,0"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			Style="{StaticResource styleComboBoxForm}"
+                    			SelectedIndex="0"
+                    			SelectionChanged="SeleccionComboBoxOpcion"
+                    			ItemsSource="{Binding G1CbAdm_contrl_regr}"
+                    			DisplayMemberPath="{Binding NombreOpcion}"
+                    			SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG1adm_contrl_regr"
+                    			Width="137"
+                    			Margin="435,337,0,0"
+                    			ToolTip="se realizo control penatal 1=SI,2=No"
+                    			Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Control prenatal (SI/NO)"/></TextBlock>
+                                <TextBox x:Name="txtG1Adm_contrl_regr"
+                    			Width="70"
+                    			Margin="577,333,0,0"
+                    			TabIndex="28"
+                    			Text="{Binding G1Adm_contrl_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			Style="{StaticResource styleTextBoxForm}"
+                    			TextChanged="ActualizarComboBoxOpcion"
+                    			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                    			KeyDown="fcvMoverFocus_KeyDown"
+                    			GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG1adm_observ_regr"
+                    			Width="142"
+                    			Margin="8,358,0,0"
+                    			ToolTip="Nota u observación del egreso"
+                    			Style="{StaticResource styleEtiquetasForm}" FontWeight="Bold"><Run Language="es-co" Text="Nota egreso"/></TextBlock>
+                                <TextBox Name="txtG1Adm_observ_regr"
+                    			         Width="707"
+                    			         Margin="150,357,0,0"
+                    			         TabIndex="29"
+                                         MaxLength="200"
+                                         TextWrapping="Wrap"
+                    			         Text="{Binding G1Adm_observ_regr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    			         Style="{StaticResource styleTextBoxForm}"
+                    			         IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                    			         KeyDown="fcvMoverFocus_KeyDown"
+                    			         GotFocus="fcvTextBox_GotFocus" Height="60"/>
+                            </Grid>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="pagTABS3"
+                     Header="Datos Recien nacido"
+                     Style="{StaticResource styleTabItemZonaForm}">
+                        <Grid Style="{StaticResource styleGridTabItemZona}">
+                            <Grid/>
+                            <!-- <Grid VerticalAlignment="Top" Margin="0,11,0,0" Height="160"> -->
+                            <Grid Margin="0,177,0,0">
+                                <Rectangle HorizontalAlignment="Left"
+                        		VerticalAlignment="Top"
+                        		Height="250"
+                        		Width="869"
+                        		OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                        		Fill="#FFF6F8F9"
+                        		Margin="1,0,0,0"/>
+                                <Button x:Name="cmdAddAux"
+                        		Content="Guardar"
+                        		Margin="585,6,0,0"
+                        		Style="{StaticResource styleButtonMiniForm}"
+                        		TabIndex="14"
+                        		Command="{Binding CmdSAVREL}"
+                        		Click="fcvGuardarRegistroRel"
+                        		Grid.Row="4"
+                        		ToolTip="Adicionar registro en la Grid"/>
+                                <Button x:Name="cmdCanAux"
+                        		Content="Nuevo"
+                        		Margin="662,6,0,0"
+                        		Style="{StaticResource styleButtonMiniForm}"
+                        		TabIndex="80"
+                        		Command="{Binding CmdCANREL}"
+                        		Click="fcvNuevoRegistroRel"
+                        		Grid.Row="4"
+                        		ToolTip="Nuevo o deshacer cambios en registro modificado"/>
+                                <Button x:Name="cmdDelAux"
+                        		Content="Eliminar"
+                        		Margin="739,6,0,0"
+                        		Style="{StaticResource styleButtonMiniForm}"
+                        		TabIndex="81"
+                        		Command="{Binding CmdDELREL}"
+                        		Click="fcvEliminarRegistroRel"
+                        		Grid.Row="4"
+                        		ToolTip="Eliminar registro activo de la lista"/>
+                                <DataGrid AutoGenerateColumns="False"
+                        		        HorizontalAlignment="Left"
+                        		        VerticalAlignment="Top"
+                        		        Margin="5,41,0,0"
+                        		        x:Name="objDataGrid"
+                        		        ItemsSource="{Binding TmpG2ListaBrow, UpdateSourceTrigger=PropertyChanged}"
+                        		        CanUserAddRows="False"
+                        		        Height="202"
+                        		        Width="859"
+                        		        TabIndex="100">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Adm_fecnac_regn, StringFormat={}{0:dd/MM/yyyy}}"
+                        				    Header="Fecha Nacimiento"
+                        				    Width="90"
+                        				    IsReadOnly="True"/>
+                                        <DataGridTextColumn Binding="{Binding Sis_codsex_sexo}"
+                        				    Header="Sexo"
+                        				    Width="90"
+                        				    IsReadOnly="True"/>
+                                        <DataGridTextColumn Binding="{Binding Adm_hornac_regn}"
+                        				    Header="Hora Nacimiento"
+                        				    Width="90"
+                        				    IsReadOnly="True"/>
+                                        <DataGridTextColumn Binding="{Binding Adm_peson_regn}"
+                        				    Header="Peso"
+                        				    Width="90"
+                        				    IsReadOnly="True"/>
+                                        <DataGridTextColumn Binding="{Binding Sia_dixnac_tdia}"
+                        				    Header="Dx Nacimiento"
+                        				    Width="90"
+                        				    IsReadOnly="True"/>
+                                        <DataGridTextColumn Binding="{Binding Sia_desdia_tdia}"
+                        				    Header="Diagnostico Nacimiento"
+                        				    Width="190"
+                        				    IsReadOnly="True"/>
+                                        <DataGridTextColumn Binding="{Binding Sia_dixmue_tdia}"
+                        				    Header="Dx Muerte"
+                        				    Width="80"
+                        				    IsReadOnly="True" />
+                                        <DataGridTextColumn Binding="{Binding Desia_dixmue_tdia}"
+                        				    Header="Diagnostico muerte"
+                        				    Width="190"
+                        				    IsReadOnly="True"/>
+                                    </DataGrid.Columns>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <cmd:EventToCommand Command="{Binding SelectionChangedCommand, Mode=TwoWay}" CommandParameter="{Binding SelectedItem, ElementName=objDataGrid}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </DataGrid>
+                            </Grid>
+                            <Grid>
+                                <TextBlock x:Name="lblG2adm_fecnac_regn"
+                        		Width="137"
+                        		Margin="8,12,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Fecha nacimiento(dd/mm/aaaa)"/></TextBlock>
+                                <Grid Margin="150,8,0,0"
+                        		Width="280"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleDatePickerGrid}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox x:Name="txtG2Adm_fecnac_regn"
+                        			TabIndex="2"
+                        			Text="{Binding G2Adm_fecnac_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        			Style="{StaticResource styleTextBoxFormFecha}"
+                        			IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        			TextChanged="fcvActualizarDatePicker"
+                        			KeyDown="fcvMoverFocus_KeyDown"
+                        			GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker x:Name="dpkG2Adm_fecnac_regn"
+                        			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                        			Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <TextBox x:Name="txtG2Sis_dessex_sexo"
+                        		Width="205"
+                        		Margin="225,33,0,0"
+                        		TabIndex="103"
+                        		Text="{Binding G2Sis_dessex_sexo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="False"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2sis_codsex_sexo"
+                        		Width="137"
+                        		Margin="8,37,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Sexo"/></TextBlock>
+                                <TextBox x:Name="txtG2Sis_codsex_sexo"
+                        		Width="70"
+                        		Margin="150,33,0,0"
+                        		TabIndex="3"
+                        		Text="{Binding G2Sis_codsex_sexo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		KeyDown="txtG2Sis_codsex_sexo_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2adm_hornac_regn"
+                        		Width="137"
+                        		Margin="8,62,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Hora nacimiento"/></TextBlock>
+                                <TextBox x:Name="txtG2Adm_hornac_regn"
+                        		Width="280"
+                        		Margin="150,58,0,0"
+                        		TabIndex="4"
+                        		Text="{Binding G2Adm_hornac_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		TextChanged="fcvCapturaHora"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2adm_peson_regn"
+                        		Width="137"
+                        		Margin="8,87,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Peso al nacer (gramos)"/></TextBlock>
+                                <TextBox x:Name="txtG2Adm_peson_regn"
+                        		Width="280"
+                        		Margin="150,83,0,0"
+                        		TabIndex="5"
+                        		Text="{Binding G2Adm_peson_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2adm_tallan_regn"
+                        		Width="137"
+                        		Margin="8,112,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Talla al nacer(centimetros)"/></TextBlock>
+                                <TextBox x:Name="txtG2Adm_tallan_regn"
+                        		Width="280"
+                        		Margin="150,108,0,0"
+                        		TabIndex="6"
+                        		Text="{Binding G2Adm_tallan_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG2Sia_desdia_tdia"
+                        		Width="632"
+                        		Margin="225,133,0,0"
+                        		TabIndex="107"
+                        		Text="{Binding G2Sia_desdia_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="False"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2sia_dixnac_tdia"
+                        		Width="137"
+                        		Margin="8,137,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico nacimiento"/></TextBlock>
+                                <TextBox x:Name="txtG2Sia_dixnac_tdia"
+                        		Width="70"
+                        		Margin="150,133,0,0"
+                        		TabIndex="7"
+                        		Text="{Binding G2Sia_dixnac_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		KeyDown="txtG2Sia_dixnac_tdia_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG2Adm_estnac_regn"
+                        		Width="205"
+                        		Margin="652,8,0,0"
+                        		Grid.Row="3"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		Style="{StaticResource styleComboBoxForm}"
+                        		SelectedIndex="0"
+                        		SelectionChanged="SeleccionComboBoxOpcion"
+                        		ItemsSource="{Binding G2CbAdm_estnac_regn}"
+                        		DisplayMemberPath="{Binding NombreOpcion}"
+                        		SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG2adm_estnac_regn"
+                        		Width="137"
+                        		Margin="435,12,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Estado al nacer"/></TextBlock>
+                                <TextBox x:Name="txtG2Adm_estnac_regn"
+                        		Width="70"
+                        		Margin="577,8,0,0"
+                        		TabIndex="8"
+                        		Text="{Binding G2Adm_estnac_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		TextChanged="ActualizarComboBoxOpcion"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtNacimiento}"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox x:Name="cboG2Adm_tipmue_regn"
+                        		Width="205"
+                        		Margin="652,33,0,0"
+                        		Grid.Row="3"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtFallecidoNac}"
+                        		Style="{StaticResource styleComboBoxForm}"
+                        		SelectedIndex="0"
+                        		SelectionChanged="SeleccionComboBoxOpcion"
+                        		ItemsSource="{Binding G2CbAdm_tipmue_regn}"
+                        		DisplayMemberPath="{Binding NombreOpcion}"
+                        		SelectedValuePath="{Binding ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock x:Name="lblG2adm_tipmue_regn"
+                        		Width="137"
+                        		Margin="435,37,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Muerte postnatal"/></TextBlock>
+                                <TextBox x:Name="txtG2Adm_tipmue_regn"
+                        		Width="70"
+                        		Margin="577,33,0,0"
+                        		TabIndex="9"
+                        		Text="{Binding G2Adm_tipmue_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		TextChanged="ActualizarComboBoxOpcion"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtFallecidoNac}"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox x:Name="txtG2Desia_dixmue_tdia"
+                        		Width="205"
+                        		Margin="652,58,0,0"
+                        		TabIndex="110"
+                        		Text="{Binding G2Desia_dixmue_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="False"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2sia_dixmue_tdia"
+                        		Width="137"
+                        		Margin="435,62,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Diagnostico de muerte"/></TextBlock>
+                                <TextBox x:Name="txtG2Sia_dixmue_tdia"
+                        		Width="70"
+                        		Margin="577,58,0,0"
+                        		TabIndex="10"
+                        		Text="{Binding G2Sia_dixmue_tdia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtFallecidoNac}"
+                        		KeyDown="txtG2Sia_dixmue_tdia_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock x:Name="lblG2adm_fecmue_regn"
+                        		Width="137"
+                        		Margin="435,87,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Fecha muerte (dd/mm/aaaa)"/></TextBlock>
+                                <Grid Margin="577,83,0,0"
+                        		Width="280"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleDatePickerGrid}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox x:Name="txtG2Adm_fecmue_regn"
+                        			TabIndex="11"
+                        			Text="{Binding G2Adm_fecmue_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        			Style="{StaticResource styleTextBoxFormFecha}"
+                        			IsEnabled="{Binding GlgSIS_ModoEdtFallecidoNac}"
+                        			TextChanged="fcvActualizarDatePicker"
+                        			KeyDown="fcvMoverFocus_KeyDown"
+                        			GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker x:Name="dpkG2Adm_fecmue_regn"
+                        			IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                        			Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <TextBlock x:Name="lblG2adm_hormue_regn"
+                        		Width="137"
+                        		Margin="435,112,0,0"
+                        		Grid.Row="3"
+                        		Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Hora de muerte"/></TextBlock>
+                                <TextBox x:Name="txtG2Adm_hormue_regn"
+                        		Width="280"
+                        		Margin="577,108,0,0"
+                        		TabIndex="12"
+                        		Text="{Binding G2Adm_hormue_regn, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        		Style="{StaticResource styleTextBoxForm}"
+                        		TextChanged="fcvCapturaHora"
+                        		IsEnabled="{Binding GlgSIS_ModoEdtFallecidoNac}"
+                        		KeyDown="fcvMoverFocus_KeyDown"
+                        		Grid.Row="3"
+                        		GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <Button Name="cmdConfirmar"
+                Margin="389,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="17"
+                Command="{Binding CmdCON}"
+                Click="fcvConfirmarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui Confirmar el registro">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgConfirmar"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblConfirmar"
+                               Text="Confirmar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdGuardar"
+                Margin="389,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="17"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para guardar los cambios">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblGuardar"
+                               Text="Guardar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdAdicionar"
+                Margin="389,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="18"
+                Visibility="Collapsed"
+                Command="{Binding CmdADD}"
+                Click="fcvNuevoRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para crear un nuevo registro">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgAdicionar"
+                           Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblAdicionar"
+                               Text="Nuevo"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdCancelar"
+                Margin="492,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="19"
+                Command="{Binding CmdCAN}"
+                Click="fcvCancelarRegistro"
+                Grid.Row="3"
+                ToolTip="Cancelar los cambios">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblCancelar"
+                               Text="Cancelar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdModificar"
+                Margin="492,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="20"
+                Command="{Binding CmdEDT}"
+                Click="fcvModificarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para modificar el registro activo">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgModificar"
+                           Source="/Sistema;component/Imagenes/sis_edt_modificar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblModificar"
+                               Text="Modificar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdEdicion"
+                Margin="595,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="21"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="3"
+                ToolTip="Clic para Cambiar estado del registro">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgEdicion"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblEdicion"
+                               Text="Edición"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+                <Button.ContextMenu>
+                    <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                        <MenuItem Name="opCON"
+                                          Command="{Binding CmdCON}"
+                                          Click="fcvConfirmarRegistro"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Confirmar">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opANU"
+                                          Command="{Binding CmdANU}"
+                                          Click="fcvAnularRegistro"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Anular">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opDEL"
+                                          Command="{Binding CmdDEL}"
+                                          Click="fcvConfirmarRegistro"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Eliminar">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Button Name="cmdSalir"
+                Margin="780,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="22"
+                Command="{Binding CmdDFL}"
+                Click="cmdSalir_Click"
+                Grid.Row="3"
+                ToolTip="Salir de esta pantalla">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdBrowser"
+                Margin="248,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="49"
+                Command="{Binding CmdDFL}"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para buscar un registro">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgBrowser"
+                           Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblBrowser"
+                               Text="Buscar..."
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+                <Button.ContextMenu>
+                    <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                        <MenuItem Name="opTodos"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Todos...">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_buscar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opAbierto"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Abiertos...">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_abrir.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opCerrado"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Cerrados...">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opAnulado"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Anulados...">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Button Name="cmdConfiguracion"
+                Margin="121,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="51"
+                Width="110"
+                Visibility="Collapsed"
+                Command="{Binding CmdDFL}"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="3"
+                ToolTip="Clic para ajustes">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgConfiguracion"
+                           Source="/Sistema;component/Imagenes/sis_edt_configurar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblConfiguracion"
+                               Text="Configuración"
+                               Width="80"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+                <Button.ContextMenu>
+                    <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                        <MenuItem Name="opMODEDT"
+                                          Command="{Binding CmdMODEDT}"
+                                          Click="fcvConfigModoGuardar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Modo Edición: Guardar Registro (por defecto)">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_modificar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opMODCON"
+                                          Command="{Binding CmdMODCON}"
+                                          Click="fcvConfigModoConfirmar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Modo Edición: Confirmar Registro">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Button Name="cmdLogErrores"
+                Margin="10,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="50"
+                Click="fcvVistaLogErrores"
+				Command="{Binding CmdLOGERRORES}"
+                Grid.Row="5"
+                ToolTip="Ver registro de errores">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image  Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock Text="Errores"
+            	           Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <!-- VISTA NOTIFICACIONES -->
+        <Grid x:Name="grdPropSelectArea" 
+              Grid.Column="2"
+              Width="70"
+              Height="Auto"
+              Margin="-70,110,0,60"
+              HorizontalAlignment="Right" 
+              Background="#19FFFFFF">
+            <Canvas x:Name="cnvPropSelect" Width="70">
+                <!-- Vista contol notificaciones carga aqui -->
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>

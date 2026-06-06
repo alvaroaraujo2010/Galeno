@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlVistaImc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignWidth="500" Height="50" Width="500">
+    <Grid>
+        <Border Grid.Row="3"
+                Margin="10"
+                Background="Transparent"/>
+        <Grid Margin="10,10,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="115"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Peso -->
+            <TextBlock Name="lblIMCPeso" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Peso(Kilo Gramos)"/>
+            </TextBlock>
+            <TextBox Name="txtImcPeso" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Grid.Column="1" Height="20"/>
+            <!-- Talla -->
+            <TextBlock Name="lblIMCTalla" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Talla (centimetros)"/>
+            </TextBlock>
+            <TextBox Name="txtImcTalla" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Grid.Column="3" Height="20"/>
+            <!-- Imc -->
+            <TextBlock Name="lblImc" Grid.Column="4" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Indice Masa Corp. (Imc)"/>
+            </TextBlock>
+            <TextBox Name="txtImc" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" IsReadOnly="True" Grid.Column="5" Height="20"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,1531 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Sistema.Vista;
+using Sistema.Utilidades;
+using Sistema.Clases;
+using GestorReportes.Utilidades;
+
+namespace GestorReportes.Vista
+{
+    /// <summary>
+    /// Interaction logic for EDT_ControlOrdOdontogramaAdulto.xaml
+    /// </summary>
+    public partial class Odontograma : UserControl
+    {
+        public String lcrUri = "/GestorReportes;component/Imagenes/";
+        public String lcrRutaImagen = @"GaleriaRecursos\Imagenes\Odontologia\";
+        Aplicacion oApp = Aplicacion.Instancia();
+        public List<Registro> tmpRegistro = new List<Registro>();
+        public List<Registro> tmpDientes = new List<Registro>();
+
+        public Odontograma()
+        {
+            InitializeComponent();
+        }
+        #region Cargar vista del diente 01
+        private void fcvLoadDiente01(object sender, RoutedEventArgs e)
+        {
+            Diente01 lobControl = (Diente01)sender;
+            var lobRefDiente = (FrameworkElement)sender;
+            var lcrNumero               = lobControl.Name.Substring(1, 2);
+
+            lobControl.imgDiente.Source = new BitmapImage(new Uri(lcrUri + "hc_od_diente" + lcrNumero + ".png", UriKind.RelativeOrAbsolute));
+            lobControl.lblNumero.Text   = lcrNumero;
+            lobControl.gnuNumeroDiente = (int)Convert.ToUInt32(lcrNumero);
+            flgAddRegistroRefDientes("R" + lcrNumero, lcrNumero, ref lobRefDiente);
+        }
+        #endregion
+        #region Cargar vista del diente 02
+        private void fcvLoadDiente02(object sender, RoutedEventArgs e)
+        {
+            Diente02 lobControl = (Diente02)sender;
+            var lobRefDiente = (FrameworkElement)sender;
+            var lcrNumero = lobControl.Name.Substring(1, 2);
+
+            lobControl.imgDiente.Source = new BitmapImage(new Uri(lcrUri + "hc_od_diente" + lcrNumero + ".png", UriKind.RelativeOrAbsolute));
+            lobControl.lblNumero.Text = lcrNumero;
+            lobControl.gnuNumeroDiente = (int)Convert.ToUInt32(lcrNumero);
+            flgAddRegistroRefDientes("R" + lcrNumero, lcrNumero, ref lobRefDiente);
+        }
+        #endregion
+        #region fcvGraficarImgenEnDiente: Mostrar vista imagen a graficar en diente
+        /// <summary>
+        /// <para>fcvGraficarImgenEnDiente()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para> Genera la imagen y la grafica en la zona indicada del Diente</para>
+        /// <para>PARAMETROS:</para>
+        /// <para>tcrIdRegistro: Numero unico del registro para localizar imagen graficada</para>
+        /// <para>tcrNumeroDiente: Numero que representa la pieza dental en el odontograma ejm: "11", "12", "21"...</para>
+        /// <para>tcrZonaGrafica: "1" = Graficar en Corona "2" = Graficar en Corona Diente "3" = Graficar en Raiz Diente</para>
+        /// <para>"4" = Diente completo "5" = Base diente (encia)</para>
+        /// <para>tcrNombreImagen: Nimbre de la imagen en formato JPG, PNG u otros formatos de imagen</para>
+        /// <para>tcrOcultarItem: "1" = Ocultar la imagen principal del diente "2" = No Ocultar la imagen principal del diente</para>
+        /// </summary>
+        public void fcvGraficarImgenEnDiente(String tcrIdRegistro, String tcrNumeroDiente, String tcrZonaGrafica, String tcrNombreImagen, String tcrOcultarItem)
+        {
+            FrameworkElement lobjDiente = null;
+            var lcrTipoDiente = "1";
+            switch (tcrNumeroDiente)
+            {
+                #region Cuadrante 1
+                case "11": 
+                    lobjDiente = this.D11;
+                    break;
+                case "12":
+                    lobjDiente = this.D12;
+                    break;
+                case "13":
+                    lobjDiente = this.D13;
+                    break;
+                case "14":
+                    lobjDiente = this.D14;
+                    break;
+                case "15":
+                    lobjDiente = this.D15;
+                    break;
+                case "16":
+                    lobjDiente = this.D16;
+                    break;
+                case "17":
+                    lobjDiente = this.D17;
+                    break;
+                case "18":
+                    lobjDiente = this.D18;
+                    break;
+                #endregion
+                #region Cuadrante 2
+                case "21":
+                    lobjDiente = this.D21;
+                    break;
+                case "22":
+                    lobjDiente = this.D22;
+                    break;
+                case "23":
+                    lobjDiente = this.D23;
+                    break;
+                case "24":
+                    lobjDiente = this.D24;
+                    break;
+                case "25":
+                    lobjDiente = this.D25;
+                    break;
+                case "26":
+                    lobjDiente = this.D26;
+                    break;
+                case "27":
+                    lobjDiente = this.D27;
+                    break;
+                case "28":
+                    lobjDiente = this.D28;
+                    break;
+                #endregion
+                #region Cuadrante 3
+                case "31":
+                    lobjDiente = this.D31;
+                    break;
+                case "32":
+                    lobjDiente = this.D32;
+                    break;
+                case "33":
+                    lobjDiente = this.D33;
+                    break;
+                case "34":
+                    lobjDiente = this.D34;
+                    break;
+                case "35":
+                    lobjDiente = this.D35;
+                    break;
+                case "36":
+                    lobjDiente = this.D36;
+                    break;
+                case "37":
+                    lobjDiente = this.D37;
+                    break;
+                case "38":
+                    lobjDiente = this.D38;
+                    break;
+                #endregion
+                #region Cuadrante 4
+                case "41":
+                    lobjDiente = this.D41;
+                    break;
+                case "42":
+                    lobjDiente = this.D42;
+                    break;
+                case "43":
+                    lobjDiente = this.D43;
+                    break;
+                case "44":
+                    lobjDiente = this.D44;
+                    break;
+                case "45":
+                    lobjDiente = this.D45;
+                    break;
+                case "46":
+                    lobjDiente = this.D46;
+                    break;
+                case "47":
+                    lobjDiente = this.D47;
+                    break;
+                case "48":
+                    lobjDiente = this.D48;
+                    break;
+                #endregion
+                // Niños
+                #region Cuadrante 1
+                case "51":
+                    lobjDiente = this.D51;
+                    break;
+                case "52":
+                    lobjDiente = this.D52;
+                    break;
+                case "53":
+                    lobjDiente = this.D53;
+                    break;
+                case "54":
+                    lobjDiente = this.D54;
+                    break;
+                case "55":
+                    lobjDiente = this.D55;
+                    break;
+                #endregion
+                #region Cuadrante 2
+                case "61":
+                    lobjDiente = this.D61;
+                    break;
+                case "62":
+                    lobjDiente = this.D62;
+                    break;
+                case "63":
+                    lobjDiente = this.D63;
+                    break;
+                case "64":
+                    lobjDiente = this.D64;
+                    break;
+                case "65":
+                    lobjDiente = this.D65;
+                    break;
+                #endregion
+                #region Cuadrante 3
+                case "71":
+                    lobjDiente = this.D71;
+                    break;
+                case "72":
+                    lobjDiente = this.D72;
+                    break;
+                case "73":
+                    lobjDiente = this.D73;
+                    break;
+                case "74":
+                    lobjDiente = this.D74;
+                    break;
+                case "75":
+                    lobjDiente = this.D75;
+                    break;
+                #endregion
+                #region Cuadrante 4
+                case "81":
+                    lobjDiente = this.D81;
+                    break;
+                case "82":
+                    lobjDiente = this.D82;
+                    break;
+                case "83":
+                    lobjDiente = this.D83;
+                    break;
+                case "84":
+                    lobjDiente = this.D84;
+                    break;
+                case "85":
+                    lobjDiente = this.D85;
+                    break;
+                #endregion
+
+            }
+            // Tipo diente
+            if (Convert.ToInt32(tcrNumeroDiente) >= 11 && Convert.ToInt32(tcrNumeroDiente) <= 28 ||
+                Convert.ToInt32(tcrNumeroDiente) >= 51 && Convert.ToInt32(tcrNumeroDiente) <= 65)
+            {
+                lcrTipoDiente = "1";
+            }
+            else
+            {
+                lcrTipoDiente = "2";
+            }
+
+            // generar la ruta Uri
+            var lcrUriAux = lcrRutaImagen + tcrNombreImagen;
+
+            // Cargar en la vista del odontograma
+            if (lcrTipoDiente == "1")
+            {
+                Diente01 lobDiente = (Diente01)lobjDiente;
+                lobDiente.gnuNumeroDiente = Convert.ToInt32(tcrNumeroDiente);
+                fcvGraficarImagenEnDiente01(tcrIdRegistro, ref lobDiente, tcrZonaGrafica, tcrNombreImagen, tcrOcultarItem);
+            }
+            else
+            {
+                Diente02 lobDiente = (Diente02)lobjDiente;
+                lobDiente.gnuNumeroDiente = Convert.ToInt32(tcrNumeroDiente);
+                fcvGraficarImagenEnDiente02(tcrIdRegistro, ref lobDiente, tcrZonaGrafica, tcrNombreImagen, tcrOcultarItem);
+            }
+        }
+        #endregion
+        #region fcvGraficarImagenEnDiente01: Mostrar imagen a graficar en diente
+        /// <summary>
+        /// <para>fcvGraficarImagenEnDiente01()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para> Genera la imagen y la grafica en la zona indicada del Diente</para>
+        /// <para>PARAMETROS:</para>
+        /// <para>tcrZonaGrafica: "1" = Graficar en Corona "2" = Graficar en Corona Diente "3" = Graficar en Raiz Diente</para>
+        /// <para>"4" = Diente completo "5" = Base diente (encia)</para>
+        /// <para>tcrOcultarItem: "1" = Ocultar imagen Base del diente "2" = No ocultar imagen base del diente</para>
+        /// </summary>
+        private void fcvGraficarImagenEnDiente01(String tcrIdRegistro, ref Diente01 tobjDiente, String tcrZonaGrafica, String tcrNombreImagen, String tcrOcultarItem)
+        {
+
+            Image lobObjeto = new Image();
+            var lobUri = new EdtUtilidades.ObjetoBitmapImage();
+
+            lobUri.AppIpServidor = oApp.gcrAppRecursoIpServidor;
+            lobUri.AppInicioPath = oApp.gcrAppRecursoInicioPath;
+            lobUri.RutaGaleria   = lcrRutaImagen;
+            lobUri.NombreArchivo = tcrNombreImagen;
+            lobObjeto.Source = EdtUtilidades.SetBitmapImageUri(lobUri);
+            lobObjeto.Stretch = Stretch.Fill;
+            flgAddRegistroRefImagen01(tcrIdRegistro, tobjDiente.gnuNumeroDiente.ToString(), ref tobjDiente, ref lobObjeto);
+
+            switch (tcrZonaGrafica)
+            {
+                case "1":
+                    // Nuevos valores
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, -1); 
+                    Canvas.SetTop(lobObjeto, -6);  
+                    tobjDiente.cnvCorona.Children.Add(lobObjeto);
+                    break;
+
+                case "2":
+                    //lobObjeto.Height = 48;
+                    //lobObjeto.Width = 44;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, 1); //0
+                    Canvas.SetTop(lobObjeto, -2); //4
+                    tobjDiente.cnvDienteCorona.Children.Add(lobObjeto);
+                    break;
+
+                case "3":
+                    //lobObjeto.Height = 90;
+                    //lobObjeto.Width = 50;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, 1);
+                    Canvas.SetTop(lobObjeto, -3);
+                    tobjDiente.cnvDienteRaiz.Children.Add(lobObjeto);
+                    break;
+
+                case "4":
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    lobObjeto.Height = 90;
+                    lobObjeto.Width = 35;
+                    Canvas.SetLeft(lobObjeto, -2);
+                    Canvas.SetTop(lobObjeto, -15);
+                    tobjDiente.cnvDiente.Children.Add(lobObjeto);
+                    break;
+
+                case "5":
+                    //lobObjeto.Height = 100;
+                    //lobObjeto.Width = 42;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, 1);
+                    Canvas.SetTop(lobObjeto, -5);
+                    tobjDiente.cnvBaseDiente.Children.Add(lobObjeto);
+                    break;
+            }
+            if (tcrOcultarItem == "1")
+            {
+                tobjDiente.gnuContOcultDiente++;
+                tobjDiente.imgDiente.Visibility = Visibility.Collapsed;
+            }
+
+        }
+        #endregion
+        #region fcvGraficarImagenEnDiente02: Mostrar imagen a graficar en diente
+        /// <summary>
+        /// <para>fcvGraficarImagenEnDiente02()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para> Genera la imagen y la grafica en la zona indicada del Diente</para>
+        /// <para>PARAMETROS:</para>
+        /// <para>tcrZonaGrafica: "1" = Graficar en Corona "2" = Graficar en Corona Diente "3" = Graficar en Raiz Diente</para>
+        /// <para>"4" = Diente completo "5" = Base diente (encia)</para>
+        /// <para>tcrOcultarItem: "1" = Ocultar imagen Base del diente "2" = No ocultar imagen base del diente</para>
+        /// </summary>
+        private void fcvGraficarImagenEnDiente02(String tcrIdRegistro, ref Diente02 tobjDiente, String tcrZonaGrafica, String tcrNombreImagen, String tcrOcultarItem)
+        {
+
+            Image lobObjeto = new Image();
+            var lobUri = new EdtUtilidades.ObjetoBitmapImage();
+
+            lobUri.AppIpServidor = oApp.gcrAppRecursoIpServidor;
+            lobUri.AppInicioPath = oApp.gcrAppRecursoInicioPath;
+            lobUri.RutaGaleria = lcrRutaImagen;
+            lobUri.NombreArchivo = tcrNombreImagen;
+            lobObjeto.Source = EdtUtilidades.SetBitmapImageUri(lobUri);
+            lobObjeto.Stretch = Stretch.Uniform;
+            flgAddRegistroRefImagen02(tcrIdRegistro, tobjDiente.gnuNumeroDiente.ToString(), ref tobjDiente, ref lobObjeto);
+
+            switch (tcrZonaGrafica)
+            {
+                case "1":
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, -1); 
+                    Canvas.SetTop(lobObjeto, -6);  
+                    tobjDiente.cnvCorona.Children.Add(lobObjeto);
+                    break;
+
+                case "2":
+                    //lobObjeto.Height = 50;
+                    //lobObjeto.Width = 50;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, -1); //-3
+                    Canvas.SetTop(lobObjeto, -4);  //-6
+                    tobjDiente.cnvDienteCorona.Children.Add(lobObjeto);
+                    break;
+
+                case "3":
+                    //lobObjeto.Height = 90;
+                    //lobObjeto.Width = 48;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, 1);
+                    Canvas.SetTop(lobObjeto, -6);
+                    tobjDiente.cnvDienteRaiz.Children.Add(lobObjeto);
+                    break;
+
+                case "4":
+                    lobObjeto.Height = 90;
+                    lobObjeto.Width = 30;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, 0);
+                    Canvas.SetTop(lobObjeto, -3);
+                    tobjDiente.cnvDiente.Children.Add(lobObjeto);
+                    break;
+
+                case "5":
+                    //lobObjeto.Height = 100;
+                    //lobObjeto.Width = 48;
+                    lobObjeto.Stretch = Stretch.Uniform;
+                    Canvas.SetLeft(lobObjeto, 1);
+                    Canvas.SetTop(lobObjeto, -6);
+                    tobjDiente.cnvBaseDiente.Children.Add(lobObjeto);
+                    break;
+            }
+            if (tcrOcultarItem == "1")
+            {
+                tobjDiente.gnuContOcultDiente++;
+                tobjDiente.imgDiente.Visibility = Visibility.Collapsed;
+            }
+        }
+        #endregion
+        #region fcvLimpiarImgenEnDiente: Limpiar imagen cargadas en diente
+        /// <summary>
+        /// <para>fcvLimpiarImgenEnDiente()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para>Limpiar todas las zonas graficac del Diente</para>
+        /// <para>PARAMETROS:</para>
+        /// <para>tcrNumeroDiente: Numero que representa la pieza dental en el odontograma ejm: "11", "12", "21"...</para>
+        /// </summary>
+        public void fcvLimpiarImgenEnDiente(String tcrNumeroDiente)
+        {
+            FrameworkElement lobjDiente = null;
+            var lcrTipoDiente = "1";
+
+            switch (tcrNumeroDiente)
+            {
+                #region Cuadrante 1 Adultos
+                case "11":
+                    lobjDiente = this.D11;
+                    break;
+                case "12":
+                    lobjDiente = this.D12;
+                    break;
+                case "13":
+                    lobjDiente = this.D13;
+                    break;
+                case "14":
+                    lobjDiente = this.D14;
+                    break;
+                case "15":
+                    lobjDiente = this.D15;
+                    break;
+                case "16":
+                    lobjDiente = this.D16;
+                    break;
+                case "17":
+                    lobjDiente = this.D17;
+                    break;
+                case "18":
+                    lobjDiente = this.D18;
+                    break;
+                #endregion
+                #region Cuadrante 2 Adultos
+                case "21":
+                    lobjDiente = this.D21;
+                    break;
+                case "22":
+                    lobjDiente = this.D22;
+                    break;
+                case "23":
+                    lobjDiente = this.D23;
+                    break;
+                case "24":
+                    lobjDiente = this.D24;
+                    break;
+                case "25":
+                    lobjDiente = this.D25;
+                    break;
+                case "26":
+                    lobjDiente = this.D26;
+                    break;
+                case "27":
+                    lobjDiente = this.D27;
+                    break;
+                case "28":
+                    lobjDiente = this.D28;
+                    break;
+                #endregion
+                #region Cuadrante 3 Adultos
+                case "31":
+                    lobjDiente = this.D31;
+                    break;
+                case "32":
+                    lobjDiente = this.D32;
+                    break;
+                case "33":
+                    lobjDiente = this.D33;
+                    break;
+                case "34":
+                    lobjDiente = this.D34;
+                    break;
+                case "35":
+                    lobjDiente = this.D35;
+                    break;
+                case "36":
+                    lobjDiente = this.D36;
+                    break;
+                case "37":
+                    lobjDiente = this.D37;
+                    break;
+                case "38":
+                    lobjDiente = this.D38;
+                    break;
+                #endregion
+                #region Cuadrante 4 Adultos
+                case "41":
+                    lobjDiente = this.D41;
+                    break;
+                case "42":
+                    lobjDiente = this.D42;
+                    break;
+                case "43":
+                    lobjDiente = this.D43;
+                    break;
+                case "44":
+                    lobjDiente = this.D44;
+                    break;
+                case "45":
+                    lobjDiente = this.D45;
+                    break;
+                case "46":
+                    lobjDiente = this.D46;
+                    break;
+                case "47":
+                    lobjDiente = this.D47;
+                    break;
+                case "48":
+                    lobjDiente = this.D48;
+                    break;
+                #endregion
+                #region Cuadrante 1 Niños
+                case "51":
+                    lobjDiente = this.D51;
+                    break;
+                case "52":
+                    lobjDiente = this.D52;
+                    break;
+                case "53":
+                    lobjDiente = this.D53;
+                    break;
+                case "54":
+                    lobjDiente = this.D54;
+                    break;
+                case "55":
+                    lobjDiente = this.D55;
+                    break;
+                #endregion
+                #region Cuadrante 2 Niños
+                case "61":
+                    lobjDiente = this.D61;
+                    break;
+                case "62":
+                    lobjDiente = this.D62;
+                    break;
+                case "63":
+                    lobjDiente = this.D63;
+                    break;
+                case "64":
+                    lobjDiente = this.D64;
+                    break;
+                case "65":
+                    lobjDiente = this.D65;
+                    break;
+                #endregion
+                #region Cuadrante 3 Niños
+                case "71":
+                    lobjDiente = this.D71;
+                    break;
+                case "72":
+                    lobjDiente = this.D72;
+                    break;
+                case "73":
+                    lobjDiente = this.D73;
+                    break;
+                case "74":
+                    lobjDiente = this.D74;
+                    break;
+                case "75":
+                    lobjDiente = this.D75;
+                    break;
+                #endregion
+                #region Cuadrante 4 Niños
+                case "81":
+                    lobjDiente = this.D81;
+                    break;
+                case "82":
+                    lobjDiente = this.D82;
+                    break;
+                case "83":
+                    lobjDiente = this.D83;
+                    break;
+                case "84":
+                    lobjDiente = this.D84;
+                    break;
+                case "85":
+                    lobjDiente = this.D85;
+                    break;
+                #endregion
+            }
+            // Tipo diente
+            if (Convert.ToInt32(tcrNumeroDiente) >= 11 && Convert.ToInt32(tcrNumeroDiente) <= 28 ||
+                Convert.ToInt32(tcrNumeroDiente) >= 51 && Convert.ToInt32(tcrNumeroDiente) <= 65)
+            {
+                lcrTipoDiente = "1";
+            }
+            else 
+            {
+                lcrTipoDiente = "2";
+            }
+
+            // Cargar en la vista del odontograma
+            if (lcrTipoDiente == "1")
+            {
+                Diente01 lobDiente = (Diente01)lobjDiente;
+
+                lobDiente.cnvCorona.Children.Clear();
+                lobDiente.cnvDienteCorona.Children.Clear();
+                lobDiente.cnvDienteRaiz.Children.Clear();
+                lobDiente.cnvDiente.Children.Clear();
+                lobDiente.cnvBaseDiente.Children.Clear();
+                lobDiente.gnuContOcultDiente = 0;
+                lobDiente.imgDiente.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Diente02 lobDiente = (Diente02)lobjDiente;
+
+                lobDiente.cnvCorona.Children.Clear();
+                lobDiente.cnvDienteCorona.Children.Clear();
+                lobDiente.cnvDienteRaiz.Children.Clear();
+                lobDiente.cnvDiente.Children.Clear();
+                lobDiente.cnvBaseDiente.Children.Clear();
+                lobDiente.gnuContOcultDiente = 0;
+                lobDiente.imgDiente.Visibility = Visibility.Visible;
+            }
+            flgEliminarImagenVistaDiente(tcrNumeroDiente);
+        }
+        #endregion
+        #region fcvLimpiarOdontograma: Limpiar todo el odontograma
+        /// <summary>
+        /// <para>fcvLimpiarOdontograma()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para>Limpiar todos los objetos del Odontograma</para>
+        /// </summary>
+        public void fcvLimpiarOdontograma()
+        {
+            tmpRegistro = new List<Registro>();
+            #region Cuadrante 1 Adulto
+            this.D11.cnvCorona.Children.Clear();
+            this.D11.cnvDienteCorona.Children.Clear();
+            this.D11.cnvDienteRaiz.Children.Clear();
+            this.D11.cnvDiente.Children.Clear();
+            this.D11.cnvBaseDiente.Children.Clear();
+            this.D11.imgDiente.Visibility = Visibility.Visible;
+
+            this.D12.cnvCorona.Children.Clear();
+            this.D12.cnvDienteCorona.Children.Clear();
+            this.D12.cnvDienteRaiz.Children.Clear();
+            this.D12.cnvDiente.Children.Clear();
+            this.D12.cnvBaseDiente.Children.Clear();
+            this.D12.imgDiente.Visibility = Visibility.Visible;
+
+            this.D13.cnvCorona.Children.Clear();
+            this.D13.cnvDienteCorona.Children.Clear();
+            this.D13.cnvDienteRaiz.Children.Clear();
+            this.D13.cnvDiente.Children.Clear();
+            this.D13.cnvBaseDiente.Children.Clear();
+            this.D13.imgDiente.Visibility = Visibility.Visible;
+
+            this.D14.cnvCorona.Children.Clear();
+            this.D14.cnvDienteCorona.Children.Clear();
+            this.D14.cnvDienteRaiz.Children.Clear();
+            this.D14.cnvDiente.Children.Clear();
+            this.D14.cnvBaseDiente.Children.Clear();
+            this.D14.imgDiente.Visibility = Visibility.Visible;
+
+            this.D15.cnvCorona.Children.Clear();
+            this.D15.cnvDienteCorona.Children.Clear();
+            this.D15.cnvDienteRaiz.Children.Clear();
+            this.D15.cnvDiente.Children.Clear();
+            this.D15.cnvBaseDiente.Children.Clear();
+            this.D15.imgDiente.Visibility = Visibility.Visible;
+
+            this.D16.cnvCorona.Children.Clear();
+            this.D16.cnvDienteCorona.Children.Clear();
+            this.D16.cnvDienteRaiz.Children.Clear();
+            this.D16.cnvDiente.Children.Clear();
+            this.D16.cnvBaseDiente.Children.Clear();
+            this.D16.imgDiente.Visibility = Visibility.Visible;
+
+            this.D17.cnvCorona.Children.Clear();
+            this.D17.cnvDienteCorona.Children.Clear();
+            this.D17.cnvDienteRaiz.Children.Clear();
+            this.D17.cnvDiente.Children.Clear();
+            this.D17.cnvBaseDiente.Children.Clear();
+            this.D17.imgDiente.Visibility = Visibility.Visible;
+
+            this.D18.cnvCorona.Children.Clear();
+            this.D18.cnvDienteCorona.Children.Clear();
+            this.D18.cnvDienteRaiz.Children.Clear();
+            this.D18.cnvDiente.Children.Clear();
+            this.D18.cnvBaseDiente.Children.Clear();
+            this.D18.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 2 Adulto
+            this.D21.cnvCorona.Children.Clear();
+            this.D21.cnvDienteCorona.Children.Clear();
+            this.D21.cnvDienteRaiz.Children.Clear();
+            this.D21.cnvDiente.Children.Clear();
+            this.D21.cnvBaseDiente.Children.Clear();
+            this.D21.imgDiente.Visibility = Visibility.Visible;
+
+            this.D22.cnvCorona.Children.Clear();
+            this.D22.cnvDienteCorona.Children.Clear();
+            this.D22.cnvDienteRaiz.Children.Clear();
+            this.D22.cnvDiente.Children.Clear();
+            this.D22.cnvBaseDiente.Children.Clear();
+            this.D22.imgDiente.Visibility = Visibility.Visible;
+
+            this.D23.cnvCorona.Children.Clear();
+            this.D23.cnvDienteCorona.Children.Clear();
+            this.D23.cnvDienteRaiz.Children.Clear();
+            this.D23.cnvDiente.Children.Clear();
+            this.D23.cnvBaseDiente.Children.Clear();
+            this.D23.imgDiente.Visibility = Visibility.Visible;
+
+            this.D24.cnvCorona.Children.Clear();
+            this.D24.cnvDienteCorona.Children.Clear();
+            this.D24.cnvDienteRaiz.Children.Clear();
+            this.D24.cnvDiente.Children.Clear();
+            this.D24.cnvBaseDiente.Children.Clear();
+            this.D24.imgDiente.Visibility = Visibility.Visible;
+
+            this.D25.cnvCorona.Children.Clear();
+            this.D25.cnvDienteCorona.Children.Clear();
+            this.D25.cnvDienteRaiz.Children.Clear();
+            this.D25.cnvDiente.Children.Clear();
+            this.D25.cnvBaseDiente.Children.Clear();
+            this.D25.imgDiente.Visibility = Visibility.Visible;
+
+            this.D26.cnvCorona.Children.Clear();
+            this.D26.cnvDienteCorona.Children.Clear();
+            this.D26.cnvDienteRaiz.Children.Clear();
+            this.D26.cnvDiente.Children.Clear();
+            this.D26.cnvBaseDiente.Children.Clear();
+            this.D26.imgDiente.Visibility = Visibility.Visible;
+
+            this.D27.cnvCorona.Children.Clear();
+            this.D27.cnvDienteCorona.Children.Clear();
+            this.D27.cnvDienteRaiz.Children.Clear();
+            this.D27.cnvDiente.Children.Clear();
+            this.D27.cnvBaseDiente.Children.Clear();
+            this.D27.imgDiente.Visibility = Visibility.Visible;
+
+            this.D28.cnvCorona.Children.Clear();
+            this.D28.cnvDienteCorona.Children.Clear();
+            this.D28.cnvDienteRaiz.Children.Clear();
+            this.D28.cnvDiente.Children.Clear();
+            this.D28.cnvBaseDiente.Children.Clear();
+            this.D28.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 3 Adulto
+            this.D31.cnvCorona.Children.Clear();
+            this.D31.cnvDienteCorona.Children.Clear();
+            this.D31.cnvDienteRaiz.Children.Clear();
+            this.D31.cnvDiente.Children.Clear();
+            this.D31.cnvBaseDiente.Children.Clear();
+            this.D31.imgDiente.Visibility = Visibility.Visible;
+
+            this.D32.cnvCorona.Children.Clear();
+            this.D32.cnvDienteCorona.Children.Clear();
+            this.D32.cnvDienteRaiz.Children.Clear();
+            this.D32.cnvDiente.Children.Clear();
+            this.D32.cnvBaseDiente.Children.Clear();
+            this.D32.imgDiente.Visibility = Visibility.Visible;
+
+            this.D33.cnvCorona.Children.Clear();
+            this.D33.cnvDienteCorona.Children.Clear();
+            this.D33.cnvDienteRaiz.Children.Clear();
+            this.D33.cnvDiente.Children.Clear();
+            this.D33.cnvBaseDiente.Children.Clear();
+            this.D33.imgDiente.Visibility = Visibility.Visible;
+
+            this.D34.cnvCorona.Children.Clear();
+            this.D34.cnvDienteCorona.Children.Clear();
+            this.D34.cnvDienteRaiz.Children.Clear();
+            this.D34.cnvDiente.Children.Clear();
+            this.D34.cnvBaseDiente.Children.Clear();
+            this.D34.imgDiente.Visibility = Visibility.Visible;
+
+            this.D35.cnvCorona.Children.Clear();
+            this.D35.cnvDienteCorona.Children.Clear();
+            this.D35.cnvDienteRaiz.Children.Clear();
+            this.D35.cnvDiente.Children.Clear();
+            this.D35.cnvBaseDiente.Children.Clear();
+            this.D35.imgDiente.Visibility = Visibility.Visible;
+
+            this.D36.cnvCorona.Children.Clear();
+            this.D36.cnvDienteCorona.Children.Clear();
+            this.D36.cnvDienteRaiz.Children.Clear();
+            this.D36.cnvDiente.Children.Clear();
+            this.D36.cnvBaseDiente.Children.Clear();
+            this.D36.imgDiente.Visibility = Visibility.Visible;
+
+            this.D37.cnvCorona.Children.Clear();
+            this.D37.cnvDienteCorona.Children.Clear();
+            this.D37.cnvDienteRaiz.Children.Clear();
+            this.D37.cnvDiente.Children.Clear();
+            this.D37.cnvBaseDiente.Children.Clear();
+            this.D37.imgDiente.Visibility = Visibility.Visible;
+
+            this.D38.cnvCorona.Children.Clear();
+            this.D38.cnvDienteCorona.Children.Clear();
+            this.D38.cnvDienteRaiz.Children.Clear();
+            this.D38.cnvDiente.Children.Clear();
+            this.D38.cnvBaseDiente.Children.Clear();
+            this.D38.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 4 Adulto
+            this.D41.cnvCorona.Children.Clear();
+            this.D41.cnvDienteCorona.Children.Clear();
+            this.D41.cnvDienteRaiz.Children.Clear();
+            this.D41.cnvDiente.Children.Clear();
+            this.D41.cnvBaseDiente.Children.Clear();
+            this.D41.imgDiente.Visibility = Visibility.Visible;
+
+            this.D42.cnvCorona.Children.Clear();
+            this.D42.cnvDienteCorona.Children.Clear();
+            this.D42.cnvDienteRaiz.Children.Clear();
+            this.D42.cnvDiente.Children.Clear();
+            this.D42.cnvBaseDiente.Children.Clear();
+            this.D42.imgDiente.Visibility = Visibility.Visible;
+
+            this.D43.cnvCorona.Children.Clear();
+            this.D43.cnvDienteCorona.Children.Clear();
+            this.D43.cnvDienteRaiz.Children.Clear();
+            this.D43.cnvDiente.Children.Clear();
+            this.D43.cnvBaseDiente.Children.Clear();
+            this.D43.imgDiente.Visibility = Visibility.Visible;
+
+            this.D44.cnvCorona.Children.Clear();
+            this.D44.cnvDienteCorona.Children.Clear();
+            this.D44.cnvDienteRaiz.Children.Clear();
+            this.D44.cnvDiente.Children.Clear();
+            this.D44.cnvBaseDiente.Children.Clear();
+            this.D44.imgDiente.Visibility = Visibility.Visible;
+
+            this.D45.cnvCorona.Children.Clear();
+            this.D45.cnvDienteCorona.Children.Clear();
+            this.D45.cnvDienteRaiz.Children.Clear();
+            this.D45.cnvDiente.Children.Clear();
+            this.D45.cnvBaseDiente.Children.Clear();
+            this.D45.imgDiente.Visibility = Visibility.Visible;
+
+            this.D46.cnvCorona.Children.Clear();
+            this.D46.cnvDienteCorona.Children.Clear();
+            this.D46.cnvDienteRaiz.Children.Clear();
+            this.D46.cnvDiente.Children.Clear();
+            this.D46.cnvBaseDiente.Children.Clear();
+            this.D46.imgDiente.Visibility = Visibility.Visible;
+
+            this.D47.cnvCorona.Children.Clear();
+            this.D47.cnvDienteCorona.Children.Clear();
+            this.D47.cnvDienteRaiz.Children.Clear();
+            this.D47.cnvDiente.Children.Clear();
+            this.D47.cnvBaseDiente.Children.Clear();
+            this.D47.imgDiente.Visibility = Visibility.Visible;
+
+            this.D48.cnvCorona.Children.Clear();
+            this.D48.cnvDienteCorona.Children.Clear();
+            this.D48.cnvDienteRaiz.Children.Clear();
+            this.D48.cnvDiente.Children.Clear();
+            this.D48.cnvBaseDiente.Children.Clear();
+            this.D48.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 1 Niños
+            this.D51.cnvCorona.Children.Clear();
+            this.D51.cnvDienteCorona.Children.Clear();
+            this.D51.cnvDienteRaiz.Children.Clear();
+            this.D51.cnvDiente.Children.Clear();
+            this.D51.cnvBaseDiente.Children.Clear();
+            this.D51.imgDiente.Visibility = Visibility.Visible;
+
+            this.D52.cnvCorona.Children.Clear();
+            this.D52.cnvDienteCorona.Children.Clear();
+            this.D52.cnvDienteRaiz.Children.Clear();
+            this.D52.cnvDiente.Children.Clear();
+            this.D52.cnvBaseDiente.Children.Clear();
+            this.D52.imgDiente.Visibility = Visibility.Visible;
+
+            this.D53.cnvCorona.Children.Clear();
+            this.D53.cnvDienteCorona.Children.Clear();
+            this.D53.cnvDienteRaiz.Children.Clear();
+            this.D53.cnvDiente.Children.Clear();
+            this.D53.cnvBaseDiente.Children.Clear();
+            this.D53.imgDiente.Visibility = Visibility.Visible;
+
+            this.D54.cnvCorona.Children.Clear();
+            this.D54.cnvDienteCorona.Children.Clear();
+            this.D54.cnvDienteRaiz.Children.Clear();
+            this.D54.cnvDiente.Children.Clear();
+            this.D54.cnvBaseDiente.Children.Clear();
+            this.D54.imgDiente.Visibility = Visibility.Visible;
+
+            this.D55.cnvCorona.Children.Clear();
+            this.D55.cnvDienteCorona.Children.Clear();
+            this.D55.cnvDienteRaiz.Children.Clear();
+            this.D55.cnvDiente.Children.Clear();
+            this.D55.cnvBaseDiente.Children.Clear();
+            this.D55.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 2 Niños
+            this.D61.cnvCorona.Children.Clear();
+            this.D61.cnvDienteCorona.Children.Clear();
+            this.D61.cnvDienteRaiz.Children.Clear();
+            this.D61.cnvDiente.Children.Clear();
+            this.D61.cnvBaseDiente.Children.Clear();
+            this.D61.imgDiente.Visibility = Visibility.Visible;
+
+            this.D62.cnvCorona.Children.Clear();
+            this.D62.cnvDienteCorona.Children.Clear();
+            this.D62.cnvDienteRaiz.Children.Clear();
+            this.D62.cnvDiente.Children.Clear();
+            this.D62.cnvBaseDiente.Children.Clear();
+            this.D62.imgDiente.Visibility = Visibility.Visible;
+
+            this.D63.cnvCorona.Children.Clear();
+            this.D63.cnvDienteCorona.Children.Clear();
+            this.D63.cnvDienteRaiz.Children.Clear();
+            this.D63.cnvDiente.Children.Clear();
+            this.D63.cnvBaseDiente.Children.Clear();
+            this.D63.imgDiente.Visibility = Visibility.Visible;
+
+            this.D64.cnvCorona.Children.Clear();
+            this.D64.cnvDienteCorona.Children.Clear();
+            this.D64.cnvDienteRaiz.Children.Clear();
+            this.D64.cnvDiente.Children.Clear();
+            this.D64.cnvBaseDiente.Children.Clear();
+            this.D64.imgDiente.Visibility = Visibility.Visible;
+
+            this.D65.cnvCorona.Children.Clear();
+            this.D65.cnvDienteCorona.Children.Clear();
+            this.D65.cnvDienteRaiz.Children.Clear();
+            this.D65.cnvDiente.Children.Clear();
+            this.D65.cnvBaseDiente.Children.Clear();
+            this.D65.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 3 Niños
+            this.D71.cnvCorona.Children.Clear();
+            this.D71.cnvDienteCorona.Children.Clear();
+            this.D71.cnvDienteRaiz.Children.Clear();
+            this.D71.cnvDiente.Children.Clear();
+            this.D71.cnvBaseDiente.Children.Clear();
+            this.D71.imgDiente.Visibility = Visibility.Visible;
+
+            this.D72.cnvCorona.Children.Clear();
+            this.D72.cnvDienteCorona.Children.Clear();
+            this.D72.cnvDienteRaiz.Children.Clear();
+            this.D72.cnvDiente.Children.Clear();
+            this.D72.cnvBaseDiente.Children.Clear();
+            this.D72.imgDiente.Visibility = Visibility.Visible;
+
+            this.D73.cnvCorona.Children.Clear();
+            this.D73.cnvDienteCorona.Children.Clear();
+            this.D73.cnvDienteRaiz.Children.Clear();
+            this.D73.cnvDiente.Children.Clear();
+            this.D73.cnvBaseDiente.Children.Clear();
+            this.D73.imgDiente.Visibility = Visibility.Visible;
+
+            this.D74.cnvCorona.Children.Clear();
+            this.D74.cnvDienteCorona.Children.Clear();
+            this.D74.cnvDienteRaiz.Children.Clear();
+            this.D74.cnvDiente.Children.Clear();
+            this.D74.cnvBaseDiente.Children.Clear();
+            this.D74.imgDiente.Visibility = Visibility.Visible;
+
+            this.D75.cnvCorona.Children.Clear();
+            this.D75.cnvDienteCorona.Children.Clear();
+            this.D75.cnvDienteRaiz.Children.Clear();
+            this.D75.cnvDiente.Children.Clear();
+            this.D75.cnvBaseDiente.Children.Clear();
+            this.D75.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+            #region Cuadrante 4 Niños
+            this.D81.cnvCorona.Children.Clear();
+            this.D81.cnvDienteCorona.Children.Clear();
+            this.D81.cnvDienteRaiz.Children.Clear();
+            this.D81.cnvDiente.Children.Clear();
+            this.D81.cnvBaseDiente.Children.Clear();
+            this.D81.imgDiente.Visibility = Visibility.Visible;
+
+            this.D82.cnvCorona.Children.Clear();
+            this.D82.cnvDienteCorona.Children.Clear();
+            this.D82.cnvDienteRaiz.Children.Clear();
+            this.D82.cnvDiente.Children.Clear();
+            this.D82.cnvBaseDiente.Children.Clear();
+            this.D82.imgDiente.Visibility = Visibility.Visible;
+
+            this.D83.cnvCorona.Children.Clear();
+            this.D83.cnvDienteCorona.Children.Clear();
+            this.D83.cnvDienteRaiz.Children.Clear();
+            this.D83.cnvDiente.Children.Clear();
+            this.D83.cnvBaseDiente.Children.Clear();
+            this.D83.imgDiente.Visibility = Visibility.Visible;
+
+            this.D84.cnvCorona.Children.Clear();
+            this.D84.cnvDienteCorona.Children.Clear();
+            this.D84.cnvDienteRaiz.Children.Clear();
+            this.D84.cnvDiente.Children.Clear();
+            this.D84.cnvBaseDiente.Children.Clear();
+            this.D84.imgDiente.Visibility = Visibility.Visible;
+
+            this.D85.cnvCorona.Children.Clear();
+            this.D85.cnvDienteCorona.Children.Clear();
+            this.D85.cnvDienteRaiz.Children.Clear();
+            this.D85.cnvDiente.Children.Clear();
+            this.D85.cnvBaseDiente.Children.Clear();
+            this.D85.imgDiente.Visibility = Visibility.Visible;
+            #endregion
+        }
+        #endregion
+        #region fcvActivarCapaSeleccion: Activar capa vista seleccion
+        /// <summary>
+        /// <para>fcvActivarCapaSeleccion()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para>Activar capa vista seleccion</para>
+        /// </summary>
+        public void fcvActivarCapaSeleccion(Visibility tcrVisibility)
+        {
+            #region Cuadrante 1 Adulto
+            this.D11.rctCapaSelect.Visibility = tcrVisibility;
+            this.D12.rctCapaSelect.Visibility = tcrVisibility;
+            this.D13.rctCapaSelect.Visibility = tcrVisibility;
+            this.D14.rctCapaSelect.Visibility = tcrVisibility;
+            this.D15.rctCapaSelect.Visibility = tcrVisibility;
+            this.D16.rctCapaSelect.Visibility = tcrVisibility;
+            this.D17.rctCapaSelect.Visibility = tcrVisibility;
+            this.D18.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 2 Adulto
+            this.D21.rctCapaSelect.Visibility = tcrVisibility;
+            this.D22.rctCapaSelect.Visibility = tcrVisibility;
+            this.D23.rctCapaSelect.Visibility = tcrVisibility;
+            this.D24.rctCapaSelect.Visibility = tcrVisibility;
+            this.D25.rctCapaSelect.Visibility = tcrVisibility;
+            this.D26.rctCapaSelect.Visibility = tcrVisibility;
+            this.D27.rctCapaSelect.Visibility = tcrVisibility;
+            this.D28.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 3 Adulto
+            this.D31.rctCapaSelect.Visibility = tcrVisibility;
+            this.D32.rctCapaSelect.Visibility = tcrVisibility;
+            this.D33.rctCapaSelect.Visibility = tcrVisibility;
+            this.D34.rctCapaSelect.Visibility = tcrVisibility;
+            this.D35.rctCapaSelect.Visibility = tcrVisibility;
+            this.D36.rctCapaSelect.Visibility = tcrVisibility;
+            this.D37.rctCapaSelect.Visibility = tcrVisibility;
+            this.D38.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 4 Adulto
+            this.D41.rctCapaSelect.Visibility = tcrVisibility;
+            this.D42.rctCapaSelect.Visibility = tcrVisibility;
+            this.D43.rctCapaSelect.Visibility = tcrVisibility;
+            this.D44.rctCapaSelect.Visibility = tcrVisibility;
+            this.D45.rctCapaSelect.Visibility = tcrVisibility;
+            this.D46.rctCapaSelect.Visibility = tcrVisibility;
+            this.D47.rctCapaSelect.Visibility = tcrVisibility;
+            this.D48.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 1 Niños
+            this.D51.rctCapaSelect.Visibility = tcrVisibility;
+            this.D52.rctCapaSelect.Visibility = tcrVisibility;
+            this.D53.rctCapaSelect.Visibility = tcrVisibility;
+            this.D54.rctCapaSelect.Visibility = tcrVisibility;
+            this.D55.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 2 Niños
+            this.D61.rctCapaSelect.Visibility = tcrVisibility;
+            this.D62.rctCapaSelect.Visibility = tcrVisibility;
+            this.D63.rctCapaSelect.Visibility = tcrVisibility;
+            this.D64.rctCapaSelect.Visibility = tcrVisibility;
+            this.D65.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 3 Niños
+            this.D71.rctCapaSelect.Visibility = tcrVisibility;
+            this.D72.rctCapaSelect.Visibility = tcrVisibility;
+            this.D73.rctCapaSelect.Visibility = tcrVisibility;
+            this.D74.rctCapaSelect.Visibility = tcrVisibility;
+            this.D75.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+            #region Cuadrante 4 Niños
+            this.D81.rctCapaSelect.Visibility = tcrVisibility;
+            this.D82.rctCapaSelect.Visibility = tcrVisibility;
+            this.D83.rctCapaSelect.Visibility = tcrVisibility;
+            this.D84.rctCapaSelect.Visibility = tcrVisibility;
+            this.D85.rctCapaSelect.Visibility = tcrVisibility;
+            #endregion
+        }
+        #endregion
+        #region fcvMostrarSombraDiente: Mostra sombra en diente
+        /// <summary>
+        /// <para>fcvMostrarSombraDiente()</para>
+        /// <para>DESCRIPCION:</para>
+        /// <para>Mostra sombra en diente</para>
+        /// <para>PARAMETROS:</para>
+        /// <para>tcrNumeroDiente: Numero que representa la pieza dental en el odontograma ejm: "11", "12", "21"...</para>
+        /// <para>tcrAccion: "1" = Mostrar sombra "2" = Ocultar sombra...</para>
+        /// </summary>
+        public void fcvMostrarSombraDiente(String tcrNumeroDiente, String tcrAccion)
+        {
+            FrameworkElement lobjDiente = null;
+            var lcrTipoDiente = "1";
+            switch (tcrNumeroDiente)
+            {
+                #region Cuadrante 1 Adulto
+                case "11":
+                    lobjDiente = this.D11;
+                    break;
+                case "12":
+                    lobjDiente = this.D12;
+                    break;
+                case "13":
+                    lobjDiente = this.D13;
+                    break;
+                case "14":
+                    lobjDiente = this.D14;
+                    break;
+                case "15":
+                    lobjDiente = this.D15;
+                    break;
+                case "16":
+                    lobjDiente = this.D16;
+                    break;
+                case "17":
+                    lobjDiente = this.D17;
+                    break;
+                case "18":
+                    lobjDiente = this.D18;
+                    break;
+                #endregion
+                #region Cuadrante 2 Adulto
+                case "21":
+                    lobjDiente = this.D21;
+                    break;
+                case "22":
+                    lobjDiente = this.D22;
+                    break;
+                case "23":
+                    lobjDiente = this.D23;
+                    break;
+                case "24":
+                    lobjDiente = this.D24;
+                    break;
+                case "25":
+                    lobjDiente = this.D25;
+                    break;
+                case "26":
+                    lobjDiente = this.D26;
+                    break;
+                case "27":
+                    lobjDiente = this.D27;
+                    break;
+                case "28":
+                    lobjDiente = this.D28;
+                    break;
+                #endregion
+                #region Cuadrante 3 Adulto
+                case "31":
+                    lobjDiente = this.D31;
+                    break;
+                case "32":
+                    lobjDiente = this.D32;
+                    break;
+                case "33":
+                    lobjDiente = this.D33;
+                    break;
+                case "34":
+                    lobjDiente = this.D34;
+                    break;
+                case "35":
+                    lobjDiente = this.D35;
+                    break;
+                case "36":
+                    lobjDiente = this.D36;
+                    break;
+                case "37":
+                    lobjDiente = this.D37;
+                    break;
+                case "38":
+                    lobjDiente = this.D38;
+                    break;
+                #endregion
+                #region Cuadrante 4 Adulto
+                case "41":
+                    lobjDiente = this.D41;
+                    break;
+                case "42":
+                    lobjDiente = this.D42;
+                    break;
+                case "43":
+                    lobjDiente = this.D43;
+                    break;
+                case "44":
+                    lobjDiente = this.D44;
+                    break;
+                case "45":
+                    lobjDiente = this.D45;
+                    break;
+                case "46":
+                    lobjDiente = this.D46;
+                    break;
+                case "47":
+                    lobjDiente = this.D47;
+                    break;
+                case "48":
+                    lobjDiente = this.D48;
+                    break;
+                #endregion
+                #region Cuadrante 1 Niños
+                case "51":
+                    lobjDiente = this.D51;
+                    break;
+                case "52":
+                    lobjDiente = this.D52;
+                    break;
+                case "53":
+                    lobjDiente = this.D53;
+                    break;
+                case "54":
+                    lobjDiente = this.D54;
+                    break;
+                case "55":
+                    lobjDiente = this.D55;
+                    break;
+                #endregion
+                #region Cuadrante 2 Niños
+                case "61":
+                    lobjDiente = this.D61;
+                    break;
+                case "62":
+                    lobjDiente = this.D62;
+                    break;
+                case "63":
+                    lobjDiente = this.D63;
+                    break;
+                case "64":
+                    lobjDiente = this.D64;
+                    break;
+                case "65":
+                    lobjDiente = this.D65;
+                    break;
+                #endregion
+                #region Cuadrante 3 Niños
+                case "71":
+                    lobjDiente = this.D71;
+                    break;
+                case "72":
+                    lobjDiente = this.D72;
+                    break;
+                case "73":
+                    lobjDiente = this.D73;
+                    break;
+                case "74":
+                    lobjDiente = this.D74;
+                    break;
+                case "75":
+                    lobjDiente = this.D75;
+                    break;
+                #endregion
+                #region Cuadrante 4 Niños
+                case "81":
+                    lobjDiente = this.D81;
+                    break;
+                case "82":
+                    lobjDiente = this.D82;
+                    break;
+                case "83":
+                    lobjDiente = this.D83;
+                    break;
+                case "84":
+                    lobjDiente = this.D84;
+                    break;
+                case "85":
+                    lobjDiente = this.D85;
+                    break;
+                #endregion
+            }
+            // Tipo diente
+            if (Convert.ToInt32(tcrNumeroDiente) >= 11 && Convert.ToInt32(tcrNumeroDiente) <= 28 ||
+                Convert.ToInt32(tcrNumeroDiente) >= 51 && Convert.ToInt32(tcrNumeroDiente) <= 65)
+            {
+                lcrTipoDiente = "1";
+            }
+            else
+            {
+                lcrTipoDiente = "2";
+            }
+
+            // Cargar en la vista del odontograma
+            if (lcrTipoDiente == "1")
+            {
+                Diente01 lobDiente = (Diente01)lobjDiente;
+
+                lobDiente.rctCapaSombra.Visibility = tcrAccion == "1" ? Visibility.Visible : Visibility.Collapsed;
+            }
+            else
+            {
+                Diente02 lobDiente = (Diente02)lobjDiente;
+
+                lobDiente.rctCapaSombra.Visibility = tcrAccion == "1" ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+        #endregion
+        //------------------------------------------------------------
+        // GESTION TEMPORAL VISTA IMAGENES GRAFICADAS
+        //------------------------------------------------------------
+        #region Registro: temporarl para referencia de objetos en la vista
+        /// <summary>
+        /// <para>Temporarl para referenciar las imagenes graficadas en vista</para>
+        /// </summary>
+        public class Registro
+        {
+            public String IdRegistro { get; set; }              // llave unica del registro para busqueda de la referencia a imagen
+            public String IdDiente { get; set; }                // Id del diente donde se grafica la imagen
+            public FrameworkElement RefDiente { get; set; }     // Referencia al diente del odontograma
+            public FrameworkElement RefObjeto { get; set; }     // Referencia a instancia del Objeto imagen en vista
+        }
+        #endregion
+        #region fobRegSelectRegistro : Seleccionar registros desde temporal vista
+        /// <summary>
+        /// <para>Seleccionar registro desde temporal vista de imagenes graficadas</para>
+        /// <para>tcrTipollave: "IMAGEN" = Devuelve el registro segun llave de la imagen</para>
+        /// <para> "DIENTE" = Devuelve todos los registrs de las imagenes cargadas en el diente dado</para>
+        /// <para>tcrLlave:Puede ser el Id unico de una imagen o el numero de un diente en particular</para>
+        /// </summary>
+        public List<Registro> fobRegSelectRegistro(String tcrTipollave, String tcrLlave)
+        {
+            List<Registro> lcrQuery = null;
+
+            if (tmpRegistro != null)
+            {
+                if (tcrTipollave == "IMAGEN")
+                {
+                    lcrQuery = (from lst in tmpRegistro
+                                 where lst.IdRegistro.Equals(tcrLlave)
+                                 select lst).ToList();
+                }
+                else
+                {
+                    lcrQuery = (from lst in tmpRegistro
+                                where lst.IdDiente.Equals(tcrLlave)
+                                select lst).ToList();
+                }
+            }
+            return lcrQuery;
+        }
+        #endregion
+        #region flgEliminarImagenEnVista : Eliminar una imagen graficada en vista odontograma
+        /// <summary>
+        /// <para>Eliminar una imagen graficada en vista odontograma</para>
+        /// </summary>
+        public bool flgEliminarImagenEnVista(String tcrLlave)
+        {
+            var llgReturn = false;
+            var lobTempQuery = fobRegSelectRegistro("IMAGEN",tcrLlave);
+
+            if (lobTempQuery != null && lobTempQuery.Count != 0)
+            {
+                var lobReg = lobTempQuery.FirstOrDefault();
+                var lobImagen = lobReg.RefObjeto as Image;
+
+                Canvas lobContenedor = lobImagen.Parent as Canvas;
+                lobContenedor.Children.Remove(lobImagen);
+
+                // verificar item si estaba oculto el diente
+                // Tipo diente
+                var lcrTipoDiente = "1";
+                if (Convert.ToInt32(lobReg.IdDiente) >= 11 && Convert.ToInt32(lobReg.IdDiente) <= 28 ||
+                    Convert.ToInt32(lobReg.IdDiente) >= 51 && Convert.ToInt32(lobReg.IdDiente) <= 65)
+                {
+                    lcrTipoDiente = "1";
+                }
+                else
+                {
+                    lcrTipoDiente = "2";
+                }
+
+                // Cargar en la vista del odontograma
+                if (lcrTipoDiente == "1")
+                {
+                    Diente01 lobDiente = (Diente01)lobReg.RefDiente;
+                    lobDiente.gnuContOcultDiente--;
+                    if (lobDiente.gnuContOcultDiente <= 0)
+                    {
+                        lobDiente.imgDiente.Visibility = Visibility.Visible;
+                        lobDiente.gnuContOcultDiente = 0;
+                    }
+                }
+                else
+                {
+                    Diente02 lobDiente = (Diente02)lobReg.RefDiente;
+                    lobDiente.gnuContOcultDiente--;
+                    if (lobDiente.gnuContOcultDiente <= 0)
+                    {
+                        lobDiente.imgDiente.Visibility = Visibility.Visible;
+                        lobDiente.gnuContOcultDiente = 0;
+                    }
+                }
+                tmpRegistro.Remove(lobReg);
+
+                llgReturn = true;
+            }
+            return llgReturn;
+        }
+        #endregion
+        #region flgEliminarImagenVistaDiente : Eliminar todas las imagen graficada para un diente
+        /// <summary>
+        /// <para>Eliminar todas las imagen graficada para un diente</para>
+        /// <para>tcrIdDiente: Numero del diente ejemplo: "11", "45", "83" ...</para>
+        /// </summary>
+        public bool flgEliminarImagenVistaDiente(String tcrIdDiente)
+        {
+            var llgReturn = false;
+            var lobTempQuery = fobRegSelectRegistro("DIENTE", tcrIdDiente);
+
+            if (lobTempQuery != null)
+            {
+                foreach (var lobReg in lobTempQuery)
+                {
+                    var lobImagen = lobReg.RefObjeto as Image;
+                    lobImagen = null;
+                    tmpRegistro.Remove(lobReg);
+                }
+                llgReturn = true;
+            }
+            return llgReturn;
+        }
+        #endregion
+        // Referencia a Dientes e Imagenes graficadas
+        #region flgAddRegistroRefDientes: Adicionar registro al temporal referencia de cada diente
+        /// <summary>
+        /// <para>Adicionar registro al temporal referencia de cada diente</para>
+        /// <para>tcrIdRegistro: Id unico del registro para luego poder localizar el objeto</para>
+        /// <para>tcrIdDiente: Numero del diente ejemplo: "21", "45", "83" ...</para>
+        /// </summary>
+        private bool flgAddRegistroRefDientes(String tcrIdRegistro, String tcrIdDiente, ref FrameworkElement tobDiente)
+        {
+            var llgReturn = true;
+            var lobReg = new Registro();
+
+            lobReg.IdRegistro = tcrIdRegistro;
+            lobReg.IdDiente = tcrIdDiente;
+            lobReg.RefDiente = tobDiente;
+
+            tmpDientes.Add(lobReg);
+
+            return llgReturn;
+        }
+        #endregion
+        #region flgAddRegistroRefImagen01: Adicionar registro referencia de la imagen al temporal
+        /// <summary>
+        /// <para>Adicionar registro referencia de la imagen al temporal</para>
+        /// <para>tcrIdRegistro: Id unico del registro para luego poder localizar la imagen</para>
+        /// <para>tcrIdDiente: Numero del diente ejemplo: "11", "25", "53" ...</para>
+        /// </summary>
+        private bool flgAddRegistroRefImagen01(String tcrIdRegistro, String tcrIdDiente, ref Diente01 tobDiente, ref Image tobImagen)
+        {
+            var llgReturn = true;
+            var lobReg = new Registro();
+
+            lobReg.IdRegistro = tcrIdRegistro;
+            lobReg.IdDiente = tcrIdDiente;
+            lobReg.RefDiente = tobDiente;
+            lobReg.RefObjeto = tobImagen;
+
+            tmpRegistro.Add(lobReg);
+
+            return llgReturn;
+        }
+        #endregion
+        #region flgAddRegistroRefImagen02: Adicionar registro referencia de la imagen al temporal
+        /// <summary>
+        /// <para>Adicionar registro referencia de la imagen al temporal</para>
+        /// <para>tcrIdRegistro: Id unico del registro para luego poder localizar la imagen</para>
+        /// <para>tcrIdDiente: Numero del diente ejemplo: "31", "45", "83" ...</para>
+        /// </summary>
+        private bool flgAddRegistroRefImagen02(String tcrIdRegistro, String tcrIdDiente, ref Diente02 tobDiente, ref Image tobImagen)
+        {
+            var llgReturn = true;
+            var lobReg = new Registro();
+
+            lobReg.IdRegistro   = tcrIdRegistro;
+            lobReg.IdDiente     = tcrIdDiente;
+            lobReg.RefDiente    = tobDiente;
+            lobReg.RefObjeto    = tobImagen;
+
+            tmpRegistro.Add(lobReg);
+
+            return llgReturn;
+        }
+        #endregion
+    }
+}

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorReportes", "GestorReportes.csproj", "{E733358E-704E-4F6A-BAEB-3AE563B5F788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "..\Datos\Datos.csproj", "{5DDC9E85-775C-4683-87AD-C0ADC9646713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema", "..\Sistema\Sistema.csproj", "{5CFDE7C0-9AB2-460C-AF8C-3618C010DAA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E733358E-704E-4F6A-BAEB-3AE563B5F788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E733358E-704E-4F6A-BAEB-3AE563B5F788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E733358E-704E-4F6A-BAEB-3AE563B5F788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E733358E-704E-4F6A-BAEB-3AE563B5F788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDC9E85-775C-4683-87AD-C0ADC9646713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDC9E85-775C-4683-87AD-C0ADC9646713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDC9E85-775C-4683-87AD-C0ADC9646713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDC9E85-775C-4683-87AD-C0ADC9646713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CFDE7C0-9AB2-460C-AF8C-3618C010DAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CFDE7C0-9AB2-460C-AF8C-3618C010DAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CFDE7C0-9AB2-460C-AF8C-3618C010DAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CFDE7C0-9AB2-460C-AF8C-3618C010DAA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

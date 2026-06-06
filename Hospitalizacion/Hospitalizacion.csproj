@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{935546E0-5D09-420E-94B7-71681612CBE5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hospitalizacion</RootNamespace>
+    <AssemblyName>Hospitalizacion</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=0e27b6f8be9b2ef7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=eabbf6a5f5af5004, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Modelo\ADM_ModeloAutorizarEgreso.cs" />
+    <Compile Include="Modelo\ADM_ModeloRegistroSalida.cs" />
+    <Compile Include="Modelo\HoscamasareasModelo.cs" />
+    <Compile Include="Modelo\HOS_ModeloBcHoshabitaciones.cs" />
+    <Compile Include="Modelo\HOS_ModeloHoscamasareas.cs" />
+    <Compile Include="Modelo\HOS_ModeloBxHoshabitaciones.cs" />
+    <Compile Include="Modelo\HOS_ModeloHosconfigmodulo.cs" />
+    <Compile Include="Modelo\HOS_ModeloHosEgresoUrgencias.cs" />
+    <Compile Include="Modelo\HOS_ModeloTrasladoCama.cs" />
+    <Compile Include="Utilidades\EjecutarVistas.cs" />
+    <Compile Include="VistaModelo\ADM_VistaModeloAutorizarEgreso.cs" />
+    <Compile Include="VistaModelo\ADM_VistaModeloAutorizarEgresoBase.cs" />
+    <Compile Include="VistaModelo\ADM_VistaModeloRegistroSalida.cs" />
+    <Compile Include="VistaModelo\ADM_VistaModeloRegistroSalidaBase.cs" />
+    <Compile Include="VistaModelo\HoscamasareasVistaModelo.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloBcHoshabitaciones.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloBcHoshabitacionesBase.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloBxHoshabitaciones.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloBxHoshabitacionesBase.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloHoscamasareas.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloHoscamasareasBase.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloHosconfigmodulo.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloHosconfigmoduloBase.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloHosEgresoUrgencias.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloHosEgresoUrgenciasBase.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloTrasladoCama.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloTrasladoCamaBase.cs" />
+    <Compile Include="VistaModelo\HOS_VistaModeloVistaAdmitidos.cs" />
+    <Compile Include="VistaModelo\LocalizadorVistaModelo.cs" />
+    <Compile Include="Vista\ADM_AutorizarEgreso.xaml.cs">
+      <DependentUpon>ADM_AutorizarEgreso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ADM_RegistroSalida.xaml.cs">
+      <DependentUpon>ADM_RegistroSalida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\crtBuscar.xaml.cs">
+      <DependentUpon>crtBuscar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaAdmitidos.xaml.cs">
+      <DependentUpon>HOS_VistaAdmitidos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaBcHoshabitaciones.xaml.cs">
+      <DependentUpon>HOS_VistaBcHoshabitaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaBxHoshabitaciones.xaml.cs">
+      <DependentUpon>HOS_VistaBxHoshabitaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaEgresoUrgencias.xaml.cs">
+      <DependentUpon>HOS_VistaEgresoUrgencias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaHoscamasareas.xaml.cs">
+      <DependentUpon>HOS_VistaHoscamasareas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaHosconfigmodulo.xaml.cs">
+      <DependentUpon>HOS_VistaHosconfigmodulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaTrasladoCama.xaml.cs">
+      <DependentUpon>HOS_VistaTrasladoCama.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HOS_VistaXXHoscamasareas.xaml.cs">
+      <DependentUpon>HOS_VistaXXHoscamasareas.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Vista\ADM_AutorizarEgreso.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\ADM_RegistroSalida.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\crtBuscar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaAdmitidos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaBcHoshabitaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaBxHoshabitaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaEgresoUrgencias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaHoscamasareas.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaHosconfigmodulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaTrasladoCama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HOS_VistaXXHoscamasareas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{5ddc9e85-775c-4683-87ad-c0adc9646713}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GestorReportes\HistoriasClinicasGestor.csproj">
+      <Project>{e733358e-704e-4f6a-baeb-3ae563b5f788}</Project>
+      <Name>HistoriasClinicasGestor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HistoriaClinica\HistoriasClinicas.csproj">
+      <Project>{2478dc62-b362-487e-901c-79e87c9bf420}</Project>
+      <Name>HistoriasClinicas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sistema\Sistema.csproj">
+      <Project>{5cfde7c0-9ab2-460c-af8c-3618c010daa6}</Project>
+      <Name>Sistema</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

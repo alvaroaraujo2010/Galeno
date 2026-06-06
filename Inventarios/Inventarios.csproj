@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFE197D0-547F-4EF5-9169-28FAC4D7A0A2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inventarios</RootNamespace>
+    <AssemblyName>Inventarios</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=0e27b6f8be9b2ef7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=eabbf6a5f5af5004, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Sistema\Ensamblados\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modelo\INV_ModeloEntradaCompras.cs" />
+    <Compile Include="Modelo\INV_ModeloInvajusteconcep.cs" />
+    <Compile Include="Modelo\INV_ModeloInvAjustInven.cs" />
+    <Compile Include="Modelo\INV_ModeloInvcontenedores.cs" />
+    <Compile Include="Modelo\INV_ModeloInvMaestroalmacen.cs" />
+    <Compile Include="Modelo\INV_ModeloInvmaestroarticulo.cs" />
+    <Compile Include="Modelo\INV_ModeloInvMovSuministro.cs" />
+    <Compile Include="Modelo\INV_ModeloInvperiodomaest.cs" />
+    <Compile Include="Modelo\INV_ModeloInvresponsables.cs" />
+    <Compile Include="Modelo\INV_ModeloInvVistalmacen.cs" />
+    <Compile Include="Utilidades\EjecutarVistas.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloAjustInven.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloAjustInvenBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloEntradaCompras.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloEntradaComprasBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvajusteconcep.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvajusteconcepBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvcontenedores.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvcontenedoresBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvMaestroalmacen.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvMaestroalmacenBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvmaestroarticulo.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvmaestroarticuloBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvperiodomaest.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvperiodomaestBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvresponsables.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvresponsablesBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvVistalmacen.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloInvVistalmacenBase.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloMovSuministro.cs" />
+    <Compile Include="VistaModelo\INV_VistaModeloMovSuministroBase.cs" />
+    <Compile Include="VistaModelo\LocalizadorVistaModelo.cs" />
+    <Compile Include="Vista\INV_ControlKardexRegExistencias.xaml.cs">
+      <DependentUpon>INV_ControlKardexRegExistencias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaEntradaCompras.xaml.cs">
+      <DependentUpon>INV_VistaEntradaCompras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvajusteconcep.xaml.cs">
+      <DependentUpon>INV_VistaInvajusteconcep.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvAjustInven.xaml.cs">
+      <DependentUpon>INV_VistaInvAjustInven.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvcontenedores.xaml.cs">
+      <DependentUpon>INV_VistaInvcontenedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvmaestroalmacenes.xaml.cs">
+      <DependentUpon>INV_VistaInvmaestroalmacenes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvmaestroarticulo.xaml.cs">
+      <DependentUpon>INV_VistaInvmaestroarticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvMovSuministro.xaml.cs">
+      <DependentUpon>INV_VistaInvMovSuministro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvperiodomaest.xaml.cs">
+      <DependentUpon>INV_VistaInvperiodomaest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvresponsables.xaml.cs">
+      <DependentUpon>INV_VistaInvresponsables.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\INV_VistaInvvistaalmacen.xaml.cs">
+      <DependentUpon>INV_VistaInvvistaalmacen.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{5ddc9e85-775c-4683-87ad-c0adc9646713}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reportes\Reportes.csproj">
+      <Project>{a0d067f1-64f8-45f8-a573-353980a3c3c3}</Project>
+      <Name>Reportes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sistema\Sistema.csproj">
+      <Project>{5cfde7c0-9ab2-460c-af8c-3618c010daa6}</Project>
+      <Name>Sistema</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Vista\INV_ControlKardexRegExistencias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\INV_VistaEntradaCompras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvajusteconcep.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvAjustInven.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvcontenedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvmaestroalmacenes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvmaestroarticulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvMovSuministro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvperiodomaest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvresponsables.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\INV_VistaInvvistaalmacen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

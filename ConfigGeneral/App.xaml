@@ -1,0 +1,15 @@
+﻿<Application x:Class="ConfigGeneral.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ConfigGeneral.VistaModelo"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             StartupUri=""
+             mc:Ignorable="d">
+    
+    <Application.Resources>
+        <!--Global View Model Locator-->
+        <vm:LocalizadorVistaModelo x:Key="SIS_Locator" d:IsDataSource="True" />
+    </Application.Resources>
+    
+</Application>

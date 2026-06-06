@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="GestorReportes.Vista.Odontograma" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GestorReportes.Vista" 
+             mc:Ignorable="d" 
+             d:DesignHeight="480" 
+             d:DesignWidth="500">
+    <Grid>
+        <Border Name="Fondo" 
+                Background="Transparent"
+                Margin="0,0,0,0"
+                BorderThickness="0"
+                BorderBrush="#FFD1CFCF"/>
+        <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            <!-- Cuadrante 1 -->
+            <local:Diente01 x:Name="D11" Grid.Row="0" Grid.Column="7" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D12" Grid.Row="0" Grid.Column="6" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D13" Grid.Row="0" Grid.Column="5" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D14" Grid.Row="0" Grid.Column="4" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D15" Grid.Row="0" Grid.Column="3" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D16" Grid.Row="0" Grid.Column="2" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D17" Grid.Row="0" Grid.Column="1" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D18" Grid.Row="0" Grid.Column="0" Loaded="fcvLoadDiente01"/>
+            <!-- Cuadrante 2 -->
+            <local:Diente01 x:Name="D21" Grid.Row="0" Grid.Column="9" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D22" Grid.Row="0" Grid.Column="10" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D23" Grid.Row="0" Grid.Column="11" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D24" Grid.Row="0" Grid.Column="12" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D25" Grid.Row="0" Grid.Column="13" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D26" Grid.Row="0" Grid.Column="14" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D27" Grid.Row="0" Grid.Column="15" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D28" Grid.Row="0" Grid.Column="16" Loaded="fcvLoadDiente01"/>
+            <!-- Cuadrante 3 -->
+            <local:Diente02 x:Name="D31" Grid.Row="6" Grid.Column="9" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D32" Grid.Row="6" Grid.Column="10" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D33" Grid.Row="6" Grid.Column="11" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D34" Grid.Row="6" Grid.Column="12" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D35" Grid.Row="6" Grid.Column="13" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D36" Grid.Row="6" Grid.Column="14" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D37" Grid.Row="6" Grid.Column="15" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D38" Grid.Row="6" Grid.Column="16" Loaded="fcvLoadDiente02"/>
+            <!-- Cuadrante 4 -->
+            <local:Diente02 x:Name="D41" Grid.Row="6" Grid.Column="7" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D42" Grid.Row="6" Grid.Column="6" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D43" Grid.Row="6" Grid.Column="5" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D44" Grid.Row="6" Grid.Column="4" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D45" Grid.Row="6" Grid.Column="3" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D46" Grid.Row="6" Grid.Column="2" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D47" Grid.Row="6" Grid.Column="1" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D48" Grid.Row="6" Grid.Column="0" Loaded="fcvLoadDiente02"/>
+            <!-- Cuadrante NIÑOS 1 -->
+            <local:Diente01 x:Name="D51" Grid.Row="2" Grid.Column="7" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D52" Grid.Row="2" Grid.Column="6" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D53" Grid.Row="2" Grid.Column="5" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D54" Grid.Row="2" Grid.Column="4" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D55" Grid.Row="2" Grid.Column="3" Loaded="fcvLoadDiente01"/>
+            <!-- Cuadrante NIÑOS 2 -->
+            <local:Diente01 x:Name="D61" Grid.Row="2" Grid.Column="9" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D62" Grid.Row="2" Grid.Column="10" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D63" Grid.Row="2" Grid.Column="11" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D64" Grid.Row="2" Grid.Column="12" Loaded="fcvLoadDiente01"/>
+            <local:Diente01 x:Name="D65" Grid.Row="2" Grid.Column="13" Loaded="fcvLoadDiente01"/>
+            <!-- Cuadrante NIÑOS 3 -->
+            <local:Diente02 x:Name="D71" Grid.Row="4" Grid.Column="9" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D72" Grid.Row="4" Grid.Column="10" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D73" Grid.Row="4" Grid.Column="11" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D74" Grid.Row="4" Grid.Column="12" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D75" Grid.Row="4" Grid.Column="13" Loaded="fcvLoadDiente02"/>
+            <!-- Cuadrante NIÑOS 4 -->
+            <local:Diente02 x:Name="D81" Grid.Row="4" Grid.Column="7" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D82" Grid.Row="4" Grid.Column="6" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D83" Grid.Row="4" Grid.Column="5" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D84" Grid.Row="4" Grid.Column="4" Loaded="fcvLoadDiente02"/>
+            <local:Diente02 x:Name="D85" Grid.Row="4" Grid.Column="3" Loaded="fcvLoadDiente02"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="Sistema.Vista.TilesNotificacion"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	        mc:Ignorable="d"
+	        x:Name="UserControl"
+            Width="78" 
+            Height="60" 
+            Opacity="1"
+            Cursor="Hand">
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseEnter1">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="TileSurfaceRct" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.14"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="TileSurfaceRct" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.14"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid Name="LayoutRoot">
+        <Border BorderThickness="0"
+                Margin="5"
+                Visibility="Collapsed"
+                Background="#99073D46"/>
+        <Image x:Name="imgIcono"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Height="55" 
+               Width="55" 
+               Source="/Sistema;component/Imagenes/sys_ger01.png"
+               Margin="0,5,0,0"/>
+        <!-- Titulo del Modulo -->
+        <TextBlock Name="TileTitulo"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   Margin="6,48,6,0" 
+                   FontSize="9"
+                   Visibility="Collapsed"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Center"
+                   Foreground="#FFFFFFFF" 
+                   Text="Midwssoft Galeno V4.0" 
+                   TextWrapping="Wrap" 
+                   Height="26" 
+                   Width="68" />
+        <!-- Capa trasparente sobre el tile -->
+        <Rectangle HorizontalAlignment="Center" 
+                   Name="TileSurfaceRct" 
+                   Fill="#FF000000" 
+                   Opacity="0" 
+                   Width="60" 
+                   Margin="5,5,5,2"
+                   Stroke="#FFFBFBFB"/>
+        <Image Name="imgNotificacion"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Height="25" 
+               Width="30" 
+               Stretch="Fill"
+               Source="/Sistema;component/Imagenes/sys_notific02.png"
+               Margin="2,1,48,0"/>
+        <!-- Titulo del Modulo -->
+        <TextBlock Name="txtNotificaciones"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left" 
+                   Margin="4,0,0,0" 
+                   FontSize="11"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Center"
+                   Foreground="#FFFFFFFF" 
+                   Text="0" 
+                   TextWrapping="Wrap" 
+                   Height="16" 
+                   Width="27" />
+
+    </Grid>
+</UserControl>

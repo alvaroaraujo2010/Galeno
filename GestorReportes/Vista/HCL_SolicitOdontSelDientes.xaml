@@ -1,0 +1,251 @@
+﻿<Window x:Class="GestorReportes.Vista.SolicitOdontSelDientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        xmlns:local="clr-namespace:GestorReportes.Vista" 
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        mc:Ignorable="d ignore"
+        WindowStartupLocation="CenterScreen"
+        Width="810" 
+        Height="659"
+        Name="MaxCITFiltroTurnos"
+        ShowInTaskbar="False"
+        Title="Filtrar turnos..." 
+        ResizeMode="NoResize"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+		Background="Transparent">
+    <Grid x:Name="LayoutRoot" Margin="0,0,0,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+                BorderBrush="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" 
+                BorderThickness="1" 
+                HorizontalAlignment="Left" 
+                Width="810" 
+                Grid.RowSpan="3"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+           Height="40"
+           Width="810"
+           Margin="0,0,0,0"
+           VerticalAlignment="Top"
+           Grid.Row="1"
+           Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+           StretchDirection="UpOnly"
+           Stretch="Fill"
+           MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Name="txtblockTitulo"
+                   VerticalAlignment="Top"
+                   Text="Seleccionar..." 
+                   Grid.Row="1" Margin="63,10,37,0" 
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                    TabIndex="50"
+                    Click="cmdSalir_Click"
+                    ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                           Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left" 
+               Height="50" 
+               VerticalAlignment="Top" 
+               Width="810" 
+               Source="/Sistema;component/Imagenes/sis_fondo40.png" 
+               Grid.Row="3" 
+               StretchDirection="UpOnly" 
+               Stretch="Fill" />
+        <Button Style="{StaticResource styleButtonImgForm}"
+            Height="32" 
+        	HorizontalAlignment="Left"
+        	Margin="657,10,0,0"
+        	x:Name="cmdCancelar"
+        	VerticalAlignment="Top"
+        	Width="89"
+        	Visibility="Visible"
+            Grid.Row="3" 
+            Click="cmdCancelar_Click"
+            ToolTip="Clic aquí para salir sin seleccionar"
+            Cursor="Hand" TabIndex="5">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="ImgCancelar" 
+                       Source="/Sistema;component/Imagenes/sis_edt_cancelar.png" 
+                       Width="24" 
+                       Height="22" 
+                       Stretch="UniformToFill" 
+                       Margin="2" />
+                <TextBlock x:Name="textCancelar" 
+                           Text="Cancelar" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="0" 
+                           Width="56"/>
+            </StackPanel>
+        </Button>
+        <Button Style="{StaticResource styleButtonImgForm}"
+                Height="32" 
+                HorizontalAlignment="Left"
+        	    Margin="542,10,0,0"
+        	    x:Name="cmdAceptar"
+        	    VerticalAlignment="Top"
+        	    Width="89"
+        	    Visibility="Visible"
+                Grid.Row="3" 
+                Click="cmdAceptar_Click"
+                ToolTip="Clic aquí para confirmar selección de turnos"
+                Cursor="Hand" TabIndex="4">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="ImgAceptar" 
+                       Source="/Sistema;component/Imagenes/sis_edt_aceptar.png" 
+                       Width="24" 
+                       Height="22" 
+                       Stretch="UniformToFill" 
+                       Margin="2"/>
+                <TextBlock x:Name="textAceptar" 
+                           Text="Aceptar" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="0" 
+                           Width="56"/>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left" 
+               Height="50" 
+               Margin="6,15,0,0" 
+               VerticalAlignment="Top" 
+               Width="48" 
+               Grid.RowSpan="2" 
+               Source="/Sistema;component/Imagenes/sis_logo40.png" 
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Grid Grid.Row="2" Style="{StaticResource styleGridTabItemZona}" Margin="1">
+            <local:Odontograma x:Name="odnMixto"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Height="480"
+                                    Width="590"
+                                    Visibility="Visible"
+                                    Margin="22,10,188,0"/>
+            <Button Name="cmdMarcaAdultos" 
+                    Style="{StaticResource styleButtonImgForm}"
+                    Height="32" 
+                    HorizontalAlignment="Left"
+        	        Margin="643,48,0,0"
+        	        VerticalAlignment="Top"
+        	        Width="145"
+        	        Visibility="Visible" 
+                    Click="fcvMarcarOdnAdultos"
+                    ToolTip="Seleccionar odontograma adultos"
+                    Cursor="Hand" TabIndex="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="ImgSelAdultos" 
+                       Source="/Sistema;component/Imagenes/sis_edt_aceptar.png" 
+                       Width="24" 
+                       Height="22" 
+                       Stretch="UniformToFill" 
+                       Margin="2"/>
+                    <TextBlock Name="textSelAdultos" 
+                           Text="Seleccionar Adultos" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="0" 
+                           Width="106"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdQuitarMarcaAdultos" 
+                    Style="{StaticResource styleButtonImgForm}"
+                    Height="32" 
+                    HorizontalAlignment="Left"
+        	        Margin="643,88,0,0"
+        	        VerticalAlignment="Top"
+        	        Width="145"
+        	        Visibility="Visible" 
+                    Click="fcvMarcarOdnAdultos"
+                    ToolTip="Quitar marca seleccionar odontograma adultos"
+                    Cursor="Hand" TabIndex="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="ImgQuitarSelAdultos" 
+                       Source="/Sistema;component/Imagenes/sis_edt_eliminar.png" 
+                       Width="24" 
+                       Height="22" 
+                       Stretch="UniformToFill" 
+                       Margin="2"/>
+                    <TextBlock Name="txtQuitarSelAdultos" 
+                           Text="quitar seleccion" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="0" 
+                           Width="106"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdMarcaNiños" 
+                    Style="{StaticResource styleButtonImgForm}"
+                    Height="32" 
+                    HorizontalAlignment="Left"
+        	        Margin="643,200,0,0"
+        	        VerticalAlignment="Top"
+        	        Width="145"
+        	        Visibility="Visible" 
+                    Click="fcvMarcarOdnNiños"
+                    ToolTip="Seleccionar odontograma niños"
+                    Cursor="Hand" TabIndex="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="ImgSelNiños" 
+                       Source="/Sistema;component/Imagenes/sis_edt_aceptar.png" 
+                       Width="24" 
+                       Height="22" 
+                       Stretch="UniformToFill" 
+                       Margin="2"/>
+                    <TextBlock Name="textSelNiños" 
+                           Text="Seleccionar niños" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="0" 
+                           Width="106"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdQuitarMarcaNiños" 
+                    Style="{StaticResource styleButtonImgForm}"
+                    Height="32" 
+                    HorizontalAlignment="Left"
+        	        Margin="643,236,0,0"
+        	        VerticalAlignment="Top"
+        	        Width="145"
+        	        Visibility="Visible" 
+                    Click="fcvMarcarOdnNiños"
+                    ToolTip="Quitar marca seleccionar odontograma adultos"
+                    Cursor="Hand" TabIndex="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="ImgQuitarSelNiños" 
+                       Source="/Sistema;component/Imagenes/sis_edt_eliminar.png" 
+                       Width="24" 
+                       Height="22" 
+                       Stretch="UniformToFill" 
+                       Margin="2"/>
+                    <TextBlock Name="txtQuitarSelNiños" 
+                           Text="quitar seleccion" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="0" 
+                           Width="106"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlVistaAdmitido"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Height="150"
+             Width="700"
+             d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Border Name="Fondo" 
+                Background="White"
+                Visibility="Collapsed"
+                Margin="0,0,0,0"
+                BorderThickness="0.8"
+                BorderBrush="#FFD1CFCF"
+                Grid.RowSpan="5"
+                Grid.Row="0"/>
+        <!-- FILA 0 - HISTORIA CLINICA -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="FondoTitulo" 
+                    Margin="0,0,0,0"
+                    Grid.ColumnSpan="6" 
+                    Background="#FFEAEAEA"/>
+            <!-- Numero Historia clinica -->
+            <TextBlock Name="lblHcl_nrohis_hicl" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Historia clinica"/>
+            </TextBlock>
+            <TextBox Name="txtHcl_nrohis_hicl" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1"/>
+            <!-- Autorizacion -->
+            <!-- Autorizacion servicios -->
+            <TextBlock Name="lblAdm_nroaut_rgad" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Autorización"/>
+            </TextBlock>
+            <TextBox Name="txtAdm_nroaut_rgad" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                     IsReadOnly="True" 
+                     Grid.Column="3"/>
+
+            <!-- Estado de la Admision -->
+            <TextBlock Name="lblSis_estadm_espr" Grid.Column="4" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Admisión"/>
+            </TextBlock>
+            <TextBox Name="txtSis_Desadm_espr" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="5"/>
+        </Grid>
+        <!-- FILA 1 - DATOS USUARIO  -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="33"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Identificación -->
+            <TextBlock Name="lblG1Sia_nroide_usua" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Identificación"/>
+            </TextBlock>
+            <!-- Tipo ide -->
+            <TextBox Name="txtG1Sia_tipide_tide" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1" />
+            <!-- Numero Ide -->
+            <TextBox Name="txtG1Sia_nroide_usua" Style="{StaticResource styleTextBoxEdtFormTouch}" IsReadOnly="True" Grid.Column="2"/>
+            <!-- Nombre -->
+            <TextBlock Name="lblG1Sia_nomusu_usua" Grid.Column="3" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Nombre"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sia_nomusu_usua" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="4"/>
+        </Grid>
+        <!-- FILA 2 - DATOS USUARIOS -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+            <!-- Fecha nacimiento -->
+            <TextBlock Name="lblSia_fecnac_usua" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Fecha nacimiento"/>
+            </TextBlock>
+            <TextBox Name="txtSia_fecnac_usua" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1"/>
+            <!-- Sexo -->
+            <TextBlock Name="lblSis_codsex_sexo" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Sexo"/>
+            </TextBlock>
+            <TextBox Name="txtSis_codsex_sexo" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3"/>
+            <!-- Edad -->
+            <TextBlock Name="lblSia_edaymd_usua" Grid.Column="4" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Edad"/>
+            </TextBlock>
+            <TextBox Name="txtSia_edaymd_usua" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="5"/>
+        </Grid>
+        <!-- FILA 3 - DIRECCION -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Telefono -->
+            <TextBlock Name="lblSia_telres_usua" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Telefono"/>
+            </TextBlock>
+            <TextBox Name="txtSia_telres_usua" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1"/>
+            <!-- Municipio -->
+            <TextBlock Name="lblSis_nommun_muni" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Municipio"/>
+            </TextBlock>
+            <TextBox Name="txtSis_nommun_muni" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3"/>
+        </Grid>
+        <!-- FILA 4 - DIRECCION -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+            <!-- Direccion -->
+            <TextBlock Name="lblSia_dirres_usua" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Dirección"/>
+            </TextBlock>
+            <TextBox Name="txtSia_dirres_usua" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1"/>
+            <!-- Regimen -->
+            <TextBlock Name="lblG1Sia_tipusu_regi" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Régimen"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sia_tipusu_regi" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3"/>
+        </Grid>
+        <!-- FILA 5 P.ETNICA-OCUPACION-NIV-EDUCATIVO -->
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+            <!-- Pertenencia Etnica -->
+            <TextBlock Name="lblSia_desper_pret" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Pertenencia Etnica"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sia_desper_pret" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1"/>
+            <!-- Nivel Educativo -->
+            <TextBlock Name="lblSia_desedu_sine" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Nivel Educativo"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sia_desedu_sine" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3"/>
+            <!-- Ocupacion -->
+            <TextBlock Name="lblSis_desocu_ocup" Grid.Column="4" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Ocupación"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sis_desocu_ocup" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="5"/>
+        </Grid>
+        <!-- FILA 6 - ADMISION  -->
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+            <!-- Codigo admision -->
+            <TextBlock Name="lblG1adm_secadm_rgad" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Numero Admisión"/>
+            </TextBlock>
+            <TextBox Name="txtG1Adm_secadm_rgad" Style="{StaticResource styleTextBoxEdtFormTouch}" IsReadOnly="True" Grid.Column="1"/>
+            <!-- Fecha admision -->
+            <TextBlock Name="lblG1adm_fecadm_rgad" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Fecha"/>
+            </TextBlock>
+            <TextBox Name="txtG1Adm_fecadm_rgad" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3"/>
+            <!-- Hora admision -->
+            <TextBlock Name="lblG1Adm_horadm_rgad" Grid.Column="4" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Hora"/>
+            </TextBlock>
+            <TextBox Name="txtG1Adm_horadm_rgad" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="5"/>
+        </Grid>
+        <!-- FILA 7 - TIPO DE ATENCION -->
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Tipo de atencion -->
+            <TextBlock Name="lblAdm_codtat_tatn" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Tipo de atención"/>
+            </TextBlock>
+            <TextBox Name="txtAdm_codtat_tatn" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1"/>
+            <!-- Diagnostico de ingreso -->
+            <TextBlock Name="lblSia_codeps_teps" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="EPS"/>
+            </TextBlock>
+            <TextBox Name="txtSia_codeps_teps" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3"/>
+        </Grid>
+    </Grid>
+</UserControl>

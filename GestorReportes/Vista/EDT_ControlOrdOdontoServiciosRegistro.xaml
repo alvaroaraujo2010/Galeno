@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlOrdOdontoServiciosRegistro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="55" 
+             d:DesignWidth="300"
+             Height="Auto"
+             Width="415">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="0,0,0,0.9"
+                BorderBrush="#FFB0AFAF"
+                Grid.Row="0"
+                Grid.RowSpan="3"/>
+        <Image Name="imgGrafica"
+               Grid.Row="0"
+               Grid.RowSpan="2"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="4,3,0,0"
+               Width="38"
+               Height="43"
+               Source="/GestorReportes;component/Imagenes/hc_od_dt1.png"
+               Stretch="UniformToFill"/>
+        <Image Name="imgEstado"
+               Grid.Row="1"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Margin="0,8,28,0"
+               Width="20"
+               Height="20"
+               Source="/GestorReportes;component/Imagenes/Edt_edt_aceptar.png"
+               Stretch="UniformToFill"/>
+        <Button Name="cmdEliminar"
+                Grid.Row="1"
+                Margin="0,6,19,0"
+                HorizontalAlignment="Right"
+                Background="Transparent"
+                Style="{StaticResource styleButtonImgEdtFormTouchMini}"
+                TabIndex="50"
+                ToolTip="Eliminar registro" 
+                Height="30" 
+                Cursor="Hand"
+                Width="40">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgHistorialVer"
+                       Height="20"
+                       Width="20"
+                       Source="/GestorReportes;component/Imagenes/Edt_hist_vista_anulado.png"
+                       Style="{StaticResource styleImagBotonesForm}"
+                       Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="txtItem" 
+        		       HorizontalAlignment="Stretch" 
+        		       VerticalAlignment="Top"
+                       Grid.Column="1"
+        		       FontSize="10"
+                       Margin="1,9,3,0"
+                       Width="Auto"
+                       TextWrapping="Wrap"
+        		       FontFamily="Segoe UI Symbol"
+        		       Foreground="#FF615C5C"/>
+            <TextBlock Name="txtDetalle" 
+        		       HorizontalAlignment="Stretch" 
+        		       VerticalAlignment="Top"
+                       Grid.Column="2"
+        		       FontSize="10"
+                       Margin="2,9,5,0"
+                       Width="Auto"
+        		       FontFamily="Segoe UI Symbol"
+        		       TextAlignment="Justify"
+        		       Foreground="#FF615C5C"
+                       TextWrapping="Wrap"/>
+        </Grid>
+    </Grid>
+</UserControl>

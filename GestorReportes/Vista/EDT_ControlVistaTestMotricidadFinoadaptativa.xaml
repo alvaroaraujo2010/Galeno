@@ -1,0 +1,2361 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlEscalaEadMotriFinoAdaptativa"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="995" d:DesignWidth="710">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="70"/>
+
+        </Grid.RowDefinitions>
+        <TextBox Name="txtEadMfSis_codsex_sexo" Visibility="Collapsed"/>
+        <TextBox Name="txtEadMfSia_edaano_usua" Visibility="Collapsed"/>
+        <TextBox Name="txtEadMfSia_edames_usua" Visibility="Collapsed"/>
+        <TextBox Name="txtEadMfSia_edadia_usua" Visibility="Collapsed"/>
+        <TextBox Name="txtEadMfSia_edaymd_usua" Visibility="Collapsed"/>
+        <!-- titulo principal   -->
+        <Grid Grid.Row="0">
+            <TextBox Grid.Row="0" 
+                     Background="Transparent"
+                     BorderThickness="0"
+                     FontSize="14"
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     Text="MOTRICIDAD FINOADAPTATIVA" 
+                     TextAlignment="Center"/>
+        </Grid>
+        <!-- Contenido -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0"
+                    Grid.RowSpan="7" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Column= "0">
+                <TextBox Grid.Row="1" 
+                         TextWrapping="Wrap"
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="11" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="RANGO     DE EDAD" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column= "1">
+                <TextBox Grid.Row="1" 
+                         Background="Transparent"
+                         BorderThickness="0" 
+                         FontSize="13" 
+                         FontWeight="Bold" 
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="N° ITEM" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column= "2">
+                <TextBox Grid.Row="1" 
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="13"
+                         FontWeight="Bold" 
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="ENUNCIADO" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column= "3">
+                <TextBox Grid.Row="1" 
+                         Background="Transparent"
+                         BorderThickness="0"
+                         FontSize="13" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="1  0" 
+                         TextAlignment="Center"/>
+            </Grid>           
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR1MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7"
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0" 
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1" 
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="1"
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="1"/>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Reflejo de prensión palmar."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="2"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Reacciona ante luz y sonidos."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="3"/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Sigue movimiento horizontal."/>
+            <TextBox Name="txtMfR1I1"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR1I1"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR1I2"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR1I2" 
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR1I3"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR1I3"
+                      Grid.Row="2"
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR2MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14"
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="2"
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="4"/>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Abre y mira sus manos."/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="5"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Sostiene objeto en la mano."/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="6"/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"   
+                     Text="Se lleva un objeto a la boca.
+."/>
+            <TextBox Name="txtMfR2I4"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR2I4"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR2I5"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR2I5"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR2I6"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR2I6"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR3MF"
+                    Grid.Row="0"
+                    Grid.RowSpan="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0" 
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14"
+                         FontWeight="Bold" 
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="3" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="7"/>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Agarra objetos voluntariamente."/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="1"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="8"/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Retiene un objeto cuando se lo intentan quitar."/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="1"
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="9"/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Pasa objeto de una mano a otra."/>
+            <TextBox Name="txtMfR3I7"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR3I7"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR3I8"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR3I8"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR3I9"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR3I9"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="76"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR4MF"
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Row="0" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1" 
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14"
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="4" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="10"/>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Sostiene un objeto en cada mano."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold" 
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="11"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Deja caer los objetos intencionalmente."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="12"/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Agarra con pulgar e índice (pinza)."/>
+            <TextBox Name="txtMfR4I10"
+                     Grid.Row="0" 
+					 Grid.Column="3" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion" Grid.ColumnSpan="2"/>
+            <ComboBox Name="cboMfR4I10"
+                      Grid.Row="0" 
+					  Grid.Column="3" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10" Grid.ColumnSpan="2">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR4I11"
+                     Grid.Row="1" 
+					 Grid.Column="3" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion" Grid.ColumnSpan="2"/>
+            <ComboBox Name="cboMfR4I11"
+                      Grid.Row="1" 
+					  Grid.Column="3" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10" Grid.ColumnSpan="2">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR4I12"
+                     Grid.Row="2" 
+					 Grid.Column="3" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion" Grid.ColumnSpan="2"/>
+            <ComboBox Name="cboMfR4I12"
+                      Grid.Row="2" 
+					  Grid.Column="3" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10" Grid.ColumnSpan="2">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR5MF"
+                    Grid.Row="0"
+                    Grid.RowSpan="7" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0" 
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent" 
+                         BorderThickness="0" 
+                         FontSize="14"
+                         FontWeight="Bold" 
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="5" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="13"/>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Agarra tercer objeto sin soltar otros."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="14"/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Saca objetos del contenedor."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="15"/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"
+                     Text="Busca objetos escondidos."/>
+            <TextBox Name="txtMfR5I13"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR5I13"
+                      Grid.Row="0" 
+					  Grid.Column="3" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR5I14"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR5I14"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR5I15"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR5I15"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR6MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7" 
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         FontSize="14"
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="6" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="16"/>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Hace torre de tres cubos."/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="17"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Pasa hojas de un libro."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="18"/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Agarra una cuchara y se la lleva a la boca."/>
+            <TextBox Name="txtMfR6I16"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR6I16"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR6I17"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR6I17"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR6I18"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR6I18"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="14">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR7MF"
+                    Grid.Row="0"
+                    Grid.RowSpan="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7" 
+                    Margin="0,0,0,0"
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="7" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="19"/>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"
+                     Text="Garabatea espontáneamente."/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="20"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"   
+                     Text="Quita la tapa del contenedor o frasco."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="21"/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Hace torre de cinco cubos."/>
+            <TextBox Name="txtMfR7I19"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR7I19"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR7I20"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR7I20"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR7I21"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR7I21"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR8MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7"
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         FontSize="14" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="8"
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="22"/>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Ensarta cuentas perforadas con pinza."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="23"/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Rasga papel con pinza de ambas manos."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="24"/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Copia línea horizontal y vertical."/>
+            <TextBox Name="txtMfR8I22"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR8I22"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+					  SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR8I23"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR8I23"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR8I24"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR8I24"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="18">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR9MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7" 
+                    Margin="0,0,0,0"
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         FontSize="14" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="9" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="25"/>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Hace una bola de papel con sus dedos."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="26"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Copia círculo."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="27"/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Figura humana rudimentaria."/>
+            <TextBox Name="txtMfR9I25"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR9I25"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR9I26"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR9I26"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR9I27"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR9I27"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR10MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7"
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1" 
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14"
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="10"
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="28"/>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Imita el dibujo de una escalera."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1"
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="29"/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Corta papel con las tijeras."/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="30"/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Figura humana 2."/>
+            <TextBox Name="txtMfR10I28"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR10I28"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR10I29"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR10I29"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR10I30"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR10I30"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="22">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR11MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7"
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0" 
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1" 
+                         Background="Transparent" 
+                         BorderThickness="0" 
+                         FontSize="14"
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="11"
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="31"/>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="2"
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Dibuja el lugar en el que vive."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="32"/>
+            <TextBox Grid.Row ="1" 
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"
+                     Text="Modelo de cubos 'escalera'. "/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13" 
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="33"/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="2" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Copia de un triángulo."/>
+            <TextBox Name="txtMfR11I31"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR11I31"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR11I32"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR11I32"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR11I33"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR11I33"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Name="VR12MF"
+                    Grid.Row="0" 
+                    Grid.RowSpan="7" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="7"
+                    Margin="0,0,0,0"/>
+            <Grid Grid.Row="0" Grid.RowSpan="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="1" 
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         FontSize="14" 
+                         FontWeight="Bold"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         Text="12" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <TextBox Grid.Row ="0" 
+                     Grid.Column="1"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="34"/>
+            <TextBox Grid.Row ="0"
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"
+                     Text="Copia de una figura de puntos."/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent" 
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center" 
+                     Text="35"/>
+            <TextBox Grid.Row ="1"
+                     Grid.Column="2"
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left" 
+                     Text="Puede hacer una figura plegada."/>
+            <TextBox Grid.Row ="2"
+                     Grid.Column="1" 
+                     BorderBrush="White" 
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     Text="36"/>
+            <TextBox Grid.Row ="2" 
+                     Grid.Column="2" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     Focusable="False"
+                     IsReadOnly="True"
+                     TextAlignment="Left"  
+                     Text="Ensarta cordón cruzado (cómo amarrarse los zapatos)."/>
+            <TextBox Name="txtMfR12I34"
+                     Grid.Row="0" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR12I34"
+                      Grid.Row="0" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent"  
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR12I35"
+                     Grid.Row="1" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR12I35"
+                      Grid.Row="1" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox Name="txtMfR12I36"
+                     Grid.Row="2" 
+					 Grid.Column="4" 
+                     BorderBrush="White"
+                     Background="Transparent"
+                     FontSize="13"
+                     FontWeight="Bold"
+                     IsReadOnly="True"
+                     TextAlignment="Center"
+                     TextChanged="ActualizarComboBoxOpcion"/>
+            <ComboBox Name="cboMfR12I36"
+                      Grid.Row="2" 
+					  Grid.Column="4" 
+					  BorderBrush="White" 
+					  Background="Transparent" 
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Loaded="fcvCboLoaded"                      
+					  FontSize="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="26">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" 
+                    Grid.RowSpan="7" 
+                    Grid.Column="1"
+                    Margin="0,0,0,0" 
+                    Background="#FFEAEAEA"/>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <TextBox Grid.Row ="0" 
+						 Grid.Column="1" 
+						 BorderBrush="White" 
+						 Background="Transparent" 
+						 FontSize="13" 
+						 FontWeight="Bold" 
+						 Focusable="False" 
+						 IsReadOnly="True"
+						 TextAlignment="Left" 
+						 Text="Total acumulado al inicio"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <TextBox Grid.Row ="0" 
+						 Grid.Column="1" 
+						 BorderBrush="White" 
+						 Background="Transparent" 
+						 FontSize="13" 
+						 FontWeight="Bold" 
+						 Focusable="False" 
+						 IsReadOnly="True"
+						 TextAlignment="Left" 
+						 Text="Número de ítems correctos"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <TextBox Grid.Row ="0" 
+						 Grid.Column="1" 
+						 BorderBrush="White" 
+						 Background="Transparent" 
+						 FontSize="13" 
+						 FontWeight="Bold" 
+						 Focusable="False" 
+						 IsReadOnly="True"
+						 TextAlignment="Left" 
+						 Text="Total (PD)"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <TextBox Name="txtMfTotalAcumulado"
+                         Grid.Row ="0" 
+                         Grid.Column="1" 
+                         BorderBrush="White"
+                         Background="Transparent" 
+                         FontSize="13"
+                         Focusable="False"
+                         IsReadOnly="True"
+                         FontWeight="Bold" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <TextBox Name="txtMfItemsCorrectos"
+                         Grid.Row ="0" 
+                         Grid.Column="1" 
+                         BorderBrush="White"
+                         Background="Transparent" 
+                         FontSize="13" 
+                         Focusable="False"
+                         IsReadOnly="True"
+                         FontWeight="Bold" 
+                         TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <TextBox Name="txtMfTotalPD"
+                         Grid.Row ="0" 
+                         Grid.Column="1" 
+                         BorderBrush="White"
+                         Background="Transparent" 
+                         FontSize="13" 
+                         Focusable="False"
+                         IsReadOnly="True"
+                         FontWeight="Bold" 
+                         TextAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,740 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 03/04/2014 07:49:07 AM -->
+<Window
+    x:Class="Systemas.Vista.VistaSysgeneradorcod"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen"
+    DataContext="{Binding Path=VistaModeloSysgeneradorcod, Source={StaticResource SYS_Locator}}"
+    Title="Tabla Generador de  secuenciales"
+    Icon="/Sistema;component/Imagenes/sis_logo40.png"
+    Width="800"
+    Height="359"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    ShowInTaskbar="True">
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              	Source= "/Sistema;component/Skins/EstiloSistema.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="75*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Height="345"
+                Width="800"
+                Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="799"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Tabla Generador de  secuenciales"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Image MouseDown="btnCerrar_KeyDown"
+               Style="{StaticResource styleImgButtonCerrarForm}"
+               Source="/Sistema;component/Imagenes/sis_cerrar40.png"
+               Grid.Row="1"
+               IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+               Cursor="Hand"/>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="798"
+               Margin="1,3,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="4"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFIL}"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <!-- Fin Perfil Usuario -->
+        <Grid Grid.Row="2">
+            <TextBlock Name="lblG1sys_codsec_gcod"
+                               Width="123"
+                               Margin="8,8,0,0"
+                               ToolTip="Llave única para localizar el Secuencial"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="llave  Registro"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_codsec_gcod"
+                             Width="251"
+                             Margin="136,8,0,0"
+                             TabIndex="1"
+                             Text="{Binding Path=G1Sys_codsec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoAdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBox Name="txtG1Sys_nommod_modu"
+                             Width="178"
+                             Margin="209,31,0,0"
+                             TabIndex="102"
+                             Text="{Binding Path=G1Sys_nommod_modu, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="False"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_codmod_modu"
+                               Width="123"
+                               Margin="8,31,0,0"
+                               ToolTip="Código del módulo al cual pertenece el secuencial esto para mostrarlos como grupos"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Código Módulo"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_codmod_modu"
+                             Width="70"
+                             Margin="136,31,0,0"
+                             TabIndex="2"
+                             Text="{Binding Path=G1Sys_codmod_modu, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="txtG1Sys_codmod_modu_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_dessec_gcod"
+                               Width="123"
+                               Margin="8,54,0,0"
+                               ToolTip="Descripción del Secuencial"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Nombre Secuencial"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_dessec_gcod"
+                             Width="251"
+                             Margin="136,54,0,0"
+                             TabIndex="3"
+                             Text="{Binding Path=G1Sys_dessec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_ultsec_gcod"
+                               Width="123"
+                               Margin="8,77,0,0"
+                               ToolTip="Último secuencial generado"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Último Sec Generado"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_ultsec_gcod"
+                             Width="251"
+                             Margin="136,77,0,0"
+                             TabIndex="4"
+                             Text="{Binding Path=G1Sys_ultsec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_inisec_gcod"
+                               Width="123"
+                               Margin="8,100,0,0"
+                               ToolTip="Número desde el cual inicia el conteo"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Número Sec Inicial"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_inisec_gcod"
+                             Width="251"
+                             Margin="136,100,0,0"
+                             TabIndex="5"
+                             Text="{Binding Path=G1Sys_inisec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_finsec_gcod"
+                               Width="123"
+                               Margin="8,123,0,0"
+                               ToolTip="Número en el cual Finaliza el conteo"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Número Sec Final"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_finsec_gcod"
+                             Width="251"
+                             Margin="136,123,0,0"
+                             TabIndex="6"
+                             Text="{Binding Path=G1Sys_finsec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_maxsec_gcod"
+                               Width="123"
+                               Margin="8,146,0,0"
+                               ToolTip="Indica el tamaño máximo en caracteres para el secuencial generado"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Tamaño Secuencial"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_maxsec_gcod"
+                             Width="251"
+                             Margin="136,146,0,0"
+                             TabIndex="7"
+                             Text="{Binding Path=G1Sys_maxsec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_alrsec_gcod"
+                               Width="123"
+                               Margin="8,169,0,0"
+                               ToolTip="Indica cuantos números secuenciales antes se emite mensaje de alarma de que se cumpla el limite"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Limite Sec Alarma"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_alrsec_gcod"
+                             Width="251"
+                             Margin="136,169,0,0"
+                             TabIndex="8"
+                             Text="{Binding Path=G1Sys_alrsec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_relcer_gcod"
+                    	Width="178"
+                    	Margin="209,192,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_relcer_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_relcer_gcod"
+                               Width="123"
+                               Margin="8,192,0,0"
+                               ToolTip="Indica si se rellena el nuevo secuencial con ceros a la izquierda 1 =Si 2=No"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Rellenar con Ceros"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_relcer_gcod"
+                             Width="70"
+                             Margin="136,192,0,0"
+                             TabIndex="9"
+                             Text="{Binding Path=G1Sys_relcer_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_prefij_gcod"
+                               Width="123"
+                               Margin="392,8,0,0"
+                               ToolTip="Texto o Identificador Inicial del nuevo código generado"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Prefijo"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_prefij_gcod"
+                             Width="251"
+                             Margin="520,8,0,0"
+                             TabIndex="10"
+                             Text="{Binding Path=G1Sys_prefij_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock Name="lblG1sys_sufijo_gcod"
+                               Width="123"
+                               Margin="392,31,0,0"
+                               ToolTip="Texto o Identificador final del nuevo código generado"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Sufijo"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_sufijo_gcod"
+                             Width="251"
+                             Margin="520,31,0,0"
+                             TabIndex="11"
+                             Text="{Binding Path=G1Sys_sufijo_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_incfec_gcod"
+                    	Width="178"
+                    	Margin="593,54,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_incfec_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_incfec_gcod"
+                               Width="123"
+                               Margin="392,54,0,0"
+                               ToolTip="Indica si se incluye datos de fecha en el nuevo secuencial 1=Incluir en prefijo  2=Incluir sufijo 3 =No incluir"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Incluir datos Fecha"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_incfec_gcod"
+                             Width="70"
+                             Margin="520,54,0,0"
+                             TabIndex="12"
+                             Text="{Binding Path=G1Sys_incfec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_locfec_gcod"
+                    	Width="178"
+                    	Margin="593,77,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_locfec_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_locfec_gcod"
+                               Width="123"
+                               Margin="392,77,0,0"
+                               ToolTip="Localización del dato fecha dentro del nuevo secuencial  1= Antes 2=Después"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Localización"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_locfec_gcod"
+                             Width="70"
+                             Margin="520,77,0,0"
+                             TabIndex="13"
+                             Text="{Binding Path=G1Sys_locfec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_forfec_gcod"
+                    	Width="178"
+                    	Margin="593,100,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_forfec_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_forfec_gcod"
+                               Width="123"
+                               Margin="392,100,0,0"
+                               ToolTip="Formato fecha 1= DD/MM/AA 2=MM/DD/AA 3= AA/MM/DD 4=AA/DD/MM"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Formato de Fecha"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_forfec_gcod"
+                             Width="70"
+                             Margin="520,100,0,0"
+                             TabIndex="14"
+                             Text="{Binding Path=G1Sys_forfec_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_incdia_gcod"
+                    	Width="178"
+                    	Margin="593,123,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_incdia_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_incdia_gcod"
+                               Width="123"
+                               Margin="392,123,0,0"
+                               ToolTip="Incluir el día para para la fecha 1=Si 2=No"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Incluir Día"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_incdia_gcod"
+                             Width="70"
+                             Margin="520,123,0,0"
+                             TabIndex="15"
+                             Text="{Binding Path=G1Sys_incdia_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_incmes_gcod"
+                    	Width="178"
+                    	Margin="593,146,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_incmes_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_incmes_gcod"
+                               Width="123"
+                               Margin="392,146,0,0"
+                               ToolTip="Incluir el mes para para la fecha 1=Si 2=No"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Incluir Mes"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_incmes_gcod"
+                             Width="70"
+                             Margin="520,146,0,0"
+                             TabIndex="16"
+                             Text="{Binding Path=G1Sys_incmes_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_incano_gcod"
+                    	Width="178"
+                    	Margin="593,169,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_incano_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_incano_gcod"
+                               Width="123"
+                               Margin="392,169,0,0"
+                               ToolTip="Incluir el año para para la fecha 1=Si 2=No"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Incluir Año"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_incano_gcod"
+                             Width="70"
+                             Margin="520,169,0,0"
+                             TabIndex="17"
+                             Text="{Binding Path=G1Sys_incano_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            <ComboBox Name="cboG1Sys_nivacc_gcod"
+                    	Width="178"
+                    	Margin="593,192,0,0"
+                    	Grid.Row="2"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbSys_nivacc_gcod}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Name="lblG1sys_nivacc_gcod"
+                               Width="123"
+                               Margin="392,192,0,0"
+                               ToolTip="Nivel Prioridad de acceso a vista del registro de secuencial, para súper usuarios y usuarios de gestión: 1=Sólo Súper Usuarios 2=Administradores"
+                               Grid.Row="2"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Nivel de acceso"/>
+            </TextBlock>
+            <TextBox Name="txtG1Sys_nivacc_gcod"
+                             Width="70"
+                             Margin="520,192,0,0"
+                             TabIndex="18"
+                             Text="{Binding Path=G1Sys_nivacc_gcod, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="ActualizarComboBoxOpcion"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             Grid.Row="2"
+                             GotFocus="fcvTextBox_GotFocus"/>
+        </Grid>
+        <Button Name="cmdGuardar"
+                Margin="250,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="19"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para guardar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Guardar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdAdicionar"
+                Margin="250,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="20"
+                Command="{Binding CmdADD}"
+                Click="fcvNuevoRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para crear un nuevo registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgAdicionar"
+                           Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblAdicionar"
+                               Text="Nuevo"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdCancelar"
+                Margin="353,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="21"
+                Command="{Binding CmdCAN}"
+                Click="fcvCancelarRegistro"
+                Grid.Row="3"
+                ToolTip="Cancelar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblCancelar"
+                               Text="Cancelar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdModificar"
+                Margin="353,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="22"
+                Command="{Binding CmdEDT}"
+                Click="fcvModificarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para modificar el registro activo">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgModificar"
+                           Source="/Sistema;component/Imagenes/sis_edt_modificar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblModificar"
+                               Text="Modificar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdEliminar"
+                Margin="456,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="23"
+                Command="{Binding CmdDEL}"
+                Grid.Row="3"
+                ToolTip="Eliminar este registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgEliminar"
+                           Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblEliminar"
+                               Text="Eliminar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdSalir"
+                Margin="680,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="24"
+                Command="{Binding CmdSAL}"
+                Click="cmdSalir_Click"
+                Grid.Row="3"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdBrowser"
+                Margin="16,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="28"
+                Command="{Binding CmdDFL}"
+                Click="fcvBrowserBuscar"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para buscar un registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgBrowser"
+                           Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblBrowser"
+                               Text="Buscar..."
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

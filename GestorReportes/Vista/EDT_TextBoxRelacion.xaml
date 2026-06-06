@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="GestorReportes.Vista.TextBoxRelacion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Height="24"
+             Width="350">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="txtCodigo"
+                     TabIndex="72"
+                     Grid.Column="0"
+                     IsEnabled="True" />
+        <Button Name="cmdVistaBrowser"
+                Style="{StaticResource styleButtonImgEdtFormTouch}"
+                Grid.Column="1"
+                ToolTip="Vista Browser" 
+                Height="24" 
+                Width="30"
+                Margin="0,0,0,0">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgPropCerrar"
+                       Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                       Stretch="UniformToFill"/>
+            </StackPanel>
+        </Button>
+        <TextBox Name="txtDescripcion"
+                     TabIndex="72"
+                     Grid.Column="2"
+                     Focusable="False"
+                     IsEnabled="True" />
+    </Grid>
+</UserControl>

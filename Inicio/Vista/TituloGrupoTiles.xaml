@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Inicio.Vista.TituloGrupoTiles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="22"
+             Width="120"
+             Padding="0,0,0,0"
+             HorizontalAlignment="Left"
+             d:DesignHeight="135" d:DesignWidth="210">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Sistema;component/Skins/EstiloSistema.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <TextBlock x:Name="txtTitulo" 
+                   Text ="Titulo"
+                   Style="{StaticResource styleTituloGrupoTiles}">
+            <Run Language="es-co"/>
+        </TextBlock>
+    </Grid>
+</UserControl>

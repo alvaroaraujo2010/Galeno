@@ -1,0 +1,52 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Inicio.VistaModelo"
+    xmlns:ADM="clr-namespace:Admision.VistaModelo;assembly=Admision"
+    xmlns:HOS="clr-namespace:Hospitalizacion.VistaModelo;assembly=Hospitalizacion"
+    xmlns:CAR="clr-namespace:Cartera.VistaModelo;assembly=Cartera"
+    xmlns:CIT="clr-namespace:CitasMedicas.VistaModelo;assembly=CitasMedicas"
+    xmlns:FCM="clr-namespace:FacturacionMedica.VistaModelo;assembly=FacturacionMedica"
+    xmlns:PYP="clr-namespace:PromocionyPrevencion.VistaModelo;assembly=PromocionyPrevencion"
+    xmlns:INV="clr-namespace:Inventarios.VistaModelo;assembly=Inventarios"
+    xmlns:HCL="clr-namespace:HistoriasClinicas.VistaModelo;assembly=HistoriasClinicas"
+    xmlns:GHC="clr-namespace:GestorReportes.VistaModelo;assembly=GestorReportes"
+    xmlns:FAR="clr-namespace:Farmacia.VistaModelo;assembly=Farmacia"
+    xmlns:ODN="clr-namespace:Odontologia.VistaModelo;assembly=Odontologia"
+    xmlns:CTO="clr-namespace:ContratoAseguramiento.VistaModelo;assembly=ContratoAseguramiento"
+    xmlns:SIA="clr-namespace:ConfigAsistencial.VistaModelo;assembly=ConfigAsistencial"
+    xmlns:SIS="clr-namespace:Sistema.VistaModelo;assembly=Sistema"
+    xmlns:SYS="clr-namespace:Systemas.VistaModelo;assembly=Systemas"
+    xmlns:SSP="clr-namespace:SaludPublica.VistaModelo;assembly=SaludPublica"
+    xmlns:CEX="clr-namespace:ConsultaExterna.VistaModelo;assembly=ConsultaExterna"
+    xmlns:MCI="clr-namespace:Meci.VistaModelo;assembly=Meci"    
+    xmlns:EST="clr-namespace:Estadisticas.VistaModelo;assembly=Estadisticas"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <!--*************************************************************************
+    xmlns:INV="clr-namespace:Inventario.VistaModelo;assembly=Inventario"-->
+
+    <!--Localizadores del proyecto por cada modulo -->
+    <!--*************************************************************************-->
+    <ADM:LocalizadorVistaModelo x:Key="ADM_Locator" d:IsDataSource="True" />
+    <HOS:LocalizadorVistaModelo x:Key="HOS_Locator" d:IsDataSource="True" />
+    <CAR:LocalizadorVistaModelo x:Key="CAR_Locator" d:IsDataSource="True" />
+    <CIT:LocalizadorVistaModelo x:Key="CIT_Locator" d:IsDataSource="True" />
+    <FCM:LocalizadorVistaModelo x:Key="FCM_Locator" d:IsDataSource="True" />
+    <PYP:LocalizadorVistaModelo x:Key="PYP_Locator" d:IsDataSource="True" />
+    <INV:LocalizadorVistaModelo x:Key="INV_Locator" d:IsDataSource="True" />
+    <HCL:LocalizadorVistaModelo x:Key="HCL_Locator" d:IsDataSource="True" />
+    <HCL:LocalizadorVistaModelo x:Key="GHC_Locator" d:IsDataSource="True" />
+    <FAR:LocalizadorVistaModelo x:Key="FAR_Locator" d:IsDataSource="True" />
+    <ODN:LocalizadorVistaModelo x:Key="ODN_Locator" d:IsDataSource="True" />
+    <CTO:LocalizadorVistaModelo x:Key="CTO_Locator" d:IsDataSource="True" />
+    <SIA:LocalizadorVistaModelo x:Key="SIA_Locator" d:IsDataSource="True" />
+    <SIS:LocalizadorVistaModelo x:Key="SIS_Locator" d:IsDataSource="True" />
+    <SYS:LocalizadorVistaModelo x:Key="SYS_Locator" d:IsDataSource="True" />
+    <SSP:LocalizadorVistaModelo x:Key="SSP_Locator" d:IsDataSource="True" />
+    <CEX:LocalizadorVistaModelo x:Key="CEX_Locator" d:IsDataSource="True" />
+    <MCI:LocalizadorVistaModelo x:Key="MCI_Locator" d:IsDataSource="True" />
+    <EST:LocalizadorVistaModelo x:Key="EST_Locator" d:IsDataSource="True" />
+    <!--*************************************************************************-->
+</ResourceDictionary>

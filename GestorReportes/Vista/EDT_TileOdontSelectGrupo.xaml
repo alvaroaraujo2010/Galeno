@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="GestorReportes.Vista.TileOdontSelectGrupo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Width="60" 
+             Height="60" 
+             mc:Ignorable="d">
+    <Grid>
+        <Button Name="cmdRegistro"
+                HorizontalAlignment="Center"
+                Style="{StaticResource styleButtonImgEdtFormTouchMini}"
+                TabIndex="50"
+                Height="60"
+                Cursor="Hand"
+                Width="58">
+            <Grid Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="60" Height="60">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Name="Select"
+                        Grid.Row="0" 
+                        Background="#6634C39F"
+                        Visibility="Collapsed"
+                        Grid.RowSpan="2"/>
+                <Image Name="imgImagen"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Grid.Row="0"
+                       Source="/Imagenes/Edt_formas_circulo.png"
+                       Style="{StaticResource styleImagBotonesForm}"
+                       Stretch="Fill" 
+                       Width="50" 
+                       Height="50"
+                       Grid.RowSpan="2" Margin="5,0"/>
+                <TextBlock Name="txtTexto" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top"
+                           FontSize="8"
+                           Grid.Row="1"
+                           FontFamily="Segoe UI Symbol"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Margin="-2"
+                           Height="20"
+                           Width="55"
+                           Text="AFECCIONES ESPECIFICADAS DE LOS DIENTES">
+                </TextBlock>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

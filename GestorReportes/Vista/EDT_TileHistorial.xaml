@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="GestorReportes.Vista.TileHistorial"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	        mc:Ignorable="d"
+	        x:Name="UserControl"
+	        d:DesignWidth="640" 
+            d:DesignHeight="200" 
+            Width="550" 
+            Height="Auto" 
+            Opacity="50">
+    <Grid Name="LayoutRoot" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="25" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="0,0,0,0"
+                BorderBrush="#FFB0AFAF"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Background="White" Margin="0,2,0,-2">
+        </Border>
+        <Border BorderThickness="0,0,0,0"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Margin="0,2,0,-2">
+        </Border>
+        <Border BorderThickness="0,0.9,0,0"
+                Grid.Row="0"
+                Height="3"
+                BorderBrush="#FFE4E4E4"
+                Margin="70,2,0,36">
+        </Border>
+        <!-- Orden servicio #FFB4B4B4 -->
+        <Ellipse Name="elpFondo" 
+                 Fill="#FFF99504"
+                 Grid.Row="0"
+                 Grid.RowSpan="2"
+                 HorizontalAlignment="Left" 
+                 Margin="15,12,0,0" 
+                 Height="50" 
+                 Width="50"
+                 VerticalAlignment="Top"/>
+        <Image Name="imgRegistro"
+               HorizontalAlignment="Left"
+               Width="45"
+               Height="45"
+               Grid.Row="0"
+               Grid.RowSpan="2" 
+               Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_documento.png"
+               Stretch="Uniform" Margin="16,14,0,11"/>
+        <!-- Titulo del Modulo -->
+        <Image Name="imgEstado"
+               HorizontalAlignment="Left"
+               Width="16" 
+               Height="16"
+               Source="/GestorReportes;component/Imagenes/Edt_hist_vista_abierto.png"
+               Stretch="UniformToFill" 
+               Grid.Row="1" Margin="12,1,0,3"/>
+        <TextBox Name="txtTitulo" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Grid.Row="0"
+                   Margin="73,9,0,0" 
+                   FontSize="13"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Left" 
+                   Text="Descripcion del evento"
+                   BorderBrush="Transparent"
+                   Width="365"
+                   IsReadOnly="True"
+                   Foreground="#FF1838A4"/>
+        <TextBlock Name="txtPrograma" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Margin="73,27,0,0" 
+                   Grid.Row="0"
+                   FontSize="10"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Left"
+                   Foreground="#FF898686" 
+                   Text="Programa Fecha y Hora" 
+                   Width="365"
+                   Height="16"
+                   TextWrapping="Wrap"/>
+        <Button Name="cmdHistorialOcultar"
+                Grid.Row="0"
+                Margin="0,4,57,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                TabIndex="50"
+                Click="fcvActivarVistaHistorial"
+                ToolTip="Ocultar la ventan Historial" 
+                Height="40"
+                Cursor="Hand"
+                Width="45">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgPropHistorial"
+                        Source="/GestorReportes;component/Imagenes/Edt_edt_contraer3.png"
+                        Style="{StaticResource styleImagBotonesForm}"
+                        Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdHistorialVer"
+                Grid.Row="0"
+                Margin="0,4,6,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                TabIndex="50"
+                ToolTip="Ver el registro de datos" 
+                Height="40" 
+                Cursor="Hand"
+                Width="45">
+            <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgHistorialVer"
+                        		   Source="/GestorReportes;component/Imagenes/Edt_hist_ver.png"
+                        		   Style="{StaticResource styleImagBotonesForm}"
+                        		   Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+        <TextBlock Name="txtTexto1" 
+                   Grid.Row="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   FontSize="11"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Left"
+                   Foreground="#FF5CA4C5"
+                   Margin="73,2,0,0"
+                   Text="Texto 1" 
+                   Width="410"
+                   Height="16">
+        </TextBlock>
+        <TextBlock Name="txtTexto2" 
+                   Grid.Row="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   FontSize="11"
+                   Visibility="Collapsed"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Left"
+                   Foreground="#FF898686" 
+                   Margin="73,20,0,0"
+                   Text="Texto 2" 
+                   Width="500"
+                   Height="16">
+        </TextBlock>
+        <StackPanel Name="stkHistorial"
+                    Grid.Row="2"
+                    Focusable="False"
+                    Orientation="Vertical"
+                    Height="Auto" 
+                    Margin="25,0,8,0"/>
+    </Grid>
+</UserControl>

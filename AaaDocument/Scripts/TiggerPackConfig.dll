@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultConnection> 
+    <add Name="DBLocalTiggerPack"/>
+  </DefaultConnection>
+  <ConnectionStrings>
+ 	<!-- ================================== -->
+	<!-- Local 						-->
+	<!-- ================================== -->
+    <add Name="DBLocalTiggerPackSQLite"
+		 ConnConexionDefaultDesc="Base de datos Sqlite"
+		 ConnMotorBaseDeDatos="SQLITE"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\TiggerPack20"
+		 ConnConnectionString="Data Source=C:/Proyectos/TiggerPack20/Datos/DbDatos/dbtiggerpack.db"
+		 ConnConnectionStringNativa="Data Source=C:/Proyectos/TiggerPack20/Datos/DbDatos/dbtiggerpack.db"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\TiggerPack20"
+		 RecursosWebTipoIpServidor="NORED"
+		 RecursosWebIpServidor="http://localhost"
+		 RecursosWebPath="resources"
+		 RecursosWebInicioPath="app/TiggerPack"/>		 
+   	<!-- ================================== -->
+	<!-- Local 						-->
+	<!-- ================================== -->
+    <add Name="DBLocalTiggerPack"
+		 ConnConexionDefaultDesc="Base de datos Local Tigger"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\TiggerPack20"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbtiggerpack;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbtiggerpack;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\TiggerPack20"
+		 RecursosWebTipoIpServidor="NORED"
+		 RecursosWebIpServidor="http://localhost"
+		 RecursosWebPath="resources"
+		 RecursosWebInicioPath="app/TiggerPack"/>		 
+    <!-- ================================== -->
+	<!-- Base de datos en Servidor local	-->
+	<!-- ================================== -->
+    <add Name="DBSesrvidorLocalTiggerPack"
+		 ConnConexionDefaultDesc="Base de datos Local servidor"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="TiggerPack20"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbtiggerpack;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbtiggerpack;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="TiggerPack20"
+		 RecursosWebTipoIpServidor="RED"
+		 RecursosWebIpServidor="http://192.168.1.100"
+		 RecursosWebPath="resources"
+		 RecursosWebInicioPath="app/TiggerPack"/>		 
+ 
+  </ConnectionStrings>
+</configuration>

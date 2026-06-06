@@ -1,0 +1,354 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 03/04/2017 08:07:10 PM -->
+<Window x:Class="Inventarios.Vista.VistaInvcontenedores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloInvcontenedores, Source={StaticResource INV_Locator}}"
+        Title="Tabla tipos de contenedores (presentacion articulos)"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="700"
+        Height="197"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Tabla tipos de contenedores (presentacion articulos)"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+               Grid.Row="1"
+               HorizontalAlignment="Right"
+               Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+               IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+               TabIndex="150"
+               Click="cmdSalir_Click"
+               ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                    Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                       Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,1,0"
+               VerticalAlignment="Top"
+               Grid.Row="4"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFIL}"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <!-- Fin Perfil Usuario -->
+        <Grid Grid.Row="2" Margin="8,2,8,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1inv_codctn_intc"
+                                           ToolTip="Código tipo de contenedor o presentación"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Código Contenedor"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_codctn_intc"
+                                         TabIndex="1"
+                                         Text="{Binding Path=G1Inv_codctn_intc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="2"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoAdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1inv_desctn_intc"
+                                           ToolTip="Descripción del contenedor de Artículo o presentación"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Descripción Contenedor"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_desctn_intc"
+                                         TabIndex="2"
+                                         Text="{Binding Path=G1Inv_desctn_intc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="30"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="cboG1Inv_estreg_intc"
+                            	Grid.Column="2"
+                            	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                            	Style="{StaticResource styleComboBoxFormResize}"
+                            	SelectedIndex="0"
+                            	SelectionChanged="SeleccionComboBoxOpcion"
+                            	ItemsSource="{Binding Path=G1CbInv_estreg_intc}"
+                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Name="lblG1inv_estreg_intc"
+                                           ToolTip="Estado del registro 1=Activo 2=Inactivo"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Estado del registro"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_estreg_intc"
+                                         TabIndex="3"
+                                         Text="{Binding Path=G1Inv_estreg_intc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         TextChanged="ActualizarComboBoxOpcion"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+        </Grid>
+        <Button Name="cmdGuardar"
+                Margin="220,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="4"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para guardar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Guardar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdAdicionar"
+                Margin="220,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="5"
+                Command="{Binding CmdADD}"
+                Visibility="Visible"
+                Click="fcvNuevoRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para crear un nuevo registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgAdicionar"
+                           Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblAdicionar"
+                               Text="Nuevo"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdCancelar"
+                Margin="323,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="6"
+                Command="{Binding CmdCAN}"
+                Click="fcvCancelarRegistro"
+                Grid.Row="3"
+                ToolTip="Cancelar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblCancelar"
+                               Text="Cancelar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdModificar"
+                Margin="323,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="7"
+                Visibility="Visible"
+                Command="{Binding CmdEDT}"
+                Click="fcvModificarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para modificar el registro activo">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgModificar"
+                           Source="/Sistema;component/Imagenes/sis_edt_modificar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblModificar"
+                               Text="Modificar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdEliminar"
+                Margin="426,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="8"
+                Command="{Binding CmdDEL}"
+                Grid.Row="3"
+                ToolTip="Eliminar este registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgEliminar"
+                           Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblEliminar"
+                               Text="Eliminar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdSalir"
+                Margin="0,10,10,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="9"
+                Command="{Binding CmdSAL}"
+                Click="cmdSalir_Click"
+                Grid.Row="3"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdLogErrores"
+                Margin="10,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="10"
+                Command="{Binding CmdERR}"
+                Click="fcvVistaLogErrores"
+                Grid.Row="3"
+                ToolTip="Ver registro de errores">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgLogErrores"
+                           Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblLogErrores"
+                               Text="Errores"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdBrowser"
+                Margin="112,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="13"
+                Command="{Binding CmdDFL}"
+                Click="fcvBrowserBuscar"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para buscar un registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgBrowser"
+                           Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblBrowser"
+                               Text="Buscar..."
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

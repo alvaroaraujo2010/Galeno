@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30807ef3f73b44e38bc8994669d8588f" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="Datos.EFadmcausaexterna" Width="1.75" PointX="0.5" PointY="0.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFadmviaingreso" Width="1.75" PointX="4.25" PointY="0.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFconareasfuncion" Width="1.75" PointX="0.5" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFconcentrodcosto" Width="1.75" PointX="2.375" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFconclasecuentas" Width="1.75" PointX="6.125" PointY="2.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFconnivelcuentas" Width="1.75" PointX="0.5" PointY="2.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFconplancuentas" Width="1.75" PointX="4.25" PointY="2.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmtiptarifario" Width="1.75" PointX="2.375" PointY="3.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFhosestadocama" Width="1.75" PointX="0.5" PointY="10.75" IsExpanded="false" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="Datos.EFhosseccionareas" Width="1.75" PointX="0.5" PointY="11.25" IsExpanded="false" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="Datos.EFhostipocamas" Width="1.75" PointX="6.125" PointY="10.75" IsExpanded="false" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="Datos.EFsiacentroaten" Width="1.75" PointX="6.125" PointY="15.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiamedidaedad" Width="1.75" PointX="4.25" PointY="16.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsianivelsisben" Width="1.75" PointX="2.375" PointY="17.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipaficontri" Width="1.75" PointX="6.125" PointY="15.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipdiscapaci" Width="1.75" PointX="6.125" PointY="17.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipideusario" Width="1.75" PointX="6.125" PointY="16.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipocotizante" Width="1.75" PointX="4.25" PointY="15.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatippoblacion" Width="1.75" PointX="2.375" PointY="15.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsisestadoproces" Width="1.75" PointX="0.5" PointY="12.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsisestadoregist" Width="1.75" PointX="0.5" PointY="12.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsistabdepartame" Width="1.75" PointX="4.25" PointY="12.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsistabmunicipio" Width="1.75" PointX="6.125" PointY="12.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsiszonaresidenc" Width="1.75" PointX="2.375" PointY="12.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsysaccionperfil" Width="1.75" PointX="2.375" PointY="20.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsyscomponentacc" Width="1.75" PointX="6.125" PointY="20.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsysconexionbdat" Width="1.75" PointX="6.125" PointY="20.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsysgeneradorcod" Width="1.75" PointX="4.25" PointY="20.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsysperfiusuario" Width="1.75" PointX="0.5" PointY="20.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsystipocomponen" Width="1.75" PointX="0.5" PointY="21.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsysusuarios" Width="1.75" PointX="2.375" PointY="21.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsystipoaccicomp" Width="1.75" PointX="0.5" PointY="20.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsyscompmodulos" Width="1.75" PointX="2.375" PointY="20.375" FillColor="Thistle" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsyscomponperfil" Width="1.75" PointX="4.25" PointY="20.875" FillColor="Thistle" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhoshabitaciones" Width="1.75" PointX="4.25" PointY="10.75" FillColor="255, 224, 192" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsistablaiva" Width="1.75" PointX="2.375" PointY="12.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFcitcausacancita" Width="1.75" PointX="0.5" PointY="23.375" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsiaconsultorios" Width="1.75" PointX="0.5" PointY="15.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiaprofesisalud" Width="1.75" PointX="0.5" PointY="16.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiamaeprofespas" Width="1.75" PointX="0.5" PointY="17.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipprofatien" Width="1.75" PointX="2.375" PointY="15.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsysgrupomodusis" Width="1.75" PointX="0.5" PointY="21.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsiaespecialimed" Width="1.75" PointX="0.5" PointY="17.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFcitestadoascita" Width="1.75" PointX="0.5" PointY="23.875" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsiaregimensalud" Width="1.75" PointX="2.375" PointY="17.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsianivcontribut" Width="1.75" PointX="4.25" PointY="17.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsistablasexos" Width="1.75" PointX="0.5" PointY="13.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFadmtipoatencion" Width="1.75" PointX="6.125" PointY="0.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsiafinaliconsul" Width="1.75" PointX="2.375" PointY="18.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiafinaliproced" Width="1.75" PointX="4.25" PointY="18.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiagrupoactipyp" Width="1.75" PointX="0.5" PointY="18.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsialaboratorios" Width="1.75" PointX="0.5" PointY="18.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatablatprips" Width="1.75" PointX="6.125" PointY="17.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipactividad" Width="1.75" PointX="6.125" PointY="18.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFconterceros" Width="1.75" PointX="2.375" PointY="2.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsiaactividadpyp" Width="1.75" PointX="2.375" PointY="18.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFfcmactquirurgic" Width="1.75" PointX="2.375" PointY="4.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFadmdestinosalir" Width="1.75" PointX="0.5" PointY="1" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsiatipodiagprin" Width="1.75" PointX="6.125" PointY="18.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatablaips" Width="1.75" PointX="0.5" PointY="19.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatregatencion" Width="1.75" PointX="2.375" PointY="16.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiacopagcontrib" Width="1.75" PointX="2.375" PointY="16.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiacopagosisben" Width="1.75" PointX="4.25" PointY="16.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiacopagpobespe" Width="1.75" PointX="6.125" PointY="16.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsissalariomin" Width="1.75" PointX="2.375" PointY="13.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFfcmdatoscontrol" Width="1.75" PointX="6.125" PointY="3.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFgrcmaesrecursos" Width="1.75" PointX="0.5" PointY="28.25" IsExpanded="false" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrpgrupoplantil" Width="1.75" PointX="0.5" PointY="29.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFgrccategoriarec" Width="1.75" PointX="2.375" PointY="28.25" IsExpanded="false" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclmaestrohiscl" Width="1.75" PointX="2.375" PointY="31.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrpformatoplant" Width="1.75" PointX="6.125" PointY="29.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsysmodulosistem" Width="1.75" PointX="4.25" PointY="21.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsisocupaciones" Width="1.75" PointX="4.25" PointY="13.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFspocupacionciuo" Width="1.75" PointX="4.25" PointY="25.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhcltipodocument" Width="1.75" PointX="2.375" PointY="31.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhcltiporegturno" Width="1.75" PointX="0.5" PointY="32.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhcltiporegserms" Width="1.75" PointX="0.5" PointY="31.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhcltipoliquidos" Width="1.75" PointX="0.5" PointY="32.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclviasliquidos" Width="1.75" PointX="2.375" PointY="32.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsisactualizarch" Width="1.75" PointX="6.125" PointY="13.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsisactualizcamp" Width="1.75" PointX="0.5" PointY="13.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsismadeplavalid" Width="1.75" PointX="2.375" PointY="13.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsismaesplavalid" Width="1.75" PointX="4.25" PointY="13.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsistipoarchivos" Width="1.75" PointX="6.125" PointY="13.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFspconfigura4505" Width="1.75" PointX="4.25" PointY="25.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsptablmsres4505" Width="1.75" PointX="6.125" PointY="25.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnanatomdiente" Width="1.75" PointX="0.5" PointY="40.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnimgcracorona" Width="1.75" PointX="2.375" PointY="40.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnmscuadrantes" Width="1.75" PointX="6.125" PointY="40.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodntiposdientes" Width="1.75" PointX="4.25" PointY="40.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodndiagnosticos" Width="1.75" PointX="4.25" PointY="41.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnimagengrafde" Width="1.75" PointX="0.5" PointY="41.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnimagengrafms" Width="1.75" PointX="6.125" PointY="41.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnserviciosips" Width="1.75" PointX="2.375" PointY="41.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodnmaestdientes" Width="1.75" PointX="0.5" PointY="41.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodneventosactms" Width="1.75" PointX="4.25" PointY="41.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcitmaestroturno" Width="1.75" PointX="4.25" PointY="23.375" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFcitservprotocol" Width="1.75" PointX="2.375" PointY="23.375" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFfcmgrquirurgico" Width="1.75" PointX="2.375" PointY="5.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFfcmmansercompaq" Width="1.75" PointX="4.25" PointY="5.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFfcmmantarifario" Width="1.75" PointX="4.25" PointY="4.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFsisparametroips" Width="1.75" PointX="0.5" PointY="14.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFmciplantillmeci" Width="1.75" PointX="6.125" PointY="43.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFfcmdescueautori" Width="1.75" PointX="0.5" PointY="4.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFmcicomponenmeci" Width="1.75" PointX="2.375" PointY="43.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcigrupoprgmeci" Width="1.75" PointX="2.375" PointY="43.625" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcimoduloevmeci" Width="1.75" PointX="0.5" PointY="43.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmciparametrmeci" Width="1.75" PointX="4.25" PointY="43.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcipreguntameci" Width="1.75" PointX="4.25" PointY="43.625" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcitiporespuede" Width="1.75" PointX="0.5" PointY="44.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcitiporespuems" Width="1.75" PointX="6.125" PointY="43.625" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcivistaformato" Width="1.75" PointX="0.5" PointY="43.625" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcievaluacionde" Width="1.75" PointX="4.25" PointY="44.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFmcievaluacionms" Width="1.75" PointX="2.375" PointY="44.125" IsExpanded="false" FillColor="Tomato" />
+        <EntityTypeShape EntityType="Datos.EFfcmcenproduccio" Width="1.75" PointX="6.125" PointY="4.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFsysadmgrupomens" Width="1.75" PointX="6.125" PointY="21.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFadmordendsalida" Width="1.75" PointX="2.375" PointY="0.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhosestanciapaci" Width="1.75" PointX="2.375" PointY="10.75" IsExpanded="false" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="Datos.EFadmregistegreso" Width="1.75" PointX="6.125" PointY="1" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFadmregurgencias" Width="1.75" PointX="0.5" PointY="1.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhosconfigmodulo" Width="1.75" PointX="4.25" PointY="11.25" IsExpanded="false" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="Datos.EFfcmcuentacobrde" Width="1.75" PointX="2.375" PointY="5.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFestplaninformes" Width="1.75" PointX="0.5" PointY="44.75" IsExpanded="false" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Datos.EFsiadiagnosticos" Width="1.75" PointX="4.25" PointY="18.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsisproveedores" Width="1.75" PointX="2.375" PointY="14.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsisgrupomedidas" Width="1.75" PointX="4.25" PointY="12.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsisunidadmedida" Width="1.75" PointX="6.125" PointY="12.75" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFsyscomponentes" Width="1.75" PointX="6.125" PointY="21.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFgrpplantvistcam" Width="1.75" PointX="2.375" PointY="30.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregisevcampo" Width="1.75" PointX="6.125" PointY="32.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclvariabactual" Width="1.75" PointX="0.5" PointY="33.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclvariabgrupos" Width="1.75" PointX="2.375" PointY="33.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrpplantvistsec" Width="1.75" PointX="0.5" PointY="30.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodngrupovistama" Width="1.75" PointX="0.5" PointY="42.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodngrupovistamd" Width="1.75" PointX="2.375" PointY="42.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodneventosactde" Width="1.75" PointX="6.125" PointY="41.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvajusteconcep" Width="1.75" PointX="2.375" PointY="45.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvalmacenestan" Width="1.75" PointX="6.125" PointY="46.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvalmacenusuar" Width="1.75" PointX="0.5" PointY="45.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvalmacexisten" Width="1.75" PointX="0.5" PointY="46.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvkardexcierre" Width="1.75" PointX="6.125" PointY="48.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvmaeartimagen" Width="1.75" PointX="2.375" PointY="47.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvmovdiariosmd" Width="1.75" PointX="0.5" PointY="48.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvresponsables" Width="1.75" PointX="6.125" PointY="47.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvtiparchigest" Width="1.75" PointX="2.375" PointY="48.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvtipoconcemov" Width="1.75" PointX="2.375" PointY="47.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvtiporecompra" Width="1.75" PointX="4.25" PointY="48.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvtiporegimovi" Width="1.75" PointX="4.25" PointY="46.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvcontenedores" Width="1.75" PointX="4.25" PointY="46.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvinventgrupos" Width="1.75" PointX="6.125" PointY="46.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvinventsubgru" Width="1.75" PointX="2.375" PointY="46.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvalmacenmaest" Width="1.75" PointX="0.5" PointY="46.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvmovcomprasma" Width="1.75" PointX="4.25" PointY="47.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvperiodomaest" Width="1.75" PointX="2.375" PointY="46.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvkardexmaestr" Width="1.75" PointX="6.125" PointY="47.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFgrcestandargest" Width="1.75" PointX="4.25" PointY="28.25" IsExpanded="false" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrctiporecursos" Width="1.75" PointX="6.125" PointY="28.25" IsExpanded="false" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclhistarchivos" Width="1.75" PointX="0.5" PointY="31.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrcestandarespe" Width="1.75" PointX="0.5" PointY="28.75" IsExpanded="false" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexcbo01" Width="1.75" PointX="6.125" PointY="33.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexcbx01" Width="1.75" PointX="0.5" PointY="33.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexchk01" Width="1.75" PointX="2.375" PointY="33.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexchl01" Width="1.75" PointX="4.25" PointY="33.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexfec01" Width="1.75" PointX="6.125" PointY="33.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexmem01" Width="1.75" PointX="0.5" PointY="34.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexmen01" Width="1.75" PointX="4.25" PointY="33.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexmeo01" Width="1.75" PointX="4.25" PointY="34.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexnum01" Width="1.75" PointX="6.125" PointY="34.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexrbt01" Width="1.75" PointX="0.5" PointY="34.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexrec01" Width="1.75" PointX="2.375" PointY="34.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexrel01" Width="1.75" PointX="4.25" PointY="34.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisextxa01" Width="1.75" PointX="6.125" PointY="34.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisextxb01" Width="1.75" PointX="2.375" PointY="34.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclformatperfil" Width="1.75" PointX="2.375" PointY="35.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrpmaeplantilla" Width="1.75" PointX="4.25" PointY="29.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspactivmediceve" Width="1.75" PointX="6.125" PointY="25.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspactivmedicgen" Width="1.75" PointX="0.5" PointY="25.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsptabcamposplan" Width="1.75" PointX="0.5" PointY="26.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclformatguiama" Width="1.75" PointX="4.25" PointY="35.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclformatguiamd" Width="1.75" PointX="6.125" PointY="35.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFadmtriagemaestr" Width="1.75" PointX="2.375" PointY="1.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhoscamasareas" Width="1.75" PointX="2.375" PointY="11.25" IsExpanded="false" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="Datos.EFsismaesdependen" Width="1.75" PointX="4.25" PointY="14.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFinvmovdiariosma" Width="1.75" PointX="0.5" PointY="47.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFctomanservicios" PointX="4.25" PointY="10" Width="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsiapertenetnica" Width="1.75" PointX="2.375" PointY="19.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFctomaeafiliados" Width="1.75" PointX="2.375" PointY="10" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfrecuenciuso" Width="1.75" PointX="0.5" PointY="5.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFinvajustesmaema" Width="1.75" PointX="4.25" PointY="45.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFadmregnacimient" Width="1.75" PointX="4.25" PointY="1" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFfcmsecrfacturas" Width="1.75" PointX="2.375" PointY="4.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFsysvarconfigma" Width="1.75" PointX="2.375" PointY="22.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsysvarconfigmd" Width="1.75" PointX="4.25" PointY="22.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsistipidtercer" Width="1.75" PointX="8" PointY="12.25" IsExpanded="false" FillColor="Coral" />
+        <EntityTypeShape EntityType="Datos.EFinvajustesmaemd" Width="1.75" PointX="6.125" PointY="45.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvajustesmaemr" Width="1.75" PointX="0.5" PointY="48.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfargrufarmacoma" Width="1.75" PointX="0.5" PointY="50.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfargrufarmacomd" Width="1.75" PointX="2.375" PointY="50.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarmaeclasifatc" Width="1.75" PointX="0.5" PointY="50.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarmedicamimage" Width="2" PointX="4.25" PointY="50.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarmedicamviadm" Width="1.875" PointX="6.375" PointY="50.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarmodalicomerc" Width="1.875" PointX="6.375" PointY="51.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarunidadmedida" Width="1.75" PointX="2.375" PointY="50.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarexpedmedicma" Width="2" PointX="4.25" PointY="50.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarexpedmedicmd" Width="1.875" PointX="6.375" PointY="50.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarexpedpriacmd" Width="2" PointX="4.25" PointY="51.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarlaboratorios" Width="1.75" PointX="0.5" PointY="51.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarmovmedicamma" Width="1.75" PointX="0.5" PointY="51.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfarmovmedicammd" Width="1.75" PointX="2.375" PointY="51.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsiaareapreservi" Width="1.75" PointX="4.25" PointY="17.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFinvmaearticulos" Width="1.75" PointX="0.5" PointY="47.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFinvmovcomprasmd" Width="1.75" PointX="4.25" PointY="47.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhcltiporegactiv" Width="1.75" PointX="4.25" PointY="32.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclformatvistma" Width="1.75" PointX="0.5" PointY="35.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFfcmmaedetallfac" Width="1.75" PointX="0.5" PointY="4.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFsiamaeprofsalud" Width="1.75" PointX="0.5" PointY="16.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFfcmmaescajadeta" Width="1.75" PointX="6.125" PointY="5.25" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFsysmoduloperfil" Width="1.75" PointX="6.125" PointY="22.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfcmmaescajatran" Width="1.75" PointX="6.125" PointY="4.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFfcmsoatmanualma" Width="1.75" PointX="4.25" PointY="5.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFspprogramgrupmd" Width="1.75" PointX="2.375" PointY="26.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspactivmedicvar" Width="1.75" PointX="2.375" PointY="26.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspactivservfact" Width="1.75" PointX="2.375" PointY="25.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspprogramgrupma" Width="1.75" PointX="0.5" PointY="26.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFadmtriagemaconf" Width="1.75" PointX="4.25" PointY="1.5" IsExpanded="false" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsptablaperiodos" Width="1.75" PointX="2.375" PointY="25.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsysadmnotigrupo" Width="1.75" PointX="0.5" PointY="22.375" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFsysadmstipomens" Width="1.75" PointX="4.25" PointY="21.875" IsExpanded="false" FillColor="Thistle" />
+        <EntityTypeShape EntityType="Datos.EFfcmcuentacobrms" Width="1.75" PointX="0.5" PointY="5.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFsptabcampos4505" Width="1.75" PointX="0.5" PointY="25.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspmaestplangest" Width="1.75" PointX="4.25" PointY="26.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspmaestroprocma" Width="1.75" PointX="4.25" PointY="26.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsptablnsres4505" Width="1.75" PointX="6.125" PointY="26.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspvaloredefault" Width="1.75" PointX="6.125" PointY="27.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFspvaloredefmaes" Width="1.75" PointX="6.125" PointY="26.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcitservicioprog" Width="1.75" PointX="2.375" PointY="23.875" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFcitmaesdetacita" Width="1.75" PointX="6.125" PointY="23.375" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsiatablaeps" Width="1.75" PointX="0.5" PointY="15.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiatipoasegurad" Width="1.75" PointX="4.25" PointY="19.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFestplangr2193md" Width="1.75" PointX="4.25" PointY="44.75" IsExpanded="false" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Datos.EFestplangr2193ma" Width="1.75" PointX="2.375" PointY="44.75" IsExpanded="false" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexchm01" Width="1.75" PointX="0.5" PointY="35.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexrbm01" Width="1.75" PointX="2.375" PointY="35.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexrbn01" Width="1.75" PointX="4.25" PointY="35.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisextxc01" Width="1.75" PointX="0.5" PointY="36.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclregisexrbo01" Width="1.75" PointX="6.125" PointY="35.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFsianiveleducati" Width="1.75" PointX="6.125" PointY="19.125" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFsiausuarioatend" Width="1.75" PointX="4.25" PointY="15.625" IsExpanded="false" FillColor="PaleTurquoise" />
+        <EntityTypeShape EntityType="Datos.EFhclvariabmaestr" Width="1.75" PointX="2.375" PointY="32.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclframghamedad" Width="1.75" PointX="4.25" PointY="36.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclframghamnive" Width="1.75" PointX="0.5" PointY="36.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclframghampart" Width="1.75" PointX="4.25" PointY="36.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclframghamr10a" Width="1.75" PointX="6.125" PointY="36.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclframghamctrl" Width="1.75" PointX="2.375" PointY="36.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhclframghamotrs" Width="1.75" PointX="2.375" PointY="36.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhcltesteadareas" Width="1.75" PointX="0.5" PointY="37.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhcltesteadescal" Width="1.75" PointX="6.125" PointY="36.75" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFhcltesteadrango" Width="1.75" PointX="2.375" PointY="37.25" IsExpanded="false" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="Datos.EFgrpmaeversplant" Width="1.75" PointX="2.375" PointY="29.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmmanservicios" Width="1.75" PointX="4.25" PointY="4.75" IsExpanded="false" FillColor="Teal" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeenviosdianma" Width="1.75" PointX="2.375" PointY="7.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeenviosdianmd" Width="1.75" PointX="0.5" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeestadoresadqu" Width="1.75" PointX="0.5" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeestadoresdian" Width="1.75" PointX="0.5" PointY="7.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemaescontrato" Width="1.75" PointX="2.375" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemaestarifama" Width="1.75" PointX="2.375" PointY="8.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemaestarifamd" Width="1.75" PointX="4.25" PointY="7.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemediosdepago" Width="1.75" PointX="2.375" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfesecrfacturas" Width="1.75" PointX="4.25" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfetipodocument" Width="1.75" PointX="4.25" PointY="8.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeunspscasegme" Width="1.75" PointX="0.5" PointY="8.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeunspscbfamil" Width="1.75" PointX="6.125" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeunspsccclase" Width="1.75" PointX="4.25" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfeunspscdprodu" Width="1.75" PointX="6.125" PointY="8.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsismaesimpuesma" Width="1.75" PointX="8" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.Efsismaesimpuesmd" Width="1.75" PointX="8" PointY="13.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsisresponfiscal" Width="1.75" PointX="8" PointY="12.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemaesrazsocma" Width="1.75" PointX="0.5" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarconceptfact" Width="2" PointX="4.25" PointY="54" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarconceptfactmd" Width="1.875" PointX="6.375" PointY="54" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsismaesterceros" Width="1.75" PointX="6.125" PointY="14.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarfemailgestiomd" Width="1.75" PointX="2.375" PointY="54.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarfemailgestiomf" Width="2" PointX="4.25" PointY="54.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarfemailgestioma" Width="1.75" PointX="0.5" PointY="54.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmmaesfacturas" Width="1.75" PointX="0.5" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFctomaescontrato" Width="1.75" PointX="0.5" PointY="10" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarmaesfactuma" Width="1.75" PointX="0.5" PointY="54" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcarmaesfactumd" Width="1.75" PointX="2.375" PointY="54" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemaesfactefma" Width="1.75" PointX="6.125" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmfemaesfactefmd" Width="1.75" PointX="6.125" PointY="7.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmmanservicate" Width="1.75" PointX="6.125" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFfcmmanservicips" Width="1.75" PointX="4.25" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregbliqidode" Width="1.75" PointX="6.125" PointY="31.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregbliqidoms" Width="1.75" PointX="6.125" PointY="31.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregiseventos" Width="1.75" PointX="4.25" PointY="31.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregordeserde" Width="1.75" PointX="4.25" PointY="32.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregordeserms" Width="1.75" PointX="4.25" PointY="31.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFodneventosmaest" Width="1.75" PointX="2.375" PointY="41.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFsysadmsmensajes" Width="1.75" PointX="2.375" PointY="21.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFhclregnotasmedi" Width="1.75" PointX="6.125" PointY="32.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFcitmaesasigcita" Width="1.75" PointX="4.25" PointY="23.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Datos.EFadmregadmision" Width="1.75" PointX="2.375" PointY="1" IsExpanded="false" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,444 @@
+﻿<Window x:Class="Estadisticas.Vista.EstGestionCalidadInformes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Solicitud servicios medicos"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="730"
+        Height="600"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+                   Height="40"
+                   Width="Auto"
+                   Margin="0,0,0,0"
+                   VerticalAlignment="Top"
+                   Grid.Row="1"
+                   Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+                   StretchDirection="UpOnly"
+                   Stretch="Fill"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+                   Height="50"
+                   Margin="5,1,0,0"
+                   VerticalAlignment="Top"
+                   Width="50"
+                   Grid.RowSpan="2"
+                   Source="/Sistema;component/Imagenes/sis_logo40.png"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Informes gestión calidad"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Image MouseDown="btnCerrar_KeyDown"
+                   Style="{StaticResource styleImgButtonCerrarForm}"
+                   Source="/Sistema;component/Imagenes/sis_cerrar40.png"
+                   Grid.Row="1"
+                   Visibility="Collapsed"
+                   IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+                   Cursor="Hand"/>
+        <Button Name="cmdCerrar"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                    TabIndex="50"
+                    Click="cmdSalir_Click"
+                    ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                           Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left"
+                   Height="50"
+                   Width="Auto"
+                   Margin="1,3,1,0"
+                   VerticalAlignment="Top"
+                   Grid.Row="5"
+                   Source="/Sistema;component/Imagenes/sis_fondo40.png"
+                   StretchDirection="UpOnly"
+                   Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFILTRO}" Grid.RowSpan="2"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89" Grid.RowSpan="2"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89" Grid.RowSpan="2"/>
+        <!-- Fin Perfil Usuario -->
+        <!-- Control modo edicion formulario -->
+        <TextBox Name="lblFormModoPopup"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrSIS_FormModoPopup,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89" Grid.RowSpan="2"/>
+        <!-- Fin Control modo edicion formulario -->
+        <Grid Grid.Row="2" Margin="12,8,12,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblTipoinforme" Grid.Column="0"
+                           Style="{StaticResource styleEtiquetasFormResize}">
+                     <Run Language="es-co" Text="Tipo de informe"/>
+                </TextBlock>
+                <TextBox Name="txtTipoInforme"
+                                 TabIndex="7"
+                                 Visibility="Collapsed"
+                                 Style="{StaticResource styleTextBoxFormResize}"
+                                 Grid.Column="0"/>
+                <ComboBox Name="cboTipoInforme"
+                                  Grid.Column="1"
+                                  Style="{StaticResource styleComboBoxFormResize}"
+                                  SelectedIndex="0"
+                                  FontSize="14"
+                                  SelectionChanged="SeleccionComboBoxOpcion"
+                                  DisplayMemberPath="{Binding Path=NombreOpcion}"
+                                  SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                                  Height="24" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+            <Border Style="{DynamicResource styleBorderFondoForm}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"/>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblFiltroFechaInicio" Grid.Column="0"
+                           Style="{StaticResource styleEtiquetasFormResize}">
+                      <Run Language="es-co" Text="Fecha inicio periodo"/>
+                </TextBlock>
+                <Grid Grid.Column="1" Style="{StaticResource styleDatePickerGridFormResize}">
+                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                    <TextBox Name="txtFiltroFechaInicio"
+                                         TabIndex="1"
+                                         BorderThickness="0.5"
+                                         BorderBrush="White"
+                                         Style="{StaticResource styleTextBoxFormFecha}"
+                                         TextChanged="fcvActualizarDatePicker"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                    <DatePicker Name="dpkFiltroFechaInicio"
+                                        Style="{StaticResource styleDatePickerForm}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblFiltroFechaFin" Grid.Column="0"
+                               Style="{StaticResource styleEtiquetasFormResize}">
+                             <Run Language="es-co" Text="Fecha fin periodo"/>
+                </TextBlock>
+                <Grid Grid.Column="1" Style="{StaticResource styleDatePickerGridFormResize}">
+                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                    <TextBox Name="txtFiltroFechaFin"
+                                 TabIndex="1"
+                                 BorderThickness="0.5"
+                                 BorderBrush="White"
+                                 Style="{StaticResource styleTextBoxFormFecha}"
+                                 TextChanged="fcvActualizarDatePicker"
+                                 TouchEnter="fcvTouchEnterTeclado"
+                                 KeyDown="fcvMoverFocus_KeyDown"
+                                 GotFocus="fcvTextBox_GotFocus"/>
+                    <DatePicker Name="dpkFiltroFechaFin"
+                                    Style="{StaticResource styleDatePickerForm}"/>
+                </Grid>
+            </Grid>
+            <Border Style="{DynamicResource styleBorderFondoForm}"
+                        Grid.Row="4"
+                        Grid.RowSpan="4"
+                        Grid.ColumnSpan="2"/>
+            <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1cto_seccon_cont"
+                                                           ToolTip="Secuencial Unico de Contrato"
+                                                           Grid.Column="0"
+                                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                                           <Run Language="es-co" Text="Número Contrato"/>
+                </TextBlock>
+                <TextBox Name="txtG1Cto_seccon_cont"
+                                 TabIndex="4"
+                                 Style="{StaticResource styleTextBoxFormResize}"
+                                 TextChanged="fcvValidacionTexto"
+                                 TouchEnter="fcvTouchEnterTeclado"
+                                 Grid.Column="1"
+                                 KeyDown="txtG1Cto_seccon_cont_KeyDown"
+                                 GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1Contrato"
+                                Content="..."
+                                Style="{StaticResource styleButtonMiniFormBrows}"
+                                TabIndex="101"
+                                Click="cmdG1Cto_seccon_cont_Click"
+                                Grid.Column="2"
+                                ToolTip="Numero unico de Contrato"/>
+                <TextBox Name="txtG1Cto_nrocon_cont"
+                                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                         TouchEnter="fcvTouchEnterTeclado"
+                                                         Grid.Column="3"
+                                                         Focusable="False"
+                                                         KeyDown="fcvMoverFocus_KeyDown"
+                                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1cto_nrocon_cont"
+                                                       ToolTip="Descripcion contrato"
+                                                       Grid.Column="0"
+                                                       Style="{StaticResource styleEtiquetasFormResize}">
+                                                       <Run Language="es-co" Text="Descripcion contrato"/>
+                </TextBlock>
+                <TextBox Name="txtG1Cto_descon_cont"
+                                                     TabIndex="101"
+                                                     Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                     TouchEnter="fcvTouchEnterTeclado"
+                                                     Grid.Column="3"
+                                                     Focusable="False"
+                                                     KeyDown="fcvMoverFocus_KeyDown"
+                                                     GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="6" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lbG1Sia_codeps_teps" Grid.Column="0"
+                                   Style="{StaticResource styleEtiquetasFormResize}">
+                               <Run Language="es-co" Text="Código EPS"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sia_codeps_teps"
+                             TabIndex="5"
+                             Style="{StaticResource styleTextBoxFormResize}"
+                             TextChanged="fcvValidacionTexto"
+                             TouchEnter="fcvTouchEnterTeclado"
+                             Grid.Column="1"
+                             KeyDown="txtG1Sia_codeps_teps_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1CodigoEps"
+                            Content="..."
+                            Style="{StaticResource styleButtonMiniFormBrows}"
+                            TabIndex="103"
+                            Click="cmdG1Sia_codeps_teps_Click"
+                            Grid.Column="2"
+                            ToolTip="Empresa o Eps aseguradora según codigos asignados por la supersalud"/>
+                <TextBox Name="txtG1Sia_deseps_teps"
+                             TabIndex="103"
+                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                             TouchEnter="fcvTouchEnterTeclado"
+                             Grid.Column="3"
+                             Focusable="False"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+        </Grid>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.Row="3" 
+                Margin="10,3,10,3"/>
+        <ScrollViewer Name="PanelScroll" 
+                      HorizontalAlignment="Stretch" 
+                      Width="Auto"
+                      Grid.Row="3"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"
+                      PanningMode="HorizontalFirst"
+                      CanContentScroll="False"
+                      Height="Auto" 
+                      Margin="12,10,12,5">
+            <StackPanel Name="stkHistorial"
+                       Focusable="False"
+                       Orientation="Vertical"
+                       Height="Auto"/>
+        </ScrollViewer>
+        <Grid Grid.Row="4" Margin="10,0,8,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtRips"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     Height="20" 
+                     Width="20" Margin="-10,-3,0,0"/>
+            <TextBlock Name="lblTituloRutaDestino"
+                       ToolTip="Ruta por defecto para generar los archivos planos"
+                       Grid.Column="0"
+                       FontSize="14"
+                       Style="{StaticResource styleEtiquetasVistaPropEtiqueta}" 
+                       Height="22" Foreground="#FF292828">
+                    <Run Language="es-co" Text="Ruta destino planos"/>
+            </TextBlock>
+            <TextBox Name="txtRutaDestinoPlanos"
+                     TabIndex="7"
+                     Style="{StaticResource styleTextBoxVistaPropCaptura}"
+                     TouchEnter="fcvTouchEnterTeclado"
+                     Grid.Column="1"
+                     Height="25"
+                     Text="C:\PLANOS890\RIPS\"
+                     IsEnabled="False"/>
+        </Grid>
+        <!-- BOTONES BARRA DE EDICION -->
+        <Button Name="cmdLogErrores"
+                        Margin="10,10,0,0"
+                        Style="{StaticResource styleButtonImgForm}"
+                        TabIndex="19"
+                        Click="fcvVistaLogErrores"
+                        Grid.Row="5"
+                        ToolTip="Ver registro de errores">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgLogErrores"
+                               Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                               Style="{StaticResource styleImagBotonesForm}"
+                               Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblLogErrores"
+                                   Text="Errores"
+            	                   Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdGenerar"
+                Margin="193,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="9"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para generar planos Rips">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                               Style="{StaticResource styleImagBotonesForm}"
+                               Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                                  Text="Generar"
+            	                   Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opPLANO"
+                              Click="fcvExportarFormatoPlano"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Exportar a Archivo plano (TXT)">
+                        <MenuItem.Icon>
+                            <Image Stretch="Fill"
+                                   Style="{StaticResource styleImagMenuContextButton}"
+                                   SnapsToDevicePixels="False" 
+                                   Source="/Sistema;component/Imagenes/Edt_edt_copiar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opEXCEL"
+                              Click="fcvExportarForamtoExcel"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Exportar a Excel">
+                        <MenuItem.Icon>
+                            <Image Stretch="Fill"
+                                   Style="{StaticResource styleImagMenuContextButton}"
+                                   Source="/Sistema;component/Imagenes/Edt_edt_excel.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Name="cmdSalir"
+                    Margin="622,10,0,0"
+                    Style="{StaticResource styleButtonImgForm}"
+                    TabIndex="14"
+                    Command="{Binding CmdSAL}"
+                    Click="cmdSalir_Click"
+                    Grid.Row="5"
+                    ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

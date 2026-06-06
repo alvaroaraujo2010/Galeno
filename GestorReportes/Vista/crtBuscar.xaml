@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="GestorReportes.Vista.crtBuscar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Height="32"
+             Width="Auto"
+             Padding="0,0,0,0"
+             d:DesignHeight="32" 
+             d:DesignWidth="220">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Sistema;component/Skins/EstiloSistema.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="35"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Style="{StaticResource styleCrtBrdBuscarTiles}" Grid.ColumnSpan="3"/>
+        <Image  Source="/Sistema;component/Imagenes/sis_edt_filtro.png" 
+                Grid.Column="0" 
+                HorizontalAlignment="Left"
+                Margin="5,4,4,4" />
+        <TextBox Name="txtBuscar" 
+                 Style="{StaticResource styleTextBuscarTiles}" 
+                 TouchEnter="fcvTouchEnterTeclado"
+                 TextChanged="txtBuscar_TextChanged"
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="2"
+                 Margin="4,4,3,0" 
+                 Width="Auto"/>
+        <Button Name="cmdLimpiar"
+				Grid.Column="2"
+				Margin="5,3,0,0"
+				HorizontalAlignment="Left"
+				Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+				Click="fcvLimpiarTexto"
+				Height="25"
+				Cursor="Hand"
+                ToolTip="limpiar texto"
+				Width="28">
+            <StackPanel Orientation="Horizontal"
+                        Height="22"
+                        Width="22"
+				        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgVista"
+                        Height="22"
+                        Width="22"
+                        Margin="0,0,0,0"
+						Source="/Sistema;component/Imagenes/Edt_hist_vista_anuladoex.png"
+						Style="{StaticResource styleImagBotonesForm}"
+						Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</UserControl>

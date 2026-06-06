@@ -1,0 +1,1306 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 15/06/2017 11:25:16 AM -->
+<Window x:Class="Inventarios.Vista.VistaInvMovSuministro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloMovSuministro, Source={StaticResource INV_Locator}}"
+        Title="Suministro interno"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="1024"
+        Height="724"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        ShowInTaskbar="True">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="22*" />
+            <RowDefinition Height="140" />
+            <RowDefinition Height="43*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="35"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="45"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" Grid.Row="1"/>
+        <TextBlock Text="Suministro interno"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+               Grid.Row="1"
+               HorizontalAlignment="Right"
+               Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+               IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+               TabIndex="150"
+               Click="cmdSalir_Click"
+               ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                    Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                       Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,1,0"
+               VerticalAlignment="Top"
+               Grid.Row="6"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFIL}"/>
+        <!-- Fin Filtro-->
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista2"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFILREL}"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <!-- Fin Perfil Usuario -->
+        <Grid Grid.Row="2" Margin="8,2,8,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1inv_secreg_inma"
+                                           ToolTip="Secuencial  unico registro maestro movimiento inventario"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Registro"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_secreg_inma"
+                                       TabIndex="1"
+                                       Text="{Binding Path=G1Inv_secreg_inma, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                       TouchEnter="fcvTouchEnterTeclado"
+                                       Grid.Column="1"
+                                       Focusable="False"
+                                       KeyDown="fcvMoverFocus_KeyDown"
+                                       GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG1inv_conmov_incm"
+                                       ToolTip="Concepto movimiento diario"
+                                       Grid.Column="3"
+                                       Style="{StaticResource styleEtiquetasFormResize}">
+                                       <Run Language="es-co" Text="Concepto movimiento"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_conmov_incm"
+                                       Text="{Binding Path=G1Inv_conmov_incm, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                       TouchEnter="fcvTouchEnterTeclado"
+                                       Grid.Column="4"
+                                       Focusable="False"
+                                       KeyDown="fcvMoverFocus_KeyDown"
+                                       GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG1Inv_descon_incm"
+                                       Text="{Binding Path=G1Inv_descon_incm, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                       TouchEnter="fcvTouchEnterTeclado"
+                                       Grid.Column="5"
+                                       Focusable="False"
+                                       KeyDown="fcvMoverFocus_KeyDown"
+                                       GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG1sis_estpro_espr"
+                                           ToolTip="Estado del registro: 1=Abierto 2=Confirmado 3=Anulado"
+                                           Grid.Column="7"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Estado"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sis_estpro_espr"
+                                         TabIndex="11"
+                                         Text="{Binding Path=G1Sis_estpro_espr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="8"
+                                         Focusable="False"
+                                         KeyDown="txtG1Sis_estpro_espr_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG1Sis_despro_espr"
+                                         TabIndex="111"
+                                         Text="{Binding Path=G1Sis_despro_espr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="9"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <!-- Datos del registro -->
+            <TextBox Grid.Row="1"
+                     Grid.ColumnSpan="4"
+                     Foreground="#FF3399FF"
+                     BorderBrush="#FF3399FF"
+                     FontSize="12"
+                     Height="Auto"
+                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                     Text="Datos del registro"/>
+
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtG1Inv_desalm_inal"
+                                         TabIndex="103"
+                                         Text="{Binding Path=G1Inv_desalm_inal, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1Inv_codalm_inal"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="103"
+                                        Click="cmdG1Inv_codalm_inal_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Codigo del Almacen desde el maestro almacen que inicia la transaccion"/>
+                <TextBlock Name="lblG1inv_codalm_inal"
+                                         ToolTip="Codigo del Almacen desde el maestro almacen que inicia la transaccion"
+                                         Grid.Column="0"
+                                         Style="{StaticResource styleEtiquetasFormResize}">
+                                         <Run Language="es-co" Text="Codigo Almacen"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_codalm_inal"
+                                         TabIndex="1"
+                                         Text="{Binding Path=G1Inv_codalm_inal, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG1Inv_codalm_inal_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtG1Deinv_codald_inal"
+                                         TabIndex="104"
+                                         Text="{Binding Path=G1Deinv_codald_inal, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1Inv_codald_inal"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="104"
+                                        Click="cmdG1Inv_codald_inal_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_EsProcesoTraslado}"
+                                        ToolTip="Codigo del Almacen Destino (para Traslados) desde maestro almacen"/>
+                <TextBlock Name="lblG1inv_codald_inal"
+                                           ToolTip="Codigo del Almacen Destino (para Traslados) desde maestro almacen"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Codigo Almacen Destino"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_codald_inal"
+                                         TabIndex="2"
+                                         Text="{Binding Path=G1Inv_codald_inal, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_EsProcesoTraslado}"
+                                         KeyDown="txtG1Inv_codald_inal_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtG1Inv_nomres_inre"
+                                         TabIndex="106"
+                                         Text="{Binding Path=G1Inv_nomres_inre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="4"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus" Margin="4,3,2,3"/>
+                <Button Name="cmdG1Inv_codres_inre"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="106"
+                                        Click="cmdG1Inv_codres_inre_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Codigo de la persona responsable o que solicita  pedido para gasto interno de la empresa, viene de la tabla: INVRESPONSABLES" Grid.ColumnSpan="2" Margin="2"/>
+                <TextBlock Name="lblG1inv_codres_inre"
+                                           ToolTip="Codigo de la persona responsable o que solicita  pedido para gasto interno de la empresa, viene de la tabla: INVRESPONSABLES"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}" Margin="4,6,2,5">
+                                           <Run Language="es-co" Text="Codigo responsable"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_codres_inre"
+                                         TabIndex="3"
+                                         Text="{Binding Path=G1Inv_codres_inre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG1Inv_codres_inre_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus" Margin="4,3,2,3"/>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1inv_desreg_inma"
+                                           ToolTip="Descripcion textual o detalle de la transaccion"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Descripcion registro"/>
+                </TextBlock>
+                <TextBox Name="txtG1Inv_desreg_inma"
+                                         TabIndex="4"
+                                         Text="{Binding Path=G1Inv_desreg_inma, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="200"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1inv_fecges_inma"
+                                           ToolTip="Fecha del registro diario o comprobante del movimiento"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Fecha del registro"/>
+                </TextBlock>
+                <Grid Grid.Column="1"
+                                  Style="{StaticResource styleDatePickerGridFormResize}">
+                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                    <TextBox Name="txtG1Inv_fecges_inma"
+                                         TabIndex="5"
+                                         Text="{Binding Path=G1Inv_fecges_inma, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormFecha}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         TextChanged="fcvActualizarDatePicker"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                    <DatePicker Name="dpkG1Inv_fecges_inma"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        Style="{StaticResource styleDatePickerForm}"/>
+                </Grid>
+                <TextBlock Name="lblG1inv_fecdoc_inma"
+                                           ToolTip="Fecha del documento traslado o entrega suministro, formula medica etc.)"
+                                           Grid.Column="2"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Fecha solicitud"/>
+                </TextBlock>
+                <Grid Grid.Column="3"
+                                  Style="{StaticResource styleDatePickerGridFormResize}">
+                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                    <TextBox Name="txtG1Inv_fecdoc_inma"
+                                         TabIndex="6"
+                                         Text="{Binding Path=G1Inv_fecdoc_inma, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormFecha}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         TextChanged="fcvActualizarDatePicker"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                    <DatePicker Name="dpkG1Inv_fecdoc_inma"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        Style="{StaticResource styleDatePickerForm}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtG1Sis_nomdep_sidp"
+                                         TabIndex="109"
+                                         Text="{Binding Path=G1Sis_nomdep_sidp, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1Sis_coddep_sidp"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="109"
+                                        Click="cmdG1Sis_coddep_sidp_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Codigo dependencia o departamento de la empresa"/>
+                <TextBlock Name="lblG1sis_coddep_sidp"
+                                           ToolTip="Codigo dependencia o departamento de la empresa"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Codigo dependencia"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sis_coddep_sidp"
+                                         TabIndex="7"
+                                         Text="{Binding Path=G1Sis_coddep_sidp, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG1Sis_coddep_sidp_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtG1Sia_desare_aser"
+                                         TabIndex="110"
+                                         Text="{Binding Path=G1Sia_desare_aser, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1Sia_codare_aser"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="110"
+                                        Click="cmdG1Sia_codare_aser_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Codigo area servicio para gastos medicamentos intrahospitalarios o entrega formulas, tambien cuando se entregan pedidos para gasto inerno de la empresa"/>
+                <TextBlock Name="lblG1sia_codare_aser"
+                                           ToolTip="Codigo area servicio para gastos medicamentos intrahospitalarios o entrega formulas, tambien cuando se entregan pedidos para gasto inerno de la empresa"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Codigo area servicios"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sia_codare_aser"
+                                         TabIndex="8"
+                                         Text="{Binding Path=G1Sia_codare_aser, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG1Sia_codare_aser_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3" Margin="8,2,8,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Datos del articulo -->
+            <TextBox Grid.Row="0"
+                     Grid.ColumnSpan="4"
+                     Foreground="#FF3399FF"
+                     BorderBrush="#FF3399FF"
+                     FontSize="12"
+                     Height="Auto"
+                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                     Text="Datos del articulo"/>
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="cmdLimpiarCamposArticulo"
+                                        Content="X"
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="112"    
+                                        Height="27"   
+                                        Width="30"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,5,2,0"
+                                        ToolTip="Limpiar datos del articulo" VerticalAlignment="Top" 
+                                        Click="cmdLimpiarCamposArticulo_Click"/>
+                <TextBlock Name="lblG2inv_secart_inar"
+                                           ToolTip="Secuencial de articulo generado por el sistema viene de la tabla:"
+                                           Grid.Column="0"
+                                            Width="100"
+                                            HorizontalAlignment="Left"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Secuencial  Articulo"/>
+                </TextBlock>
+                <Button Name="cmdG2Inv_secart_inar"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="112"    
+                                        Click="cmdG2Inv_secart_inar_Click"
+                                        Height="27"                        
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Secuencial de articulo generado por el sistema viene de la tabla:"/>
+                <TextBox Name="txtG2Inv_secart_inar"
+                                        TabIndex="9"
+                                        Text="{Binding Path=G2Inv_secart_inar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        Style="{StaticResource styleTextBoxFormResize}"
+                                        Height="27"
+                                        FontSize="16"
+                                        MaxLength="20"
+                                        TouchEnter="fcvTouchEnterTeclado"
+                                        Grid.Column="1"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        KeyDown="txtG2Inv_secart_KeyDown"
+                                        GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG2inv_codaux_inar"
+                                           ToolTip="Codigo Auxiliar del articulo puede ser digitado por el usuario:"
+                                           Grid.Column="0"
+                                            Width="100"
+                                            Visibility="Collapsed"
+                                            HorizontalAlignment="Left"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Codigo Auxiliar"/>
+                </TextBlock>
+                <Button Name="cmdG2Inv_codaux_inar"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="112"
+                                        Click="cmdG2Inv_secart_inar_Click"
+                                        Height="27"                        
+                                        Grid.Column="2"
+                                        Visibility="Collapsed"
+                                        Focusable="False"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Codigo Auxiliar del articulo puede ser digitado por el usuario viene de la tabla:"/>
+                <TextBox Name="txtG2Inv_codaux_inar"
+                                         TabIndex="9"
+                                         Text="{Binding Path=G2Inv_codaux_inar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         Height="27"
+                                         FontSize="16"
+                                         MaxLength="20"
+                                         Visibility="Collapsed"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG2Inv_codaux_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG2inv_codbar_inar"
+                                           ToolTip="Codigo de Barra Articulo:"
+                                           Grid.Column="0"
+                                           Width="100"
+                                           Visibility="Collapsed"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Codigo de Barras"/>
+                </TextBlock>
+                <Button Name="cmdG2Inv_codbar_inar"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="112"
+                                        Height="27"                        
+                                        Grid.Column="2"
+                                        Visibility="Collapsed"
+                                        Focusable="False"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Codigo de Barra Articulo viene de la tabla:"/>
+                <TextBox Name="txtG2Inv_codbar_inar"
+                                        TabIndex="9"
+                                         Text="{Binding Path=G2Inv_codbar_inar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         Height="27"
+                                         FontSize="16"
+                                         MaxLength="20"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         Visibility="Collapsed"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG2Inv_codbar_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG2Inv_nomart_inar"
+                                         TabIndex="112"
+                                         Text="{Binding Path=G2Inv_nomart_inar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Height="27"
+                                         Focusable="False"
+                                         FontSize="16"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG2inv_totctn_inmd"
+                                           ToolTip="Total Contenedores para (realizar calculo de ingreso o salida)"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Total Contenedores"/>
+                </TextBlock>
+                <TextBox Name="txtG2Inv_totctn_inmd"
+                                         TabIndex="10"
+                                         Text="{Binding Path=G2Inv_totctn_inmd, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="6"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG2Inv_codctn_intc"
+                                         TabIndex="15"
+                                         Text="{Binding Path=G2Inv_codctn_intc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="2"
+                                         Visibility="Collapsed"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG2Inv_codctn_intc_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG2Inv_desctn_intc"
+                                         TabIndex="115"
+                                         Text="{Binding Path=G2Inv_desctn_intc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG2inv_unictn_inmd"
+                                           ToolTip="Unidades en un Contenedor: Ejemplo: una caja es un contenedor y tiene 10 unidades."
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Unidad Contenedores"/>
+                </TextBlock>
+                <TextBox Name="txtG2Inv_unictn_inmd"
+                                         TabIndex="11"
+                                         Text="{Binding Path=G2Inv_unictn_inmd, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="6"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG2Sis_codgme_sigr"
+                                         TabIndex="17"
+                                         Text="{Binding Path=G2Sis_codgme_sigr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="2"
+                                         Visibility="Collapsed"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG2Sis_codgme_sigr_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBox Name="txtG2Sis_desgme_sigr"
+                                         TabIndex="117"
+                                         Text="{Binding Path=G2Sis_desgme_sigr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG2inv_unisue_inmd"
+                                           ToolTip="Cantidad unidades sueltas adicinales que no alcanzan para ser contadas como un contenedor mas"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Unidades sueltas"/>
+                </TextBlock>
+                <TextBox Name="txtG2Inv_unisue_inmd"
+                                         TabIndex="12"
+                                         Text="{Binding Path=G2Inv_unisue_inmd, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="10"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG2inv_unitot_inmd"
+                                           ToolTip="TOTAL UNIDADES, cantidad de unidades en total de la transaccion (calculo Unidades por  contenedor mas unidades sueltas)"
+                                           Grid.Column="2"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Total Unidades"/>
+                </TextBlock>
+                <TextBox Name="txtG2Inv_unitot_inmd"
+                                      Text="{Binding Path=G2Inv_unitot_inmd, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                      Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                      MaxLength="10"
+                                      Height="24"
+                                      FontSize="16" 
+                                      TouchEnter="fcvTouchEnterTeclado"
+                                      Grid.Column="3"           
+                                      Focusable="False"
+                                      KeyDown="fcvMoverFocus_KeyDown"
+                                      GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG2inv_codest_ines"
+                                           ToolTip="Codgo del estante para cada almacen: Ejemplo E01-Estante Medicamentos de control"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Codigo Estante"/>
+                </TextBlock>
+                <TextBox Name="txtG2Inv_codest_ines"
+                                         Text="{Binding Path=G2Inv_codest_ines, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG2inv_seccio_ines"
+                                           ToolTip="Lista de secciones del estante para validacion (generada por el sistema) ejemplo: S01,S02,S03,S04 segun el numero de secciones que contenga el estante"
+                                           Grid.Column="2"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Secciones"/>
+                </TextBlock>
+                <TextBox Name="txtG2Inv_seccio_ines"
+                                         Text="{Binding Path=G2Inv_seccio_ines, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         MaxLength="100"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Rectangle HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               Grid.Row="4"
+               OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+               Fill="#FFF6F8F9"
+               Margin="1,0,1,0"/>
+            <Button Name="cmdAddAux"
+                Content="Guardar"
+                HorizontalAlignment="Right"
+                Margin="0,6,280,0"
+                Style="{StaticResource styleButtonMiniForm}"
+                TabIndex="13"
+                Command="{Binding CmdSAVREL}"
+                Click="fcvGuardarRegistroRel"
+                Grid.Row="4"
+                ToolTip="Adicionar registro en la Grid"/>
+            <Button Name="cmdCanAux"
+                Content="Nuevo"
+                HorizontalAlignment="Right"
+                Margin="0,6,200,0"
+                Style="{StaticResource styleButtonMiniForm}"
+                TabIndex="80"
+                Command="{Binding CmdCANREL}"
+                Click="fcvNuevoRegistroRel"
+                Grid.Row="4"
+                ToolTip="Nuevo o deshacer cambios en registro modificado"/>
+            <Button Name="cmdDelAux"
+                Content="Eliminar"
+                HorizontalAlignment="Right"    
+                Margin="0,6,120,0"
+                Style="{StaticResource styleButtonMiniForm}"
+                TabIndex="81"
+                Command="{Binding CmdDELREL}"
+                Click="fcvEliminarRegistroRel"
+                Grid.Row="4"
+                ToolTip="Eliminar registro activo de la lista"/>
+            <DataGrid AutoGenerateColumns="False"
+                  Grid.Row="4"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  Margin="10,36,10,10"
+                  Name="objDataGrid"
+                  ItemsSource="{Binding TmpG2ListaBrow, UpdateSourceTrigger=PropertyChanged}"
+                  CanUserAddRows="False"
+                  TabIndex="100">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Inv_secreg_inmd}"
+                                    Header="Registro"
+                                    Width="100"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Inv_secart_inar}"
+                                    Header="Codigo.Articulo"
+                                    Width="100"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Inv_codaux_inar}"
+                                    Header="Codigo Digitacion"
+                                    Width="100"
+                                    IsReadOnly="True" />
+                    <DataGridTextColumn Binding="{Binding Inv_nomart_inar}"
+                                    Header="Descripcion"
+                                    Width="300"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Sis_desgme_sigr}"
+                                    Header="Medida"
+                                    Width="120"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Inv_unitot_inmd}"
+                                    Header="Total unidades"
+                                    Width="120"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Inv_valing_inar}"
+                                    Header="Valor ingreso"
+                                    Width="120"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Inv_valmov_inar}"
+                                    Header="Valor Salida"
+                                    Width="120"
+                                    IsReadOnly="True">
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <cmd:EventToCommand Command="{Binding SelectionChangedCommand, Mode=TwoWay}"
+            							CommandParameter="{Binding SelectedItem, ElementName=objDataGrid}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DataGrid>
+        </Grid>
+        <Button Name="cmdConfirmar"            
+                Margin="512,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="26"
+                Command="{Binding CmdCON}"
+                Click="fcvConfirmarRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui Confirmar el registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgConfirmar"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblConfirmar"
+                               Text="Confirmar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdGuardar"
+                Margin="512,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="26"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para guardar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Guardar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdAdicionar"
+                Margin="512,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="27"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para crear un nuevo registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgAdicionar"
+                           Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblAdicionar"
+                               Text="Nuevo"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opTRAS"
+                              Command="{Binding CmdADDTRAS}"
+                              Click="fcvNuevoRegistro"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Traslado a otro almacen">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opSUMI"
+                              Command="{Binding CmdADDSALID}"
+                              Click="fcvNuevoRegistro"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Suministro a otras areas">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Name="cmdCancelar"
+                Margin="615,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="28"
+                Command="{Binding CmdCAN}"
+                Click="fcvCancelarRegistro"
+                Grid.Row="5"
+                ToolTip="Cancelar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblCancelar"
+                               Text="Cancelar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdModificar"                
+                Margin="615,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="29"
+                Command="{Binding CmdEDT}"
+                Click="fcvModificarRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para modificar el registro activo">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgModificar"
+                           Source="/Sistema;component/Imagenes/sis_edt_modificar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblModificar"
+                               Text="Modificar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdEdicion"         
+                Margin="718,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="30"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="5"
+                ToolTip="Clic para Cambiar estado del registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgEdicion"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblEdicion"
+                               Text="Edicion"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opCON"
+                                          Command="{Binding CmdCON}"
+                                          Click="fcvConfirmarRegistro"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Confirmar">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opANU"
+                                          Command="{Binding CmdANU}"
+                                          Click="fcvAnularRegistro"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Anular">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opDEL"
+                                          Command="{Binding CmdDEL}"
+                                          Click="fcvConfirmarRegistro"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Eliminar">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Name="cmdSalir"
+                Margin="0,10,10,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="31"
+                Command="{Binding CmdSAL}"
+                Click="cmdSalir_Click"
+                Grid.Row="5"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdLogErrores"
+                Margin="10,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="32"
+                Command="{Binding CmdERR}"
+                Click="fcvVistaLogErrores"
+                Grid.Row="5"
+                ToolTip="Ver registro de errores">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgLogErrores"
+                           Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblLogErrores"
+                               Text="Errores"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdBrowser"               
+                Margin="366,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="21"
+                Command="{Binding CmdDFL}"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para buscar un registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgBrowser"
+                           Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblBrowser"
+                               Text="Buscar..."
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opTodos"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Todos...">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_buscar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opAbierto"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Abiertos...">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_abrir.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opCerrado"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Cerrados...">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opAnulado"
+                                          Click="fcvBrowserBuscar"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Anulados...">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Name="cmdImprimir"                
+                    Margin="225,10,0,0"
+                    Style="{StaticResource styleButtonImgForm}"
+                    TabIndex="53"
+                    Click="fcvMostrarMenuEdicion"
+                    Grid.Row="5"
+                    ToolTip="Opciones para imprimir">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgImprimir"
+                               Source="/Sistema;component/Imagenes/sis_edt_imprimir.png"
+                               Style="{StaticResource styleImagBotonesForm}"
+                               Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblImprimir"
+                                   Text="Imprimir..."
+            	                   Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opPRN_GENERAL"
+                                  Command="{Binding CmdPRNSUMI}"
+                                  Click="fcvImprimir"
+                                  Style="{StaticResource styleMenuItemContextButton}"
+                                  Header="Reporte para Suministro interno">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                       Style="{StaticResource styleImagMenuContextButton}"
+                                       Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opPRN_DETALLES"
+                                  Command="{Binding CmdPRNDET}"
+                                  Click="fcvImprimir"
+                                  Style="{StaticResource styleMenuItemContextButton}"
+                                  Header="Reporte para Detalles Suministro interno">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                       Style="{StaticResource styleImagMenuContextButton}"
+                                       Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator Background="Transparent" BorderBrush="Black"/>
+                    <MenuItem Name="opPRN_EXCEL"                        
+                                  Command="{Binding CmdPRNSUMI}"
+                                  Click="fcvExportarFormatoExcel"
+                                  Style="{StaticResource styleMenuItemContextButton}"
+                                  Header="Exportar a Microsoft Excel">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                       Style="{StaticResource styleImagMenuContextButton}"
+                                       Source="/Sistema;component/Imagenes/Edt_edt_excelx.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opPRN_EXCEL_DETALLES"                        
+                                  Command="{Binding CmdPRNDET}"
+                                  Click="fcvExportarFormatoExcelDetalles"
+                                  Style="{StaticResource styleMenuItemContextButton}"
+                                  Header="Exportar a Microsoft Excel(Detalles)">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                       Style="{StaticResource styleImagMenuContextButton}"
+                                       Source="/Sistema;component/Imagenes/Edt_edt_excelx.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Name="cmdConfiguracion"
+                Margin="112,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="23"
+                Width="110"
+                Command="{Binding CmdDFL}"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="5"
+                ToolTip="Clic para ajustes">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgConfiguracion"
+                           Source="/Sistema;component/Imagenes/sis_edt_configurar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblConfiguracion"
+                               Text="Configuracion"
+                               Width="80"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opSECART"
+                                          Command="{Binding CmdBTSECART}"
+                                          Click="fcvConfiguracion"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Captura Secuencial de Articulo">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_modificar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opCODAUX"
+                                          Command="{Binding CmdBTCODAUX}"
+                                          Click="fcvConfiguracion"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Captura Codigo Auxiliar del Articulo">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_modificar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opCODBAR"
+                                          Command="{Binding CmdBTCODBAR}"
+                                          Click="fcvConfiguracion"
+                                          Style="{StaticResource styleMenuItemContextButton}"
+                                          Header="Captura Codigo de Barras">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                               Style="{StaticResource styleImagMenuContextButton}"
+                                               Source="/Sistema;component/Imagenes/sis_edt_modificar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+    </Grid>
+</Window>

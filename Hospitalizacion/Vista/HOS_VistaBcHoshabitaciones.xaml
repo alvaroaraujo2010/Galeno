@@ -1,0 +1,838 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 21/02/2013 05:40:40 PM -->
+<Window
+    x:Class="Hospitalizacion.Vista.VistaBcHoshabitaciones"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen"
+    DataContext="{Binding Path=VistaModeloBcHoshabitaciones, Source={StaticResource HOS_Locator}}"
+    Title="Habitaciones"
+    Icon="/Sistema;component/Imagenes/sis_logo40.png"
+    Width="800"
+    Height="585"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    ShowInTaskbar="True">
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              	Source= "/Sistema;component/Skins/EstiloSistema.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="96*" />
+            <RowDefinition Height="138*" />
+            <RowDefinition Height="245*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1"
+            HorizontalAlignment="Left"
+            Height="571"
+            Width="800"
+            VerticalAlignment="Top"
+            Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+            OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+            Grid.RowSpan="5"
+            Grid.Row="1"
+            BorderBrush="#FF6B7D87">
+            <Rectangle HorizontalAlignment="Left"
+   		  		 Height="42"
+   		  		 Width="799"
+   		  		 Grid.Row="1"
+   		  		 Margin="0,0,0,0"
+   		  		 Stroke="Black"
+   		  		 StrokeThickness="0"
+   		  		 VerticalAlignment="Top"
+   		  		 OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+   		  		 Fill="#FF6B7D87"
+   		  		 MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        </Border>
+        <Image HorizontalAlignment="Left"
+           Height="54"
+           Margin="5,1,0,0"
+           VerticalAlignment="Top"
+           Width="53"
+           Grid.RowSpan="2"
+           Source="/Sistema;component/Imagenes/sis_logo40.png"
+           MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock FontSize="18"
+               FontWeight="Bold"
+               Width="700"
+               Text="Habitaciones"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Margin="70,12,0,0"
+               Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
+               OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"
+               Height="24"/>
+        <Image HorizontalAlignment="Left"
+           Width="23"
+           Margin="775,3,0,17"
+           Source="/Sistema;component/Imagenes/sis_cerrar40.png"
+           MouseDown="btnCerrar_KeyDown"
+           Grid.Row="1"
+           Cursor="Hand"/>
+        <Image HorizontalAlignment="Left"
+           Height="50"
+   		 Width="798"
+           Margin="1,3,0,-3"
+           VerticalAlignment="Top"
+           Grid.Row="5"
+           Source="/Sistema;component/Imagenes/sis_fondo40.png"
+           StretchDirection="UpOnly"
+           Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+         	Height="26"
+           	HorizontalAlignment="Left"
+           	Margin="395,7,0,0"
+           	Name="cmdFilVista1"
+           	VerticalAlignment="Top"
+           	Width="89"
+           	Visibility="Hidden"
+           	Command="{Binding CmdFIL}" Grid.RowSpan="2"/>
+        <!-- Fin Filtro-->
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+         	Height="26"
+           	HorizontalAlignment="Left"
+           	Margin="395,7,0,0"
+           	Name="cmdFilVista2"
+           	VerticalAlignment="Top"
+           	Width="89"
+           	Visibility="Hidden"
+           	Command="{Binding CmdFILREL}" Grid.RowSpan="2"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+           	HorizontalAlignment="Left"
+           	Visibility="Hidden"
+           	Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+           	VerticalAlignment="Top"
+         	Height="23"
+           	Width="89" Grid.RowSpan="2"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+           	HorizontalAlignment="Left"
+           	Visibility="Hidden"
+           	Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+           	VerticalAlignment="Top"
+         	Height="23"
+           	Width="89" Grid.RowSpan="2"/>
+        <!-- Fin Perfil Usuario -->
+        <TextBlock Text ="Codigo habitacion"
+        	Name="lblG1hos_nrohab_habi"
+        	Height="17"
+        	Width="122"
+        	Margin="8,12,0,0"
+        	Grid.Row="2"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG1Hos_nrohab_habi"
+        	Height="23"
+        	Width="248"
+        	Margin="135,8,0,0"
+        	TabIndex="1"
+        	Text="{Binding Path=G1Hos_nrohab_habi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoAdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Numero/nombre habitacion"
+        	Name="lblG1hos_deshab_habi"
+        	Height="17"
+        	Width="122"
+        	Margin="8,37,0,0"
+        	Grid.Row="2"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG1Hos_deshab_habi"
+        	Height="23"
+        	Width="248"
+        	Margin="135,33,0,0"
+        	TabIndex="2"
+        	Text="{Binding Path=G1Hos_deshab_habi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG1Hos_dessec_hsec"
+        	Height="23"
+        	Width="173"
+        	Margin="210,58,0,0"
+        	TabIndex="103"
+        	Text="{Binding Path=G1Hos_dessec_hsec, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Codigo sección"
+        	Name="lblG1hos_codsec_hsec"
+        	Height="17"
+        	Width="122"
+        	Margin="8,62,0,0"
+        	Grid.Row="2"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG1Hos_codsec_hsec"
+        	Height="23"
+        	Width="70"
+        	Margin="135,58,0,0"
+        	TabIndex="3"
+        	Text="{Binding Path=G1Hos_codsec_hsec, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG1Hos_codsec_hsec_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <ComboBox Name="cboG1Hos_tiphab_habi"
+        	Height="23"
+        	Width="173"
+        	Margin="590,8,0,0"
+        	SelectionChanged="SeleccionComboBoxOpcion"
+        	DisplayMemberPath="{Binding Path=NombreOpcion}"
+        	SelectedValuePath="{Binding Path=ValorSeleccion}"
+        	Grid.Row="2"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text ="Unipersonal SI/NO"
+        	Name="lblG1hos_tiphab_habi"
+        	Height="17"
+        	Width="122"
+        	Margin="388,12,0,0"
+        	Grid.Row="2"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG1Hos_tiphab_habi"
+        	Height="23"
+        	Width="70"
+        	Margin="515,8,0,0"
+        	TabIndex="4"
+        	Text="{Binding Path=G1Hos_tiphab_habi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	TextChanged="ActualizarComboBoxOpcion"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Contador Camas"
+        	Name="lblG1hos_concam_habi"
+        	Height="17"
+        	Width="122"
+        	Margin="388,37,0,0"
+        	Grid.Row="2"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG1Hos_concam_habi"
+        	Height="23"
+        	Width="248"
+        	Margin="515,33,0,0"
+        	TabIndex="5"
+        	Text="{Binding Path=G1Hos_concam_habi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG1Sis_desest_esrg"
+        	Height="23"
+        	Width="173"
+        	Margin="590,58,0,0"
+        	TabIndex="106"
+        	Text="{Binding Path=G1Sis_desest_esrg, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Estado habitacion"
+        	Name="lblG1sis_estreg_esrg"
+        	Height="17"
+        	Width="122"
+        	Margin="388,62,0,0"
+        	Grid.Row="2"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG1Sis_estreg_esrg"
+        	Height="23"
+        	Width="70"
+        	Margin="515,58,0,0"
+        	TabIndex="6"
+        	Text="{Binding Path=G1Sis_estreg_esrg, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG1Sis_estreg_esrg_KeyDown"
+        	Grid.Row="2"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Codigo cama"
+        	Name="lblG2hos_codcam_caho"
+        	Height="17"
+        	Width="122"
+        	Margin="8,12,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_codcam_caho"
+        	Height="23"
+        	Width="248"
+        	Margin="135,8,0,0"
+        	TabIndex="7"
+        	Text="{Binding Path=G2Hos_codcam_caho, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG2Hos_deshab_habi"
+        	Height="23"
+        	Width="173"
+        	Margin="210,33,0,0"
+        	TabIndex="108"
+        	Text="{Binding Path=G2Hos_deshab_habi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Numero/nombre habitacion"
+        	Name="lblG2hos_nrohab_habi"
+        	Height="17"
+        	Width="122"
+        	Margin="8,37,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_nrohab_habi"
+        	Height="23"
+        	Width="70"
+        	Margin="135,33,0,0"
+        	TabIndex="8"
+        	Text="{Binding Path=G2Hos_nrohab_habi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG2Hos_nrohab_habi_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Descripcion cama"
+        	Name="lblG2hos_descam_caho"
+        	Height="17"
+        	Width="122"
+        	Margin="8,62,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_descam_caho"
+        	Height="23"
+        	Width="248"
+        	Margin="135,58,0,0"
+        	TabIndex="9"
+        	Text="{Binding Path=G2Hos_descam_caho, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG2Hos_destip_tcam"
+        	Height="23"
+        	Width="173"
+        	Margin="210,83,0,0"
+        	TabIndex="110"
+        	Text="{Binding Path=G2Hos_destip_tcam, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Codigo Tipo cama"
+        	Name="lblG2hos_tipcam_tcam"
+        	Height="17"
+        	Width="122"
+        	Margin="8,87,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_tipcam_tcam"
+        	Height="23"
+        	Width="70"
+        	Margin="135,83,0,0"
+        	TabIndex="10"
+        	Text="{Binding Path=G2Hos_tipcam_tcam, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG2Hos_tipcam_tcam_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <ComboBox Name="cboG2Hos_camaux_caho"
+        	Height="23"
+        	Width="173"
+        	Margin="210,108,0,0"
+        	SelectionChanged="SeleccionComboBoxOpcion"
+        	DisplayMemberPath="{Binding Path=NombreOpcion}"
+        	SelectedValuePath="{Binding Path=ValorSeleccion}"
+        	Grid.Row="3"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text ="Cama adecuada SI/NO"
+        	Name="lblG2hos_camaux_caho"
+        	Height="17"
+        	Width="122"
+        	Margin="8,112,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_camaux_caho"
+        	Height="23"
+        	Width="70"
+        	Margin="135,108,0,0"
+        	TabIndex="11"
+        	Text="{Binding Path=G2Hos_camaux_caho, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	TextChanged="ActualizarComboBoxOpcion"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG2Fcm_desser_sips"
+        	Height="23"
+        	Width="173"
+        	Margin="590,8,0,0"
+        	TabIndex="112"
+        	Text="{Binding Path=G2Fcm_desser_sips, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Codigo servicio estancia"
+        	Name="lblG2fcm_idesec_sips"
+        	Height="17"
+        	Width="122"
+        	Margin="388,12,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Fcm_idesec_sips"
+        	Height="23"
+        	Width="70"
+        	Margin="515,8,0,0"
+        	TabIndex="12"
+        	Text="{Binding Path=G2Fcm_idesec_sips, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG2Fcm_idesec_sips_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG2Hos_dessec_hsec"
+        	Height="23"
+        	Width="173"
+        	Margin="590,33,0,0"
+        	TabIndex="113"
+        	Text="{Binding Path=G2Hos_dessec_hsec, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Codigo sección"
+        	Name="lblG2hos_codsec_hsec"
+        	Height="17"
+        	Width="122"
+        	Margin="388,37,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_codsec_hsec"
+        	Height="23"
+        	Width="70"
+        	Margin="515,33,0,0"
+        	TabIndex="13"
+        	Text="{Binding Path=G2Hos_codsec_hsec, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG2Hos_codsec_hsec_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG2Hos_desest_ecam"
+        	Height="23"
+        	Width="173"
+        	Margin="590,58,0,0"
+        	TabIndex="114"
+        	Text="{Binding Path=G2Hos_desest_ecam, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Codigo estado cama"
+        	Name="lblG2hos_estcam_ecam"
+        	Height="17"
+        	Width="122"
+        	Margin="388,62,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Hos_estcam_ecam"
+        	Height="23"
+        	Width="70"
+        	Margin="515,58,0,0"
+        	TabIndex="14"
+        	Text="{Binding Path=G2Hos_estcam_ecam, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG2Hos_estcam_ecam_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Name="txtG2Sis_desest_esrg"
+        	Height="23"
+        	Width="173"
+        	Margin="590,83,0,0"
+        	TabIndex="115"
+        	Text="{Binding Path=G2Sis_desest_esrg, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="fcvMoverFocus_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Text ="Estado habitacion"
+        	Name="lblG2sis_estreg_esrg"
+        	Height="17"
+        	Width="122"
+        	Margin="388,87,0,0"
+        	Grid.Row="3"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top">
+        	<Run Language="es-co"/>
+        </TextBlock>
+        <TextBox Name="txtG2Sis_estreg_esrg"
+        	Height="23"
+        	Width="70"
+        	Margin="515,83,0,0"
+        	TabIndex="15"
+        	Text="{Binding Path=G2Sis_estreg_esrg, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        	Style="{StaticResource styleTextBox}"
+        	IsEnabled="False"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	KeyDown="txtG2Sis_estreg_esrg_KeyDown"
+        	Grid.Row="3"
+        	GotFocus="fcvTextBox_GotFocus"/>
+        <Rectangle HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Height="235"
+               Width="798"
+               Grid.Row="4"
+               OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+               Fill="#FFF6F8F9"
+               Margin="1,0,0,0"/>
+        <Button Name="cmdAddAux"
+            Content="Guardar"
+            Height="26"
+            Width="70"
+            Margin="520,6,0,0"
+            TabIndex="16"
+            Command="{Binding CmdSAVREL}"
+            Click="fcvGuardarRegistroRel"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Grid.Row="4"
+            ToolTip="Adicionar registro en la Grid"/>
+        <Button Name="cmdCanAux"
+            Content="Nuevo"
+            Height="26"
+            Width="70"
+            Margin="597,6,0,0"
+            TabIndex="80"
+            Command="{Binding CmdCANREL}"
+            Click="fcvNuevoRegistroRel"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Grid.Row="4"
+            ToolTip="Deshacer cambios en el registro"/>
+        <Button Name="cmdDelAux"
+            Content="Eliminar"
+            Height="26"
+            Width="70"
+            Margin="674,6,0,0"
+            TabIndex="81"
+            Command="{Binding CmdDELREL}"
+            Click="fcvEliminarRegistroRel"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Grid.Row="4"
+            ToolTip="Eliminar registro activo de la lista"/>
+        <DataGrid AutoGenerateColumns="False"
+                  Grid.Row="4"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="12,38,0,0"
+                  Name="objDataGrid"
+                  ItemsSource="{Binding TmpG2ListaBrow, UpdateSourceTrigger=PropertyChanged}"
+                  CanUserAddRows="False"
+                  Height="200"
+                  Width="778"
+                  TabIndex="100">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Hos_codcam_caho}"
+                                    Header="Codigo cama"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_nrohab_habi}"
+                                    Header="Numero/nombre habitacion"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_deshab_habi}"
+                                    Header="Numero/nombre habitacion"
+                                    Width="100"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_descam_caho}"
+                                    Header="Descripcion cama"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_tipcam_tcam}"
+                                    Header="Codigo Tipo cama"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_destip_tcam}"
+                                    Header="Codigo Tipo cama"
+                                    Width="100"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_camaux_caho}"
+                                    Header="Cama adecuada SI/NO"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Fcm_idesec_sips}"
+                                    Header="Codigo servicio estancia"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Fcm_desser_sips}"
+                                    Header="Codigo servicio estancia"
+                                    Width="100"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_codsec_hsec}"
+                                    Header="Codigo sección"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_dessec_hsec}"
+                                    Header="Codigo sección"
+                                    Width="100"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_estcam_ecam}"
+                                    Header="Codigo estado cama"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Hos_desest_ecam}"
+                                    Header="Codigo estado cama"
+                                    Width="100"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sis_estreg_esrg}"
+                                    Header="Estado habitacion"
+                                    Width="80"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sis_desest_esrg}"
+                                    Header="Estado habitacion"
+                                    Width="100"
+                                    IsReadOnly="True" />
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger
+            		EventName="SelectionChanged">
+                    <cmd:EventToCommand
+            			Command="{Binding SelectionChangedCommand, Mode=TwoWay}"
+            			CommandParameter="{Binding SelectedItem, ElementName=objDataGrid}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+        <Button Name="cmdGuardar"
+        	Content="Guardar"
+        	Height="28"
+        	Width="90"
+        	Margin="250,13,0,0"
+        	TabIndex="18"
+        	Command="{Binding CmdSAV}"
+        	Click="fcvGuardarRegistro"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Haga clic aqui para guardar los cambios"/>
+        <Button Name="cmdAdicionar"
+        	Content="Nuevo"
+        	Height="28"
+        	Width="90"
+        	Margin="250,13,0,0"
+        	TabIndex="19"
+        	Command="{Binding CmdADD}"
+        	Click="fcvNuevoRegistro"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Haga clic aqui para crear un nuevo registro"/>
+        <Button Name="cmdCancelar"
+        	Content="Cancelar"
+        	Height="28"
+        	Width="90"
+        	Margin="343,13,0,0"
+        	TabIndex="20"
+        	Command="{Binding CmdCAN}"
+        	Click="fcvCancelarRegistro"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Cancelar los cambios"/>
+        <Button Name="cmdModificar"
+        	Content="Modificar"
+        	Height="28"
+        	Width="90"
+        	Margin="343,13,0,0"
+        	TabIndex="21"
+        	Command="{Binding CmdEDT}"
+        	Click="fcvModificarRegistro"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Haga clic aqui para modificar el registro activo"/>
+        <Button Name="cmdEliminar"
+        	Content="Eliminar"
+        	Height="28"
+        	Width="90"
+        	Margin="436,13,0,0"
+        	TabIndex="22"
+        	Command="{Binding CmdDEL}"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Eliminar este registro"/>
+        <Button Name="cmdSalir"
+        	Content="Salir"
+        	Height="28"
+        	Width="90"
+        	Margin="680,13,0,0"
+        	TabIndex="23"
+        	Command="{Binding CmdDFL}"
+        	Click="cmdSalir_Click"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Salir de esta pantalla"/>
+        <Button Name="cmdBrowser"
+        	Content="Buscar..."
+        	Height="28"
+        	Width="90"
+        	Margin="16,13,0,0"
+        	TabIndex="16"
+        	Command="{Binding CmdDFL}"
+        	Click="fcvBrowserBuscar"
+        	HorizontalAlignment="Left"
+        	VerticalAlignment="Top"
+        	Grid.Row="5"
+        	ToolTip="Haga clic aqui para buscar un registro"/>
+    </Grid>
+</Window>

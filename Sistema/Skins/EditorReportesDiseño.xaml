@@ -1,0 +1,789 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:dg="http://schemas.microsoft.com/wpf/2008/toolkit"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ======================================== -->
+    <!-- Estilo TextBox y TextBlock para UserControl-->
+    <!-- ======================================== -->
+    <!-- Titulo o Etiquetas de campos -->
+    <Style x:Key="styleEtiquetasEdtFormTouch" TargetType="TextBlock">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="10" />
+        <Setter Property="Control.FontStyle" Value="Normal" />
+        <Setter Property="Control.FontWeight" Value="Black" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Control.Margin" Value="4,0,2,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    <!-- Campos de Captura de datos -->
+    <Style x:Key="styleTextBoxEdtFormTouch" TargetType="TextBox">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="10" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Control.Margin" Value="4,0,2,0" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0,0,0,1" />
+    </Style>
+    <!-- Grid para UserControl -->
+    <Style x:Key="styleGridEdtUserControl" TargetType="Grid">
+    </Style>
+    <!-- ======================================== -->
+    <!-- Estilo de Botones con Imagenes para Menu -->
+    <!-- ======================================== -->
+    <!-- Estilo de Botones con Imagenes Menu superior -->
+    <Style x:Key="styleButtonImgEdtFormTouchMenu"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Height" Value="48" />
+        <Setter Property="Control.Width" Value="48" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+    </Style>
+    <!-- Estilo Boton de error con Imagenes Menu superior -->
+    <Style x:Key="styleButtonImgEdtFormTouchMenuError"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Height" Value="48" />
+        <Setter Property="Control.Width" Value="48" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.Background" Value="#FFFD5252" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+    </Style>
+    <!-- Estilo de Botones con Imagenes Boton cerrar Capas -->
+    <Style x:Key="styleButtonImgEdtFormTouch"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Height" Value="48" />
+        <Setter Property="Control.Width" Value="48" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" 
+                                CornerRadius="0"
+                                BorderThickness="1"
+                                BorderBrush="White" >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA9D4C5" Offset="0.0"/>
+                                <GradientStop Color="#FF5E9380" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Border" Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FF318D7C" Offset="0.0"/>
+                                                <GradientStop Color="#FF1B6E5F" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFA8E8DC" Offset="0.0"/>
+                                                <GradientStop Color="#FF6EC1B2" Offset="0.397"/>
+                                                <GradientStop Color="#FF4A9789" Offset="0.611"/>
+                                                <GradientStop Color="#FF32CF79" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFB6EEE4" Offset="0.0"/>
+                                                <GradientStop Color="#FF278373" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF" Offset="0.0"/>
+                                                <GradientStop Color="#FFF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Estilo de Botones con Imagenes Boton cerrar ventana -->
+    <Style x:Key="styleButtonImgEdtFormTouchExit"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Height" Value="38" />
+        <Setter Property="Control.Width" Value="42" />
+        <Setter Property="Control.Margin" Value="0,0,6,0" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Right" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" 
+                                CornerRadius="0"
+                                BorderThickness="1"
+                                BorderBrush="White" >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF929594" Offset="0.0"/>
+                                <GradientStop Color="#FF567873" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Border" Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFA88894" Offset="0.0"/>
+                                                <GradientStop Color="#FFD42565" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF1ABB4" Offset="0.0"/>
+                                                <GradientStop Color="#FFFB7E8F" Offset="0.397"/>
+                                                <GradientStop Color="#FFFB5B71" Offset="0.611"/>
+                                                <GradientStop Color="#FF97414D" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF9F7F7" Offset="0.0"/>
+                                                <GradientStop Color="#FFF1EFEF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF" Offset="0.0"/>
+                                                <GradientStop Color="#FFF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Estilo de Botones con Imagenes Blanco cerrar ventana -->
+    <Style x:Key="styleButtonImgFormPlanExit"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Height" Value="42" />
+        <Setter Property="Control.Width" Value="42" />
+        <Setter Property="Control.Margin" Value="0,0,6,0" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Right" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" 
+                                CornerRadius="0"
+                                BorderThickness="1"
+                                BorderBrush="Gray" >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0.0"/>
+                                <GradientStop Color="White" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Border" Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFA88894" Offset="0.0"/>
+                                                <GradientStop Color="#FFD42565" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF1ABB4" Offset="0.0"/>
+                                                <GradientStop Color="#FFFB7E8F" Offset="0.397"/>
+                                                <GradientStop Color="#FFFB5B71" Offset="0.611"/>
+                                                <GradientStop Color="#FF97414D" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF9F7F7" Offset="0.0"/>
+                                                <GradientStop Color="#FFF1EFEF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF" Offset="0.0"/>
+                                                <GradientStop Color="#FFF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Estilo de Botones con Imagenes para lista detalles (botones pequeños) -->
+    <Style x:Key="styleButtonImgEdtFormTouchMini"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Height" Value="48" />
+        <Setter Property="Control.Width" Value="48" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" 
+                                CornerRadius="0"
+                                BorderThickness="1"
+                                BorderBrush="White" >
+                        <ContentPresenter
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Border" Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FF318D7C" Offset="0.0"/>
+                                                <GradientStop Color="#FF1B6E5F" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFA8E8DC" Offset="0.0"/>
+                                                <GradientStop Color="#FF6EC1B2" Offset="0.397"/>
+                                                <GradientStop Color="#FF4A9789" Offset="0.611"/>
+                                                <GradientStop Color="#FF32CF79" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFB6EEE4" Offset="0.0"/>
+                                                <GradientStop Color="#FF278373" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF" Offset="0.0"/>
+                                                <GradientStop Color="#FFF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- StackPanel de Botones Con Imagenes -->
+    <Style x:Key="styleStackPanelBotonesEdtFormTouch" TargetType="StackPanel">
+        <Setter Property="Control.Margin" Value="0" />
+        <Setter Property="Control.VerticalAlignment" Value="Center" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+    </Style>
+    <!-- Estilo de Botones con Imagenes Boton para items en listas -->
+    <Style x:Key="styleButtonImgEdtFormTouchItem"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Margin" Value="2,2,2,2" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.BorderBrush" Value="Transparent" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Stretch" />
+        <Setter Property="Control.HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" 
+                                CornerRadius="0"
+                                BorderThickness="1"
+                                BorderBrush="White" >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#19FD4C54" Offset="0.0"/>
+                                <GradientStop Color="#19FD4C54" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Border" Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFA88894" Offset="0.0"/>
+                                                <GradientStop Color="#FFD42565" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF1ABB4" Offset="0.0"/>
+                                                <GradientStop Color="#FFFB7E8F" Offset="0.397"/>
+                                                <GradientStop Color="#FFFB5B71" Offset="0.611"/>
+                                                <GradientStop Color="#FF97414D" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF9F7F7" Offset="0.0"/>
+                                                <GradientStop Color="#FFF1EFEF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#FFF" Offset="0.0"/>
+                                                <GradientStop Color="#FFF" Offset="1.0"/>
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- ======================================== -->
+    <!-- Estilo Menu Contextual en Botones        -->
+    <!-- ======================================== -->
+    <!-- Menu Contextual de Menu Contextual en Botones -->
+    <Style x:Key="styleMenuContextButtonEdtTouch" TargetType="ContextMenu">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="16" />
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+        <Setter Property="HasDropShadow" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border Name="Border" Background="White" BorderBrush="Black" BorderThickness="1" >
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>
+                            <Setter TargetName="Border" Property="CornerRadius" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- MenuItem de Menu Contextual en Botones -->
+    <Style x:Key="styleMenuItemContextButtonEdtTouch" TargetType="MenuItem">
+        <Setter Property="Control.Height" Value="45" />
+        <Setter Property="Control.FontSize" Value="16" />
+    </Style>
+    <!-- Imagen de Menu Contextual en Botones -->
+    <Style x:Key="styleImagMenuContextButtonEdtTouch" TargetType="Image">
+        <Setter Property="Control.Height" Value="30" />
+        <Setter Property="Control.Width" Value="24" />
+        <Setter Property="Control.Margin" Value="2,2,0,2" />
+    </Style>
+    <!-- ======================================== -->
+    <!-- Estilo de Botones normales -->
+    <!-- ======================================== -->
+    <Style x:Key="styleButtonMiniEdtForm"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="11" />
+        <Setter Property="Control.Height" Value="24" />
+        <Setter Property="Control.Width" Value="70" />
+        <Setter Property="Control.Background" Value="White" />
+        <Setter Property="Control.BorderBrush" Value="#FF082708" />
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Style.Triggers>
+            <Trigger Property="Control.IsMouseOver" Value="True">
+                <Setter Property="Control.Background" Value="#FFDDEEB9" />
+            </Trigger>
+            <Trigger Property="Control.IsFocused" Value="True">
+                <Setter Property="Control.Background" Value="Azure" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- ======================================== -->
+    <!-- Estilo Fondo del Editor                  -->
+    <!-- ======================================== -->
+    <Style x:Key="styleStackPanelEdtFondoEditor" TargetType="StackPanel">
+        <Setter Property="Control.Height" Value="Auto" />
+        <Setter Property="Control.Width" Value="Auto" />
+        <Setter Property="Control.Margin" Value="0" />
+        <Setter Property="Control.Padding" Value="0,10,0,0" />
+        <Setter Property="Control.HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Control.VerticalAlignment" Value="Center" />
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.BorderThickness" Value="1" />
+        <Setter Property="Control.Background" Value="#00000000" />
+    </Style>
+    <!-- ======================================== -->
+    <!-- Estilo Fondo del Editor                  -->
+    <!-- ======================================== -->
+    <Style x:Key="styleWrapPanelEdtFondoEditor" TargetType="WrapPanel">
+        <Setter Property="Control.Height" Value="Auto" />
+        <Setter Property="Control.Width" Value="Auto" />
+        <Setter Property="Control.Margin" Value="0" />
+        <Setter Property="Control.HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.BorderThickness" Value="1" />
+        <Setter Property="Control.Background" Value="#00000000" />
+    </Style>
+    <!-- =================================== -->
+    <!-- Grid Principal Propiedades          -->
+    <!-- =================================== -->
+    <!-- Cortina Propiedades y Herramientas  -->
+    <Style x:Key="styleTabControlEdtGridCortinaPropiedades" TargetType="Grid">
+        <Setter Property="Control.Padding" Value="0" />
+        <Setter Property="Control.Margin" Value="0,0,0,0" />
+        <Setter Property="Control.Background" Value="#00000000" />
+    </Style>
+    <!-- =================================== -->
+    <!-- TabControl para Propiedades         -->
+    <!-- =================================== -->
+    <!-- TabControl Encabezado Para Propiedades y Herramientas  -->
+    <Style x:Key="styleTabControlEdtPropiedades" TargetType="TabControl">
+        <Setter Property="Control.HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Control.VerticalAlignment" Value="Stretch" />
+        <Setter Property="Control.Background" Value = "White" />
+        <Setter Property="Control.Margin" Value="0,44,1,0" />
+    </Style>
+    <!-- TabItem Encabezado  -->
+    <Style x:Key="styleTabItemEdtPropiedades" TargetType="TabItem">
+        <Setter Property="Control.Background" Value = "White" />
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="12" />
+        <Setter Property="Control.Height" Value="100" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentPresenter Content="{TemplateBinding Content}">
+                        <ContentPresenter.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </ContentPresenter.LayoutTransform>
+                    </ContentPresenter>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="3" />
+        <Style.Triggers>
+            <Trigger Property="Control.IsMouseOver" Value="True">
+                <Setter Property="Control.Background" Value="#FFDDEEB9" />
+            </Trigger>
+            <Trigger Property="Control.IsFocused" Value="True">
+                <Setter Property="Control.Background" Value="Azure" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="styleGridTabItemEdtPropiedades" TargetType="Grid">
+        <Setter Property="Control.Background" Value = "White" />
+        <Setter Property="Control.Padding" Value = "0" />
+    </Style>
+    <!-- ======================================== -->
+    <!-- ComboBox Valores propiedades Objeto Activo -->
+    <!-- ======================================== -->
+    <Style x:Key="styleComboBoxEdtPropiedades" TargetType="ComboBox">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="14" />
+        <Setter Property="Control.Height" Value="25" />
+        <Setter Property="Control.Width" Value="260" />
+        <Setter Property="Control.Margin" Value="160,2,0,1" />
+        <Setter Property="Control.Background" Value="White" />
+        <Setter Property="Control.BorderBrush" Value="#FF34C4EE" />
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+    </Style>
+    <!-- ======================================== -->
+    <!-- Etiquetas y Campos Captura propiedades   -->
+    <!-- ======================================== -->
+    <!-- Titulo o Etiquetas de campos -->
+    <Style x:Key="styleEtiquetasEdtPropiedades" TargetType="TextBlock">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="14" />
+        <Setter Property="Control.Height" Value="20" />
+        <Setter Property="Control.Width" Value="150" />
+        <Setter Property="Control.Margin" Value="8,3,0,2" />
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+    </Style>
+    <!-- Campos de Captura de datos con validacion Error -->
+    <Style x:Key="styleTextBoxEdtPropiedades" TargetType="TextBox">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="11" />
+        <Setter Property="Control.Height" Value="23" />
+        <Setter Property="Control.Width" Value="260" />
+        <Setter Property="Control.Margin" Value="160,2,0,1" />
+        <Setter Property="Control.BorderThickness" Value="1" />
+        <Setter Property="Control.Background" Value="{StaticResource ResourceKey=detailMarkBrush}" />
+        <Setter Property="Control.BorderBrush" Value="#FF34C4EE" />
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={
+                        x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+            <Trigger Property="Control.IsFocused" Value="True">
+                <Setter Property="Control.FontWeight" Value="Bold" />
+                <Setter Property="Control.Background" Value="AliceBlue" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- Grid Contenedor de Propiedades -->
+    <Style x:Key="styleTabControlEdtGridPropiedades" TargetType="Grid">
+        <Setter Property="Control.Padding" Value="0" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.Margin" Value="0,1,0,0" />
+    </Style>
+    <!-- ======================================== -->
+    <!-- BOTONES CON IMAGENS PARA CONTROLES -->
+    <!-- ======================================== -->
+    <!-- Estilo Botones Imagenes para controles -->
+    <Style x:Key="styleButtonImgEdtControlesTouch"  TargetType="Button">
+        <Setter Property="Control.FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Setter Property="Control.Margin" Value="4,2,4,2" />
+        <Setter Property="Control.Height" Value="54" />
+        <Setter Property="Control.Width" Value="82" />
+        <Setter Property="Control.Cursor" Value="Hand" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="Control.BorderBrush" Value="AliceBlue" />
+        <Setter Property="Control.BorderThickness" Value="0" />
+        <Setter Property="Control.Padding" Value="0"/>
+        <Setter Property="Control.Focusable" Value="False"/>
+        <Setter Property="Control.VerticalAlignment" Value="Top" />
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+    </Style>
+    <!-- StackPanel Botones Con Imagenes para controles-->
+    <Style x:Key="styleStackPanelBotonesEdtControlesTouch" TargetType="StackPanel">
+        <Setter Property="Control.Margin" Value="0" />
+        <Setter Property="Control.Height" Value="54" />
+        <Setter Property="Control.Width" Value="80" />
+        <Setter Property="Control.VerticalAlignment" Value="Center" />
+        <Setter Property="Control.HorizontalAlignment" Value="Center" />
+    </Style>
+    <!-- Imagen de los Botones -->
+    <Style x:Key="styleImagBotonesEdtControlesForm" TargetType="Image">
+        <Setter Property="Control.Height" Value="Auto" />
+        <Setter Property="Control.Width" Value="Auto" />
+        <Setter Property="Control.Margin" Value="0,0,0,0" />
+        <Setter Property="Control.VerticalAlignment" Value="Center" />
+        <Setter Property="Control.HorizontalAlignment" Value="Center" />
+    </Style>
+</ResourceDictionary>
+
+    

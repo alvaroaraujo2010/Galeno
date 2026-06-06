@@ -1,0 +1,325 @@
+﻿<Window x:Class="Sistema.Vista.Browser02"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF5" 
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        Name="VistaBrowser02"
+        mc:Ignorable="d ignore"
+        WindowStartupLocation="CenterScreen"
+        Width="1000" 
+        Height="555"
+        Title="Buscar Registro..."
+        ResizeMode="NoResize"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+		Background="Transparent" 
+        ShowInTaskbar="False">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary 
+                  Source="../Skins/EstiloSistema.xaml ">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid x:Name="LayoutRoot" Margin="0,0,0,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*" />
+            <RowDefinition Height="103*" />
+            <RowDefinition Height="374*" />
+            <RowDefinition Height="51*" />
+        </Grid.RowDefinitions>
+        <Rectangle HorizontalAlignment="Left" 
+                   Height="65" 
+                   Margin="7,43,0,0" 
+                   Grid.Row="1" 
+                   VerticalAlignment="Top" 
+                   Width="785" 
+                   OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+                   Fill="#FFF6F8F9" Grid.RowSpan="2"/>
+        <Border Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+                BorderBrush="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" 
+                BorderThickness="1" 
+                HorizontalAlignment="Left" 
+                Width="1000" 
+                Grid.RowSpan="3"
+                Grid.Row="1"/>
+        <Image HorizontalAlignment="Left"
+           Height="40"
+           Width="1000"
+           Margin="0,0,0,0"
+           VerticalAlignment="Top"
+           Grid.Row="1"
+           Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+           StretchDirection="UpOnly"
+           Stretch="Fill"
+           MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Name="txtTituloVentana"
+                   VerticalAlignment="Top"
+                   Text="Buscar Registro..." 
+                   Grid.Row="1" Margin="70,8,30,0" 
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                TabIndex="50"
+                Click="cmdCancelar_Click"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                       Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <ListView x:Name="objDataGrid" 
+                  Margin="0,5,0,0" 
+                  Grid.Row="2" 
+                  MouseDoubleClick="MouseDbClick" 
+                  TabIndex="3" 
+                  KeyDown="DataGridKeyDown"
+                  FontSize="12"
+                  GotFocus="objDataGrid_GotFocus">
+            <ListView.View>
+                <GridView
+    		    x:Name="objGridView"/>
+            </ListView.View>
+        </ListView>
+        <Image HorizontalAlignment="Left" 
+    		Height="51" 
+    		Margin="0,0,0,0" 
+    		VerticalAlignment="Top" 
+    		Source="/Sistema;component/Imagenes/sis_fondo40.png" 
+    		Grid.Row="3" 
+    		StretchDirection="UpOnly" 
+    		Stretch="Fill"/>
+        <Button
+        	Content="Buscar"
+        	Height="31"
+        	HorizontalAlignment="Left"
+        	Margin="724,3,0,0"
+        	x:Name="cmdBuscar"
+        	VerticalAlignment="Top"
+        	Width="58"
+        	Visibility="Collapsed"  
+            Grid.Row="1"
+        	Click="cmdBuscar_click"/>
+        <Button Name="cmdCancelar" 
+                Style="{StaticResource styleButtonImgForm}"
+        	    Margin="772,13,0,0"
+                Grid.Row="3" 
+                TabIndex="13" 
+                Click="cmdCancelar_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="ImgCancelar" 
+                       Source="/Sistema;component/Imagenes/sis_edt_cancelar.png" 
+                       Style="{StaticResource styleImagBotonesForm}"
+                       Stretch="UniformToFill"/>
+                <TextBlock x:Name="textCancelar" 
+                           Text="Cancelar" 
+            	           Style="{StaticResource styleLblBotonesForm}" 
+                           Height="16"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdAceptar" 
+                Style="{StaticResource styleButtonImgForm}"
+        	    Margin="657,13,0,0"
+                Grid.Row="3" 
+                TabIndex="13" 
+                Click="cmdAceptar_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="ImgAceptar" 
+                       Source="/Sistema;component/Imagenes/sis_edt_aceptar.png" 
+                       Style="{StaticResource styleImagBotonesForm}"
+                       Stretch="UniformToFill"/>
+                <TextBlock x:Name="textAceptar" 
+                           Text="Aceptar" 
+            	           Style="{StaticResource styleLblBotonesForm}" 
+                           Height="16"/>
+            </StackPanel>
+        </Button>
+        <TextBlock Height="23"
+        	        Grid.Row="1"
+        	        HorizontalAlignment="Left"
+        	        Margin="12,79,0,0"
+        	        x:Name="textBlock1_Copy"
+        	        VerticalAlignment="Top" 
+                    Width="58" 
+                    FontSize="14" 
+                    FontFamily="Aharoni" >
+            <Run Language="es-co" Text="BUSCAR"/></TextBlock>
+        <TabControl x:Name="pagTabControl" 
+                    HorizontalAlignment="Left" 
+                    Height="60" 
+                    Margin="75,48,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="630" 
+                    BorderThickness="0" 
+                    OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+                    Background="White"
+                    Grid.Row="1" Grid.RowSpan="2">
+            <TabItem Header="TabItem1" Height="10" x:Name="Tab1" Visibility="Collapsed" >
+                <StackPanel>
+                    <Label x:Name="lblTitulo11" Content="Titulo1" Height="24" Margin="3,0,178,0"/>
+                    <TextBox x:Name="txtText11" 
+                    	Style="{StaticResource styleTextBoxForm}" 
+                    	TabIndex="1" 
+                    	Height="23"  
+                    	Margin="4,0,0,0" 
+                    	HorizontalAlignment="Left" 
+                    	VerticalAlignment="Top" 
+                    	Width="444" 
+                    	TouchEnter="fcvTouchEnterTeclado"
+                    	TextChanged="fcvFiltroTextChanged" 
+                    	KeyDown="fcvMoverFocus_aGrid" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="TabItem2" Height="10" x:Name="Tab2" Visibility="Collapsed">
+                <Grid>
+                    <Label x:Name="lblTitulo21" Content="Titulo1" Margin="4,0,331,22"/>
+                    <Label x:Name="lblTitulo22" Content="Titulo2" Margin="300,-1,28,23"/>
+                    <TextBox x:Name="txtText21" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="2" 
+                             Height="23"  
+                             Margin="4,23,0,-2" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="291" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus"/>
+                    <TextBox x:Name="txtText22" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="3" 
+                             Height="23"  
+                             Margin="309,23,0,-2" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="307" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus_aGrid"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem3" Height="10" x:Name="Tab3" Visibility="Collapsed">
+                <Grid>
+                    <Label x:Name="lblTitulo31" Content="Titulo1" Margin="4,-6,430,0" Height="24" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTitulo32" Content="Titulo2" Margin="200,-6,213,28"/>
+                    <Label x:Name="lblTitulo33" Content="Titulo3" Margin="418,-6,10,28"/>
+                    <TextBox x:Name="txtText31" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="4" Height="23"  
+                             Margin="4,21,0,0"   
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="191" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus"/>
+                    <TextBox x:Name="txtText32" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="5" 
+                             Height="23"  
+                             Margin="200,21,0,0" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="213" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus"/>
+                    <TextBox x:Name="txtText33" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="6" 
+                             Height="23"  
+                             Margin="418,21,0,0" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="198" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus_aGrid"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem4" Height="10" x:Name="Tab4" Visibility="Collapsed">
+                <Grid>
+                    <Label x:Name="lblTitulo41" Content="Titulo1" Margin="3,0,467,0" Height="24" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTitulo42" Content="Titulo2" Margin="164,0,307,22"/>
+                    <Label x:Name="lblTitulo43" Content="Titulo3" Margin="324,0,160,22"/>
+                    <Label x:Name="lblTitulo44" Content="Titulo4" Margin="471,-1,7,23"/>
+                    <TextBox x:Name="txtText41" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="7"  Height="23"  Margin="3,21,0,0"   
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="156" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus"/>
+                    <TextBox x:Name="txtText42" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="8"  Height="23"  
+                             Margin="164,21,0,0" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="155" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus"/>
+                    <TextBox x:Name="txtText43" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="9"  Height="23"  
+                             Margin="324,21,0,0" HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="142" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus"/>
+                    <TextBox x:Name="txtText44" 
+                             Style="{StaticResource styleTextBoxForm}" 
+                             TabIndex="10" 
+                             Height="23"  
+                             Margin="471,21,0,0" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top"
+                             Width="145" 
+                             TouchEnter="fcvTouchEnterTeclado"
+                             TextChanged="fcvFiltroTextChanged" 
+                             KeyDown="fcvMoverFocus_aGrid"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <ComboBox Height="22" 
+                  HorizontalAlignment="Left" 
+                  Margin="734,76,0,0" 
+                  x:Name="cboListBoxIndices" 
+                  VerticalAlignment="Top" 
+                  Width="212" 
+        	      Style="{StaticResource styleComboBoxForm}"
+                  SelectionChanged="fcvSeleccionIndice" 
+                  TabIndex="14" Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding NombreIndice}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Image HorizontalAlignment="Left" 
+               Height="54" 
+               Margin="6,3,0,0" 
+               VerticalAlignment="Top" 
+               Width="53" 
+               Grid.RowSpan="2" 
+               Source="/Sistema;component/Imagenes/sis_logo40.png" 
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+    </Grid>
+</Window>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultConnection>
+    <add Name="DbAplicacion"/>
+  </DefaultConnection>
+  <ConnectionStrings>
+	<!-- ================================== -->
+	<!-- Cliente: AUDITORIA : PPAL-AUDITOR01  -->
+	<!-- ================================== -->
+    <add Name="DbAplicacion"
+		 ConnConexionDefaultDesc="Hospital Camilo Villazon Pumarejo"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.26.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.26.100;user id=PPAL-AUDITOR01;password=root;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.26.100;uid=PPAL-AUDITOR01;pwd=root;database=betagaleno;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.26.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+  
+  </ConnectionStrings>
+</configuration>

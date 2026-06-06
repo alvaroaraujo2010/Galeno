@@ -1,0 +1,381 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 18/10/2015 05:06:33 PM -->
+<Window x:Class="FacturacionMedica.Vista.VistaBrowserRips"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        xmlns:local="clr-namespace:FacturacionMedica.Vista" 
+        xmlns:Util="clr-namespace:FacturacionMedica.Utilidades" 
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Vista Completar Rips"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="1024"
+        Height="724"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True">
+    <Window.Resources>
+        <Util:ForegroundColorEstado x:Key="ForegroundColorEstado"/>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="36"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Vista Completar Rips"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   Margin="60,8,60,0"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                    TabIndex="50"
+                    Click="cmdSalir_Click"
+                    ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                           Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,1,0"
+               VerticalAlignment="Top"
+               Grid.Row="5"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <!-- Filtro -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border BorderThickness="0.9,0.9,0.9,0"
+                Grid.Row="0"
+                BorderBrush="#FFB0AFAF"
+                Background="#FFF3F2F2" 
+                Margin="0,2,0,-2">
+            </Border>
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="190"/>
+                    <ColumnDefinition Width="190"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblFiltro" Grid.Column="0"
+                           FontSize="16"
+                           Foreground="#FFEEF5F9"
+                           FontWeight="Bold"
+                           Style="{StaticResource styleEtiquetasFormResize}" 
+                           Background="#FF79CCE4">
+                        <Run Language="es-co" Text=" FILTRO"/>
+                </TextBlock>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="lblFiltroFechaInicio" Grid.Column="0"
+                                       Style="{StaticResource styleEtiquetasFormResize}">
+                                    <Run Language="es-co" Text="Fecha inicio"/>
+                    </TextBlock>
+                    <Grid Grid.Column="1" Style="{StaticResource styleDatePickerGridFormResize}">
+                        <Border Style="{StaticResource styleDatePickerBorder}"/>
+                        <TextBox Name="txtFiltroFechaInicio"
+                                         TabIndex="1"
+                                         BorderThickness="0.5"
+                                         BorderBrush="White"
+                                         Style="{StaticResource styleTextBoxFormFecha}"
+                                         TextChanged="fcvActualizarDatePicker"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                        <DatePicker Name="dpkFiltroFechaInicio"
+                                        Style="{StaticResource styleDatePickerForm}"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="lblFiltroFechaFin" Grid.Column="0"
+                               Style="{StaticResource styleEtiquetasFormResize}">
+                             <Run Language="es-co" Text="Fecha fin"/>
+                    </TextBlock>
+                    <Grid Grid.Column="1" Style="{StaticResource styleDatePickerGridFormResize}">
+                        <Border Style="{StaticResource styleDatePickerBorder}"/>
+                        <TextBox Name="txtFiltroFechaFin"
+                                 TabIndex="1"
+                                 BorderThickness="0.5"
+                                 BorderBrush="White"
+                                 Style="{StaticResource styleTextBoxFormFecha}"
+                                 TextChanged="fcvActualizarDatePicker"
+                                 TouchEnter="fcvTouchEnterTeclado"
+                                 KeyDown="fcvMoverFocus_KeyDown"
+                                 GotFocus="fcvTextBox_GotFocus"/>
+                        <DatePicker Name="dpkFiltroFechaFin"
+                                    Style="{StaticResource styleDatePickerForm}"/>
+                    </Grid>
+                </Grid>
+                <TextBox Name="txtTipoFiltro"
+                     TabIndex="7"
+                     Visibility="Collapsed"
+                     Style="{StaticResource styleTextBoxFormResize}"
+                     Grid.Column="0"/>
+                <ComboBox Name="cboTipoFiltro"
+                      Grid.Column="3"
+                      Style="{StaticResource styleComboBoxFormResize}"
+                      SelectedIndex="0"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      Height="24" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Name="lblTotalRegistros" 
+                           Grid.Column="5"
+                           FontSize="16"
+                           Foreground="#FF79CCE4"
+                           FontWeight="Bold"
+                           Style="{StaticResource styleEtiquetasFormResize}">
+                        <Run Language="es-co" Text=" REGISTROS"/>
+                </TextBlock>
+                <TextBox Name="txtRegistros" 
+                         Height="23"
+                         Grid.Column="6"
+                         FontSize="16"
+                         IsReadOnly="True"
+                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                         TabIndex="1"/>
+            </Grid>
+            <Grid Grid.Row="1" Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="174"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Height="23"
+                         Grid.Row="1"
+                         VerticalAlignment="Top"
+                         Name="txtFiltroDatos"
+                         Style="{StaticResource styleTextBoxForm}"
+                         TabIndex="1"
+                         Visibility="Collapsed"
+                         HorizontalAlignment="Left"
+                         Width="434"
+                         GotFocus="fcvTextBox_GotFocus" 
+                         Margin="10,8,0,0"/>
+                <local:crtBuscar HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Height="30"
+                         Grid.Row="1"
+                         Width="476"
+                         Margin="0,5,0,0" 
+                         Loaded="crtBuscarLoaded" />
+                <Button Name="cmdBuscar"
+                        Style="{StaticResource styleButtonImgForm}"
+                        TabIndex="63"
+                        Grid.Column="1"
+                        Click="fcvBrowserBuscar"
+                        Margin="0,3,0,0" 
+                        ToolTip="Buscar y mostrar resultados de busqueda en la vista">
+                    <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                        <Image x:Name="imgBrowser"
+                           Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                        <TextBlock x:Name="lblBrowser"
+                               Text="Buscar..."
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="cmdValidar"
+                        Width="170"
+                        Style="{StaticResource styleButtonImgForm}"
+                        Margin="1,3,0,0" 
+                        TabIndex="80"
+                        Click="fcvValidarPeriodo"
+                        Grid.Column="3"
+                        ToolTip="Validar servicios facturados dentro del periodo dado en filtro">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource styleStackPanelBotonesForm}" Width="160">
+                        <Image x:Name="imgValiar"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                        <TextBlock x:Name="lblValidar"
+                               Text="Validar registros Rips..."
+            	               Style="{StaticResource styleLblBotonesForm}" Height="16" Width="130"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
+        <!-- Fin Perfil Usuario -->
+        <DataGrid AutoGenerateColumns="False"
+                  Grid.Row="3"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  Margin="10,10,10,10"
+                  Name="grdDetalles"
+                  CanUserAddRows="False"
+                  TabIndex="100">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow" >
+                    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Item.Adm_ctarip_rgad, Converter={StaticResource ForegroundColorEstado}}" />
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="50" Header="Propiedad">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Height="25" Click="fcvGrillaMostrarDetalles" ToolTip="Propiedaes del registro" >...</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Adm_secadm_rgad}"
+                                    Header="Admisión"
+                                    Width="100"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Adm_destat_tatn}"
+                                    Header="Tipo atención"
+                                    Width="130"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Adm_fecadm_rgad, StringFormat={}{0:dd/MM/yyyy}}"
+                                    Header="Fecha Admisión"
+                                    Width="100"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Sia_tipide_tide}"
+                                    Header="Tipo"
+                                    Width="50"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Sia_nroide_usua}"
+                                    Header="Identificación"
+                                    Width="120"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Sia_priape_usua}"
+                                    Header="P.Apellido"
+                                    Width="130"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sia_segape_usua}"
+                                    Header="S.Apellido"
+                                    Width="120"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sia_prinom_usua}"
+                                    Header="P.Nombre"
+                                    Width="130"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sia_segnom_usua}"
+                                    Header="S.Nombre"
+                                    Width="120"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sia_desare_aser}"
+                                    Header="Area del servicio"
+                                    Width="120"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Cto_nrocon_cont}"
+                                    Header="Contrato"
+                                    Width="100"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Sia_codeps_teps}"
+                                    Header="Codigo"
+                                    Width="150"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Sia_deseps_teps}"
+                                    Header="Nombre Eps"
+                                    Width="150"
+                                    IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="cmdLogErrores"
+                        Margin="10,10,0,0"
+                        Style="{StaticResource styleButtonImgForm}"
+                        TabIndex="19"
+                        Click="fcvVistaLogErrores"
+                        Grid.Row="5"
+                        ToolTip="Ver registro de errores">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgLogErrores"
+                               Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                               Style="{StaticResource styleImagBotonesForm}"
+                               Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblLogErrores"
+                                   Text="Errores"
+            	                   Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdSalir"
+                Margin="0,10,10,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="72"
+                Click="cmdSalir_Click"
+                Grid.Row="5"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

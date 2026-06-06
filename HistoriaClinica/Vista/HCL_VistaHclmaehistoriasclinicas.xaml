@@ -1,0 +1,760 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 02/04/2014 10:52:59 AM -->
+<Window x:Class="HistoriasClinicas.Vista.VistaHclmaehistoriasclinicas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloHclmaehistoriasclinicas, Source={StaticResource HCL_Locator}}"
+        Title="Maestro de historias clínicas"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="730"
+        Height="505"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True">
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              	Source= "/Sistema;component/Skins/EstiloSistema.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="69*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Height="Auto"
+                Width="Auto"
+                Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Maestro de historias clínicas"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Image MouseDown="btnCerrar_KeyDown"
+               Style="{StaticResource styleImgButtonCerrarForm}"
+               Source="/Sistema;component/Imagenes/sis_cerrar40.png"
+               Grid.Row="1"
+               IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+               Cursor="Hand"/>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="4"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFILTRO}"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <!-- Fin Perfil Usuario -->
+        <!-- Control modo edicion formulario -->
+        <TextBox Name="lblFormModoPopup"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrSIS_FormModoPopup,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <!-- INICIO REJILLA -->
+        <Grid Grid.Row="2" Margin="5,5,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="95" />
+                <RowDefinition Height="290" />
+            </Grid.RowDefinitions>
+            <!-- INICIO ZONA 1 -->
+            <Grid Grid.Row="0" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Margin="5,0,25,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- FILA 0 COLUMNA 0 -->
+                    <Grid Grid.Row="0" Grid.Column="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="133"/>
+                            <ColumnDefinition Width="210"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="lblG1hcl_nrohis_hicl"
+								   Grid.Column="0"
+								   ToolTip="Número o código de la Ficha de Historias Clínicas (generado por el sistema)"
+								   Style="{StaticResource styleEtiquetasFormResize}">
+    						   <Run Language="es-co" Text="Número historia clínica"/>
+                        </TextBlock>
+                        <TextBox Name="txtG1Hcl_nrohis_hicl"
+								 Grid.Column="1"
+								 TabIndex="1"
+								 Text="{Binding Path=G1Hcl_nrohis_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="fcvMoverFocus_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                    </Grid>
+                    <!-- FILA 1 COLUMNA 0 -->
+                    <Grid Grid.Row="1" Grid.Column="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="133"/>
+                            <ColumnDefinition Width="210"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="lblG1sia_nroide_usua"
+								   Grid.Column="0"
+								   ToolTip="número de identificación del paciente: Registro civil, cédula, Tarjeta de identidad y otros"
+								   Style="{StaticResource styleEtiquetasFormResize}">
+ 						      <Run Language="es-co" Text="Número de Identificación"/>
+                        </TextBlock>
+                        <TextBox Name="txtG1Sia_nroide_usua"
+								 Grid.Column="1"
+								 TabIndex="2"
+								 Text="{Binding Path=G1Sia_nroide_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResize}"
+								 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+								 KeyDown="txtG1Sia_nroide_usua_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                    </Grid>
+                    <!-- FILA 2 COLUMNA 0 -->
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="133"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="477"/>                            
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="lblG1sia_idesec_usua"
+								  Grid.Column="0"
+								  ToolTip="Consecutivo Único de paciente en el sistema"
+  							      Style="{StaticResource styleEtiquetasFormResize}">
+							 <Run Language="es-co" Text="Código único del paciente"/>
+                        </TextBlock>
+                        <TextBox Name="txtG1Sia_idesec_usua"
+								 Grid.Column="1"
+								 TabIndex="3"
+								 Text="{Binding Path=G1Sia_idesec_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="txtG1Sia_idesec_usua_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                        <TextBox Name="txtG1Sia_nomusu_usua"
+								 Grid.Column="2"
+								 TabIndex="103"
+								 Text="{Binding Path=G1Sia_nomusu_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="fcvMoverFocus_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                    </Grid>
+                    <!-- FILA 0 COLUMNA 1 -->
+                    <Grid Grid.Row="0" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="lblG1sia_tipide_tide"
+								   Grid.Column="0"
+								   ToolTip="Tipo identificación del usuario o Paciente  según las normas vigentes para gestión de datos ejm: CC= cédula, otros"
+								   Style="{StaticResource styleEtiquetasFormResize}">
+   						   <Run Language="es-co" Text="Tipo Identificación"/>
+                        </TextBlock>
+                        <TextBox Name="txtG1Sia_tipide_tide"
+								 Grid.Column="1"
+								 TabIndex="4"
+								 Text="{Binding Path=G1Sia_tipide_tide, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="txtG1Sia_tipide_tide_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                        <TextBox Name="txtG1Sia_deside_tide"
+								 Grid.Column="2"
+								 TabIndex="104"
+								 Text="{Binding Path=G1Sia_deside_tide, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="fcvMoverFocus_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                    </Grid>
+                    <!-- FILA 1 COLUMNA 1 -->
+                    <Grid Grid.Row="1" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <!-- FILA 1 COLUMNA 1 -->
+                    <Grid Grid.Row="1" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="lblG1sis_estreg_esrg"
+								   Grid.Column="0"
+								   ToolTip="Estado de registros  : 1= Activo 2= Inactivo"
+								   Style="{StaticResource styleEtiquetasFormResize}">
+							   <Run Language="es-co" Text="Código Estado Registro"/>
+                        </TextBlock>
+                        <TextBox Name="txtG1Sis_estreg_esrg"
+								 Grid.Column="1"
+								 TabIndex="5"
+								 Text="{Binding Path=G1Sis_estreg_esrg, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="txtG1Sis_estreg_esrg_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                        <TextBox Name="txtG1Sis_desest_esrg"
+								 Grid.Column="2"
+								 TabIndex="105"
+								 Text="{Binding Path=G1Sis_desest_esrg, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								 Style="{StaticResource styleTextBoxFormResizeDisable}"
+								 IsEnabled="False"
+								 KeyDown="fcvMoverFocus_KeyDown"
+								 GotFocus="fcvTextBox_GotFocus"/>
+                    </Grid>
+                </Grid>
+                <!-- FIN ZONA 1 -->
+            </Grid>
+            <!-- INICIO ZONA 2 -->
+            <Grid Grid.Row="1" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TabControl Name="pagG1"
+								Style="{StaticResource styleTabControlZonaForm}"
+								TabIndex="6"
+								Grid.Row="1" Margin="10,2,10,0">
+                    <TabItem Name="pagTABS2"
+							 Header="Datos Básicos"
+							 Style="{StaticResource styleTabItemZonaForm}">
+                        <Grid Grid.Row="1" Margin="5,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="20"/>                                
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- FILA 0 COLUMNA 0 -->
+                            <Grid Grid.Row="0" Grid.Column="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_fecapp_hicl"
+										   Grid.Column="0"
+										   ToolTip="Fecha apertura de la historia clínica por primera vez (puede ser no electrónica)"
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Fecha apertura HC"/>
+                                </TextBlock>
+                                <Grid Grid.Column="1"
+									  Style="{StaticResource styleDatePickerGridFormResize}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox Name="txtG1Hcl_fecapp_hicl"
+											 TabIndex="1"
+											 Text="{Binding Path=G1Hcl_fecapp_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											 Style="{StaticResource styleTextBoxFormFecha}"
+											 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+											 TextChanged="fcvActualizarDatePicker"
+											 KeyDown="fcvMoverFocus_KeyDown"
+											 GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker Name="dpkG1Hcl_fecapp_hicl"
+											IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+											Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                            </Grid>
+                            <!-- FILA 1 COLUMNA 0 -->
+                            <Grid Grid.Row="1" Grid.Column="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_fecape_hicl"
+										   Grid.Column="0"
+										   ToolTip="Fecha apertura de la historia clínica electrónica"
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Apertura electrónica"/>
+                                </TextBlock>
+                                <Grid Grid.Column="1"
+									  Style="{StaticResource styleDatePickerGridFormResize}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox Name="txtG1Hcl_fecape_hicl"
+											 TabIndex="2"
+											 Text="{Binding Path=G1Hcl_fecape_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											 Style="{StaticResource styleTextBoxFormFecha}"
+											 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+											 TextChanged="fcvActualizarDatePicker"
+											 KeyDown="fcvMoverFocus_KeyDown"
+											 GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker Name="dpkG1Hcl_fecape_hicl"
+											IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+											Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                            </Grid>
+                            <!-- FILA 2 COLUMNA 0 -->
+                            <Grid Grid.Row="2" Grid.Column="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_hpapel_hicl"
+										   Grid.Column="0"
+										   ToolTip="Historia clínica anterior en papel: 1=Si 2=No"
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Historia clínica en papel"/>
+                                </TextBlock>
+                                <TextBox Name="txtG1Hcl_hpapel_hicl"
+										 Grid.Column="1"
+										 TabIndex="4"
+										 Text="{Binding Path=G1Hcl_hpapel_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										 Style="{StaticResource styleTextBoxFormResize}"
+										 TextChanged="ActualizarComboBoxOpcion"
+										 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										 KeyDown="fcvMoverFocus_KeyDown"
+										 GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox Name="cboG1Hcl_hpapel_hicl"
+										  Grid.Column="2"								
+										IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										Style="{StaticResource styleComboBoxFormResize}"
+										SelectedIndex="0"
+										SelectionChanged="SeleccionComboBoxOpcion"
+										ItemsSource="{Binding Path=G1CbHcl_hpapel_hicl}"
+										DisplayMemberPath="{Binding Path=NombreOpcion}"
+										SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
+                            <!-- FILA 3 COLUMNA 0 -->
+                            <Grid Grid.Row="3" Grid.ColumnSpan="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="35"/>                                    
+                                    <ColumnDefinition Width="439"/>                                    
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1sia_codpfa_prof"
+										   Grid.Column="0"
+										   ToolTip="Código del Profesional que realiza la apertura de la historia electrónica"
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Código del profesional"/>
+                                </TextBlock>
+                                <TextBox Name="txtG1Sia_codpfa_prof"
+										 Grid.Column="1"
+										 TabIndex="3"
+										 Text="{Binding Path=G1Sia_codpfa_prof, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										 Style="{StaticResource styleTextBoxFormResize}"
+										 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										 KeyDown="txtG1Sia_codpfa_prof_KeyDown"
+										 GotFocus="fcvTextBox_GotFocus"/>
+                                <Button Name="cmdG1Sia_codpfa_prof"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="109"
+                                        Click="cmdG1Sia_codpfa_prof_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Causa de Cancelación de la Cita medica"/>
+                                <TextBox Name="txtG1Sia_nompro_prof"
+										 Grid.Column="3"
+										 TabIndex="103"
+										 Text="{Binding Path=G1Sia_nompro_prof, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										 Style="{StaticResource styleTextBoxFormResizeDisable}"
+										 IsEnabled="False"
+										 KeyDown="fcvMoverFocus_KeyDown"
+										 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <!-- FILA 0 COLUMNA 1 -->
+                            <Grid Grid.Row="0" Grid.Column="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_papeld_hicl"
+										   Grid.Column="0"
+										   ToolTip="Historia clínica anterior escaneada : 1=Si 2=No"
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Historia clínica escaneada"/>
+                                </TextBlock>
+                                <TextBox Name="txtG1Hcl_papeld_hicl"
+										 Grid.Column="1"
+										 TabIndex="5"
+										 Text="{Binding Path=G1Hcl_papeld_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										 Style="{StaticResource styleTextBoxFormResize}"
+										 TextChanged="ActualizarComboBoxOpcion"
+										 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										 KeyDown="fcvMoverFocus_KeyDown"
+										 GotFocus="fcvTextBox_GotFocus"/>
+                                <ComboBox Name="cboG1Hcl_papeld_hicl"
+										  Grid.Column="2"
+										  IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										  Style="{StaticResource styleComboBoxFormResize}"
+										  SelectedIndex="0"
+										  SelectionChanged="SeleccionComboBoxOpcion"
+										  ItemsSource="{Binding Path=G1CbHcl_papeld_hicl}"
+										  DisplayMemberPath="{Binding Path=NombreOpcion}"
+										  SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
+                            <!-- FILA 1 COLUMNA 1 -->
+                            <Grid Grid.Row="1" Grid.Column="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_ncarpe_hicl"
+										   Grid.Column="0"
+										   ToolTip="número de la carpeta, cuando existe historia clínica en papel."
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Número carpeta"/>
+                                </TextBlock>
+                                <TextBox Name="txtG1Hcl_ncarpe_hicl"
+										 Grid.Column="1"
+										 TabIndex="6"
+										 Text="{Binding Path=G1Hcl_ncarpe_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										 Style="{StaticResource styleTextBoxFormResize}"
+										 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										 KeyDown="fcvMoverFocus_KeyDown"
+										 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <!-- FILA 2 COLUMNA 1 -->
+                            <Grid Grid.Row="2" Grid.Column="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_nestan_hicl"
+										   Grid.Column="0"
+										   ToolTip="número del estante donde se encuentra la carpeta, cuando existe historia clínica en papel."
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="número del estante"/>
+                                </TextBlock>
+                                <TextBox Name="txtG1Hcl_nestan_hicl"
+										 Grid.Column="1"
+										 TabIndex="7"
+										 Text="{Binding Path=G1Hcl_nestan_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										 Style="{StaticResource styleTextBoxFormResize}"
+										 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+										 KeyDown="fcvMoverFocus_KeyDown"
+										 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <!-- FILA 5 COLUMNA 1 -->
+                            <Grid Grid.Row="5" Grid.ColumnSpan="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="170"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG1hcl_notape_hicl"
+										   Grid.Column="0"
+										   FontSize="14"
+										   ToolTip="Nota de apertura electrónica de la historia clínica."
+										   Style="{StaticResource styleEtiquetasFormResize}">
+										   <Run Language="es-co" Text="Nota de apertura"/>
+                                </TextBlock>
+                            </Grid>
+                            <!-- FILA 5 COLUMNA 1 -->
+                            <Grid Grid.Row="6" Grid.ColumnSpan="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="689"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Name="txtG1Hcl_notape_hicl"
+								     Grid.Column="0"							
+                                     Width="686"
+                                     TabIndex="9"
+                                     Text="{Binding Path=G1Hcl_notape_hicl, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                     Style="{StaticResource styleTextBoxForm}"
+                                     IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                     KeyDown="fcvMoverFocus_KeyDown"
+                                     GotFocus="fcvTextBox_GotFocus"
+									 Height="98"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <!-- FIN ZONA 2 -->
+        </Grid>
+        <!-- FIN REJILLA -->
+        <!-- Fin Control modo edicion formulario -->
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="17*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"/>
+        </Grid>
+        <Button Name="cmdGuardar"
+                Margin="200,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="16"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para guardar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Guardar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdAdicionar"
+                Margin="200,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="17"
+                Command="{Binding CmdADD}"
+                Click="fcvNuevoRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para crear un nuevo registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgAdicionar"
+                           Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblAdicionar"
+                               Text="Nuevo"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdCancelar"
+                Margin="303,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="18"
+                Command="{Binding CmdCAN}"
+                Click="fcvCancelarRegistro"
+                Grid.Row="3"
+                ToolTip="Cancelar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblCancelar"
+                               Text="Cancelar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdModificar"
+                Margin="303,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="19"
+                Command="{Binding CmdEDT}"
+                Click="fcvModificarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para modificar el registro activo">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgModificar"
+                           Source="/Sistema;component/Imagenes/sis_edt_modificar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblModificar"
+                               Text="Modificar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdEdicion"
+                Margin="408,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="53"
+                Click="fcvMostrarMenuEdicion"
+                Grid.Row="5"
+                ToolTip="Clic para Cambiar estado del registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgEdicion"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblEdicion"
+                               Text="Procesos"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+            <Button.ContextMenu>
+                <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                    <MenuItem Name="opCON"
+                              Command="{Binding CmdCON}"
+                              Click="fcvConfirmarRegistro"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Confirmar apertura de historia">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                   Style="{StaticResource styleImagMenuContextButton}"
+                                   Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opANU"
+                              Command="{Binding CmdANU}"
+                              Click="fcvAnularRegistro"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Anular historia confirmada">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                   Style="{StaticResource styleImagMenuContextButton}"
+                                   Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="opDEL"
+                              Command="{Binding CmdDEL}"
+                              Click="fcvEliminarRegistro"
+                              Style="{StaticResource styleMenuItemContextButton}"
+                              Header="Eliminar historia no confirmada">
+                        <MenuItem.Icon>
+                            <Image Stretch="UniformToFill"
+                                   Style="{StaticResource styleImagMenuContextButton}"
+                                   Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Name="cmdSalir"
+                Margin="580,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="21"
+                Command="{Binding CmdSAL}"
+                Click="cmdSalir_Click"
+                Grid.Row="3"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdBrowser"
+                Margin="14,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="25"
+                Command="{Binding CmdDFL}"
+                Click="fcvBrowserBuscar"
+                Grid.Row="3"
+                ToolTip="Haga clic aqui para buscar un registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgBrowser"
+                           Source="/Sistema;component/Imagenes/sis_edt_buscar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblBrowser"
+                               Text="Buscar..."
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

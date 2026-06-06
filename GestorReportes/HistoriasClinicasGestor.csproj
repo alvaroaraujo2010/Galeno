@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E733358E-704E-4F6A-BAEB-3AE563B5F788}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestorReportes</RootNamespace>
+    <AssemblyName>GestorReportes</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=0e27b6f8be9b2ef7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=eabbf6a5f5af5004, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit.Extended, Version=1.7.4644.13122, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Sistema\Ensamblados\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modelo\EDT_Modelo.cs" />
+    <Compile Include="Modelo\HCL_Modelo.cs" />
+    <Compile Include="Utilidades\EDT_AddResizingAdornos.cs" />
+    <Compile Include="Utilidades\EDT_Utilidades.cs" />
+    <Compile Include="Utilidades\EDT_XmlEntorno.cs" />
+    <Compile Include="Utilidades\EDT_XmlEntornoCaptura.cs" />
+    <Compile Include="Utilidades\EDT_XmlEntornoEdicion.cs" />
+    <Compile Include="Utilidades\HCL_Utilidades.cs" />
+    <Compile Include="VistaModelo\EDT_VistaModelo.cs" />
+    <Compile Include="VistaModelo\EDT_VistaModeloCaptura.cs" />
+    <Compile Include="VistaModelo\EDT_VistaModeloEditor.cs" />
+    <Compile Include="VistaModelo\LocalizadorVistaModelo.cs" />
+    <Compile Include="Vista\EDT_ControlVistaTestEscalaEaPuntuacion.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTestEscalaEaPuntuacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaTestMotricidadFinoadaptativa.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTestMotricidadFinoadaptativa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaTestPersonalSocial.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTestPersonalSocial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaTestAudicionLenguage.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTestAudicionLenguage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaTestMotricidadGruesa.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTestMotricidadGruesa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdHojaConsumoDeEdt.xaml.cs">
+      <DependentUpon>EDT_ControlOrdHojaConsumoDeEdt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdRecursoDetalleEdt.xaml.cs">
+      <DependentUpon>EDT_ControlOrdRecursoDetalleEdt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlFirmaProfesional.xaml.cs">
+      <DependentUpon>EDT_ControlFirmaProfesional.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdDetallesBLiquidoResumen.xaml.cs">
+      <DependentUpon>EDT_ControlOrdDetallesBLiquidoResumen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoCierre.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoCierre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\crtBuscar.xaml.cs">
+      <DependentUpon>crtBuscar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdRecursoDetalle.xaml.cs">
+      <DependentUpon>EDT_ControlOrdRecursoDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdServiciosDetalleEdt.xaml.cs">
+      <DependentUpon>EDT_ControlOrdServiciosDetalleEdt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaTestFramingHam.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTestFramingHam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaImc.xaml.cs">
+      <DependentUpon>EDT_ControlVistaImc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileActividadMedicaCmd.xaml.cs">
+      <DependentUpon>EDT_TileActividadMedicaCmd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileActividadMedicaMenu.xaml.cs">
+      <DependentUpon>EDT_TileActividadMedicaMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileAdmision.xaml.cs">
+      <DependentUpon>EDT_TileAdmision.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileAdmisionFecha.xaml.cs">
+      <DependentUpon>EDT_TileAdmisionFecha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileOdontDiagServicios.xaml.cs">
+      <DependentUpon>EDT_TileOdontDiagServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileOdontSelectGrupo.xaml.cs">
+      <DependentUpon>EDT_TileOdontSelectGrupo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_HistoriaClinicaCaptura.xaml.cs">
+      <DependentUpon>HCL_HistoriaClinicaCaptura.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlCaptura.xaml.cs">
+      <DependentUpon>EDT_ControlCaptura.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlFecha.xaml.cs">
+      <DependentUpon>EDT_ControlFecha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlHojaAdmision.xaml.cs">
+      <DependentUpon>EDT_ControlHojaAdmision.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlHora.xaml.cs">
+      <DependentUpon>EDT_ControlHora.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdBliquidos.xaml.cs">
+      <DependentUpon>EDT_ControlOrdBliquidos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdDetalleEvolucion.xaml.cs">
+      <DependentUpon>EDT_ControlOrdDetalleEvolucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdDetallesBLiquido.xaml.cs">
+      <DependentUpon>EDT_ControlOrdDetallesBLiquido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdHojaConsumoDe.xaml.cs">
+      <DependentUpon>EDT_ControlOrdHojaConsumoDe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoDiente01.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoDiente01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoDiente02.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoDiente02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontograma.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontograma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontogramaAdulto.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontogramaAdulto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontogramaNinos.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontogramaNinos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoServicios.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoServiciosDetalle.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoServiciosDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoServiciosRegistro.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoServiciosRegistro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdOdontoServiciosTitulo.xaml.cs">
+      <DependentUpon>EDT_ControlOrdOdontoServiciosTitulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdServicios.xaml.cs">
+      <DependentUpon>EDT_ControlOrdServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdServiciosDetalle.xaml.cs">
+      <DependentUpon>EDT_ControlOrdServiciosDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlOrdServiciosTitulo.xaml.cs">
+      <DependentUpon>EDT_ControlOrdServiciosTitulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlUsuarioAtendido.xaml.cs">
+      <DependentUpon>EDT_ControlUsuarioAtendido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaAdmision.xaml.cs">
+      <DependentUpon>EDT_ControlVistaAdmision.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaAdmitido.xaml.cs">
+      <DependentUpon>EDT_ControlVistaAdmitido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_ControlVistaTriage.xaml.cs">
+      <DependentUpon>EDT_ControlVistaTriage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_HistoriaClinicaEditor.xaml.cs">
+      <DependentUpon>HCL_HistoriaClinicaEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TextBoxRelacion.xaml.cs">
+      <DependentUpon>EDT_TextBoxRelacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileHistorial.xaml.cs">
+      <DependentUpon>EDT_TileHistorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileHistorialImagen.xaml.cs">
+      <DependentUpon>EDT_TileHistorialImagen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileHistorialTexto.xaml.cs">
+      <DependentUpon>EDT_TileHistorialTexto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EDT_TileImgPredefinidas.xaml.cs">
+      <DependentUpon>EDT_TileImgPredefinidas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitAddRecursos.xaml.cs">
+      <DependentUpon>HCL_SolicitAddRecursos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitOdontDiagnosticos.xaml.cs">
+      <DependentUpon>HCL_SolicitOdontDiagnosticos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitOdontActividades.xaml.cs">
+      <DependentUpon>HCL_SolicitOdontActividades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitOdontSelDientes.xaml.cs">
+      <DependentUpon>HCL_SolicitOdontSelDientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitOdontTratamiento.xaml.cs">
+      <DependentUpon>HCL_SolicitOdontTratamiento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitHojaConsumoServicios.xaml.cs">
+      <DependentUpon>HCL_SolicitHojaConsumoServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitBalanceLiqAdd.xaml.cs">
+      <DependentUpon>HCL_SolicitBalanceLiqAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitBalanceLiquidos.xaml.cs">
+      <DependentUpon>HCL_SolicitBalanceLiquidos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitNotasMedicas.xaml.cs">
+      <DependentUpon>HCL_SolicitNotasMedicas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitOrdConfirmar.xaml.cs">
+      <DependentUpon>HCL_SolicitOrdConfirmar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\HCL_SolicitOrdeservicios.xaml.cs">
+      <DependentUpon>HCL_SolicitOrdeservicios.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_anular.png" />
+    <Resource Include="Imagenes\Edt_edt_confirmar.png" />
+    <Resource Include="Imagenes\Edt_edt_contraer1.png" />
+    <Resource Include="Imagenes\Edt_edt_contraer2.png" />
+    <Resource Include="Imagenes\Edt_edt_contraer3.png" />
+    <Resource Include="Imagenes\Edt_hist_abierto.png" />
+    <Resource Include="Imagenes\Edt_hist_anulado.png" />
+    <Resource Include="Imagenes\Edt_hist_confirmado.png" />
+    <Resource Include="Imagenes\Edt_hist_exportar.png" />
+    <Resource Include="Imagenes\Edt_hist_importar.png" />
+    <Resource Include="Imagenes\Edt_hist_ver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Vista\EDT_ControlVistaTestEscalaEaPuntuacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaTestMotricidadFinoadaptativa.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaTestPersonalSocial.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaTestAudicionLenguage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaTestMotricidadGruesa.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdHojaConsumoDeEdt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdRecursoDetalleEdt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlFirmaProfesional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdDetallesBLiquidoResumen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoCierre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\crtBuscar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdRecursoDetalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdServiciosDetalleEdt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaTestFramingHam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaImc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileActividadMedicaCmd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileActividadMedicaMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileAdmision.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileAdmisionFecha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileOdontDiagServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileOdontSelectGrupo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_HistoriaClinicaCaptura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlCaptura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlFecha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlHojaAdmision.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlHora.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdBliquidos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdDetalleEvolucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdDetallesBLiquido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdHojaConsumoDe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoDiente01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoDiente02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontograma.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontogramaAdulto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontogramaNinos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoServiciosDetalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoServiciosRegistro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdOdontoServiciosTitulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdServiciosDetalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlOrdServiciosTitulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlUsuarioAtendido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaAdmision.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaAdmitido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_ControlVistaTriage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_HistoriaClinicaEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TextBoxRelacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileHistorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileHistorialImagen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileHistorialTexto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\EDT_TileImgPredefinidas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitAddRecursos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitOdontDiagnosticos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitOdontActividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitOdontSelDientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitOdontTratamiento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitHojaConsumoServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitBalanceLiqAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitBalanceLiquidos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\HCL_SolicitNotasMedicas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitOrdConfirmar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\HCL_SolicitOrdeservicios.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_abrir.png" />
+    <Resource Include="Imagenes\Edt_edt_aceptar.png" />
+    <Resource Include="Imagenes\Edt_edt_adicionar.png" />
+    <Resource Include="Imagenes\Edt_edt_cancelar1.png" />
+    <Resource Include="Imagenes\Edt_edt_configurar.png" />
+    <Resource Include="Imagenes\Edt_edt_eliminar.png" />
+    <Resource Include="Imagenes\Edt_edt_guardar.png" />
+    <Resource Include="Imagenes\Edt_edt_modificar.png" />
+    <Resource Include="Imagenes\Edt_edt_organizar.png" />
+    <Resource Include="Imagenes\Edt_edt_salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConfigAsistencial\ConfigAsistencial.csproj">
+      <Project>{5b066a73-7694-423d-8240-9b3bd2c16ac1}</Project>
+      <Name>ConfigAsistencial</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{5ddc9e85-775c-4683-87ad-c0adc9646713}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reportes\Reportes.csproj">
+      <Project>{a0d067f1-64f8-45f8-a573-353980a3c3c3}</Project>
+      <Name>Reportes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaludPublica\SaludPublica.csproj">
+      <Project>{260a503f-bf03-44b9-a36a-b1fcf21e2f94}</Project>
+      <Name>SaludPublica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sistema\Sistema.csproj">
+      <Project>{5cfde7c0-9ab2-460c-af8c-3618c010daa6}</Project>
+      <Name>Sistema</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_contraer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_anclar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_zonas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_textblock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_textbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_radiobutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_chkbox.png" />
+    <Resource Include="Imagenes\Edt_controles_datetextbox.png" />
+    <Resource Include="Imagenes\Edt_controles_editortextbox.png" />
+    <Resource Include="Imagenes\Edt_controles_imagencaptura.png" />
+    <Resource Include="Imagenes\Edt_controles_imagensimple.png" />
+    <Resource Include="Imagenes\Edt_controles_listbox.png" />
+    <Resource Include="Imagenes\Edt_controles_textboxrelacion.png" />
+    <Resource Include="Imagenes\Edt_controles_textboxtime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_formas_circulo.png" />
+    <Resource Include="Imagenes\Edt_formas_lineaderecha.png" />
+    <Resource Include="Imagenes\Edt_formas_rectangulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_formas_flechaabajo.png" />
+    <Resource Include="Imagenes\Edt_formas_flechaarriba.png" />
+    <Resource Include="Imagenes\Edt_formas_flechaderecha.png" />
+    <Resource Include="Imagenes\Edt_formas_flechaizquierda.png" />
+    <Resource Include="Imagenes\Edt_formas_lineahorizontal.png" />
+    <Resource Include="Imagenes\Edt_formas_lineaizquierda.png" />
+    <Resource Include="Imagenes\Edt_formas_lineavertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_desactivaraddobjeto.png" />
+    <Resource Include="Imagenes\Edt_edt_eliminarobjeto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_cancelar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_adjunto.png" />
+    <Resource Include="Imagenes\Edt_controles_auidiovideo.png" />
+    <Resource Include="Imagenes\Edt_controles_chkbutton.png" />
+    <Resource Include="Imagenes\Edt_controles_etiqueta.png" />
+    <Resource Include="Imagenes\Edt_controles_groupbox.png" />
+    <Resource Include="Imagenes\Edt_controles_groupchkbox.png" />
+    <Resource Include="Imagenes\Edt_edt_adicionarpagina.png" />
+    <Resource Include="Imagenes\Edt_edt_cancelar.png" />
+    <Resource Include="Imagenes\Edt_edt_copiar.png" />
+    <Resource Include="Imagenes\Edt_edt_eliminarpagina.png" />
+    <Resource Include="Imagenes\Edt_edt_mosaico.png" />
+    <Resource Include="Imagenes\Edt_edt_pegar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_etiqueta.png" />
+    <Resource Include="Imagenes\Edt_edt_historial.png" />
+    <Resource Include="Imagenes\Edt_edt_propiedades.png" />
+    <Resource Include="Imagenes\Edt_edt_teclado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_maejoexterno.png" />
+    <Resource Include="Imagenes\Edt_edt_maejointerno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_serviciomedico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_xuser_admision1.png" />
+    <Resource Include="Imagenes\Edt_controles_xuser_admision2.png" />
+    <Resource Include="Imagenes\Edt_controles_xuser_datosusuario.png" />
+    <Resource Include="Imagenes\Edt_controles_xuser_triage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_balancedeliquidos.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_epicrisis.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_evolucionmedica.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_formulamedica.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_hojaconsumo.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_laboratorio.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_notasenfermeria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_signosvitales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_liquidosadministrados.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_liquidoseliminados.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_hist_vista_abierto.png" />
+    <Resource Include="Imagenes\Edt_hist_vista_anulado.png" />
+    <Resource Include="Imagenes\Edt_hist_vista_confirmado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_xuser_captura.png" />
+    <Resource Include="Imagenes\Edt_controles_xuser_datosusuario2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_hist_vista_selectchkbox.png" />
+    <Resource Include="Imagenes\Edt_hist_vista_selectok.png" />
+    <Resource Include="Imagenes\Edt_hist_vista_selectradiobutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_documento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\hc_od_diente11.png" />
+    <Resource Include="Imagenes\hc_od_diente12.png" />
+    <Resource Include="Imagenes\hc_od_diente13.png" />
+    <Resource Include="Imagenes\hc_od_diente14.png" />
+    <Resource Include="Imagenes\hc_od_diente15.png" />
+    <Resource Include="Imagenes\hc_od_diente16.png" />
+    <Resource Include="Imagenes\hc_od_diente17.png" />
+    <Resource Include="Imagenes\hc_od_diente18.png" />
+    <Resource Include="Imagenes\hc_od_diente21.png" />
+    <Resource Include="Imagenes\hc_od_diente22.png" />
+    <Resource Include="Imagenes\hc_od_diente23.png" />
+    <Resource Include="Imagenes\hc_od_diente24.png" />
+    <Resource Include="Imagenes\hc_od_diente25.png" />
+    <Resource Include="Imagenes\hc_od_diente26.png" />
+    <Resource Include="Imagenes\hc_od_diente27.png" />
+    <Resource Include="Imagenes\hc_od_diente28.png" />
+    <Resource Include="Imagenes\hc_od_diente31.png" />
+    <Resource Include="Imagenes\hc_od_diente32.png" />
+    <Resource Include="Imagenes\hc_od_diente33.png" />
+    <Resource Include="Imagenes\hc_od_diente34.png" />
+    <Resource Include="Imagenes\hc_od_diente35.png" />
+    <Resource Include="Imagenes\hc_od_diente36.png" />
+    <Resource Include="Imagenes\hc_od_diente37.png" />
+    <Resource Include="Imagenes\hc_od_diente38.png" />
+    <Resource Include="Imagenes\hc_od_diente41.png" />
+    <Resource Include="Imagenes\hc_od_diente42.png" />
+    <Resource Include="Imagenes\hc_od_diente43.png" />
+    <Resource Include="Imagenes\hc_od_diente44.png" />
+    <Resource Include="Imagenes\hc_od_diente45.png" />
+    <Resource Include="Imagenes\hc_od_diente46.png" />
+    <Resource Include="Imagenes\hc_od_diente47.png" />
+    <Resource Include="Imagenes\hc_od_diente48.png" />
+    <Resource Include="Imagenes\hc_od_diente51.png" />
+    <Resource Include="Imagenes\hc_od_diente52.png" />
+    <Resource Include="Imagenes\hc_od_diente53.png" />
+    <Resource Include="Imagenes\hc_od_diente54.png" />
+    <Resource Include="Imagenes\hc_od_diente55.png" />
+    <Resource Include="Imagenes\hc_od_diente61.png" />
+    <Resource Include="Imagenes\hc_od_diente62.png" />
+    <Resource Include="Imagenes\hc_od_diente63.png" />
+    <Resource Include="Imagenes\hc_od_diente64.png" />
+    <Resource Include="Imagenes\hc_od_diente65.png" />
+    <Resource Include="Imagenes\hc_od_diente71.png" />
+    <Resource Include="Imagenes\hc_od_diente72.png" />
+    <Resource Include="Imagenes\hc_od_diente73.png" />
+    <Resource Include="Imagenes\hc_od_diente74.png" />
+    <Resource Include="Imagenes\hc_od_diente75.png" />
+    <Resource Include="Imagenes\hc_od_diente81.png" />
+    <Resource Include="Imagenes\hc_od_diente82.png" />
+    <Resource Include="Imagenes\hc_od_diente83.png" />
+    <Resource Include="Imagenes\hc_od_diente84.png" />
+    <Resource Include="Imagenes\hc_od_diente85.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\hc_od_dn0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_odontologia.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_odontologiadx.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_odontologiaevolucion.png" />
+    <Resource Include="Imagenes\Edt_edt_xcap_odontologiaplan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\hc_od_dt1.png" />
+    <Resource Include="Imagenes\hc_od_dt2.png" />
+    <Resource Include="Imagenes\hc_od_dt3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\hc_od_enciaa3.png" />
+    <Resource Include="Imagenes\hc_od_enciab3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\hc_od_dt4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_xcap_liquidosindicados.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_eliminaregistro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_firma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_gestionado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_excel.png" />
+    <Resource Include="Imagenes\Edt_edt_pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_archivospdf.png" />
+    <Resource Include="Imagenes\Edt_controles_importarimagen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_pdf2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

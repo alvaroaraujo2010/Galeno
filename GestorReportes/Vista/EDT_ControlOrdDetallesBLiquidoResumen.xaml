@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlOrdDetallesBLiquidoResumen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="180" 
+             d:DesignWidth="300"
+             Height="Auto"
+             Width="730">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="12"/>
+        </Grid.RowDefinitions>
+        <Border Name="Fondo" 
+                Visibility="Visible"
+                Margin="0,0,0,0"
+                BorderThickness="0.9"
+                BorderBrush="#FFD1CFCF"
+                Grid.Row="0"
+                Grid.RowSpan="6"/>
+        <Grid Grid.Row="0" Margin="1,2,1,1" Background="#FFDBEEEE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="txtTituloRegistro" 
+        		       HorizontalAlignment="Stretch" 
+        		       VerticalAlignment="Top"
+                       Grid.Column="0"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Text="RESUMEN BALANCE DE LIQUIDOS"
+                       Width="Auto"
+        		       FontFamily="Segoe UI Symbol"
+        		       Foreground="#FF615C5C" 
+                       Margin="12,6,0,0"/>
+            <TextBlock Name="txtFecha" 
+        		       HorizontalAlignment="Stretch" 
+        		       VerticalAlignment="Top"
+                       Grid.Column="1"
+        		       FontSize="14"
+                       Margin="5,11,3,0"
+                       Width="Auto"
+        		       FontFamily="Segoe UI Symbol"
+        		       TextAlignment="Justify"
+        		       Foreground="#FF615C5C"
+                       TextWrapping="Wrap"/>
+            <TextBlock Name="txtHora" 
+        		       HorizontalAlignment="Stretch" 
+        		       VerticalAlignment="Top"
+                       Grid.Column="2"
+        		       FontSize="14"
+                       Margin="5,11,5,5"
+                       Width="Auto"
+        		       FontFamily="Segoe UI Symbol"
+        		       Foreground="#FF615C5C"/>
+        </Grid>
+        <Grid Margin="10,0,10,0" Grid.Row="1" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="lblTotalIndicado"
+                       Grid.Column="0"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Cantidad Indicada (ml)"/>
+            </TextBlock>
+            <TextBox Name="txtTotalIndicado"
+                     Style="{StaticResource styleTextBoxEdtFormTouch}"
+                     Grid.Column="1"
+                     Focusable="False"/>
+            <TextBlock Name="lblTotalPendiente"
+                       Grid.Column="2"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                     <Run Language="es-co" Text="Cantidad pendiente (ml)"/>
+            </TextBlock>
+            <TextBox Name="txtTotalPendiente"
+                     Style="{StaticResource styleTextBoxEdtFormTouch}"
+                     Grid.Column="3"
+                     Focusable="False"/>
+        </Grid>
+        <Grid Margin="10,0,10,0" Grid.Row="2" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="lblTotalAdministrado"
+                       Grid.Column="0"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Cantidad administrada (ml)"/>
+            </TextBlock>
+            <TextBox Name="txtTotalAdministrado"
+                     Style="{StaticResource styleTextBoxEdtFormTouch}"
+                     Grid.Column="1"
+                     Focusable="False"/>
+            <TextBlock Name="lblTotalResultado"
+                       Grid.Column="2"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                     <Run Language="es-co" Text="Resultado final (ml)"/>
+            </TextBlock>
+            <TextBox Name="txtTotalResultado"
+                     Style="{StaticResource styleTextBoxEdtFormTouch}"
+                     Grid.Column="3"
+                     Focusable="False"/>
+        </Grid>
+        <Grid Margin="10,0,10,0" Grid.Row="3" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="lblTotalEliminados"
+                       Grid.Column="0"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Cantidad eliminada (ml)"/>
+            </TextBlock>
+            <TextBox Name="txtTotalEliminados"
+                     Style="{StaticResource styleTextBoxEdtFormTouch}"
+                     Grid.Column="1"
+                     Focusable="False"/>
+        </Grid>
+        <TextBlock Name="txtObservacion" 
+        		   HorizontalAlignment="Stretch" 
+        		   VerticalAlignment="Stretch"
+                   Grid.Row="4"
+        		   FontSize="14"
+                   Margin="12,7,12,0"
+                   Width="Auto"
+                   Text="Observacion"
+        		   FontFamily="Segoe UI Symbol"
+        		   TextAlignment="Justify"
+        		   Foreground="#FF615C5C"
+                   TextWrapping="Wrap"/>
+    </Grid>
+</UserControl>

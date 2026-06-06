@@ -1,0 +1,164 @@
+﻿<Window x:Class="GestorReportes.Vista.SolicitOrdConfirmar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen"
+    Title="Solicitud servicios medicos"
+    Icon="/Sistema;component/Imagenes/sis_logo40.png"
+    Width="500"
+    Height="200"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    ShowInTaskbar="True">
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              	Source= "/Sistema;component/Skins/EstiloSistema.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="68*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Confirmar servicios médicos"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                    TabIndex="50"
+                    Click="cmdSalir_Click"
+                    ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                           Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="4"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <TextBlock Name="lblProfesional"
+                   Grid.Row="2"
+                   Width="180"
+                   Margin="10,6,0,0"
+                   Style="{StaticResource styleEtiquetasForm}" FontSize="16" Height="25">
+                  <Run Language="es-co" Text="Profesional responsable"/>
+        </TextBlock>
+        <Grid Grid.Row="2" 
+              Height="25"
+              VerticalAlignment="Top"
+              Margin="10,30,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtG1Sia_codpfa_prof"
+                     Width="70"
+                     Grid.Column="0"
+                     Style="{StaticResource styleTextBoxFormResize}"
+                     TextChanged="fcvValidacionTexto"
+                     TouchEnter="fcvTouchEnterTeclado"
+                     KeyDown="txtG1Sia_codpfa_prof_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <Button Name="cmdBrowProfesional"
+				    Content="..."
+                    Grid.Column="1"
+				    Style="{StaticResource styleButtonMiniFormBrows}"
+				    TabIndex="46"
+                    Command="{Binding CmdBROWSER}"
+				    Click="fcvBuscarProfesional"
+				    ToolTip="Buscar profesional que presta servicio medico"/>
+            <TextBox Name="txtG1Sia_nompro_prof"
+                     Width="330"
+                     Grid.Column="2"
+                     Style="{StaticResource styleTextBoxFormResize}"
+                     Focusable="False"/>
+        </Grid>
+        <Button Name="cmdGuardar"
+                HorizontalAlignment="Right"
+                Margin="0,10,130,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="9"
+                Click="fcvGuardarRegistro"
+                Grid.Row="3"
+                ToolTip="Haga clic confirmar el registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Confirmar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdSalir"
+                HorizontalAlignment="Right"
+                Margin="0,10,10,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="14"
+                Click="cmdSalir_Click"
+                Grid.Row="4"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

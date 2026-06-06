@@ -1,0 +1,919 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 24/04/2015 04:50:39 PM -->
+<Window x:Class="FacturacionMedica.Vista.VistaAutorizarDescuento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:FacturacionMedica.Vista" 
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        Name="MaxFCMAutorizarDescuento"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloAutorizarDescuento, Source={StaticResource FCM_Locator}}"
+        Title="Autorizar descuentos en caja facturación"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="800"
+        Height="750"
+        AllowsTransparency="True"
+        Background="{x:Null}" 
+        WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+    <Grid Background="#66000E0E">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="48*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+            </Border>
+            <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+            <Image HorizontalAlignment="Left"
+               Height="37"
+               Margin="10,0,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Stretch="Uniform"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+            <TextBlock Text="Autorizar descuentos en caja facturación"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+            <Button Name="cmdCerrar"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                    TabIndex="50"
+                    Click="cmdSalir_Click"
+                    IsEnabled="{Binding GlgSIS_ModoDefault}"
+                    ToolTip="Salir de esta pantalla">
+                <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image Name="imgExit"
+                           Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                    </Image>
+                </StackPanel>
+            </Button>
+            <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,1,0"
+               VerticalAlignment="Top"
+               Grid.Row="5"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+            <Rectangle HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Height="40"
+               Width="798"
+               Grid.Row="2"
+               OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+               Fill="#FFF6F8F9"
+               Margin="1,1,0,0" Grid.RowSpan="2"/>
+            <TextBlock Height="23"
+                   Grid.Row="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="19,7,0,0"
+                   Name="lblFiltro"
+                   Width="109"
+                   FontSize="16"
+                   FontFamily="Arial Unicode MS" >
+        <Run Language="es-co" Text="BUSCAR"/>
+            </TextBlock>
+            <TextBox Height="23"
+                 Grid.Row="2"
+                 Margin="130,7,0,0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Name="txtFiltroDatos"
+                 Visibility="Collapsed"
+                 Width="280"
+                 Style="{StaticResource styleTextBoxForm}"
+                 Text="{Binding GcrFiltroDatos, UpdateSourceTrigger=PropertyChanged}"
+                 TabIndex="1"
+                 KeyDown="fcvMoverFocus_KeyDown"
+                 GotFocus="fcvTextBox_GotFocus"/>
+            <local:crtBuscar HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Height="30"
+                         Grid.Row="2"
+                         Width="476"
+                         Margin="124,5,0,0" 
+                         Loaded="crtBuscarLoaded" />
+            <!-- Filtro -->
+            <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFIL}"/>
+            <!-- Fin Filtro-->
+            <!-- Perfil Usuario -->
+            <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+            <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+            <!-- Fin Perfil Usuario -->
+            <!-- Control modo edicion formulario -->
+            <TextBox Name="lblFormModoPopup"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrSIS_FormModoPopup,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+            <!-- Fin Control modo edicion formulario -->
+            <DataGrid AutoGenerateColumns="False"
+                      Grid.Row="4"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Margin="10,10,10,10"
+                      Name="grdDetalles"
+                      ItemsSource="{Binding TmpG4ListaBrow, UpdateSourceTrigger=PropertyChanged}"
+                      CanUserAddRows="False"
+                      HeadersVisibility="None"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Hidden"
+                      TabIndex="100">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <local:ControlVistaAutorizacion x:Name="crtVistaUsuario" 
+                                                            IdUsuario="{Binding Path=Sia_nroide_usua}" 
+                                                            NombreUsuario="{Binding Path=Sia_nomusu_usua}"
+                                                            ValorCobro="{Binding Path=Fcm_valref_dfac}"
+                                                            ValorDesSolict="{Binding Path=Fcm_valdes_ades}"
+                                                            ValorDesAutorizado="{Binding Path=Fcm_valdes_dfac}"
+                                                            NombreFacturador="{Binding Path=Desys_ususol_usux}"
+                                                            FechaSolict="{Binding Path=Fcm_fecsol_ades}"
+                                                            EstadoRegistro="{Binding Path=Fcm_estaut_ades}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="55">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Height="70" 
+                                    Click="fcvActivarVistaPropiedades" 
+                                    ToolTip="Propiedaes del registro"  
+                                    Content="Ver..."/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger
+            		EventName="SelectionChanged">
+                        <cmd:EventToCommand
+            			Command="{Binding SelectionChangedCommand, Mode=TwoWay}"
+            			CommandParameter="{Binding SelectedItem, ElementName=grdDetalles}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DataGrid>
+            <Button Name="cmdSalir"
+                    Margin="0,10,10,0"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgForm}"
+                    TabIndex="27"
+                    Command="{Binding CmdSAL}"
+                    Click="cmdSalir_Click"
+                    Grid.Row="5"
+                    ToolTip="Salir de esta pantalla">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdLogErrores"
+                Margin="10,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="28"
+                Command="{Binding CmdERR}"
+                Click="fcvVistaLogErrores"
+                Grid.Row="5"
+                ToolTip="Ver registro de errores">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgLogErrores"
+                           Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblLogErrores"
+                               Text="Errores"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <!-- CORTINA DETECHA SELECCION-->
+        <Grid Name="grdPropSelectArea" 
+              Grid.Column="2"
+              Width="20"
+              Height="Auto"
+              Margin="-20,110,0,60"
+              MouseEnter="fcvActivarVistaSeleccionMouseEnter"
+              TouchEnter="fcvActivarVistaSeleccionTouchEnter"
+              HorizontalAlignment="Right" 
+              Background="Transparent">
+            <Canvas Name="cnvPropSelect" Width="42" >
+                <!-- Capa Cortina Propiedades-->
+                <Grid Name="grdPropSelect" 
+                          Width="630"
+                          Height="700"
+                          Style="{StaticResource styleTabControlEdtGridCortinaPropiedades}"
+                          Canvas.Left="22" 
+                          Canvas.Top="-110" 
+                          Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="52" />
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!-- IMAGEN ENCABEZADO VENTANA -->
+                    <Border BorderThickness="1,1,1,0"
+                            BorderBrush="#FFB0AFAF"
+                            Grid.Row="0"
+                           Background="White">
+                    </Border>
+                    <Border BorderThickness="1,0,1,1"
+                            BorderBrush="#FFB0AFAF"
+                            Grid.Row="1"
+                           Background="#F2EEEEEE" Grid.RowSpan="4"/>
+                    <Button Name="cmdSelectOcultar"
+                            Grid.Row="0"
+                            Margin="10,6,6,0"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            TabIndex="50"
+                            Click="fcvActivarVistaPropiedades"
+                            ToolTip="Ocultar la ventana propiedades" 
+                            Height="42" 
+                            Width="48">
+                        <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                            <Image Name="imgSelect2"
+                        		   Source="/Sistema;component/Imagenes/Edt_edt_contraer.png"
+                        		   Style="{StaticResource styleImagBotonesForm}"
+                        		   Stretch="UniformToFill">
+                            </Image>
+                        </StackPanel>
+                    </Button>
+                    <TextBlock Name="lblNombrePaciente"
+                               Grid.Row="0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                	           Width="380"
+                	           Margin="76,20,0,0" 
+                               FontSize="18" 
+                               Foreground="#FF978E8E" 
+                               Height="21">
+                	       <Run Language="es-co" Text="Solicitud descuentos"/>
+                    </TextBlock>
+                    <Grid Width="590" Margin="0,2,0,0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="160"/>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="230"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="8,2,8,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Top"
+                                     Foreground="#FF3399FF"
+                                     BorderBrush="#FF3399FF"
+                                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                                     FontSize="16"
+                                     Text="Datos Solicitud descuento" 
+                                     Height="25"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4fcm_autdes_ades"
+                                               ToolTip="Numero de autorizacion  del descuento aprobado para el momento del pago (generado por el sistema)"
+                                               Grid.Column="0"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Autorización descuento"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_autdes_ades"
+                                             TabIndex="1"
+                                             Text="{Binding Path=G4Fcm_autdes_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             Grid.Column="1"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4fcm_fecsol_ades"
+                                               ToolTip="Fecha solicitud del descuento"
+                                               Grid.Column="0"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Fecha solicitud"/>
+                                </TextBlock>
+                                <Grid Grid.Column="1"
+                                      Style="{StaticResource styleDatePickerGridFormResize}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox Name="txtG4Fcm_fecsol_ades"
+                                             TabIndex="2"
+                                             Text="{Binding Path=G4Fcm_fecsol_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormFecha}"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             IsEnabled="False"
+                                             TextChanged="fcvActualizarDatePicker"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker Name="dpkG4Fcm_fecsol_ades"
+                                            IsEnabled="False"
+                                            Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <TextBlock Name="lblG4fcm_horsol_ades"
+                                               ToolTip="Hora solicitud del descuento en formato 12 horas ejm: 10:20:AM"
+                                               Grid.Column="2"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Hora"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_horsol_ades"
+                                             TabIndex="3"
+                                             Text="{Binding Path=G4Fcm_horsol_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             Grid.Column="3"
+                                             TextChanged="fcvCapturaHora"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Name="txtG4Desys_ususol_usux"
+                                             TabIndex="106"
+                                             Text="{Binding Path=G4Desys_ususol_usux, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             Grid.Column="2"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock Name="lblG4sys_ususol_usux"
+                                               ToolTip="Código del facturador usuario del sistema que realiza la solicitud"
+                                               Grid.Column="0"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Usuario Facturador"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Sys_ususol_usux"
+                                             TabIndex="6"
+                                             Text="{Binding Path=G4Sys_ususol_usux, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             Grid.Column="1"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4fcm_valref_dfac"
+                                               ToolTip="Valor a cobrar en efectivo antes del descuento por cobros de copagos o valor total de la factura (no siempre representa el valor total facturado)"
+                                               Grid.Column="0"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Valor a cobrar en efectivo"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_valref_dfac"
+                                             TabIndex="4"
+                                             Text="{Binding Path=G4Fcm_valref_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             MaxLength="17"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             Grid.Column="1"
+                                             FontSize="16"
+                                             Height="30"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock Name="lblG4fcm_valdes_ades"
+                                               ToolTip="Valor total del descuento solicitado"
+                                               Grid.Column="2"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Descuento solicitado"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_valdes_ades"
+                                             TabIndex="5"
+                                             Text="{Binding Path=G4Fcm_valdes_ades, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             MaxLength="17"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             FontSize="16"
+                                             Height="30"
+                                             Grid.Column="3"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox Name="cboG4Fcm_aplcad_ades"
+                                	Grid.Column="2"
+                                	IsEnabled="False"
+                                	Style="{StaticResource styleComboBoxFormResize}"
+                                	SelectedIndex="0"
+                                	SelectionChanged="SeleccionComboBoxOpcion"
+                                	ItemsSource="{Binding Path=G4CbFcm_aplcad_ades}"
+                                	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                                	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock Name="lblG4fcm_aplcad_ades"
+                                               ToolTip="Autorizacion aplicada en descuento al paciente: 1=SI, 2=NO"
+                                               Grid.Column="0"
+                                               Style="{StaticResource styleEtiquetasFormResize}">
+                                               <Run Language="es-co" Text="Autorización aplicada"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_aplcad_ades"
+                                             TabIndex="7"
+                                             Text="{Binding Path=G4Fcm_aplcad_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                             Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                             TouchEnter="fcvTouchEnterTeclado"
+                                             Grid.Column="1"
+                                             TextChanged="ActualizarComboBoxOpcion"
+                                             Focusable="False"
+                                             KeyDown="fcvMoverFocus_KeyDown"
+                                             GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="8,2,8,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Top"
+                                     Foreground="#FF3399FF"
+                                     BorderBrush="#FF3399FF"
+                                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                                     FontSize="16"
+                                     Text="Datos Usuario/Paciente" 
+                                     Height="25"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4sia_idesec_usua"
+                                                   ToolTip="Nombre del usuario o paciente que solicita descuento"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Nombre del usuario"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Sia_nomusu_usua"
+                                                 TabIndex="104"
+                                                 Text="{Binding Path=G4Sia_nomusu_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 FontSize="14"
+                                                 Height="28"
+                                                 Grid.Column="1"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="72"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4adm_secadm_rgad"
+                                                   ToolTip="Secuencial de Admisión del paciente o usuario que realiza el pago y solicita descuento"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Registro Admisión"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Adm_secadm_rgad"
+                                                 TabIndex="1"
+                                                 Text="{Binding Path=G4Adm_secadm_rgad, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="1"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox Name="txtG4Sia_tipide_tide"
+                                                 TabIndex="2"
+                                                 Text="{Binding Path=G4Sia_tipide_tide, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="3"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock Name="lblG4sia_nroide_usua"
+                                                   ToolTip="Numero de identificación del paciente: Registro civil, Cedula, Tarjeta de identidad y otros"
+                                                   Grid.Column="2"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Identificación"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Sia_nroide_usua"
+                                                 TabIndex="3"
+                                                 Text="{Binding Path=G4Sia_nroide_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 MaxLength="20"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="4"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4sia_edaymd_usua"
+                                                   ToolTip="Sexo y Edad"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Sexo y Edad"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Sia_edaymd_usua"
+                                                 TabIndex="6"
+                                                 Text="{Binding Path=G4Sia_edaymd_usua, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 MaxLength="30"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="2"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox Name="txtG4Sis_codsex_sexo"
+                                                 TabIndex="5"
+                                                 Text="{Binding Path=G4Sis_codsex_sexo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="1"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4sia_tipusu_regi"
+                                                   ToolTip="Tipo Usuario según régimen:1=CONTRIBUTIVO,2=SUBSIDIADO,3=VINCULADO,4=PARTICULAR,5=OTRO (Resolucion: 3374 RIPS)"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Régimen salud usuario"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Sia_tipusu_regi"
+                                                 TabIndex="7"
+                                                 Text="{Binding Path=G4Sia_tipusu_regi, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="1"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="8,2,8,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="80"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Top"
+                                     Foreground="#FF3399FF"
+                                     BorderBrush="#FF3399FF"
+                                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                                     FontSize="16"
+                                     Text="Datos autorización" 
+                                     Height="25"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4fcm_fecaut_ades"
+                                                   ToolTip="Fecha Autorizacion del descuento"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Fecha autorización"/>
+                                </TextBlock>
+                                <Grid Grid.Column="1"
+                                          Style="{StaticResource styleDatePickerGridFormResize}">
+                                    <Border Style="{StaticResource styleDatePickerBorder}"/>
+                                    <TextBox Name="txtG4Fcm_fecaut_ades"
+                                                 TabIndex="2"
+                                                 Text="{Binding Path=G4Fcm_fecaut_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormFecha}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 IsEnabled="False"
+                                                 TextChanged="fcvActualizarDatePicker"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                                    <DatePicker Name="dpkG4Fcm_fecaut_ades"
+                                                IsEnabled="False"
+                                                Style="{StaticResource styleDatePickerForm}"/>
+                                </Grid>
+                                <TextBlock Name="lblG4fcm_horaut_ades"
+                                                   ToolTip="Hora autorizacion descuento en formato 12 horas ejm: 10:20:AM"
+                                                   Grid.Column="2"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Hora"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_horaut_ades"
+                                                 TabIndex="3"
+                                                 Text="{Binding Path=G4Fcm_horaut_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 MaxLength="5"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="3"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4sys_codusu_usux"
+                                                   ToolTip="Código del usuario o adminstrativo que autoriza el descuento"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Quien autoriza"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Sys_codusu_usux"
+                                                 TabIndex="6"
+                                                 Text="{Binding Path=G4Sys_codusu_usux, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="1"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBox Name="txtG4Sys_nomusu_usux"
+                                                 TabIndex="106"
+                                                 Text="{Binding Path=G4Sys_nomusu_usux, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="2"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox Name="cboG4Fcm_estaut_ades"
+                                    	Grid.Column="2"
+                                    	IsEnabled="False"
+                                    	Style="{StaticResource styleComboBoxFormResize}"
+                                    	SelectedIndex="0"
+                                    	SelectionChanged="SeleccionComboBoxOpcion"
+                                    	ItemsSource="{Binding Path=G4CbFcm_estaut_ades}"
+                                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock Name="lblG4fcm_estaut_ades"
+                                                   ToolTip="Estado de la autorizacion: 1 =Abierta 2=Confirmada 3=Anulada"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Estado Autorizacion"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_estaut_ades"
+                                                 TabIndex="7"
+                                                 Text="{Binding Path=G4Fcm_estaut_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="1"
+                                                 TextChanged="ActualizarComboBoxOpcion"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Name="lblG4fcm_valdes_dfac"
+                                                   ToolTip="Valor total del descuento realizado al cliente  (valor autorizado)"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Descuento autorizado"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_valdes_dfac"
+                                                 TabIndex="1"
+                                                 Text="{Binding Path=G4Fcm_valdes_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResize}"
+                                                 MaxLength="17"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 FontSize="16"
+                                                 Height="30"
+                                                 Grid.Column="1"
+                                                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                                <TextBlock Name="lblG4fcm_valefe_dfac"
+                                                   ToolTip="Valor recuadado en efectivo con el descuento realizado"
+                                                   Grid.Column="2"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Pagar con descuento"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_valefe_dfac"
+                                                 TabIndex="4"
+                                                 Text="{Binding Path=G4Fcm_valefe_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                                 MaxLength="17"
+                                                 FontSize="16"
+                                                 Height="30"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 Grid.Column="3"
+                                                 Focusable="False"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus"/>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="lblG4fcm_notaut_ades"
+                                                   ToolTip="Nota textual de la autorización"
+                                                   Grid.Column="0"
+                                                   Style="{StaticResource styleEtiquetasFormResize}">
+                                                   <Run Language="es-co" Text="Observación"/>
+                                </TextBlock>
+                                <TextBox Name="txtG4Fcm_notaut_ades"
+                                                 TabIndex="5"
+                                                 Text="{Binding Path=G4Fcm_notaut_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                 Style="{StaticResource styleTextBoxFormResize}"
+                                                 MaxLength="150"
+                                                 TouchEnter="fcvTouchEnterTeclado"
+                                                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                                 KeyDown="fcvMoverFocus_KeyDown"
+                                                 GotFocus="fcvTextBox_GotFocus" Height="52" 
+                                                 Margin="4,4,2,4" 
+                                                 Grid.Row="1"/>
+                            </Grid>
+                        </Grid>
+                        <Button Name="cmdAutorizar"
+                                Margin="183,10,0,0"
+                                Style="{StaticResource styleButtonImgForm}"
+                                TabIndex="22"
+                                Command="{Binding CmdAUT}"
+                                Click="fcvGuardarRegistro"
+                                Grid.Row="4"
+                                ToolTip="Autorizar descuento">
+                            <StackPanel Orientation="Horizontal"
+                                    Style="{StaticResource styleStackPanelBotonesForm}">
+                                <Image x:Name="imgGuardar"
+                                       Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                                       Style="{StaticResource styleImagBotonesForm}"
+                                       Stretch="UniformToFill"/>
+                                <TextBlock x:Name="lblGuardar"
+                                           Text="Autorizar"
+            	                           Style="{StaticResource styleLblBotonesForm}"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdNegar"
+                                Margin="292,10,198,0"
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource styleButtonImgForm}"
+                                TabIndex="22"
+                                Command="{Binding CmdNEG}"
+                                Click="fcvCancelarRegistro"
+                                Grid.Row="4"
+                                ToolTip="Negar o naular solicitud de descuento">
+                            <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                                <Image x:Name="imgCancelarEx"
+                                       Source="/Sistema;component/Imagenes/Edt_edt_anular.png"
+                                       Style="{StaticResource styleImagBotonesForm}"
+                                       Stretch="UniformToFill"/>
+                                <TextBlock x:Name="lblCancelarEx"
+                                           Text="Negar"
+            	                           Style="{StaticResource styleLblBotonesForm}"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>

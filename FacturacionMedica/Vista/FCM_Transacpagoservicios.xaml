@@ -1,0 +1,921 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 05/09/2013 08:53:11 AM -->
+<Window x:Class="FacturacionMedica.Vista.VistaTransacpagoservicios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloTransacpagoservicios, Source={StaticResource FCM_Locator}}"
+        Title="Transaccion pagos en efectivo servicios"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="880"
+        Height="600"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True">
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              	Source= "/Sistema;component/Skins/EstiloSistema.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="290" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Height="Auto"
+                Width="Auto"
+                Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1"/>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="880"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Transaccion pagos en efectivo servicios"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Image MouseDown="btnCerrar_KeyDown"
+               Style="{StaticResource styleImgButtonCerrarForm}"
+               Source="/Sistema;component/Imagenes/sis_cerrar40.png"
+               Grid.Row="1"
+               IsEnabled="{Binding Path=GlgSIS_ModoDefault}"
+               Cursor="Hand"/>
+        <Image HorizontalAlignment="Left"
+               Height="47"
+               Width="878"
+               Margin="1,3,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="5"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFILTRO}" Grid.RowSpan="2"/>
+        <!-- Fin Filtro-->
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista2"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFILREL}" Grid.RowSpan="2"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89" Grid.RowSpan="2"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89" Grid.RowSpan="2"/>
+        <!-- Fin Perfil Usuario -->
+        <!-- Control modo edicion formulario -->
+        <TextBox Name="lblFormModoPopup"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrSIS_FormModoPopup,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89" Grid.RowSpan="2"/>
+        <!-- Fin Control modo edicion formulario -->
+        <Button Name="cmdGuardar"
+                Margin="585,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="16"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para guardar los cambios" Width="120">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Confirmar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdCancelar"
+                Margin="747,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="18"
+                Command="{Binding CanCAN}"
+                Click="cmdSalir_Click"
+                Grid.Row="5"
+                ToolTip="Cerrar la Ventana" Width="119">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}" Width="109">
+                <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblCancelar"
+                               Text="   Cerrar"
+            	               Style="{StaticResource styleLblBotonesForm}" Width="67"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdLogErrores"
+                Margin="10,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="51"
+                Command="{Binding CmdERR}"
+                Click="fcvVistaLogErrores"
+                Grid.Row="5"
+                ToolTip="Ver registro de errores">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgLogErrores"
+                           Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblLogErrores"
+                               Text="Errores"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <TextBlock Name="lblG1fcm_codtra_mtr"
+                       Width="59"
+                       Grid.Row="2"     
+                       Margin="666,10,0,0"
+                       ToolTip="Codgio del recibo de caja  generado por el sistema"
+                       Style="{StaticResource styleEtiquetasForm}">
+                       <Run Language="es-co" Text="Recibo caja"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_codtra_mtrc"
+                             Width="140"
+                             Margin="726,8,0,0"
+                             Grid.Row="2"     
+                             TabIndex="3"
+                             Text="{Binding Path=G1Fcm_codtra_mtrc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="False"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Name="lblG1adm_secadm_rgad"
+                               Width="49"
+                               Grid.Row="2"     
+                               Margin="466,8,0,0"
+                               ToolTip="Secuencial de Admisión del paciente o usuario que realiza el pago"
+                               Style="{StaticResource styleEtiquetasForm}" RenderTransformOrigin="0.524,1.118">
+                               <Run Language="es-co" Text="Admisión"/>
+        </TextBlock>
+        <TextBox Name="txtNomberUsuario"
+                 Width="451"
+                 Grid.Row="2"
+                 Height="25"
+                 FontSize="16"
+                 Margin="10,5,0,0"
+                 TabIndex="2"
+                 Style="{StaticResource styleTextBoxForm}"
+                 IsReadOnly="True"/>
+
+        <TextBox Name="txtG1Adm_secadm_rgad"
+                             Width="142"
+                             Grid.Row="2"     
+                             Margin="516,7,0,0"
+                             TabIndex="2"
+                             Text="{Binding Path=G1Adm_secadm_rgad, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsReadOnly="True"
+                             KeyDown="txtG1Adm_secadm_rgad_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+        <TextBox Grid.Row="2"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Top"
+                 Foreground="#FF3399FF"
+                 BorderBrush="#FF3399FF"
+                 Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                 FontSize="16"
+                 Text="Generar descuento para cada orden de servcios abierta" 
+                 Margin="3,25,2,0" 
+                 Height="25"/>
+        <Grid Margin="568,3,6,0" Grid.Row="2">
+            <TextBlock x:Name="lblFcm_secreg_mfac"
+                       Width="99"
+                       Margin="5,68,0,0"
+                       ToolTip="Secuencial unico de la orden de servicios"
+                       Style="{StaticResource styleEtiquetasForm}">
+                <Run Language="es-co" Text="Orden de servicio"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_secreg_mfac"
+                     Width="179"
+                     Margin="120,64,0,0"
+                     TabIndex="20"
+                     Text="{Binding Path=G3Fcm_secreg_mfac, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG3Fcm_numfac_mfac"
+                       Width="99"
+                       Margin="5,91,0,0"
+                       ToolTip="Numero de factura"
+                       Style="{StaticResource styleEtiquetasForm}" >
+                <Run Language="es-co" Text="Numero de Factura"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_numfac_mfac"
+                     Width="179"
+                     Margin="120,88,0,0"
+                     TabIndex="13"
+                     Text="{Binding Path=G3Fcm_numfac_mfac, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG1fcm_valcpa_dfac"
+                       Width="92"
+                       Margin="-543,228,0,0"
+                       ToolTip="Valor total del copago recudado en el srvicio como tal, suma en factura"
+                       Style="{StaticResource styleEtiquetasForm}">
+                <Run Language="es-co" Text="Valor copago"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_valcpa_dfac"
+                     Width="160"
+                     Margin="-444,227,0,0"
+                     TabIndex="18"
+                     Text="{Binding Path=G3Fcm_valcpa_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG1fcm_valcmo_dfac"
+                       Width="99"
+                       Margin="-543,250,0,0"
+                       ToolTip="Valor sumatoria cuota moderadora recudada en servicos de la factura"
+                       Style="{StaticResource styleEtiquetasForm}" Height="20">
+                <Run Language="es-co" Text="Cuota moderadora"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_valcmo_dfac"
+                     Width="160"
+                     Margin="-444,250,0,0"
+                     TabIndex="19"
+                     Text="{Binding Path=G3Fcm_valcmo_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG1fcm_valusu_dfac"
+                       Width="92"
+                       Margin="-543,181,0,0"
+                       ToolTip="Valor cargo al usuario, cobrado al paciente por porcentajes no cubiertos en el seguro"
+                       Style="{StaticResource styleEtiquetasForm}">
+                <Run Language="es-co" Text="Cargo al usuario"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_valusu_dfac"
+                     Width="160"
+                     Margin="-444,181,0,0"
+                     TabIndex="20"
+                     Text="{Binding Path=G3Fcm_valusu_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG1fcm_valcom_dfac"
+                       Width="92"
+                       Margin="-543,206,0,0"
+                       ToolTip="Valor comision"
+                       Style="{StaticResource styleEtiquetasForm}">
+                <Run Language="es-co" Text="Valor comisión"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_valcom_dfac"
+                     Width="160"
+                     Margin="-444,204,0,0"
+                     TabIndex="21"
+                     Text="{Binding Path=G3Fcm_valcom_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG1fcm_valfac_dfac"
+                       Width="96"
+                       Margin="-277,185,0,0"
+                       ToolTip="Valor total del servicio facturado incluyendo el IVA y deducciones"
+                       Style="{StaticResource styleEtiquetasForm}" Height="17" VerticalAlignment="Top">
+                <Run Language="es-co" Text="Total facturado"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_valfac_dfac"
+                     Width="160"
+                     Margin="-174,183,0,0"
+                     TabIndex="23"
+                     Text="{Binding Path=G3Fcm_valfac_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsEnabled="False"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+            <TextBlock x:Name="lblG1fcm_valref_dfac"
+                       Width="194"
+                       Margin="-277,207,0,0"
+                       ToolTip="Valor recuadado en efectivo (solo valor cobrado en efectivo) por cobros de copagos o valor total/parcial del servicio"
+                       Style="{StaticResource styleEtiquetasForm}">
+                <Run Language="es-co" Text="Valor pendiente para pago en efectivo"/></TextBlock>
+            <TextBox x:Name="txtG3Fcm_valref_dfac"
+                     Width="263"
+                     Margin="-277,224,0,0"
+                     TabIndex="24"
+                     FontSize="24"
+                     Text="{Binding Path=G3Fcm_valref_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     IsReadOnly="True"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus" 
+                     Height="46" 
+                     Background="#FFC7EFF5"/>
+        </Grid>
+        <GroupBox Header="Generar descuento" 
+                  HorizontalAlignment="Left" 
+                  Grid.Row="2"
+                  Width="302"
+                  Margin="568,110,0,10"
+                  Foreground="#FF148BAE" 
+                  Background="#FFF0EEEE"/>
+        <TextBox x:Name="txtG3Fcm_tipdes_dfac"
+                 Width="35"
+                 Margin="21,231,0,0"
+                 TabIndex="14"
+                 Visibility="Hidden"
+                 Text="{Binding Path=G3Fcm_tipdes_mfac, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 Style="{StaticResource styleTextBoxForm}"
+                 TextChanged="ActualizarComboBoxOpcion"
+                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                 KeyDown="fcvMoverFocus_KeyDown"
+                 GotFocus="fcvTextBox_GotFocus" 
+                 Grid.Row="2"/>
+        <ComboBox Name="cboG3Fcm_tipdes_mfac"
+                	Width="280"
+                	Margin="579,131,0,0"
+                	Grid.Row="2"
+                	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                	Style="{StaticResource styleComboBoxForm}"
+                	SelectedIndex="0"
+                	SelectionChanged="SeleccionComboBoxOpcion"
+                	ItemsSource="{Binding Path=G3cbFcm_tipdes_mfac}"
+                	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                	SelectedValuePath="{Binding Path=ValorSeleccion}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="txtG3Fcm_poraux_dfac"
+                 Width="280"
+                 Margin="579,154,0,0"
+                 TabIndex="16"
+                 Text="{Binding Path=G3Fcm_poraux_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 Style="{StaticResource styleTextBoxForm}"
+                 FontSize="16"
+                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                 KeyDown="fcvMoverFocus_KeyDown"
+                 GotFocus="fcvTextBox_GotFocus" 
+                 Grid.Row="2"
+                 Background="#FFF0F1CE"
+                 Height="30"/>        
+        <TextBox x:Name="txtG3Fcm_pordes_dfac"
+                 Width="45"
+                 Margin="593,188,0,0"
+                 TabIndex="14"
+                 FontSize="12"
+                 Text="{Binding Path=G3Fcm_pordes_dfac, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 Style="{StaticResource styleTextBoxForm}"
+                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                 KeyDown="fcvMoverFocus_KeyDown"
+                 GotFocus="fcvTextBox_GotFocus" Grid.Row="2" Height="27"/>
+        <TextBlock x:Name="lblG3fcm_valdes_dfac"
+                   Width="15"
+                   Margin="580,194,0,0"
+                   ToolTip="Porcentaje del descuento a realizar"
+                   Style="{StaticResource styleEtiquetasForm}" 
+                   Grid.Row="2">
+            <Run Language="es-co" Text="%"/></TextBlock>
+        <TextBlock x:Name="lblG3fcm_valdes_dfacX"
+                   Width="54"
+                   Margin="640,193,0,0"
+                   ToolTip="Valor total del descuento realizado al cliente"
+                   Style="{StaticResource styleEtiquetasForm}" 
+                   Grid.Row="2">
+            <Run Language="es-co" Text="Descuento"/></TextBlock>
+        <TextBox x:Name="txtG3Fcm_valdes_dfac"
+                 Width="160"
+                 Margin="699,188,0,0"
+                 TabIndex="15"
+                 FontSize="16"
+                 Text="{Binding Path=G3Fcm_valdes_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 Style="{StaticResource styleTextBoxForm}"
+                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                 KeyDown="fcvMoverFocus_KeyDown"
+                 GotFocus="fcvTextBox_GotFocus" 
+                 Grid.Row="2" 
+                 Height="27"/>
+        <Button Name="cmdActValor"
+                Content="Ok"
+                Grid.Row="2"
+                Margin="758,235,0,0"
+                Style="{StaticResource styleButtonMiniForm}"
+                TabIndex="14"
+                Command="{Binding CmdACTVALOR}"
+                ToolTip="Aplicar valor descuento en orden de servicios activa" 
+                FontSize="9"
+                Width="49" Height="32"/>
+        <Button Name="cmdQuitarValor"
+                Content="X"
+                Grid.Row="2"
+                Margin="810,235,0,0"
+                Style="{StaticResource styleButtonMiniForm}"
+                TabIndex="14"
+                Command="{Binding CmdQUITARVALOR}"
+                ToolTip="Quitar valor descuento en orden de servicios activa" 
+                FontSize="9"
+                Width="49" Height="32"/>
+        <TextBlock x:Name="lblG3fcm_valefe_dfac"
+                   Width="165"
+                   Margin="580,219,0,0"
+                   ToolTip="Valor a pagar en efectivo despues de realizado el descuento"
+                   Style="{StaticResource styleEtiquetasForm}" 
+                   Grid.Row="2">
+            <Run Language="es-co" Text="Nuevo valor en efectivo a pagar"/></TextBlock>
+        <TextBox x:Name="txtG3Fcm_valefe_dfac"
+                 Width="174"
+                 Margin="579,235,0,0"
+                 TabIndex="15"
+                 Text="{Binding Path=G3Fcm_valefe_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 Style="{StaticResource styleTextBoxForm}"
+                 IsReadOnly="True"
+                 FontSize="16"
+                 KeyDown="fcvMoverFocus_KeyDown"
+                 GotFocus="fcvTextBox_GotFocus" 
+                 Grid.Row="2" Height="32" 
+                 Background="#FFC7EFF5"/>
+        <DataGrid AutoGenerateColumns="False"
+        	    HorizontalAlignment="Left"
+        	    VerticalAlignment="Top"
+        	    Margin="22,68,0,0"
+        	    x:Name="objGridFacturasEx"
+        	    FontSize="12"
+        	    ItemsSource="{Binding TmpG3ListaBrow, UpdateSourceTrigger=PropertyChanged}"
+        	    CanUserAddRows="False"
+        	    Height="112"
+        	    Width="533"
+        	    TabIndex="100" Grid.Row="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Fcm_secreg_mfac}"
+        			    Header="Orden de servicio"
+        			    Width="105"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Sia_desact_tsac}"
+        			    Header="Tipo servicio"
+        			    Width="120"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_numfac_mfac}"
+        			    Header="Factura"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_fecfac_mfac, StringFormat={}{0:dd/MM/yyyy}}"
+        			    Header="Fecha Factura"
+        			    Width="85"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cto_nrocon_cont}"
+        			    Header="Contrato"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Sia_deseps_teps}"
+        			    Header="EPS"
+        			    Width="250"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_valbru_dfac}"
+        			    Header="Bruto Factura"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_valcpa_dfac}"
+        			    Header="Subtotal"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_valcpa_dfac}"
+        			    Header="Copago"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_valcmo_dfac}"
+        			    Header="C.Moderadora"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Fcm_valfac_dfac}"
+        			    Header="Cargo Usuario"
+        			    Width="90"
+        			    IsReadOnly="True"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <cmd:EventToCommand Command="{Binding SelectionChangedFactura, Mode=TwoWay}"
+        				                CommandParameter="{Binding SelectedItem, ElementName=objGridFacturasEx}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+        <Grid Grid.Row="3" Margin="0,0,0,2">
+            <Border Height="Auto"
+                Width="Auto"
+                Style="{DynamicResource styleBorderFondoForm}"
+                Grid.Row="3" Background="#FFEEEEEE"/>
+            <TextBox Grid.Row="0"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Top"
+                     Foreground="#FF3399FF"
+                     BorderBrush="#FF3399FF"
+                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                     FontSize="16"
+                     Text="Gestionar autorización descuento" 
+                     Margin="3,2,2,0" 
+                     Height="25"/>
+            <Button Name="cmdAutorizarXXX"
+                    Margin="22,26,0,0"
+                    Style="{StaticResource styleButtonImgForm}"
+                    TabIndex="16"
+                    Command="{Binding CmdAUTDESCUENTO}"
+                    Visibility="Hidden"
+                    ToolTip="Generar Solicitud para autorización de descuento" Width="168">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgAutorizar"
+                           Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblAutorizar"
+                               Text="Solicitar Autorización"
+            	               Style="{StaticResource styleLblBotonesForm}" Width="128"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdNuevaAutorizacion"
+                Margin="131,42,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="16"
+                Command="{Binding CmdAUTSOLICITAR}"
+                ToolTip="Generar nueva autorización descuento" Width="115" Height="36">
+                <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}" Width="105">
+                    <Image x:Name="imgAutorizacionNueva"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblAutorizacionNueva"
+                    	Text="Nueva Solicitud"
+                    	Style="{StaticResource styleLblBotonesForm}" Width="80" Height="16"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdAutorizar"
+                    Margin="22,42,0,0"
+                    Style="{StaticResource styleButtonImgForm}"
+                    TabIndex="53"
+                    Click="fcvMostrarMenuEdicion"
+                    ToolTip="Gestión autorizaciones descuentos pagos en efectivo" Width="103" Height="36">
+                <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image x:Name="imgEdicion"
+                               Source="/Sistema;component/Imagenes/sis_edt_abrir.png"
+                               Style="{StaticResource styleImagBotonesForm}"
+                               Stretch="UniformToFill"/>
+                    <TextBlock x:Name="lblEdicion"
+                                   Text="Gestión..."
+            	                   Style="{StaticResource styleLblBotonesForm}" Width="58" Height="16"/>
+                </StackPanel>
+                <Button.ContextMenu>
+                    <ContextMenu Style="{StaticResource styleMenuContextButton}">
+                        <MenuItem Name="opAUTABRIR"
+                                              Command="{Binding CmdAUTABRIR}"
+                                              Click="fcvBrowserBuscar"
+                                              Style="{StaticResource styleMenuItemContextButton}"
+                                              Header="Buscar autorización existente...">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                                   Style="{StaticResource styleImagMenuContextButton}"
+                                                   Source="/Sistema;component/Imagenes/sis_edt_buscar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opAUTELIMINAR"
+                                              Command="{Binding CmdAUTELIMINAR}"
+                                              Style="{StaticResource styleMenuItemContextButton}"
+                                              Header="Eliminar solicitud abierta">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                                   Style="{StaticResource styleImagMenuContextButton}"
+                                                   Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opAUTIMPRIMIR"
+                                              Command="{Binding CmdAUTIMPRIMIR}"
+                                              Style="{StaticResource styleMenuItemContextButton}"
+                                              Header="Imprimir autorización descuento">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                                   Style="{StaticResource styleImagMenuContextButton}"
+                                                   Source="/Sistema;component/Imagenes/sis_edt_imprimir.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="opAUTLIMPIAR"
+                                                  Command="{Binding CmdAUTLIMPIAR}"
+                                                  Style="{StaticResource styleMenuItemContextButton}"
+                                                  Header="Limpiar vista datos autorización descuento">
+                            <MenuItem.Icon>
+                                <Image Stretch="UniformToFill"
+                                                       Style="{StaticResource styleImagMenuContextButton}"
+                                                       Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <TextBlock Name="lblG4Fcm_autdes_ades"
+                               Width="112"
+                               Margin="258,32,0,0"
+                               ToolTip="Codigo secuencial autorización de descuento generada por el sistema."
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Codigo Solicitud"/>
+            </TextBlock>
+            <TextBox Name="txtG4Fcm_autdes_ades"
+                             Width="141"
+                             Margin="257,49,0,0"
+                             TabIndex="6"
+                             Text="{Binding Path=G4Fcm_autdes_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             FontSize="16"   
+                             Focusable="False"   
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus" Height="29"/>
+            <TextBlock Name="lblG4fcm_valdes_ades"
+                       ToolTip="Valor total del descuento solicitado"
+                       Margin="402,32,344,41"
+                       Grid.Column="0"
+                       Style="{StaticResource styleEtiquetasFormResize}">
+                    <Run Language="es-co" Text="Descuento solicitado $"/>
+            </TextBlock>
+            <TextBox Name="txtG4Fcm_valdes_ades"
+                                         TabIndex="10"
+                                         Width="145"
+                                         Text="{Binding Path=G4Fcm_valdes_ades, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxForm}"
+                                         FontSize="16"   
+                                         MaxLength="17"
+                                         Focusable="False"   
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus" 
+                                         Margin="402,49,333,10" 
+                                         Height="29"/>
+            <TextBlock x:Name="lblG4fcm_valdes_dfac"
+                       Width="134"
+                       Margin="552,32,0,0"
+                       ToolTip="Valor del descuento solicitado"
+                       Style="{StaticResource styleEtiquetasForm}"><Run Language="es-co" Text="Descuento Aprobado $"/></TextBlock>
+            <TextBox Name="txtG4Fcm_valdes_dfac"
+                             Width="145"
+                             Margin="552,49,0,0"
+                             TabIndex="6"
+                             FontSize="16"   
+                             Text="{Binding Path=G4Fcm_valdes_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             Focusable="False"   
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus" Height="29"/>
+            <TextBlock Name="lblG4Fcm_estaut_ades"
+                       Width="140"
+                       Margin="705,32,0,0"
+                       ToolTip="Estado de la solicitud de descuento"
+                       Style="{StaticResource styleEtiquetasForm}">
+                       <Run Language="es-co" Text="Estado Solicitud"/>
+            </TextBlock>
+            <TextBox Name="txtG4Fcm_estaut_ades"
+                             Width="168"
+                             Margin="702,49,0,0"
+                             TabIndex="6"
+                             FontSize="16"   
+                             TextChanged="fcvAutorizaciones"
+                             Text="{Binding Path=G4Fcm_desest_ades, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             Focusable="False"   
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus" Height="29"/>
+        </Grid>
+        <TextBox Grid.Row="4"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Top"
+                     Foreground="#FF3399FF"
+                     BorderBrush="#FF3399FF"
+                     Style="{StaticResource styleTextBoxVistaPropGrupo}"
+                     FontSize="16"
+                     Text="Transaccion en efectivo - Caja" 
+                     Margin="3,0,2,0" 
+                     Height="25"/>
+        <TextBlock Name="lblG1fcm_valdes_dfac"
+                       Width="132"
+                       Grid.Row="4"     
+                       Margin="233,59,0,0"
+                       ToolTip="Sumatoria Valor descuento solicitado"
+                       Style="{StaticResource styleEtiquetasForm}">
+                       <Run Language="es-co" Text="Valor total descuento $"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_valdes_dfac"
+                             Width="138"
+                             Margin="232,77,0,0"
+                             Grid.Row="4"     
+                             TabIndex="6"
+                             Text="{Binding Path=G1Fcm_valdes_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             Focusable="False"   
+                             FontSize="20"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus" 
+                             Height="31"/>
+        <TextBlock Name="lblG1fcm_tipefe_mtrc"
+                               Width="168"
+                               Grid.Row="4"     
+                               Margin="24,59,0,0"
+                               ToolTip="Tipo de efectivo utilizado para realizar el pago"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Tipo efectivo para realizar pago"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_tipefe_mtrc"
+                     Width="70"
+                     Margin="10,149,0,0"
+                     Grid.Row="4"     
+                     TabIndex="7"
+                     Visibility="Hidden"
+                     Text="{Binding Path=G1Fcm_tipefe_mtrc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource styleTextBoxForm}"
+                     TextChanged="ActualizarComboBoxOpcion"
+                     IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                     KeyDown="fcvMoverFocus_KeyDown"
+                     GotFocus="fcvTextBox_GotFocus"/>
+        <ComboBox Name="cboG1Fcm_tipefe_mtrc"
+                    	Width="204"
+                        Grid.Row="4"     
+                    	Margin="23,77,0,0"
+                    	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                    	Style="{StaticResource styleComboBoxForm}"
+                    	SelectedIndex="0"
+                    	SelectionChanged="SeleccionComboBoxOpcion"
+                    	ItemsSource="{Binding Path=G1CbFcm_tipefe_mtrc}"
+                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
+                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox Name="txtG1Fcm_descon_mtrc"
+                             Width="493"
+                             Grid.Row="4"     
+                             Margin="22,34,0,0"
+                             TabIndex="6"
+                             Text="{Binding Path=G1Fcm_descon_mtrc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsReadOnly="True"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus" 
+                             Height="25"/>
+        <TextBlock Name="lblG1fcm_rfecha_mtrc"
+                               Width="69"
+                               Grid.Row="4"     
+                               Margin="521,40,0,0"
+                               ToolTip="Fecha del recibo de caja"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Fecha pago"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_rfecha_mtrc"
+                             Width="112"
+                             Grid.Row="4"     
+                             Margin="595,37,0,0"
+                             TabIndex="5"
+                             Text="{Binding Path=G1Fcm_rfecha_mtrc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             Focusable="False"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Name="lblG1fcm_rehora_mtrc"
+                               Width="57"
+                               Grid.Row="4"     
+                               Margin="710,39,0,0"
+                               ToolTip="Hora en que se genero el recibo de pago, hora en formato 12 ejem: 10:25:AM"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Hora Pago"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_rehora_mtrc"
+                             Width="92"
+                             Margin="776,37,0,0"
+                             Grid.Row="4"     
+                             TabIndex="5"
+                             Text="{Binding Path=G1Fcm_rehora_mtrc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             TextChanged="fcvCapturaHora"
+                             Focusable="False"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             GotFocus="fcvTextBox_GotFocus"/>
+        <TextBlock Name="lblG1fcm_valefe_mtrc"
+                               Width="146"
+                               Grid.Row="4"     
+                               Margin="375,59,0,0"
+                               ToolTip="Efectivo (Billete) presentado en ventanilla por el cliente, de este se hara la deduccion del pago"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Efectivo para transacción $"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_valefe_mtrc"
+                             Width="158"
+                             Margin="375,77,0,0"
+                             Grid.Row="4"     
+                             TabIndex="7"
+                             Text="{Binding Path=G1Fcm_valefe_mtrc, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             FontSize="20"
+                             GotFocus="fcvTextBox_GotFocus" Height="31" 
+                             Background="#FFF0F1CE"/>
+        <TextBlock Name="lblG1fcm_valcam_mtrc"
+                               Width="138"
+                               Margin="540,59,0,0"
+                               Grid.Row="4"     
+                               ToolTip="Valor cambio despues de la transaccion"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Valor cambio $"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_valcam_mtrc"
+                             Width="156"
+                             Grid.Row="4"     
+                             Margin="538,77,0,0"
+                             TabIndex="9"
+                             Text="{Binding Path=G1Fcm_valcam_mtrc, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsReadOnly="True"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             FontSize="20"
+                             GotFocus="fcvTextBox_GotFocus" 
+                             Background="#FFF3DADA"                  
+                             Height="31"/>
+        <TextBlock Name="lblG1fcm_valpag_mtrc"
+                               Width="150"
+                               Grid.Row="4"     
+                               Margin="701,59,0,0"
+                               ToolTip="Valor total pagado en efectivo correspondiente al servicio"
+                               Style="{StaticResource styleEtiquetasForm}">
+                               <Run Language="es-co" Text="Total pago efectivo"/>
+        </TextBlock>
+        <TextBox Name="txtG1Fcm_valefe_dfac"
+                             Width="168"
+                             Margin="700,77,0,0"
+                             TabIndex="10"
+                             Grid.Row="4"     
+                             Text="{Binding Path=G1Fcm_valefe_dfac, StringFormat={}{0:N0}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource styleTextBoxForm}"
+                             IsReadOnly="True"
+                             KeyDown="fcvMoverFocus_KeyDown"
+                             FontSize="20"
+                             GotFocus="fcvTextBox_GotFocus" 
+                             Background="#FFC7EFF5"
+                             Height="31"/>
+    </Grid>
+</Window>

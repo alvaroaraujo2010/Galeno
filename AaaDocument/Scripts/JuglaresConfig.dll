@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultConnection> 
+    <add Name="DBLocalJuglares"/>
+  </DefaultConnection>
+  <ConnectionStrings>
+ 	<!-- ================================== -->
+	<!-- Local Juglares						-->
+	<!-- ================================== -->
+    <add Name="DBLocalJuglares"
+		 ConnConexionDefaultDesc="Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Juglares10"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbjuglares;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbjuglares;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Juglares10"
+		 RecursosWebTipoIpServidor="NORED"
+		 RecursosWebIpServidor="http://localhost"
+		 RecursosWebPath="resources"
+		 RecursosWebInicioPath="app/juglares"/>		 
+    <!-- ================================== -->
+	<!-- Base de datos en Servidor local	-->
+	<!-- ================================== -->
+    <add Name="DBSesrvidorLocalJuglares"
+		 ConnConexionDefaultDesc="Base de datos Local servidor"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Juglares10"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbjuglares;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbjuglares;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Juglares10"
+		 RecursosWebTipoIpServidor="RED"
+		 RecursosWebIpServidor="http://192.168.1.100"
+		 RecursosWebPath="resources"
+		 RecursosWebInicioPath="app/juglares"/>		 
+ 
+  </ConnectionStrings>
+</configuration>

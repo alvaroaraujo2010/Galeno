@@ -1,0 +1,857 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlVistaFramingHam"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Height="400"
+             Width="700"
+             d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Margin="0,0,0,2"
+                Grid.ColumnSpan="6" 
+                BorderThickness="0,0,0,1"
+                BorderBrush="#FFACACAC"
+                Background="#FFEAEAEA"/>
+        <TextBlock Name="lblFrmTitulo" Grid.Row="0" 
+                   FontSize="12"
+                   Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Tamizaje para calculo de riesgo cardiovascular y Test Framingham"/>
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0"
+                         Grid.Column="0"
+                         BorderBrush="#FFACACAC"
+                         BorderThickness="0,1,0,1"
+                         FontSize="11"
+                         FontWeight="Bold"
+                         Text="TAMIZAJE" Background="#FFEAEAEA"/>
+                <TextBox Grid.Row="1"
+                         Grid.Column="0"
+                         BorderBrush="#FFACACAC"
+                         BorderThickness="0,0,0,1"
+                         FontSize="11"
+                         FontWeight="Bold"
+                         Text="1 Factores no modificables" Background="#FFEAEAEA"/>
+                <TextBox Grid.Row="2"
+                         Grid.Column="0"
+                         BorderBrush="#FF1F1E1E"
+                         Background="#FFEAEAEA"
+                         BorderThickness="0"
+                         FontSize="9"
+                         FontWeight="Bold"
+                         Text="1.1 Antecedentes familiares"/>
+                <!-- Familia Muere del corazon -->
+                <TextBlock Name="lblFrgFamiMuerCorazon" 
+                           Grid.Row="3" Style="{StaticResource styleEtiquetasEdtFormTouch}" 
+                           TextWrapping="Wrap"
+                           FontWeight="Light">
+                       <Run Language="es-co" Text="En su familia directa (padres, hermanos, tíos, abuelos), menores 55 años o mujeres menores de 65 años a muerto del corazón"/>
+                </TextBlock>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="lblFrgFamiMuerCorazon1" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Respuesta:"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrgFamiMuerCorazon" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFrgFamiMuerCorazon"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Familiares muertos del corazón Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Name="lblFrgFamiMuerCorazon_Puntaje" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmFamiMuerCorazon_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmFamiMuerCorazon_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="152"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Infarto -->
+                    <TextBlock Name="lblFrmFamiliDiabetes" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Algun familiar con Diabetes"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmFamiliDiabetes" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFamiliDiabetes"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="infarto o derrame cerebral Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFamiliDiabetes_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFamiliDiabetes_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <TextBox Grid.Row="6"
+                         Grid.Column="0"
+                         BorderBrush="#FF1F1E1E"
+                         Background="#FFEAEAEA"
+                         BorderThickness="0"
+                         FontSize="9"
+                         FontWeight="Bold"
+                         Text="1.2 Antecedentes personales"/>
+                <!-- Antecedentes personales -->
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="152"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Infarto -->
+                    <TextBlock Name="lblFrmInfarto" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Infarto o derrame cerebral"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmInfarto" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFrmInfarto"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="infarto o derrame cerebral Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmInfarto_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmInfarto_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="152"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Tensión Arterial Alta -->
+                    <TextBlock Name="lblFrmTaAlta" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Encontrado alguna vez TA alta"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmTaAlta" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFrmTaAlta"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Le han econtrado alguna vez tension arterial alta Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmTaAlta_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmTaAlta_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             Foreground="#FFFD0404"
+                             TextWrapping="Wrap"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="152"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Tensión Arterial Alta -->
+                    <TextBlock Name="lblFrmTaMedicamento" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Toma medicamento para TA alta"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmTaMedicamento" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFrmTaMedicamento"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Toma regularmente medicamentos para la tensión arterial alta  Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmTaMedicamento_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmTaMedicamento_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="152"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Tensión Arterial Alta -->
+                    <TextBlock Name="lblFrmAzucarSangre" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Alguna vez azúcar en la sangre"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmAzucarSangre" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFrmAzucarSangre"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Le han encontrado alguna vez azúcar en sangre Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmAzucarSangre_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmAzucarSangre_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <!-- FACTORES MODIFICABLES-->
+                <TextBox Grid.Row="11"
+                         Grid.Column="0"
+                         BorderBrush="#FFACACAC"
+                         Background="#FFEAEAEA"
+                         BorderThickness="0,1,0,1"
+                         FontSize="11"
+                         FontWeight="Bold"
+                         Text="2 Factores modificables"/>
+                <Grid Grid.Row="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="28"/>
+                        <ColumnDefinition Width="26"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- IMC -->
+                    <TextBlock Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Peso (kg)"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmIMCPeso"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1" Height="20"/>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Talla"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmIMCTalla"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBlock Grid.Column="4" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="IMC"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmIMCImc"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="5" Height="20"/>
+                    <TextBlock Grid.Column="6" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmImc_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="7" Height="20"/>
+                    <TextBox Name="txtFrmImc_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             Focusable="False" 
+                             Grid.Column="8" 
+                             TextWrapping="Wrap"
+                             BorderThickness="0" Height="20" Foreground="#FFFD0404"/>
+                </Grid>
+                <Grid Grid.Row="13">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Colesterol CHDL -->
+                    <TextBlock Name="lblFrmMedidCintura" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Medida de la cintura"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmMedidCintura" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Grid.Column="1" Height="20"/>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmMedidCintura_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmMedidCintura_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Actividad física diaria"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmActividadFisica" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboFrmActividadFisica"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Paciente fumador Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrmActividadFisica_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtFrmActividadFisica_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="lblFrmTabaco" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Paciente Fumador"/>
+                    </TextBlock>
+                    <TextBox Name="txtTabaco" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             Height="20"
+                             FontSize="14"
+                             TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboTabaco"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Paciente fumador Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Name="lblFrmTabaco_Puntaje" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtTabaco_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtTabaco_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <TextBox Grid.Row="16"
+                         Grid.Column="0"
+                         BorderBrush="#FFACACAC"
+                         Background="#FFEAEAEA"
+                         BorderThickness="0,1,0,1"
+                         FontSize="11"
+                         FontWeight="Bold"
+                         Text="Valoracion Total"/>
+                <Grid Grid.Row="17" Grid.RowSpan="2" Margin="0,3,0,3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Puntuacion total -->
+                    <TextBlock Name="lblTamiGeneralTotalPuntos" 
+                               Grid.Column="0" 
+                               Grid.Row="0"
+                               FontSize="9"
+                               FontWeight="Light"
+                               Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Puntuación Total"/>
+                    </TextBlock>
+                    <TextBox Name="txtTamiGeneralTotalPuntos" 
+                             BorderThickness="1"
+                             FontSize="14" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Row="0"
+                             Grid.Column="1"/>
+                    <Border Name="TamiFondoNivel" 
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.RowSpan="2"
+                            Background="#FFEAEAEA"/>
+                    <Border Name="TamiFondoNivelBlanco" 
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.RowSpan="2"
+                            Margin="18,8,18,8"
+                            Background="White"/>
+                    <TextBox Name="txtTamiNivelClasificacion" 
+                             BorderThickness="0"
+                             Margin="20,8,20,10"
+                             FontSize="14" 
+                             Background="Transparent"
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.RowSpan="2"
+                             Grid.Column="2"/>
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="3"/>
+                </Grid.RowDefinitions>
+                <Border Name="FrgFondoNivel" 
+                        Grid.Row="12"
+                        Margin="0,0,0,0"
+                        Background="#FFEAEAEA"/>
+                <Border Name="FrgFondoNivelBlanco" 
+                        Grid.Row="12"
+                        Margin="16"
+                        Background="White"/>
+                <TextBox Name="txtFrgGeneralNotaNivel" 
+                         Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                         Margin="18"
+                         TextAlignment="Justify"
+                         Focusable="False"
+                         TextWrapping="Wrap"
+                         Grid.Row="12"/>
+                <TextBox Grid.Row="0"
+                         BorderBrush="#FFACACAC"
+                         BorderThickness="0,1,0,1"
+                          Background="#FFEAEAEA"
+                         FontSize="11"
+                         FontWeight="Bold"
+                         Text="TEST FRAMINGHAM"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="22"/>
+                        <ColumnDefinition Width="28"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Sexo -->
+                    <TextBlock Name="lblFrmSis_codsex_sexo" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Sexo y edad en años"/>
+                    </TextBlock>
+                    <TextBox Name="txtFrgSis_codsex_sexo"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="1" Height="20"/>
+                    <TextBox Name="txtFrgSia_edaymd_usua"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="2" Height="20"/>
+                    <TextBlock Name="lblFrmSexo_Puntaje" Grid.Column="3" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtSexo_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="4" Height="20"/>
+                    <TextBox Name="txtSexo_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             Focusable="False" 
+                             Grid.Column="5" 
+                             TextWrapping="Wrap"
+                             BorderThickness="0" Height="20" Foreground="#FFFD0404"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Colesterol CHDL -->
+                    <TextBlock Name="lblFrmColesterolChdl" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Colesterol HDL"/>
+                    </TextBlock>
+                    <TextBox Name="txtColesterolChdl" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Grid.Column="1" Height="20"/>
+                    <TextBlock Name="lblFrmColesterolChdl_Puntaje" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtColesterolChdl_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtColesterolChdl_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Colesterol Total -->
+                    <TextBlock Name="lblFrmColesterolTotal" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Colesterol Total"/>
+                    </TextBlock>
+                    <TextBox Name="txtColesterolTotal" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Grid.Column="1" Height="20"/>
+                    <TextBlock Name="lblFrmColesterolTotal_Puntaje" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtColesterolTotal_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtColesterolTotal_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Presión arterial Sistólica -->
+                    <TextBlock Name="lblFrmPresionArtSistolica" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Presión A. Sistólica"/>
+                    </TextBlock>
+                    <TextBox Name="txtPresionArtSistolica" FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Grid.Column="1" Height="20"/>
+                    <TextBlock Name="lblFrmPresionArtSistolica_Puntaje" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtPresionArtSistolica_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtPresionArtSistolica_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Tabaco -->
+                    <TextBlock Name="lblFrmDiabetes" Grid.Column="0" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Paciente Diabetico"/>
+                    </TextBlock>
+                    <TextBox Name="txtDiabetes" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"
+                             FontSize="14"
+                              Height="20"
+							 TextChanged="ActualizarComboBoxOpcion"/>
+                    <ComboBox Name="cboDiabetes"
+                              Grid.Column="1"
+                              Style="{StaticResource styleComboBoxFormResize}"
+                              SelectedIndex="0"
+                              FontSize="9"
+                              ToolTip="Paciente diabetico Si/No"
+                              SelectionChanged="SeleccionComboBoxOpcion"
+                              DisplayMemberPath="{Binding Path=NombreOpcion}"
+                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              Height="17"
+                              Margin="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Name="lblFrmDiabetes_Puntaje" Grid.Column="2" Style="{StaticResource styleEtiquetasEdtFormTouch}" FontWeight="Light">
+                       <Run Language="es-co" Text="Puntaje"/>
+                    </TextBlock>
+                    <TextBox Name="txtDiabetes_Puntaje"  FontSize="14" Style="{StaticResource styleTextBoxEdtFormTouch}" Focusable="False" Grid.Column="3" Height="20"/>
+                    <TextBox Name="txtDiabetes_Puntaje_Titulo" Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             FontSize="8"
+                             TextWrapping="Wrap"
+                             Foreground="#FFFD0404"
+                             Focusable="False" Grid.Column="4" BorderThickness="0" Height="20"/>
+                </Grid>
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               Margin="5" Background="#FFDEDEDE">
+                       <Run Language="es-co" 
+                            FontSize="8"
+                            Text="Sexo: F=Femenino M=Masculino"/>
+                    </TextBlock>
+                </Grid>
+                <TextBox Grid.Row="8"
+                         BorderBrush="#FFACACAC"
+                         BorderThickness="0,1,0,1"
+                         Background="#FFEAEAEA"
+                         FontSize="11"
+                         FontWeight="Bold"
+                         Text="Valoración Total"/>
+                <Grid Grid.Row="9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Puntuacion total -->
+                    <TextBlock Name="lblGeneralTotalPuntos" Grid.Column="0" 
+                               FontSize="13"
+                               FontWeight="Light"
+                               Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Puntuación Total"/>
+                    </TextBlock>
+                    <TextBox Name="txtGeneralTotalPuntos" 
+                             BorderThickness="1"
+                             Margin="3,1,0,1"
+                             FontSize="14" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"/>
+                </Grid>
+                <Grid Grid.Row="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Porcentaje de riesgo -->
+                    <TextBlock Name="lblGeneralPorcentaje" Grid.Column="0" 
+                               FontWeight="Light"
+                               FontSize="13"
+                               Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Riesgo cardiovascular %"/>
+                    </TextBlock>
+                    <TextBox Name="txtGeneralPorcentaje" 
+                             BorderThickness="1"
+                             Margin="3,1,0,1"
+                             FontSize="14" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"/>
+                </Grid>
+                <Grid Grid.Row="11">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Sexo -->
+                    <TextBlock Name="lblGeneralClasificacion" Grid.Column="0" 
+                               FontSize="13"
+                               FontWeight="Light"
+                               Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                       <Run Language="es-co" Text="Clasificacion del Riesgo"/>
+                    </TextBlock>
+                    <TextBox Name="txtGeneralNivelClasificacion" 
+                             BorderThickness="1"
+                             Margin="3,1,0,1"
+                             FontSize="14" 
+                             Style="{StaticResource styleTextBoxEdtFormTouch}" 
+                             Focusable="False" 
+                             Grid.Column="1"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

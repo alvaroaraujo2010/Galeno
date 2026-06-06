@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultConnection> 
+    <add Name="dbgalenohatillodeepin"/>
+  </DefaultConnection>
+  <ConnectionStrings>
+	<!-- ================================== -->
+	<!-- Cliente: Local : dbgalenohatillodeepin  -->
+	<!-- ================================== -->
+    <add Name="dbgalenohatillodeepin"
+		 ConnConexionDefaultDesc="dbgalenohatillo servidor deepin"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=makiia;password=R00tM4k114*;database=dbgalenohatillo;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=makiia;pwd=R00tM4k114*;database=dbgalenohatillo;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/> 
+    <!-- ================================== -->
+	<!-- Instituto radiologico	SERVIDOR OFICINA -->
+	<!-- ================================== -->
+    <add Name="DBServidorIRadiologico"
+		 ConnConexionDefaultDesc="1 - Instituto Radiologico Servidor Oficina"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=makiia;password=R00tM4k114*;database=dbiradiologico;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=makiia;pwd=R00tM4k114*;database=dbiradiologico;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- SERVIDOR PUEBLO BELLO oficina	    -->
+	<!-- ================================== -->
+    <add Name="DBServerOficinaPbelloLinux"
+		 ConnConexionDefaultDesc="2 - Pueblo Bello en servidor oficina"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=makiia;password=R00tM4k114*;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=makiia;pwd=R00tM4k114*;database=betagaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Hatillo inge Fredy					-->
+	<!-- ================================== -->
+    <add Name="HATILLOFREDDY"
+		 ConnConexionDefaultDesc="121-Hatillo inge Fredy"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.70"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.70;user id=MAKIIA-PC01;password=root;database=dbgalenohatillo;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.70;uid=MAKIIA-PC01;pwd=root;database=dbgalenohatillo;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+    <!-- ================================== -->
+	<!-- Hatillo Servidor Makiia			-->
+	<!-- ================================== -->
+    <add Name="DBServidorGalenoHatillo"
+		 ConnConexionDefaultDesc="5 - Hatillo de loba Servidor Oficina"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbgalenohatillo;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbgalenohatillo;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>  
+    <!-- ================================== -->
+	<!-- Instituto radiologico	Makiia Pc01 -->
+	<!-- ================================== -->
+    <add Name="DBServidorIRadiologicoMAKIIAPC01"
+		 ConnConexionDefaultDesc="XX - Instituto Radiologico Local MAKIIA-PC01"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbiradiologico;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbiradiologico;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Family Homecare servidor local 	-->
+	<!-- ================================== -->
+    <add Name="DBHomeCareServidor"
+		 ConnConexionDefaultDesc="14 - Family - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbgalenofamily;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbgalenofamily;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>    
+    <!-- ================================== -->
+	<!-- Family Servidor Oficina SERVIDOR OFICINA -->
+	<!-- ================================== -->
+    <add Name="DBHomeCareServidorOficina"
+		 ConnConexionDefaultDesc="Family Servidor Oficina"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbgalenofamily;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbgalenofamily;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>  
+	<!-- ================================== -->
+	<!-- Cliente: IRADIOLOGICO : PPAL-FACT01  -->
+	<!-- ================================== -->
+    <add Name="DbIRadiologicoServidorHospital"
+		 ConnConexionDefaultDesc="Base de datos Instituto R en servidor Hospital"
+		 ConnNombreUsuarioConexion="DbIRadiologico"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.112"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.112;user id=PPAL-FACT02;password=rootirc2020;database=dbiradiologico;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.112;uid=PPAL-FACT02;pwd=rootirc2020;database=dbiradiologico;"			 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.112"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+    <!-- ================================== -->
+	<!-- Casa Instituto radiologico Prtatil -->
+	<!-- ================================== -->
+    <add Name="DbInstitutoServidorHRosario"
+		 ConnConexionDefaultDesc="Instituto Radiologico Rosario P"
+		 ConnNombreUsuarioConexion="MAKIIA-PC01"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.112"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.112;user id=PPAL-FACT02;password=root;database=dbiradiologico;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.112;uid=PPAL-FACT02;pwd=root;database=dbiradiologico;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.112"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+    <!-- ================================== -->
+	<!-- Casa Instituto radiologico Prtatil -->
+	<!-- ================================== -->
+    <add Name="DbInstitutoCasaPRT"
+		 ConnConexionDefaultDesc="Instituto Radiologico Portatil Casa"
+		 ConnNombreUsuarioConexion="MAKIIA-PC01"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.0.114"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.0.114;user id=MAKIIA-PC01;password=root;database=dbiradiologico;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.0.114;uid=MAKIIA-PC01;pwd=root;database=dbiradiologico;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.0.114"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- SERVIDOR PUEBLO BELLO oficina	    -->
+	<!-- ================================== -->
+    <add Name="DBServerOficinaPbello"
+		 ConnConexionDefaultDesc="2 - Pueblo Bello en servidor oficina"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=betagaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- SERVIDOR PUEBLO BELLO oficina Logo	-->
+	<!-- ================================== -->
+    <add Name="DBServerOficinaPbelloL2"
+		 ConnConexionDefaultDesc="2 - Pueblo Bello Logo Viejo"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=betagaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos02"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	 
+	<!-- ================================== -->
+	<!-- Urumita servidor 					-->
+	<!-- ================================== -->
+    <add Name="DBUrumitaFREDDY"
+		 ConnConexionDefaultDesc="3 - Urumita en Pc inge Freddy"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.70"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.70;user id=MAKIIA-PC01;password=root;database=dbgalenourumita;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.70;uid=MAKIIA-PC01;pwd=root;database=dbgalenourumita;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.70"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+  	<!-- ================================== -->
+	<!-- Cliente conexion equipo freddy		-->
+	<!-- ================================== -->
+    <add Name="DbFreddy"
+		 ConnConexionDefaultDesc="4 - Pueblo Bello Pc Imge Freddy"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.70"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=192.168.1.70;user id=MAKIIA-PC01;password=root;database=dbgaleno4505;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.70;uid=MAKIIA-PC01;pwd=root;database=dbgaleno4505;"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.70"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>  
+	<!-- ================================== -->
+	<!-- Cliente Hospital pueblo bello 		-->
+	<!-- ================================== -->
+    <add Name="ClienteServidorPbello"
+		 ConnConexionDefaultDesc="6 - Base de datos Real en servidor Hospital Pueblo Bello (ojo)"
+		 ConnNombreUsuarioConexion="PC-JOSE"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.26.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.26.100;user id=MAKIIA-PC01;password=root;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.26.100;uid=MAKIIA-PC01;pwd=root;database=betagaleno;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.26.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Servidor Oficina Hospital Urumita	-->
+	<!-- ================================== -->
+    <add Name="DBLocalUrumita"
+		 ConnConexionDefaultDesc="7 - Base de datos Local Urumita"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbgalenourumita;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbgalenourumita;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Urumita servidor 					-->
+	<!-- ================================== -->
+    <add Name="DBUrumitaServidor"
+		 ConnConexionDefaultDesc="8 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbgalenourumita;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbgalenourumita;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+	<!-- ================================== -->
+	<!-- Family Homecare Servidor  -->
+	<!-- ================================== -->
+    <add Name="DBHomeCareFamily"
+		 ConnConexionDefaultDesc="9 - Base de datos Family Homecare"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbgalenofamily;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbgalenofamily;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>	
+	<!-- ================================== -->
+	<!-- Family Homecare Servidor  -->
+	<!-- ================================== -->
+    <add Name="DBHomeCareFamilyPrueba"
+		 ConnConexionDefaultDesc="9 - Base de datos Family Homecare"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbgalenofamilyprueba;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbgalenofamilyprueba;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>		 
+ 	<!-- ================================== -->
+	<!-- MasSalud HomeCare local 			-->
+	<!-- ================================== -->
+    <add Name="DBHomeCareMassalud"
+		 ConnConexionDefaultDesc="10 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\HomeCare"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbhomecare;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbhomecare;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\HomeCare"/>  
+    <!-- ================================== -->
+	<!-- Hospital Hatillo de loba Servidor  -->
+	<!-- ================================== -->
+    <add Name="DBYelisaHatilloServidor"
+		 ConnConexionDefaultDesc="11 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbyelizahatillo;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbyelizahatillo;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>  
+    <!-- ================================== -->
+	<!-- Prueba Yeliza Hatillo Servidor		-->
+	<!-- ================================== -->
+    <add Name="DBPruebaServidorYelisaHatillo"
+		 ConnConexionDefaultDesc="12 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbyelizahatilloprueba;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbyelizahatilloprueba;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>  
+	 <!-- ================================= -->
+	<!-- Local prueba						-->
+	<!-- ================================== -->
+    <add Name="DBLocalYelisaHatilloPrueba"
+		 ConnConexionDefaultDesc="13 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbyelizahatilloprueba;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbyelizahatilloprueba;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Local prueba						-->
+	<!-- ================================== -->
+    <add Name="DBLocalPrueba"
+		 ConnConexionDefaultDesc="15 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=prueba;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=prueba;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Local Hospital Hatillo de loba		-->
+	<!-- ================================== -->
+    <add Name="DBLocalHatillo"
+		 ConnConexionDefaultDesc="16 - Base de datos Local Hatillo"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbgalenohatillo;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbgalenohatillo;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+    <!-- ================================== -->
+	<!-- Local Hospital Hatillo de loba		-->
+	<!-- ================================== -->
+    <add Name="DBLocalYelisaHatillo"
+		 ConnConexionDefaultDesc="17 - Base de datos Local Yelisa Hatillo"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=yelizahatillo;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=yelizahatillo;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Local prueba xxx1					-->
+	<!-- ================================== -->
+    <add Name="DBLocalPrueba_xxx1"
+		 ConnConexionDefaultDesc="18 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=xxx1;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=xxx1;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Local MasSalud						-->
+	<!-- ================================== -->
+    <add Name="DBLocalMasSalud"
+		 ConnConexionDefaultDesc="19 - Base de datos Local Massalud"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbgalenomassalud;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbgalenomassalud;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>		 
+ 	<!-- ================================== -->
+	<!-- Conexion MedicSalud Local	 		-->
+	<!-- ================================== -->
+    <add Name="DBLocaMedicSalud"
+		 ConnConexionDefaultDesc="20 - Conexion MedicSalud Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbgalenomedicsalud;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbgalenomedicsalud;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== 	-->
+	<!-- Cliente Servidor MasSalud	Serv Makiia	-->
+	<!-- ================================== 	-->
+    <add Name="DBClienteMasSaludServMakiia"
+		 ConnConexionDefaultDesc="21 - Cliente Servidor MasSalud"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.100"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.100;user id=MAKIIA-PC01;password=root;database=dbmassaludgaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.100;uid=MAKIIA-PC01;pwd=root;database=dbmassaludgaleno;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.100"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>		 
+  	<!-- ================================== 		-->
+	<!-- Conexion cliente servidor MedicSalud freddy -->
+	<!-- ================================== 		-->
+    <add Name="DBClienteMedicSaludFreddy"
+		 ConnConexionDefaultDesc="22 - Conexion cliente servidor MedicSalud Freddy"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.70"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.70;user id=MAKIIA-PC01;password=root;database=dbgalenomedicsalud;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.70;uid=MAKIIA-PC01;pwd=root;database=dbgalenomedicsalud;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.70"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- Prueba equipo freddy				-->
+	<!-- ================================== -->
+    <add Name="DBPruebaFreddy"
+		 ConnConexionDefaultDesc="23 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.70"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=192.168.1.70;user id=MAKIIA-PC01;password=root;database=prueba;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.70;uid=MAKIIA-PC01;pwd=root;database=prueba;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="192.168.1.70"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+ 	<!-- ================================== -->
+	<!-- MASSALUD equipo freddy				-->
+	<!-- ================================== -->
+    <add Name="DBMassaludFreddy"
+		 ConnConexionDefaultDesc="24 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.70"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.1.70;user id=MAKIIA-PC01;password=root;database=dbmassaludgaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.1.70;uid=MAKIIA-PC01;pwd=root;database=dbmassaludgaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="192.168.1.70"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>		 
+	<!-- ================================== -->
+	<!-- Cliente Pueblo bello Nube Eugenio -->
+	<!-- ================================== -->
+    <add Name="DbClienteServidorPbelloEugenio"
+		 ConnConexionDefaultDesc="24 - Cliente Pueblo bello Nube Eugenio"
+		 ConnNombreUsuarioConexion="PC-JOSE"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="50.156.33.140"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=50.156.33.140;user id=jbarros;password=TecladoMouse77#;database=galeno;port=3360;persist security info=True"
+		 ConnConnectionStringNativa="server=50.156.33.140;uid=jbarros;pwd=TecladoMouse77#;database=galeno;port=3360;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Cliente Pueblo bello Nube Amazon 	-->
+	<!-- ================================== -->
+    <add Name="DbClienteServidorPbelloAmazon"
+		 ConnConexionDefaultDesc="25 - Cliente Pueblo bello Nube Amazon"
+		 ConnNombreUsuarioConexion="PC-JOSE"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="m3g4550ft"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=mega.c1m9toq7lw3b.us-west-2.rds.amazonaws.com;user id=megassoft;password=m3g4550ft;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=mega.c1m9toq7lw3b.us-west-2.rds.amazonaws.com;uid=megassoft;pwd=m3g4550ft;database=betagaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+
+	<!-- ================================== -->
+	<!-- Cliente Pueblo bello Prueba 		-->
+	<!-- ================================== -->
+    <add Name="DbClienteServidorPbelloPrueba"
+		 ConnConexionDefaultDesc="26 - Hospital Camilo Villazon Pumarejo Bd Prueba"
+		 ConnNombreUsuarioConexion="PC-JOSE"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.26.21"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.26.21;user id=JOSE;password=root;database=pruebas;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.26.21"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+ 
+	<!-- ================================== -->
+	<!-- Local Base de datos procesos		-->
+	<!-- ================================== -->
+    <add Name="DbLocalProcesos"
+		 ConnConexionDefaultDesc="27 - Local Base de datos prueba"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=procesos;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=procesos;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Local Pueblo Bello					-->
+	<!-- ================================== -->
+    <add Name="DBLocalPbello"
+		 ConnConexionDefaultDesc="28 - Base de datos local PC JOSE Hospital Pueblo Bello"
+		 ConnNombreUsuarioConexion="PC-JOSE"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=betagaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=betagaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Cliente conexion red Proyecto		-->
+	<!-- ================================== -->
+    <add Name="DbProyecto"
+		 ConnConexionDefaultDesc="29 - Base de datos Red Proyecto(Jose: 192.168.1.40)"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.40"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=192.168.1.40;user id=root;password=root;database=betagaleno;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.40"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Cliente Hospital pueblo bello 		-->
+	<!-- ================================== -->
+    <add Name="DbClienteServidorPbello"
+		 ConnConexionDefaultDesc="30 - Base de datos Real en servidor Hospital Pueblo Bello (ojo)"
+		 ConnNombreUsuarioConexion="PC-JOSE"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.26.21"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.26.21;user id=JOSE;password=root;database=betagaleno;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.26.21"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+	<!-- ================================== -->
+	<!-- Cliente Carbosalud					-->
+	<!-- ================================== -->
+    <add Name="DbCarboSalud"
+		 ConnConexionDefaultDesc="31 - Base de datos Carbosalud"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.10.1"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.10.1;user id=JOSE;password=root;database=dbcarbogaleno;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.10.1"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+
+	<!-- ================================== -->
+	<!-- Cliente Carbosalud	Base datos prueba -->
+	<!-- ================================== -->
+    <add Name="DbCarboSaludPrueba"
+		 ConnConexionDefaultDesc="32 - Prueba - Base de datos Carbosalud"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.10.1"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.10.1;user id=JOSE;password=root;database=prueba;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.10.1"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+		 
+	<!-- ================================== -->
+	<!-- Local la jagua						-->
+	<!-- ================================== -->
+    <add Name="DBLocalCarboSalud"
+		 ConnConexionDefaultDesc="33 - Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=dbcarbogaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=localhost;uid=root;pwd=root;database=dbcarbogaleno;"		 
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+		 
+	<!-- ================================== -->
+	<!-- Cliente Servidor MasSalud			-->
+	<!-- ================================== -->
+    <add Name="DBClienteMasSalud"
+		 ConnConexionDefaultDesc="34 - Cliente Servidor MasSalud"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.10.2"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.10.2;user id=MAKIIA-PC01;password=root;database=dbmassaludgaleno;persist security info=True"
+		 ConnConnectionStringNativa="server=192.168.10.2;uid=MAKIIA-PC01;pwd=root;database=dbmassaludgaleno;"		 
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.10.2"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>		 
+	 
+  </ConnectionStrings>
+</configuration>

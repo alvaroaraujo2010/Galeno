@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="GestorReportes.Vista.ControlOrdOdontoTitulo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GestorReportes.Vista" 
+             mc:Ignorable="d"
+             d:DesignHeight="35" 
+             Height="35"
+             Width="750"
+             d:DesignWidth="300">
+    <Grid Name="grdContenedor">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2"/>
+        </Grid.RowDefinitions>
+        <Border Name="detFondo" 
+                Background="White"
+                Visibility="Visible"
+                BorderThickness="0"
+                Grid.Row="0" 
+                Grid.RowSpan="3"/>
+        <!-- ENCABEZADO DETALLES SERVICIOS -->
+        <Grid Name="grdTitulo" 
+                  Grid.Row="1"
+                  Visibility="Visible"
+                  Margin="4,0,4,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="135"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblDiente"
+                       Grid.Column="0"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                    <Run Language="es-co" Text="DIENTE"/>
+                </TextBlock>
+                <TextBlock Name="lblDetalle"
+                       Grid.Column="1"
+                       Style="{StaticResource styleEtiquetasEdtFormTouch}" Margin="4,6,10,6">
+                    <Run Language="es-co" Text="SERVICIO"/>
+                </TextBlock>
+                <TextBlock Name="lblEstado"
+                           Grid.Column="2"
+                           Style="{StaticResource styleEtiquetasEdtFormTouch}">
+                        <Run Language="es-co" Text="ESTADO"/>
+                </TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

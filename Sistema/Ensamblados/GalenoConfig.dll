@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultConnection>
+    <add Name="DBLocal"/>
+  </DefaultConnection>
+  <ConnectionStrings>
+	<!-- ================================== -->
+	<!-- Conexion Local 					-->
+	<!-- ================================== -->
+    <add Name="DBLocal"
+		 ConnConexionDefaultDesc="Base de datos Local"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="NORED"
+		 ConnIpServidor="c:"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=localhost;user id=root;password=root;database=betagaleno;persist security info=True"
+		 RecursosTipoIpServidor="NORED"
+		 RecursosIpServidor="c:"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Cliente conexion red Proyecto		-->
+	<!-- ================================== -->
+    <add Name="DbProyecto"
+		 ConnConexionDefaultDesc="Base de datos Red Proyecto(Jose: 192.168.1.40)"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.1.40"
+		 ConnAppInicioPath="Proyectos\Galeno40"
+		 ConnConnectionString="server=192.168.1.40;user id=root;password=root;database=betagaleno;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.1.40"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Proyectos\Galeno40"/>
+	<!-- ================================== -->
+	<!-- Cliente Hospital pueblo bello 		-->
+	<!-- ================================== -->
+    <add Name="DbAplicacion"
+		 ConnConexionDefaultDesc="Hospital Camilo Villazon Pumarejo"
+		 ConnMotorBaseDeDatos="MYSQL"
+		 ConnTipoIpServidor="RED"
+		 ConnIpServidor="192.168.26.21"
+		 ConnAppInicioPath="Galeno40"
+		 ConnConnectionString="server=192.168.26.21;user id=JOSE;password=root;database=betagaleno;persist security info=True"
+		 RecursosTipoIpServidor="RED"
+		 RecursosIpServidor="192.168.26.21"
+		 RecursosPath="GaleriaRecursos"
+		 RecursosInicioPath="Galeno40"/>
+  </ConnectionStrings>
+</configuration>

@@ -1,0 +1,2115 @@
+﻿<Window x:Class="GestorReportes.Vista.VistaCapturaReportes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:GestorReportes.Vista" 
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        Title="Vista captura reportes" 
+        Height="700" 
+        Width="1024" 
+        Name="VistaHistClinica"
+        ShowInTaskbar="False"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        AllowsTransparency="False" 
+        Background="Transparent" 
+        Icon="/Sistema;component/Imagenes/sis_logo40.png" >
+    <Grid x:Name="MainGrid" Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+            <RowDefinition Height="8" />
+        </Grid.RowDefinitions>
+        <!-- Fondo General -->
+        <Border Background="Transparent"
+                Margin="0,0,0,0"
+                Grid.RowSpan="4"
+                Grid.Row="0"/>
+        <!-- Fondo del Sistema -->
+        <Image HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Grid.Row="0"
+               Margin="0,0,-1,-1" 
+               Stretch="Fill"
+               Source="/Sistema;component/Imagenes/sys_fondocomponentes.png" 
+               Grid.RowSpan="3" />
+        <!-- Logo Midwssoft -->
+        <Image Name="ImgMidwssoft" 
+               Height="36" 
+               Width="160"
+               Margin="0,0,52,02"
+               Grid.Row="1"
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Bottom"
+               Source="/Sistema;component/Imagenes/sys_logomidwssoft2.png"/>
+        <!-- Hora del sistema-->
+        <TextBlock Name="TxtHora" 
+                   Grid.Row="1"
+                   FontFamily="Segoe UI Light"
+                   Foreground="#FFFBF7F6"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Bottom"
+                   Text="00:00:00 AM"
+                   Margin="10,0,0,4" 
+                   Width="236" 
+                   Height="21"/>
+        <Image Name="imgEscFotoPerfil"
+               Grid.Row="1"
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top"
+               Stretch="UniformToFill"
+               Margin="40,6,0,0" 
+               Height="74"
+               Width="80"
+               Source="/Sistema;component/Imagenes/sys_usu01.png" />
+        <TextBlock Name="lblEscNombrePaciente"
+                   Grid.Row="1"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="680"
+                   Margin="130,10,0,0" 
+                   FontSize="24" 
+                   Foreground="White" 
+                   Height="30">
+               <Run Language="es-co" Text="NOMBRE DEL PACIENTE"/>
+        </TextBlock>
+        <TextBlock Name="lblEscIdentificacion"
+                   Grid.Row="1"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="580"
+                   Margin="130,43,0,0" 
+                   FontSize="12" 
+                   Foreground="White" 
+                   Height="20">
+               <Run Language="es-co" Text="IDENTIFICACION:"/>
+        </TextBlock>
+        <TextBlock Name="lblEscAdmision"
+                   Grid.Row="1"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="580"
+                   Margin="130,60,0,0" 
+                   FontSize="12" 
+                   Foreground="White" 
+                   Height="20">
+               <Run Language="es-co" Text="ADMISION:"/>
+        </TextBlock>
+        <TextBlock Name="lblEscDatosMedicos"
+                   Grid.Row="1"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="580"
+                   Margin="130,60,0,0" 
+                   FontSize="12"
+                   Visibility="Collapsed"
+                   Foreground="White" 
+                   Height="20">
+               <Run Language="es-co" Text="ESTADO DATOS MEDICOS"/>
+        </TextBlock>
+        <!-- ZONA DEL EDITOR -->
+        <ScrollViewer Name="PanelScroll" 
+                      HorizontalAlignment="Stretch" 
+                      Margin="10,14,10,0"
+                      Width="Auto"
+                      Grid.Row="0"
+                      Grid.RowSpan="2"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Auto"
+                      PanningMode="HorizontalFirst"
+                      CanContentScroll="False"
+                      Height="Auto">
+            <StackPanel Name="stkContenedor">
+                <StackPanel Name="stkBase"
+                            Focusable="False"
+                            Background="Transparent"
+                            Orientation="Vertical"
+                            Style="{StaticResource styleStackPanelEdtFondoEditor}">
+                        <StackPanel.RenderTransform>
+                            <ScaleTransform ScaleX="{Binding Value, ElementName=objSliderZoom}" ScaleY="{Binding Value, ElementName=objSliderZoom}" />
+                        </StackPanel.RenderTransform>
+                        <WrapPanel x:Name="wraPlantilla" 
+                                  Focusable="False"
+                                  Style="{StaticResource styleWrapPanelEdtFondoEditor}" 
+                                  Orientation="Vertical">
+                        </WrapPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <!-- MENU SUPERIOR -->
+        <Grid Name="MenuSuperior"
+              Grid.Row="0"
+              Height="30"
+              Margin="0,0,0,0"
+              Background="Transparent"
+              TouchEnter="fcvActivarVistaMenuSuperiorTouchEnter"
+              MouseEnter="fcvActivarVistaMenuSuperiorMouseEnter">
+            <Canvas Name="ExtMenuSuperior"
+                    Width="Auto"
+                    Height="30">
+                <Grid Name="grdMenuSuperior" 
+                      Width="Auto"
+                      Height="110"
+                      Canvas.Left="0" 
+                      Canvas.Top="-110" 
+                      Margin="0,0,0,0"
+                      Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0"
+                            BorderThickness="0"
+                            Background="White"
+                            BorderBrush="#FFB0AFAF">
+                    </Border>
+                    <Border Grid.Row="1"
+                            BorderThickness="1"
+                            Background="#E5D3D3D3"
+                            BorderBrush="#FFB0AFAF">
+                    </Border>
+                    <!-- Logo del Sistema -->
+                    <Image Name="ImgPpal" 
+                           Grid.Row="0" 
+                           Height="40" 
+                           Width="50"
+                           Stretch="Fill"
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top"
+                           Margin="10,8,0,0"
+                           Source="/GestorReportes;component/Imagenes/Edt_edt_icono.png" />
+                    <!-- Titulo del Sistema -->
+                    <TextBlock x:Name="TextTitulo" 
+        	                    Grid.Row="0" 
+        	                    HorizontalAlignment="Stretch" 
+        	                    VerticalAlignment="Top"
+        	                    Margin="84,15,130,0" 
+        	                    FontSize="26"  
+        	                    FontFamily="Segoe UI Light" Height="35">
+                                <Run Text="Historia clinica"/>
+                                <Run Language="es-co"/><Run Text=" "/>
+                                <LineBreak/>
+                                <Run Language="es-co"/></TextBlock>
+                    <!-- Boton Minimizar -->
+                    <Image Name="MinimizeButton" 
+                           MouseDown="MinimizeButton_Click" 
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Width="45"
+                           Grid.Row="0"
+                           Visibility="Visible"
+                           Cursor="Hand"
+                           TouchDown="MinimizeButton_TouchDown"
+                           Source="/Sistema;component/Imagenes/sys_minimizar.png"
+                           Margin="0,0,74,0" />
+                    <!-- Boton Cerrar -->
+                    <Image MouseDown="CloseButton_Click" 
+                           Width="45"
+                           Margin="0,0,20,0" 
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Grid.Row="0" 
+                           Cursor="Hand"
+                           TouchDown="CloseButton_TouchDown"
+                           Source="/Sistema;component/Imagenes/sys_cerrar.png"/>
+                    <!-- Barra de botones -->
+                    <StackPanel Name="GridBarraDeTareas"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Orientation="Horizontal"
+                                Margin="0,0,70,0"
+                                Grid.Row="1">
+                        <Button Name="cmdPlaMenu"
+                                Margin="10,4,0,0"
+                                TabIndex="53"
+                                Click="fcvMostrarMenuContextual"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                ToolTip="Opciones" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgAgrupar"
+                    		        Source="/GestorReportes;component/Imagenes/Edt_edt_configurar.png"/>
+                            </StackPanel>
+                            <Button.ContextMenu>
+                                <ContextMenu x:Name="MenuContextAgrupar" Style="{StaticResource styleMenuContextButtonEdtTouch}">
+                                    <MenuItem Name="opCerraVistaPlantilla"
+                                              Click="fcvCmdCerrarVista"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Cerrar vista plantilla activa">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                               Source="/GestorReportes;component/Imagenes/Edt_hist_anulado.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <Separator Background="Transparent" BorderBrush="Black" />
+                                    <MenuItem Name="opImportarDatos"
+                                              Click="fcvPlantillaImportar"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Importar datos...">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                           Source="/GestorReportes;component/Imagenes/Edt_hist_importar.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Name="opExportarDatos"
+                                              Click="fcvPlantillaExportar"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Exportar datos...">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                           Source="/GestorReportes;component/Imagenes/Edt_hist_exportar.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                        <Separator Background="Transparent" BorderBrush="Black" Width="8"/>
+                        <Button Name="cmdPlaNueva"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Visibility="Collapsed"
+                                Click="fcvPlantillaNueva"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                ToolTip="Nuevo registro de atención" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgPlaNueva"
+                		        Source="/GestorReportes;component/Imagenes/Edt_edt_adicionar.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdPlaAbrir"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvBrowserBuscarHClinica"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                ToolTip="Abrir historia clinica existente" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgPlaAbrirr"
+                		        Source="/GestorReportes;component/Imagenes/Edt_edt_abrir.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdPlaGuardar"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvMostrarMenuContextual"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                ToolTip="Guardar registro" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgPlaGuardar"
+                		        Source="/GestorReportes;component/Imagenes/Edt_edt_guardar.png"/>
+                            </StackPanel>
+                            <Button.ContextMenu>
+                                <ContextMenu Name="MenuContextAccRegistro" Style="{StaticResource styleMenuContextButtonEdtTouch}">
+                                    <MenuItem Name="opAccRegistroGuardar"
+											  Click="fcvAccRegistroGuardar"
+                                              IsEnabled="{Binding Path=GlgSIS_PuedeGuardar}"
+											  Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+											  Header="Guardar registro">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/GestorReportes;component/Imagenes/Edt_hist_abierto.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Name="opAccRegistroConfirmar"
+											  Click="fcvAccRegistroConfirmar"
+                                              IsEnabled="{Binding Path=GlgSIS_PuedeConfirmar}"
+											  Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+											  Header="Guardar y Confirmar el registro">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/GestorReportes;component/Imagenes/Edt_hist_confirmado.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <Separator Background="Transparent" BorderBrush="Black"/>
+                                    <MenuItem Name="opAccRegistroAnular"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Anular registro">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/GestorReportes;component/Imagenes/Edt_hist_anulado.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                        <Button Name="cmdPlaImprimir"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvMostrarMenuContextual"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                IsEnabled="{Binding Path=GlgSIS_ModoVistaObjetos}"
+                                ToolTip="Imprimir..." >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgPlaImprimir"
+                		        Source="/GestorReportes;component/Imagenes/Edt_edt_imprimir.png"/>
+                            </StackPanel>
+                            <Button.ContextMenu>
+                                <ContextMenu Name="MenuContextAccImprimir" Style="{StaticResource styleMenuContextButtonEdtTouch}">
+                                    <MenuItem Name="opAccRegistroImprimir"
+											  Click="fcvAccImprimirVista"
+                                              IsEnabled="{Binding Path=GlgSIS_PuedePrnDiseñoVista}"
+											  Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+											  Header="Vista captura en pantalla - Imprimir...">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/GestorReportes;component/Imagenes/Edt_edt_imprimir.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <Separator Background="Transparent" BorderBrush="Black"/>
+                                    <MenuItem Name="opAccRegistroImprimirRp"
+											  Click="fcvAccImprimirModoInforme"
+                                              IsEnabled="{Binding Path=GlgSIS_PuedePrnTipoInforme}"
+											  Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+											  Header="Reporte básico - Imprimir...">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/GestorReportes;component/Imagenes/Edt_edt_imprimir.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <Separator Background="Transparent" BorderBrush="Black"/>
+                                    <MenuItem Name="opAccRegistroPDF"
+                                              IsEnabled="False"
+											  Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+											  Header="Exportar a formato PDF">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/Sistema;component/Imagenes/Edt_edt_pdf.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Name="opAccRegistroDOC"
+                                              IsEnabled="False"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Exportar a formato Microsoft Word">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                   Source="/GestorReportes;component/Imagenes/Edt_hist_anulado.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                        <Separator Background="Transparent" BorderBrush="Black" Width="8"/>
+                        <Button Name="cmdEdtFinAtencion"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvAccRegFinalizarAtencion"
+                                IsEnabled="{Binding Path=GlgSIS_PuedeFinAtencion}"
+                                ToolTip="Finalizar Atención ambulatoria del paciente activo" 
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgFinAtenbjeto" Source="/GestorReportes;component/Imagenes/Edt_edt_gestionado.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Separator Background="Transparent" BorderBrush="Black" Width="8"/>
+                        <Button Name="cmdEdtEliminarObjeto"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Command="{Binding CmdEdtEliminarObjeto}"
+                                Click="fcvCmdEliminarObjeto"
+                                ToolTip="Eliminar objeto seleccionado" 
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgDelObjeto" Source="/GestorReportes;component/Imagenes/Edt_edt_eliminarobjeto.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdEdtCopiar"
+                            Visibility="Collapsed"
+                            Margin="2,4,0,0"
+                            TabIndex="53"
+                            Command="{Binding CmdEdtEliminarObjeto}"
+                            ToolTip="Copiar" 
+                            Style="{StaticResource styleButtonImgEdtFormTouch}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgEdtCopiar" Source="/GestorReportes;component/Imagenes/Edt_edt_copiar.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdEdtPegar"
+                            Visibility="Collapsed"
+                            Margin="2,4,0,0"
+                            TabIndex="53"
+                            Command="{Binding CmdEdtEliminarObjeto}"
+                            ToolTip="Pegar" 
+                            Style="{StaticResource styleButtonImgEdtFormTouch}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgEdtPegar" Source="/GestorReportes;component/Imagenes/Edt_edt_pegar.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdEdtDeshacer"
+                            Visibility="Collapsed"
+                            Margin="2,4,0,0"
+                            TabIndex="53"
+                            Command="{Binding CmdEdtDeshacer}"
+                            Click="fcvCmdDesHacerAtras"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            ToolTip="Deshacer cambios" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgDeshacer"
+                    		        Source="/GestorReportes;component/Imagenes/Edt_edt_cancelar1.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdEdtRehacer"
+                            Visibility="Collapsed"
+                            Margin="2,4,0,0"
+                            TabIndex="53"
+                            Command="{Binding CmdEdtRehacer}"
+                            Click="fcvCmdDesHacerAdelante"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            ToolTip="Rehacer cambios" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgRehacer"
+                    		        Source="/GestorReportes;component/Imagenes/Edt_edt_cancelar2.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdEdtDesactAddObjeto"
+                            Margin="2,4,0,0"
+                            TabIndex="53"
+                            Click="fcvCmdDesHacerAddObjeto"
+                            ToolTip="Desactivar acción adicionar objetos" 
+                            Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgDesObjeto" Source="/GestorReportes;component/Imagenes/Edt_edt_desactivaraddobjeto.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Grid Name="grdCmdAdornos" Margin="2,6,0,7" 
+                              Width="87"
+                              Visibility="Collapsed"
+                              Height="47">
+                            <Border BorderThickness="0.9"
+                                    BorderBrush="White"/>
+                            <TextBlock Name="lblCmdAdornos"
+                                       Margin="1,1,3,29" 
+                                       Height="20"
+                                       FontSize="11"
+                                       Foreground="#FF30594E" 
+                                       FontFamily="Segoe UI Symbol"> 
+                                <Run Language="es-co" Text="Tamaño Control"/>
+                            </TextBlock>
+                            <ComboBox Name="cboCmdTamAdornos"
+                                      TabIndex="69"
+                                      Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                      SelectedIndex="0"
+                                      FontSize="16"
+                                      ToolTip="Tamaño Control de arrastre objetos"
+                                      SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                      ItemsSource="{Binding PropCboTamAdornos}"
+                                      DisplayMemberPath="{Binding Descripcion}"
+                                      SelectedValuePath="{Binding Codigo}" 
+                                      Margin="2,17,0,0" 
+                                      Width="82" 
+                                      Height="28">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Descripcion}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                        <Button Name="cmdTecladoVirtual"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvCmdTecladoVirtual"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                ToolTip="Activar teclado en pantalla" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgTecladoVirtual"
+                		               Source="/GestorReportes;component/Imagenes/Edt_edt_teclado.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdPlaEstiloVista"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvMostrarMenuContextual"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+                                ToolTip="Estilo Vista" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgPagina"
+                    		        Source="/GestorReportes;component/Imagenes/Edt_edt_archivo.png"/>
+                            </StackPanel>
+                            <Button.ContextMenu>
+                                <ContextMenu Name="MenuContextEstiloVista" Style="{StaticResource styleMenuContextButtonEdtTouch}">
+                                    <MenuItem Name="opPlaEscritorioNavV"
+                                              Click="fcvCmdNavEscritorioVertical"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Escritorio Navegación Vertical">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                           Source="/Sistema;component/Imagenes/sis_edt_organizar.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Name="opPlaEscritorioNavH"
+                                              Click="fcvCmdNavEscritorioHorizontal"
+											  Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Escritorio Navegación Horizontal">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                           Source="/Sistema;component/Imagenes/sis_edt_organizar.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <Separator Background="Transparent" BorderBrush="Black" />
+                                    <MenuItem Name="opPlaPaginasOrientacionV"
+                                              Style="{StaticResource styleMenuItemContextButtonEdtTouch}"
+                                              Header="Paginas Orientación Vertical">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                           Source="/Sistema;component/Imagenes/sis_edt_organizar.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Name="opPlaPaginasOrientacionH"
+                                              Style="{StaticResource styleMenuItemContextButtonTouch}"
+                                              Header="Paginas Orientación Horizontal">
+                                        <MenuItem.Icon>
+                                            <Image Stretch="UniformToFill"
+                                                           Source="/Sistema;component/Imagenes/sis_edt_organizar.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                        <Button Name="cmdEdtElimarRegistro"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                IsEnabled="{Binding Path=GlgSIS_PuedeEliminarReg}"
+                                Click="fcvCmdEliminarRegistroHc"
+                                ToolTip="Eliminar formato activo" 
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgElimarRegistro" Source="/GestorReportes;component/Imagenes/Edt_edt_eliminaregistro.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Separator Background="Transparent" BorderBrush="Black" Width="8"/>
+                        <Grid Name="grdCmdZoom" Margin="2,5,0,7" 
+                              Width="80"
+                              Height="45">
+                            <Border BorderThickness="0.9"
+                                    BorderBrush="White"/>
+                            <TextBlock Name="lblCmdZoomVista"
+                                       Margin="2,4,2,21" 
+                                       Height="20"
+                                       FontSize="12"
+                                       Foreground="#FF30594E" 
+                                       FontFamily="Segoe UI Symbol"> 
+                                <Run Language="es-co" Text="Tamaño vista"/>
+                            </TextBlock>
+                            <Slider Name="objSliderZoom"
+                                    Value="1.3"
+                                    Minimum="0.4"
+                                    Maximum="1.8"
+                                    Height="25"
+                                    Width="70"
+                                    ValueChanged="fcvSliderZoomScroll"
+                                    Margin="2,20,2,0">
+                             </Slider>
+                        </Grid>
+                        <Grid Name="grdCmdMargenVertical" Margin="2,5,0,7" 
+                              Width="80"
+                              Height="45">
+                            <Border BorderThickness="0.9"
+                                    BorderBrush="White"/>
+                            <TextBlock Name="lblCmdMargenVertical"
+                                       Margin="6,4,2,23" 
+                                       Height="20"
+                                       FontSize="12"
+                                       Foreground="#FF30594E" 
+                                       FontFamily="Segoe UI Symbol"> 
+                                <Run Language="es-co" Text="Vertical"/>
+                            </TextBlock>
+                            <Slider Name="objSliderMargenVertical"
+                                    Value="95"
+                                    ToolTip="Alineación vertical de la vista"
+                                    ValueChanged="fcvSliderMargenZoomVista"
+                                    Minimum="10"
+                                    Maximum="650"
+                                    Height="25"
+                                    Width="70"
+                                    Margin="0,20,0,0">
+                            </Slider>
+                        </Grid>
+                        <Grid Name="grdCmdMargenHorizontal" Margin="2,5,0,7" 
+                              Width="80"
+                              Height="45">
+                            <Border BorderThickness="0.9"
+                                    BorderBrush="White"/>
+                            <TextBlock Name="lblCmdMargenHorizontal"
+                                       Margin="6,4,2,23" 
+                                       Height="20"
+                                       FontSize="12"
+                                       Foreground="#FF30594E" 
+                                       FontFamily="Segoe UI Symbol"> 
+                                <Run Language="es-co" Text="Horizontal"/>
+                            </TextBlock>
+                            <Slider Name="objSliderMargenHorizontal"
+                                    Value="-250"
+                                    ToolTip="Alineación horizontal de la vista"
+                                    ValueChanged="fcvSliderMargenZoomVista"
+                                    Minimum="-500"
+                                    Maximum="750"
+                                    Height="25"
+                                    Width="70"
+                                    Margin="0,20,0,0">
+                            </Slider>
+                        </Grid>
+                        <Separator Background="Transparent" BorderBrush="Black" Width="8"/>
+                        <Button Name="cmdEtiqueta"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvActivarEtiqueta"
+                                ToolTip="Mostrar capa etiqueta de datos" 
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgEtiqueta" Source="/GestorReportes;component/Imagenes/Edt_edt_etiqueta.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="cmdLogsErrores"
+                                Margin="2,4,0,0"
+                                TabIndex="53"
+                                Click="fcvVistaLogErrores"
+                                ToolTip="Mostrar vista errores de digitación en formulario activo" 
+                                IsEnabled="{Binding Path=GlgSIS_ExistenErrores}"
+                                Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="imgLogsErrores" Source="/Sistema;component/Imagenes/Emt_estados_valid04.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding Path=CmdActivarOpciones}" Visibility="Collapsed" Content="..."></Button>
+                        <Button Visibility="Collapsed" Content="..." Width="59" Click="Button_Click_1"></Button>
+                    </StackPanel>
+                    <Button Name="cmdMenuSuperiorOculctar"
+                            Grid.Row="1"
+                            Margin="0,5,20,0"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            TabIndex="50"
+                            Click="fcvActivarVistaMenuSuperior"
+                            ToolTip="Ocultar la vista del menu superior" 
+                            Height="48" 
+                            Width="45">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA9D4C5" Offset="0"/>
+                                <GradientStop Color="#FF5E9380" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                            <Image x:Name="imgMenuSuperior"
+                        		   Source="/GestorReportes;component/Imagenes/Edt_edt_contraer2.png"
+                        		   Style="{StaticResource styleImagBotonesForm}"
+                        		   Stretch="UniformToFill">
+                            </Image>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Canvas>
+        </Grid>
+        <!-- MENU PROPIEDADES CORTINA DE LA DERECHA-->
+        <Grid Name="MenuPropideades" 
+              Grid.Row="0"
+              Grid.RowSpan="2"
+              Width="80"
+              Height="Auto"
+              Margin="0,110,0,50"
+              HorizontalAlignment="Right" 
+              Background="#19FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Name="cmdHistorial"
+                    Grid.Row="1"
+                    Width="60"
+                    HorizontalAlignment="Left"
+                    Margin="7,0,0,0"
+                    Click="fcvActivarVistaHistorial"
+                    ToolTip="Mostrar historial clinico de atención" 
+                    Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="imgHistorial" Source="/GestorReportes;component/Imagenes/Edt_edt_historial.png"/>
+                </StackPanel>
+            </Button>
+            <Button Name="cmdPropideades"
+                    Grid.Row="2"
+                    Width="60"
+                    HorizontalAlignment="Left"
+                    Margin="7,0,0,0"
+                    TabIndex="53"
+                    Click="fcvActivarVistaPropiedades"
+                    ToolTip="Mostrar ventana Propiedades y Heramientas" 
+                    Style="{StaticResource styleButtonImgEdtFormTouchMenu}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="imgPropiedades" Source="/GestorReportes;component/Imagenes/Edt_edt_propiedades.png"/>
+                </StackPanel>
+            </Button>
+            <Separator Grid.Row="3"
+                       HorizontalAlignment="Left"
+                       Margin="10,0,0,0"
+                       Background="White" 
+                       Height="2" 
+                       Width="55"/>
+            <Canvas Name="ExtMenuPropideades" Width="70" Grid.Row="4">
+                <!-- Capa Cortina Propiedades-->
+                <Grid Name="grdMenuPropideades" 
+                      Width="430"
+                      Height="700"
+                      Style="{StaticResource styleTabControlEdtGridCortinaPropiedades}"
+                      Canvas.Left="85" 
+                      Canvas.Top="-226" 
+                      Margin="0">
+                    <!-- IMAGEN ENCABEZADO DEL MENU -->
+                    <Border Grid.Row="1"
+                            BorderBrush="#FFB0AFAF" 
+                            Background="#E5446662">
+                    </Border>
+                    <Image HorizontalAlignment="Left" 
+                           VerticalAlignment="Top"
+                           Margin="116,9,0,0" 
+                           Height="30"
+                           Width="30"
+                           Source="/GestorReportes;component/Imagenes/Edt_edt_modificar.png" />
+                    <TextBlock Name="lblVPropiedades"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                	           Width="246"
+                	           Margin="148,10,0,0" FontSize="20" Foreground="White">
+                	           <Run Language="es-co" Text="Propiedades"/>
+                    </TextBlock>
+                    <Button Name="cmdPropOcultar"
+                            Margin="8,4,0,0"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            TabIndex="50"
+                            Click="fcvActivarVistaPropiedades"
+                            ToolTip="Ocultar la ventan propiedades" 
+                            Height="38" 
+                            Width="45">
+                        <StackPanel Orientation="Horizontal"
+                                    Style="{StaticResource styleStackPanelBotonesForm}">
+                            <Image Name="imgPropCerrar"
+                                   Source="/GestorReportes;component/Imagenes/Edt_edt_contraer.png"
+                                   Style="{StaticResource styleImagBotonesForm}"
+                                   Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="cmdPropAnclar"
+                            Margin="63,4,0,0"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            TabIndex="50"
+                            Click="fcvAnclarVentanPropiedades"
+                            ToolTip="Anclar ventan propiedades" 
+                            Height="38" 
+                            Width="45">
+                        <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                            <Image Name="imgPropAnclar"
+                                               Source="/GestorReportes;component/Imagenes/Edt_edt_anclar.png"
+                                               Style="{StaticResource styleImagBotonesForm}"
+                                               Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </Button>
+                    <TabControl Name="pagPropObjetos"
+                                TabIndex="7"
+                                TabStripPlacement="Right"
+                                BorderThickness="0.9"
+                                Style="{StaticResource styleTabControlEdtPropiedades}">
+                        <TabItem Name="pagServicios"
+                                 Visibility="Visible"
+                                 Header="Servicios"
+                                 MouseDown="fcvClickTabsPropieades"
+                		         Style="{StaticResource styleTabItemEdtPropiedades}">
+                            <Grid Style="{StaticResource styleGridTabItemEdtPropiedades}" Margin="-1,0,1,8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="32" />
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Name="grdBuscarMenu" Grid.Row="0" Margin="14,0,5,0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                    <local:crtBuscar HorizontalAlignment="Left"
+                                                 Grid.Column="0"
+                                                 VerticalAlignment="Top"
+                                                 Height="30"
+                                                 Width="250"
+                                                 Loaded="fcCrtBuscarLoadedCmd"/>
+                                    <Button Name="cmdMenuCmdDesplg"
+										    Grid.Column="2"
+										    Margin="4,2,0,0"
+										    HorizontalAlignment="Left"
+										    Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+										    TabIndex="50"
+										    Click="fcvCmdDesplMenuActividadMedica"
+										    Height="28"
+										    Cursor="Hand"
+                                            ToolTip="Desplegar todos los grupos del menu"
+										    Width="35">
+                                        <StackPanel Orientation="Horizontal"
+												Style="{StaticResource styleStackPanelBotonesForm}">
+                                            <Image x:Name="imgMenuCmdDespleg"
+												Source="/GestorReportes;component/Imagenes/Edt_edt_contraer3.png"
+												Style="{StaticResource styleImagBotonesForm}"
+												Stretch="UniformToFill">
+                                            </Image>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button Name="cmdMenuCmdColaps"
+										    Grid.Column="3"
+										    Margin="4,2,0,0"
+										    HorizontalAlignment="Left"
+										    Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+										    TabIndex="50"
+										    Click="fcvCmdColapsMenuActividadMedica"
+										    Height="28"
+										    Cursor="Hand"
+                                            ToolTip="Cerrar todos los grupos del menu"
+										    Width="35">
+                                        <StackPanel Orientation="Horizontal"
+												Style="{StaticResource styleStackPanelBotonesForm}">
+                                            <Image x:Name="imgMenuCmdColaps"
+												Source="/GestorReportes;component/Imagenes/Edt_edt_contraer2.png"
+												Style="{StaticResource styleImagBotonesForm}"
+												Stretch="UniformToFill">
+                                            </Image>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                                <ScrollViewer Name="PanelScrollServicios"
+                                              HorizontalAlignment="Stretch" 
+                                              Width="Auto"
+                                              Grid.Row="1"
+                                              PanningMode="VerticalOnly"
+                                              VerticalScrollBarVisibility="Auto"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              CanContentScroll="False"
+                                              Height="Auto" Margin="0,0,0,0">
+                                    <StackPanel Name="stkMenuServMedicos">
+                                        <Expander Name="PropPlanInterno" 
+                                                  Visibility="Collapsed"
+                                                  Header="Servicios Intrahospitalarios" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,5,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="16" 
+                                                  IsExpanded="False">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="Auto" Orientation="Horizontal">
+                                                <Button Name="cmdPlanIntOrdenServicios"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Agregar ordenes de servicios medicos (medicamentos examenes servicios)"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntOrdenServicios"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_serviciomedico.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoOrdenServicio"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Ordenes de servicios">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntEvolucion"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Notas diarias de evolución médica"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntEvolucion"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_evolucionmedica.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoEvolucion"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Evolución médica">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntNotaEnfermeria"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Notas diarias de enfermeria"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntNotaEnfermeria"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_notasenfermeria.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoNotaEnfermeria"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Notas de enfermeria">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntHojaConsumo"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Hoja de consumo medicamentos y servicios diarios"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntHojaConsumo"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_hojaconsumo.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoHojaConsumo"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Hoja de consumo medicamentos y servicios">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntLiquidosBliq"
+                                                        ToolTip="Balance de liquidos administrados y eliminados"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntLiquidosAdm"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_balancedeliquidos.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoLiquidosAdm"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Balance de liquidos">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntLiquidosElim"
+                                                        Visibility="Collapsed"
+                                                        ToolTip="Liqidos eliminados"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntLiquidosElim"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_liquidoseliminados.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoLiquidosElim"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Liquidos eliminados">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntSignosVitales"
+                                                        ToolTip="Toma de sginos vitales"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntSignosVitales"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_signosvitales.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoSignosVitales"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Toma de signos vitales">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdPlanIntEpicrisis"
+                                                        ToolTip="Diligenciar Epicrisis"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanIntEpicrisis"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_epicrisis.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoEpicrisis"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Epicrisis">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                        <Expander Name="PropAtencionAmbulatoria" 
+                                                  Visibility="Collapsed"
+                                                  Header="Servicios atención ambulatoria" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,2,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="18"
+                                                  Focusable="False"
+                                                  IsExpanded="False">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="240" Orientation="Horizontal">
+                                                <Button Name="cmdOdnApertura"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Apertura inicial tratamiento odontologico"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgOdnApertura"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_odontologia.png"
+															   Stretch="UniformToFill" Margin="5,4,0,4" />
+                                                        <TextBlock Name="txtOdnApertura"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Apertura tratamiento odontológico">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdOdnDiagnostico"
+                                                        Visibility="Collapsed"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Gestion diagnostico incial para tratamiento odontologico"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgOdnDiagnostico"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_odontologiadx.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtOdnDiagnostico"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Diagnostico inicial">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdOdnPlanTratamiento"
+                                                        Visibility="Collapsed"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Gestion plan de tratamiento odontologico segun diagnostico realizado"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgOdnPlanTratamiento"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_odontologiaplan.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtOdnPlanTratamiento"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Plan de tratamiento">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                                <Button Name="cmdOdnActEvolucion"
+                                                        Visibility="Collapsed"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Actividades de evolución ejecutadas en cada cita segun plan de tratamiento"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgOdnActEvolucion"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_odontologiaevolucion.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtOdnActEvoluciono"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Actividades de evolución tratamiento">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                        <Expander Name="PropPlanExterno"
+                                                  Visibility="Collapsed"
+                                                  Header="Servicios Plan de manejo externo" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,0,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="16" 
+                                                  IsExpanded="False">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="175" Orientation="Horizontal">
+                                                <Button Name="cmdPlanExtFormula"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Formula o receta medica"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgPlanExtFormula"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_formulamedica.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtTextoExtFormula"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Formula médica (receta)">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                        <Expander Name="PropFormatos"
+                                                  Visibility="Collapsed"
+                                                  Header="Otros Formatos" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,0,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="16" 
+                                                  IsExpanded="False">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="175" Orientation="Horizontal">
+                                                <Button Name="cmdNuevoFormato"
+                                                        Click="fcvPlantillaNueva"
+                                                        ToolTip="Buscar Formatos"
+														Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+														TabIndex="50">
+                                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                                        <Image Name="imgNuevoFormato"
+                                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+															   Source="/GestorReportes;component/Imagenes/Edt_edt_xcap_epicrisis.png"
+															   Stretch="UniformToFill" />
+                                                        <TextBlock Name="txtNuevoFormato"
+                                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+																   Text="Formatos adicionales...">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Name="pagHerramientas"
+                                 Visibility="Visible"
+                                 Header="Herramientas"
+                                 MouseDown="fcvClickTabsPropieades"
+                		         Style="{StaticResource styleTabItemEdtPropiedades}">
+                            <Grid Style="{StaticResource styleGridTabItemEdtPropiedades}" Margin="-1,0,1,8">
+                                <Grid/>
+                                <ScrollViewer Name="PanelScrollHerramientas"
+                                              HorizontalAlignment="Stretch" 
+                                              Width="Auto"
+                                              VerticalScrollBarVisibility="Auto"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              CanContentScroll="False"
+                                              Height="Auto" Margin="0,0,0,0">
+                                    <StackPanel>
+                                        <Expander Name="PropRecursosArchivos" 
+                                                  Header="Archivos de recursos" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,5,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="16" 
+                                                  IsExpanded="True">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="Auto" Orientation="Horizontal">
+                                                <Button Name="cmdRIMG"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Insertar imagenes">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_controles_importarimagen.png"
+                                                                       Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                                       Stretch="UniformToFill" Margin="0,1,0,-1" OpacityMask="Black"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdRPDF"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Insertar archivo PDF">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_controles_archivospdf.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdRVID"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvPlanManejoSeleccionMenu"
+                                                        ToolTip="Insertar videos">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_controles_auidiovideo.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                        <Expander Name="PropHerramientas" 
+                                                  Header="Controles" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,5,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="16" 
+                                                  IsExpanded="True">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="Auto" Orientation="Horizontal">
+                                                <Button Name="cmdControlTextBlock"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddTextBlock"
+                                                        ToolTip="Etiqueta (Texto simple)">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_controles_textblock.png"
+                                                                       Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                                       Stretch="UniformToFill" Margin="0,1,0,-1" OpacityMask="Black"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdControlImagenSimple"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddImage"
+                                                        ToolTip="Insertar imagen fija">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_controles_imagensimple.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                        <Expander Name="Propformas" 
+                                                  Header="Formas" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,0,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="16" 
+                                                  IsExpanded="True">
+                                            <WrapPanel Background="#FFF7F7F7" Margin="0,0,0,0" Height="175" Orientation="Horizontal">
+                                                <Button Name="cmdFormaRectangulo"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddRectangulo"
+                                                        ToolTip="Rectangulo">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_rectangulo.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaElipse"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddElipse"
+                                                        ToolTip="Circulo">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_circulo.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaLineaDerecha"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddLineaDerecha"
+                                                        ToolTip="Linea inclinada a la derecha">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_lineaderecha.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaLineaIzquierda"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddLineaIzquierda"
+                                                        ToolTip="Linea inclinada a la izquierda">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_lineaizquierda.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaLineaHorizontal"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddLineaHorizontal"
+                                                        ToolTip="Linea horizontal">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_lineahorizontal.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaLineaVertical"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddLineaVertical"
+                                                        ToolTip="Linea vertical">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_lineavertical.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaFlechaDerecha"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddFlechaDerecha"
+                                                        ToolTip="Flecha hacia la derecha">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_flechaderecha.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaFlechaIzquierda"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddFlechaIzquierda"
+                                                        ToolTip="Flecha hacia la izquierda">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_flechaizquierda.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaFlechaArriba"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddFlechaArriba"
+                                                        ToolTip="Flecha hacia arriba">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_flechaarriba.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="cmdFormaFlechaAbajo"
+                                                        Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                                                        Click="fcvCmdAddFlechaAbajo"
+                                                        ToolTip="Flecha hacia abajo">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Style="{StaticResource styleStackPanelBotonesEdtControlesTouch}">
+                                                        <Image Source="/GestorReportes;component/Imagenes/Edt_formas_flechaabajo.png"
+                                                    		Style="{StaticResource styleImagBotonesEdtControlesForm}"
+                                                    		Stretch="UniformToFill"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Expander>
+                                        <Expander Name="PropGaleria" 
+                                                  Header="Imagenes predefinidas" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,2,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="18"
+                                                  Focusable="False"
+                                                  IsExpanded="False">
+                                            <StackPanel Name="stkImgPredefinidas" Background="#FFF7F7F7" Margin="0,0,0,5" Height="Auto">
+                                                <WrapPanel Name="wraImgPredefinidas" Background="#FFF7F7F7" Margin="0,0,0,0" Height="Auto" Orientation="Horizontal">
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </Expander>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Name="pagPropiedades"
+                                 Visibility="Visible"
+                                 Header="Propiedades"
+                                 MouseLeftButtonDown="fcvClickTabsPropieades"
+                                 Style="{StaticResource styleTabItemEdtPropiedades}">
+                            <Grid Style="{StaticResource styleGridTabItemEdtPropiedades}" Margin="-1,0,1,8">
+                                <Grid/>
+                                <Button Visibility="Collapsed" Command="{Binding CmdPropCamposTexto}"/>
+                                <ScrollViewer Name="PanelScrollProp"
+                                              HorizontalAlignment="Stretch" 
+                                              Width="Auto"
+                                              VerticalScrollBarVisibility="Auto"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              CanContentScroll="False"
+                                              Height="Auto" Margin="0,0,0,0">
+                                    <StackPanel Name="stkPropBasicas">
+                                        <Expander Name="PropBasicas" 
+                                                  Header="Propiedades" 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,2,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="18"
+                                                  Focusable="False"
+                                                  IsExpanded="False">
+                                            <StackPanel Background="#FFF7F7F7" Margin="0,0,0,5" Height="Auto">
+                                                <Grid Name="propName" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtName"
+                                                               ToolTip="Nombre unico interno del objeto"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Nombre del Objeto"/>
+                                                    </TextBlock>
+                                                    <TextBox Name="txtPropTxtName"
+                                                             TabIndex="60"
+                                                             Focusable="False"
+                                                             Text="{Binding Path=PropTxtName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                             Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                             IsEnabled="{Binding GlgSIS_ModoEdicion}" 
+                                                             Foreground="#FF999595" 
+                                                             Margin="160,2,0,0" 
+                                                             Width="200"/>
+                                                </Grid>
+                                                <Grid Name="propTitulo" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtTitulo"
+                                                               ToolTip="Titulo en vista"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Titulo en vista"/>
+                                                    </TextBlock>
+                                                    <TextBox Name="txtPropTxtTitulo"
+                                                             TextChanged="fcvSetObjActualizarTituloObjeto"
+                                                             TabIndex="61"
+                                                             TouchEnter="fcvTouchEnterTeclado"
+                                                             Text="{Binding Path=PropTxtTitulo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                             Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                             IsEnabled="{Binding GlgSIS_ModoEdicion}" 
+                                                             Margin="160,2,0,0" 
+                                                             Width="200" />
+                                                </Grid>
+                                                <Grid Name="propToolTip" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtToolTip"
+                                                               ToolTip="Texto de ayuda al colocar el mouse sobre el objeto"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Texto de ayuda"/>
+                                                    </TextBlock>
+                                                    <TextBox Name="txtPropTxtToolTip"
+                                                             TextChanged="fcvSetObjActualizarToolTipObjeto"
+                                                             TabIndex="61"
+                                                             TouchEnter="fcvTouchEnterTeclado"
+                                                             Text="{Binding Path=PropTxtToolTip, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                             Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                             IsEnabled="{Binding GlgSIS_ModoEdicion}" 
+                                                             Margin="160,2,0,0" 
+                                                             Width="200" />
+                                                </Grid>
+                                                <Grid Name="propBorder" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtTxop"
+                                                               ToolTip="Mostrar u ocultar el borde"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Mostrar Borde"/>
+                                                    </TextBlock>
+                                                    <ComboBox Name="cboPropCboBorder"
+                                                              TabIndex="69"
+                                                              IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                                                              Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                                              SelectedIndex="0"
+                                                              SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                                              ItemsSource="{Binding PropCboBorder}"
+                                                              DisplayMemberPath="{Binding Descripcion}"
+                                                              SelectedValuePath="{Binding Codigo}" 
+                                                              Margin="160,2,0,0" 
+                                                              Width="200">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding Descripcion}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>
+                                                </Grid>
+                                                <Grid Name="propForeground" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtForeground"
+                                                               ToolTip="Color del texto"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Color del texto"/>
+                                                    </TextBlock>
+                                                    <wpfx:ColorPicker Name="cboPropForeground" 
+                                                                      Height="28"
+                                                                      Width="200"
+                                                                      Margin="160,2,0,1"
+                                                                      FontSize="14"
+                                                                      BorderBrush="#FF34C4EE"
+                                                                      DisplayColorAndName="True" 
+                                                                      VerticalAlignment="Top"
+                                                                      HorizontalAlignment="Left"
+                                                                      SelectedColorChanged="fcvSetObjSeleccionPropiedadColor"/>
+                                                </Grid>
+                                                <Grid Name="propBackground" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtBackground"
+                                                               ToolTip="Color del fondo"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Color del Fondo"/>
+                                                    </TextBlock>
+                                                    <wpfx:ColorPicker Name="cboPropBackground" 
+                                                                      Height="28"
+                                                                      Width="200"
+                                                                      Margin="160,2,0,1"
+                                                                      FontSize="14"
+                                                                      BorderBrush="#FF34C4EE"
+                                                                      DisplayColorAndName="True" 
+                                                                      VerticalAlignment="Top"
+                                                                      HorizontalAlignment="Left"
+                                                                      SelectedColorChanged="fcvSetObjSeleccionPropiedadColor"/>
+                                                </Grid>
+                                                <Grid Name="propBorderBrush" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropTxtBorderBrush"
+                                                               ToolTip="Color bordes del objeto"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Color Borde"/>
+                                                    </TextBlock>
+                                                    <wpfx:ColorPicker Name="cboPropBorderBrush" 
+                                                                      Height="28"
+                                                                      Width="200"
+                                                                      Margin="160,2,0,1"
+                                                                      FontSize="14"
+                                                                      BorderBrush="#FF34C4EE"
+                                                                      DisplayColorAndName="True" 
+                                                                      VerticalAlignment="Top"
+                                                                      HorizontalAlignment="Left"
+                                                                      SelectedColorChanged="fcvSetObjSeleccionPropiedadColor"/>
+                                                </Grid>
+                                                <Grid Name="propEtiquetas" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblEtiquetas"
+                                                               ToolTip="Relacionar plantilla como etiqueta de datos"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Etiqueta de datos"/>
+                                                    </TextBlock>
+                                                    <ComboBox Name="cboPropCboCodigoEtiquetas"
+                                                              TabIndex="69"
+                                                              IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                                                              Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                                              SelectedIndex="0"
+                                                              ToolTip="Plantillas para etiquetas de datos"
+                                                              SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                                              ItemsSource="{Binding tmpEtiquetaItems}"
+                                                              DisplayMemberPath="{Binding Descripcion}"
+                                                              SelectedValuePath="{Binding Codigo}" 
+                                                              Margin="160,2,0,0" 
+                                                              Width="200">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding Descripcion}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>
+                                                </Grid>
+                                                <Grid Name="propFont" Visibility="Visible" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <GroupBox Name="gruFuente" VerticalAlignment="Top" Header="Fuente" Height="80" FontSize="14" Margin="0,0,0,4">
+                                                        <Grid>
+                                                            <ComboBox Name="cboPropFontFamily"
+                                                                      TabIndex="69"
+                                                                      IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                                                                      Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                                                      SelectedIndex="0"
+                                                                      SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                                                      ItemsSource="{Binding PropCboFontFamily}"
+                                                                      DisplayMemberPath="{Binding Descripcion}"
+                                                                      SelectedValuePath="{Binding Codigo}" Margin="5,4,0,0" Width="208">
+                                                                <ComboBox.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="{Binding Descripcion}"/>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </ComboBox.ItemTemplate>
+                                                            </ComboBox>
+                                                            <TextBlock Name="lblPropTxtTopd"
+                                                               ToolTip="Tamaño de la fuente"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}" Margin="213,6,0,0" Width="53"> 
+                                                            <Run Language="es-co" Text="Tamaño"/>
+                                                            </TextBlock>
+                                                            <ComboBox Name="cboPropCboFontSize"
+                                                                      TabIndex="69"
+                                                                      IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                                                                      Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                                                      SelectedIndex="0"
+                                                                      SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                                                      ItemsSource="{Binding PropCboFontSize}"
+                                                                      DisplayMemberPath="{Binding Descripcion}"
+                                                                      SelectedValuePath="{Binding Codigo}" Margin="266,4,0,0" Width="86">
+                                                                <ComboBox.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="{Binding Descripcion}"/>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </ComboBox.ItemTemplate>
+                                                            </ComboBox>
+                                                            <CheckBox Name="chkFuenteNegrita" 
+                                                                      Content="Negrita"
+                                                                      Click="fcvSetObjChkFuente"
+                                                                      HorizontalAlignment="Left" 
+                                                                      VerticalAlignment="Top" Margin="6,32,0,0"/>
+                                                            <CheckBox Name="chkFuenteCursiva" 
+                                                                      Content="Cursiva" 
+                                                                      Click="fcvSetObjChkFuente"
+                                                                      HorizontalAlignment="Left" 
+                                                                      VerticalAlignment="Top" Margin="86,32,0,0"/>
+                                                            <CheckBox Name="chkFuenteSubRayado" 
+                                                                      Content="Subrayado" 
+                                                                      HorizontalAlignment="Left" 
+                                                                      VerticalAlignment="Top" Margin="166,32,0,0"/>
+                                                        </Grid>
+                                                    </GroupBox>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Expander>
+                                        <Expander Name="PropArchivoRecurso" 
+                                                  Header="Origen archivo..." 
+                                                  HorizontalAlignment="Left" 
+                                                  Margin="4,2,0,0" 
+                                                  VerticalAlignment="Top" 
+                                                  Width="369" 
+                                                  FontSize="18"
+                                                  Focusable="False"
+                                                  IsExpanded="False">
+                                            <StackPanel Background="#FFF7F7F7" Margin="0,0,0,5" Height="Auto">
+                                                <Grid Name="propStretch" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropImgTxtStretch"
+                                                               ToolTip="Ajuste de Imagen dentro del objeto"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Ajuste Imagen"/>
+                                                    </TextBlock>
+                                                    <ComboBox Name="cboPropCboStretch"
+                                                              TabIndex="69"
+                                                              IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                                                              Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                                              SelectedIndex="0"
+                                                              SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                                              ItemsSource="{Binding PropCboStretch}"
+                                                              DisplayMemberPath="{Binding Descripcion}"
+                                                              SelectedValuePath="{Binding Codigo}" Margin="160,2,0,0" Width="200">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding Descripcion}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>
+                                                </Grid>
+                                                <Grid Name="propStretchDirection" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                    <TextBlock Name="lblPropImgTxtStretchDirection"
+                                                               ToolTip="Direccion del ajuste Imagen"
+                                                               Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                            <Run Language="es-co" Text="Dirección ajuste"/>
+                                                    </TextBlock>
+                                                    <ComboBox Name="cboPropCboStretchDirection"
+                                                              TabIndex="69"
+                                                              IsEnabled="{Binding GlgSIS_ModoEdicion}"
+                                                              Style="{StaticResource styleComboBoxEdtPropiedades}"
+                                                              SelectedIndex="0"
+                                                              SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
+                                                              ItemsSource="{Binding PropCboStretchDirection}"
+                                                              DisplayMemberPath="{Binding Descripcion}"
+                                                              SelectedValuePath="{Binding Codigo}" Margin="160,2,0,0" Width="200">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding Descripcion}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>
+                                                </Grid>
+                                                <GroupBox Name="propArchivoRecurso" Header="Archivo: Imagen,video,documento..." VerticalAlignment="Top" Height="Auto" FontSize="14" Margin="0,3,0,4">
+                                                    <StackPanel>
+                                                        <Grid Style="{StaticResource styleTabControlEdtGridPropiedades}" Height="67">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="31*"/>
+                                                                <RowDefinition Height="36*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="122*"/>
+                                                                <ColumnDefinition Width="233*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image Name="imgImagen"
+                                                                       VerticalAlignment="Top"
+                                                                       HorizontalAlignment="Left"
+                                                                       Stretch="Fill"
+                                                                       Width="120"
+                                                                       Height="63"
+                                                                       Source="/GestorReportes;component/Imagenes/Edt_controles_imagensimple.png" 
+                                                                       Margin="2,4,0,0" Grid.RowSpan="2"/>
+                                                            <Button Name="cmdBuscarRecurso"
+				                                                    Content="Buscar archivo..."
+				                                                    Margin="32,7,0,0"
+                                                                    Grid.Column="1"
+                                                                    Click="fcvGetObjRecursoImportar"
+				                                                    Style="{StaticResource styleButtonMiniForm}"
+				                                                    TabIndex="46"
+				                                                    Command="{Binding CmdEtiquetaNuevo}"
+				                                                    ToolTip="Buscar archivo de recurso (imagene, video y otros)" Width="143" Height="52" Grid.RowSpan="2"/>
+                                                        </Grid>
+                                                        <Grid Name="propRecursoArchivoTipo" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                            <TextBlock Name="lblPropTxtRecursoArchivoTipo"
+                                                                       ToolTip="Tipo archivo de recurso"
+                                                                       Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                                      <Run Language="es-co" Text="Tipo archivo"/>
+                                                            </TextBlock>
+                                                            <TextBox Name="txtPropTxtRecursoArchivoTipo"
+                                                                     TabIndex="72"
+                                                                     TextChanged="fcvSetObjPropDatosActualizar"
+                                                                     Text="{Binding Path=PropTxtRecursoArchivoTipo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                                     Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                                      Margin="153,2,0,0" 
+                                                                     IsEnabled="False" Width="200"/>
+                                                        </Grid>
+                                                        <Grid Name="propRecursoArchivoCodigo" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                            <TextBlock Name="lblPropTxtRecursoArchivoCodigo"
+                                                                       ToolTip="Codigo interno recurso imagen o archivo"
+                                                                       Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                                      <Run Language="es-co" Text="Codigo recurso"/>
+                                                            </TextBlock>
+                                                            <TextBox Name="txtPropTxtRecursoArchivoCodigo"
+                                                                     TabIndex="72"
+                                                                     TextChanged="fcvSetObjPropDatosActualizar"
+                                                                     Text="{Binding Path=PropTxtRecursoArchivoCodigo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                                     Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                                      Margin="153,2,0,0" 
+                                                                     IsEnabled="False" Width="200"/>
+                                                        </Grid>
+                                                        <Grid Name="propRecursoArchivoUri" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                            <TextBlock Name="lblPropTxtRecursoArchivoUri"
+                                                                       ToolTip="Ruta acceso galeria"
+                                                                       Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                                    <Run Language="es-co" Text="Ruta en galeria"/>
+                                                            </TextBlock>
+                                                            <TextBox Name="txtPropTxtRecursoArchivoUri"
+                                                                     TabIndex="72"
+                                                                     TextChanged="fcvSetObjPropDatosActualizar"
+                                                                     Text="{Binding Path=PropTxtRecursoArchivoUri, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                                     Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                                      Margin="153,2,0,0" 
+                                                                     IsEnabled="False" Width="200" />
+                                                        </Grid>
+                                                        <Grid Name="propRecursoArchivoNombre" Style="{StaticResource styleTabControlEdtGridPropiedades}">
+                                                            <TextBlock Name="lblPropTxtRecursoArchivoNombre"
+                                                                       ToolTip="Nombre del archivo en galeria"
+                                                                       Style="{StaticResource styleEtiquetasEdtPropiedades}"> 
+                                                                    <Run Language="es-co" Text="Nombre archivo"/>
+                                                            </TextBlock>
+                                                            <TextBox Name="txtPropTxtRecursoArchivoNombre"
+                                                                     TabIndex="72"
+                                                                     TextChanged="fcvSetObjPropDatosActualizar"
+                                                                     Text="{Binding Path=PropTxtRecursoArchivoNombre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                                     Style="{StaticResource styleTextBoxEdtPropiedades}"
+                                                                     Margin="153,2,0,0" 
+                                                                     IsEnabled="False" Width="200" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </GroupBox>
+                                            </StackPanel>
+                                        </Expander>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </Canvas>
+        </Grid>
+        <!-- MENU HISTORIAL CORTINA IZQUIERDA-->
+        <Grid Name="MenuHistorial" 
+              Grid.Row="0"
+              Grid.RowSpan="2"
+              Width="42"
+              Height="Auto"
+              Margin="0,300,0,180"
+              MouseEnter="fcvActivarVistaHistorialMouseEnter"
+              TouchEnter="fcvActivarVistaHistorialTouchEnter"
+              HorizontalAlignment="Left" 
+              Background="Transparent">
+            <Canvas Name="ExtMenuHistorial" Width="42">
+                <!-- Capa Cortina Propiedades-->
+                <Grid Name="grdMenuHistorial" 
+                      Width="630"
+                      Height="Auto"
+                      Style="{StaticResource styleTabControlEdtGridCortinaPropiedades}"
+                      Canvas.Left="-630" 
+                      Canvas.Top="-300" 
+                      Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!-- IMAGEN ENCABEZADO DEL MURO -->
+                    <Border BorderThickness="0,0,0,0"
+                            BorderBrush="#FFB0AFAF"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Background="#FFF1F1F1">
+                    </Border>
+                    <Border BorderThickness="0,0,0,0"
+                            BorderBrush="#FFB0AFAF"
+                            Grid.Row="0"
+                            Grid.RowSpan="3"
+                           Background="#F278ACA5"/>
+                    <Border BorderThickness="0,0,0,0"
+                            BorderBrush="#FFB0AFAF"
+                            Grid.Row="3"
+                            Grid.RowSpan="2"
+                            Margin="20,-30,20,0"
+                           Background="#F2FFFFFF"/>
+                    <Button Name="cmdHistorialOcultar"
+                            Grid.Row="0"
+                            Margin="0,4,6,0"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource styleButtonImgEdtFormTouch}"
+                            TabIndex="50"
+                            Click="fcvActivarVistaHistorial"
+                            ToolTip="Ocultar la ventan Historial" 
+                            Height="42" 
+                            Width="48">
+                        <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                            <Image x:Name="imgPropHistorial"
+                        		   Source="/GestorReportes;component/Imagenes/Edt_edt_contraer1.png"
+                        		   Style="{StaticResource styleImagBotonesForm}"
+                        		   Stretch="UniformToFill">
+                            </Image>
+                        </StackPanel>
+                    </Button>
+                    <Image Name="imgFotoPerfil"
+                           Grid.Row="0"
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top"
+                           Stretch="Fill"
+                           Margin="24,6,0,0" 
+                           Height="80"
+                           Width="80"
+                           Grid.RowSpan="2"
+                           Source="/Sistema;component/Imagenes/sys_usu02.png" />
+                    <Image Name="imgAdmEdicion"
+                           HorizontalAlignment="Left"
+                           Width="28" 
+                           Height="28"
+                           Source="/Sistema;component/Imagenes/sis_edt_cerrado.png"
+                           Stretch="UniformToFill" 
+                           Grid.Row="1" 
+                           Margin="21,7,0,5"/>
+                    <TextBlock Name="lblXEscNombrePaciente"
+						       Grid.Row="0"
+						       VerticalAlignment="Top"
+						       HorizontalAlignment="Left"
+						       Width="460"
+						       Margin="114,5,0,0"
+                               Foreground="White"
+						       FontSize="20" 
+						       Height="30">
+					   <Run Language="es-co" Text="NOMBRE DEL PACIENTE"/>
+                    </TextBlock>
+                    <TextBlock Name="lblXEscIdentificacion"
+						   Grid.Row="0"
+						   VerticalAlignment="Top"
+						   HorizontalAlignment="Left"
+						   Width="460"
+						   Margin="114,32,0,0" 
+						   FontSize="12" 
+						   Foreground="White" 
+						   Height="20" Grid.RowSpan="2">
+					   <Run Language="es-co" Text="IDENTIFICACION:"/>
+                    </TextBlock>
+                    <TextBlock Name="lblXEscAdmision"
+						   Grid.Row="1"
+						   VerticalAlignment="Top"
+						   HorizontalAlignment="Left"
+						   Width="460"
+						   Margin="114,2,0,0" 
+						   FontSize="12" 
+						   Foreground="White" 
+						   Height="20">
+					   <Run Language="es-co" Text="ADMISION:"/>
+                    </TextBlock>
+                    <StackPanel Name="stkPropBHistorial"
+                                Grid.Row="3"
+                                Grid.RowSpan="3"
+                                Margin="20,-30,20,0">
+                        <Expander Name="objFiltroHistorial" 
+                                  Header="Opciones y datos básicos del paciente..." 
+                                  HorizontalAlignment="Left" 
+                                  Visibility="Collapsed"
+                                  Margin="28,4,0,0" 
+                                  VerticalAlignment="Top" 
+                                  Width="582" 
+                                  FontSize="14"
+                                  Background="White"
+                                  Focusable="False"
+                                  IsExpanded="False">
+                            <StackPanel Background="#FFF7F7F7" Margin="0,0,0,5" Height="Auto">
+                                <Button Name="cmdIdUsuario"
+                                        ToolTip="Modificar datos basicos del paciente"
+                                        Click="fcvHcVistaCmdModificarDatosUsuario"
+										Style="{StaticResource styleButtonImgEdtControlesTouchEx}"
+										TabIndex="50">
+                                    <Grid Style="{StaticResource styleGridImgEdtControlesTouchEx}">
+                                        <Image Name="imgIdUsuario"
+                                               Style="{StaticResource styleImageImgEdtControlesTouchEx}"
+											   Source="/GestorReportes;component/Imagenes/Edt_controles_xuser_datosusuario2.png"
+											   Stretch="UniformToFill" Margin="5,4,0,4" />
+                                        <TextBlock Name="txtIdUsuario"
+                                                   Style="{StaticResource styleTextImgEdtControlesTouchEx}"
+												   Text="Datos Basicos del paciente">
+                                        </TextBlock>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </Expander>
+                        <Grid Width="590"
+                              Margin="0,2,0,0"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top">
+                            <Border Name="objBordeHistorial"
+                                        BorderThickness="0"
+                                        Margin="16,4,10,0"
+                                        Height="35"
+                                        VerticalAlignment="Top"
+                                        BorderBrush="#FFB0AFAF" Background="White"/>
+                            <local:crtBuscar HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Height="30"
+                                             Width="440"
+                                             Margin="20,6,0,0" 
+                                             Loaded="crtBuscarLoaded" />
+                            <Button Name="cmdHcVistaCmdDesplg"
+										    Grid.Column="2"
+										    Margin="0,7,70,0"
+										    HorizontalAlignment="Right"
+										    Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+										    TabIndex="50"
+										    Click="fcvHcVistaCmdDesplegarVistaAdmisiones"
+										    Height="28"
+										    Cursor="Hand"
+                                            ToolTip="Desplegar todos los grupos de admisión"
+										    Width="35">
+                                <StackPanel Orientation="Horizontal"
+												Style="{StaticResource styleStackPanelBotonesForm}">
+                                    <Image x:Name="imgHcVistaCmdDespleg"
+												Source="/GestorReportes;component/Imagenes/Edt_edt_contraer3.png"
+												Style="{StaticResource styleImagBotonesForm}"
+												Stretch="UniformToFill">
+                                    </Image>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="cmdHcVistaCmdColaps"
+										    Grid.Column="3"
+										    Margin="0,7,15,0"
+										    HorizontalAlignment="Right"
+										    Style="{StaticResource styleButtonImgEdtFormTouchMenu}"
+										    TabIndex="50"
+										    Click="fcvHcVistaCmdColapsarVistaAdmisiones"
+										    Height="28"
+										    Cursor="Hand"
+                                            ToolTip="Cerrar todos los grupos admisión"
+										    Width="35">
+                                <StackPanel Orientation="Horizontal"
+												Style="{StaticResource styleStackPanelBotonesForm}">
+                                    <Image x:Name="imgHcVistaCmdColaps"
+												Source="/GestorReportes;component/Imagenes/Edt_edt_contraer2.png"
+												Style="{StaticResource styleImagBotonesForm}"
+												Stretch="UniformToFill">
+                                    </Image>
+                                </StackPanel>
+                            </Button>
+                            <Canvas Name="cvaMenuHistorial"
+                                    Margin="1,55,0,0"
+                                    ClipToBounds="True"
+                                    Height="540"
+                                    PreviewTouchDown="fcvGestoVerticalPreviewTouchDown"
+                                    PreviewTouchUp="fcvGestoVerticalPreviewTouchUp"
+                                    PreviewMouseLeftButtonDown="fcvGestoVerticalPreviewMouseLeftButtonDown" 
+                                    PreviewMouseLeftButtonUp="fcvGestoVerticalPreviewMouseLeftButtonUp">
+                                <StackPanel Name="stkHistorial"
+                                            Width="590"
+                                            Focusable="False"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                            Orientation="Vertical"
+                                            Height="Auto" 
+                                            Canvas.Left="10" 
+                                            Canvas.Top="2">
+                                    <WrapPanel Name="wraHistorial" 
+                                               Margin="0,0,0,0"
+                                               Height="Auto"
+                                               Background="Transparent"
+                                               Style="{StaticResource styleWrapPanelEdtFondoEditor}" 
+                                               Orientation="Vertical">
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Canvas>
+                        </Grid>
+                    </StackPanel>
+                    <Grid Name="objHistCortina" 
+                          Grid.Row="0"
+                          Grid.RowSpan="4"
+                          Height="Auto"
+                          Visibility="Collapsed"
+                          Background="#CCFFFFFF" 
+                          Margin="0"/>
+                </Grid>
+            </Canvas>
+        </Grid>
+        <!-- NAVEGADOR DE ETIQUETAS -->
+        <Canvas Name="cvaEtiqueta" 
+                Grid.Row="3"
+                Margin="0,8,0,0"
+                Height="340"
+                Visibility="Visible" 
+                Width="1020">
+            <Grid Name="grdEtiqueta" Height="340" Width="1020" Margin="0,0,0,0" Canvas.Left="0" Canvas.Top="0">
+                <Border Name="objBorderEtiqueta" BorderThickness="1" Background="#99060606"/>
+                <TextBlock Name="lblTituloEtiqueta"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                	       Width="936"
+                	       Margin="10,4,0,0" FontSize="20" Foreground="White">
+                	       <Run Language="es-co" Text="Titulo Etiqueta..."/>
+                </TextBlock>
+                <Button Name="cmdEtiquetaOcultar"
+                        Margin="0,3,14,0"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource styleButtonImgEdtFormTouch}"
+                        TabIndex="50"
+                        Click="fcvActivarEtiqueta"
+                        ToolTip="Ocultar la capa etiqueta" 
+                        Height="30" 
+                        Width="60">
+                    <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                        <Image Name="imgEtiquetaCerrar"
+                                               Source="/GestorReportes;component/Imagenes/Edt_edt_contraer.png"
+                                               Style="{StaticResource styleImagBotonesForm}"
+                                               Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </StackPanel>
+                </Button>
+                <Canvas Name="cvaPanelEtiqueta"
+                        ClipToBounds="True"
+                        PreviewTouchDown="fcvGestoHorizontalPreviewTouchDown"
+                        PreviewTouchUp="fcvGestoHorizontalPreviewTouchUp"
+                        PreviewMouseLeftButtonDown="fcvGestoHorizontalPreviewMouseLeftButtonDown" 
+                        PreviewMouseLeftButtonUp="fcvGestoHorizontalPreviewMouseLeftButtonUp" >
+                    <StackPanel Name="stkScrollEtiqueta" 
+                                HorizontalAlignment="Stretch" 
+                                Margin="0,0,0,0"
+                                Width="Auto"
+                                Focusable="False"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                Orientation="Horizontal"
+                                Height="Auto">
+                        <WrapPanel Name="plaEtiqueta" 
+                                   Margin="0,30,0,0"
+                                   Focusable="False"
+                                   Height="310"
+                                   Style="{StaticResource styleWrapPanelEdtFondoEditor}" 
+                                   Orientation="Horizontal">
+                        </WrapPanel>
+                    </StackPanel>
+                </Canvas>
+            </Grid>
+        </Canvas>
+    </Grid>
+</Window>

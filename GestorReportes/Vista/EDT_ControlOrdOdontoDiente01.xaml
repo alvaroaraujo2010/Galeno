@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="GestorReportes.Vista.Diente01"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="113" 
+             Width="30">
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseEnter1">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rctCapaSelect" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.14"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rctCapaSelect" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.14"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="12"/>
+        </Grid.RowDefinitions>
+        <Image Name="imgBaseDiente"
+               Grid.Row="0"
+               Source="/GestorReportes;component/Imagenes/hc_od_enciaa3.png"
+               Stretch="UniformToFill"/>
+        <Canvas Name="cnvBaseDiente" Grid.Row="0"></Canvas>
+        <Image Name="imgDiente"
+               Grid.RowSpan="2"
+               Source="/GestorReportes;component/Imagenes/hc_od_diente11.png"
+               Stretch="Fill"/>
+        <Image Name="imgCorona"
+               Source="/GestorReportes;component/Imagenes/hc_od_dn0.png"
+               Stretch="Uniform" 
+               Grid.Row="3"/>
+        <TextBlock Name="lblNumero" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Grid.Row="4"
+                   FontSize="9"
+                   TextAlignment="Center" Height="12" Width="20"/>
+        <Canvas Name="cnvDiente" Grid.Row="0" Margin="0,0,0,2" Grid.RowSpan="3"></Canvas>
+        <Canvas Name="cnvDienteRaiz" Grid.Row="0"></Canvas>
+        <Canvas Name="cnvDienteCorona" Grid.Row="1"></Canvas>
+        <Canvas Name="cnvCorona" Grid.Row="3"> </Canvas>
+        <!-- Capa trasparente sobra sobre todo el objeto -->
+        <Rectangle Name="rctCapaSombra" 
+                   Grid.Row="0"
+                   Grid.RowSpan="4"
+                   Visibility="Collapsed"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Opacity="0.3" 
+                   Stroke="#FF36E09B" 
+                   StrokeThickness="2"/>
+        <!-- Capa trasparente sobre todo el objeto -->
+        <Rectangle Name="rctCapaSelect" 
+                   Grid.Row="0"
+                   Grid.RowSpan="4"
+                   Visibility="Collapsed"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Fill="#FF000000" 
+                   Opacity="0" 
+                  Stroke="#FFFBFBFB"/>
+    </Grid>
+</UserControl>

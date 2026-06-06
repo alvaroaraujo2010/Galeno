@@ -1,0 +1,194 @@
+﻿<UserControl x:Class="Sistema.Vista.ControlNotificacionReg"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	        mc:Ignorable="d"
+	        x:Name="UserControl"
+	        d:DesignWidth="490" 
+            d:DesignHeight="200" 
+            Width="510" 
+            Height="Auto" 
+            Opacity="50">
+    <Grid Name="LayoutRoot" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28" />
+            <RowDefinition Height="38" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="0,0,0,0.9"
+                BorderBrush="#FFB0AFAF"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Background="White" 
+                Margin="0,2,0,1">
+        </Border>
+        <Border BorderThickness="0,0,0,0.9"
+                Grid.Row="0"
+                BorderBrush="#FF9C9C9C"
+                Background="WhiteSmoke" 
+                Margin="0,0,0,0" 
+                Grid.RowSpan="2">
+        </Border>
+        <!-- Orden servicio -->
+        <Border BorderThickness="0"
+                Grid.Row="0"
+                Height="49" 
+                Width="53"
+                Margin="10,5,0,0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                BorderBrush="#FF9C9C9C"
+                Grid.RowSpan="2" 
+                Background="White">
+        </Border>
+        <Image Name="imgRegistro"
+               HorizontalAlignment="Left"
+               Margin="15,7,0,10"
+               Width="44"
+               Grid.Row="0"
+               Grid.RowSpan="2" 
+               Height="44"
+               Source="/Sistema;component/Imagenes/sys_enf01.png"
+               Stretch="Uniform"/>
+        <!-- Titulo del Modulo -->
+        <Image Name="imgEstado"
+               HorizontalAlignment="Left"
+               Margin="10,15,0,7"
+               Width="16" 
+               Height="16"
+               Source="/Sistema;component/Imagenes/Edt_hist_vista_abierto.png"
+               Stretch="UniformToFill" 
+               Grid.Row="1"/>
+        <TextBlock Name="txtFecha" 
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Top"
+                   Margin="0,4,12,0" 
+                   Grid.Row="0"
+                   FontSize="10"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Right"
+                   Foreground="#FF898686" 
+                   Text="Programa Fecha y Hora" 
+                   Width="105"
+                   Height="16"
+                   TextWrapping="Wrap"/>
+        <TextBox Name="txtTexto2" 
+                 Grid.Row="0"
+                 BorderThickness="0" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top"
+                 FontSize="14"
+                 FontWeight="Bold"
+                 FontFamily="Segoe UI Symbol"
+                 TextAlignment="Left"
+                 Foreground="#FF3C70E0" 
+                 Margin="68,4,0,0"
+                 Text="Texto 2"
+                 Height="20"
+                 IsReadOnly="True" 
+                 Width="310" 
+                 Background="{x:Null}">
+        </TextBox>
+        <Image Name="imgCmdOk"
+               HorizontalAlignment="Right"
+               Margin="0,3,18,12"
+               Width="24"
+               Height="24"
+               Source="/Sistema;component/Imagenes/Edt_edt_confirmar.png"
+               Stretch="UniformToFill" 
+               Grid.Row="1"/>
+        <Button Name="cmdDetalles"
+                Grid.Row="1"
+                Margin="0,-4,101,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgEdtFormTouchMini}"
+                TabIndex="50"
+                Click="fcvActivarVistaHistorial"
+                ToolTip="Ver/Ocultar detalles del registro" 
+                Height="38"
+                Width="38"
+                Cursor="Hand">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgPropHistorial"
+                        Source="/Sistema;component/Imagenes/Edt_edt_contraer3.png"
+                        Style="{StaticResource styleImagBotonesForm}"
+                        Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdHistorialVer"
+                Grid.Row="1"
+                Margin="0,-4,56,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgEdtFormTouchMini}"
+                TabIndex="50"
+                ToolTip="Ver el registro de datos" 
+                Height="38"
+                Width="38"
+                Cursor="Hand">
+            <StackPanel Orientation="Horizontal"
+                                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgHistorialVer"
+                        		   Source="/Sistema;component/Imagenes/Edt_hist_ver.png"
+                        		   Style="{StaticResource styleImagBotonesForm}"
+                        		   Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdOk"
+                Grid.Row="1"
+                Margin="0,-4,12,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgEdtFormTouchMini}"
+                TabIndex="50"
+                ToolTip="Marcar como notificación ya vista" 
+                Height="38"
+                Width="38"
+                Cursor="Hand">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgOk"
+                       Source="/Sistema;component/Imagenes/Edt_edt_confirmar.png"
+                       Style="{StaticResource styleImagBotonesForm}"
+                       Stretch="UniformToFill">
+                </Image>
+            </StackPanel>
+        </Button>
+        <TextBox Name="txtTexto1"
+                 BorderThickness="0" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top"
+                 FontSize="10"
+                 FontFamily="Segoe UI Symbol"
+                 TextAlignment="Left"
+                 Foreground="#FF898686"
+                 Margin="68,25,0,0"
+                 Text="Texto 1" 
+                 IsReadOnly="True" 
+                 Width="288"
+                 Height="16" Background="{x:Null}" 
+                 Grid.RowSpan="2"/>
+        <TextBlock Name="txtTitulo" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Grid.Row="1"
+                   Margin="68,14,0,0" 
+                   FontSize="12"
+                   FontFamily="Segoe UI Symbol"
+                   TextAlignment="Left" 
+                   Text="Descripcion del evento" 
+                   Width="288"
+                   Foreground="#FF898686"/>
+        <StackPanel Name="stkDetalle"
+                    Grid.Row="2"
+                    Focusable="False"
+                    Orientation="Vertical"
+                    Height="Auto" 
+                    Margin="10,0,13,0"/>
+    </Grid>
+</UserControl>

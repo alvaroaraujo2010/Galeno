@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="GestorReportes.Vista.TileImgPredefinidas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Width="180" 
+             Height="70" 
+             mc:Ignorable="d">
+    <Grid>
+        <Button Name="cmdAccion"
+                HorizontalAlignment="Left"
+                Style="{StaticResource styleButtonImgEdtControlesTouch}"
+                TabIndex="50"
+                Height="Auto"
+                Cursor="Hand"
+                Width="172">
+            <Grid Margin="0,0,0,0"
+                  Width="170"
+                  Height="64"
+                  HorizontalAlignment="Left">
+                <Border HorizontalAlignment="Left" 
+                        Height="60" 
+                        Width="168"
+                        Margin="0,0,0,0" 
+                        VerticalAlignment="Top" 
+                        BorderBrush="#FFDED9D9" 
+                        BorderThickness="0.8"/>
+                <Image x:Name="imgImagen"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="0,0,119,17"
+                       Source="/Imagenes/Edt_formas_circulo.png"
+                       Stretch="Uniform" 
+                       Width="51" Height="47"/>
+                <TextBlock Name="txtTexto" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top"
+                           FontSize="10"
+                           FontFamily="Segoe UI Symbol"
+                           TextAlignment="Left"
+                           Margin="51,0,0,0"
+                           TextWrapping="Wrap"
+                           Text="Texto" 
+                           Width="118"
+                           Height="60">
+                </TextBlock>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

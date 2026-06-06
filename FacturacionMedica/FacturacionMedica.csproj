@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{830F5654-D55F-4064-8CB2-6925C9A817D7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FacturacionMedica</RootNamespace>
+    <AssemblyName>FacturacionMedica</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=0e27b6f8be9b2ef7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=eabbf6a5f5af5004, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Sistema\Ensamblados\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.6.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\Sistema\Ensamblados\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modelo\FCM_ModeloCompletarRips.cs" />
+    <Compile Include="Modelo\FCM_ModeloCuentaCobro.cs" />
+    <Compile Include="Modelo\FCM_ModeloFcmcenproduccio.cs" />
+    <Compile Include="Modelo\FCM_ModeloFcmManualdeservicios.cs" />
+    <Compile Include="Modelo\FCM_ModeloFcmManualdeserviciosIPS.cs" />
+    <Compile Include="Modelo\FCM_ModeloFcmsoatmanualma.cs" />
+    <Compile Include="Modelo\FCM_ModeloOrdenesmedicas.cs" />
+    <Compile Include="Modelo\FCM_ModeloTransacpagoservicios.cs" />
+    <Compile Include="Modelo\FCM_ModeloVistaResolucionDian.cs" />
+    <Compile Include="Utilidades\EjecutarVistas.cs" />
+    <Compile Include="Utilidades\FCM_Utilidades.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloAutorizarDescuento.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloAutorizarDescuentoBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloCompletarRipsBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloCuentaCobro.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloCuentaCobroBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmcenproduccio.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmcenproduccioBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmManualdeserviciosIPS.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmManualdeserviciosIPSBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmManualServicios.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmManualServiciosBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmsoatmanualma.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloFcmsoatmanualmaBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloOrdenesmedicas.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloOrdenesmedicasBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloRegistroAmbulatorio.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloTransacpagoservicios.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloTransacpagoserviciosBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloVistaResolucionDian.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloVistaResolucionDianBase.cs" />
+    <Compile Include="VistaModelo\LocalizadorVistaModelo.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloCompletarRips.cs" />
+    <Compile Include="Vista\crtBuscar.xaml.cs">
+      <DependentUpon>crtBuscar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_AutorizarDescuento.xaml.cs">
+      <DependentUpon>FCM_AutorizarDescuento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_ControlDetallesPqx.xaml.cs">
+      <DependentUpon>FCM_ControlDetallesPqx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_ControlDetallesPqxr.xaml.cs">
+      <DependentUpon>FCM_ControlDetallesPqxr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_ControlVistaAutorizacion.xaml.cs">
+      <DependentUpon>FCM_ControlVistaAutorizacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaBrowserRips.xaml.cs">
+      <DependentUpon>FCM_VistaBrowserRips.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaCompletarRips.xaml.cs">
+      <DependentUpon>FCM_VistaCompletarRips.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaCuentaCobro.xaml.cs">
+      <DependentUpon>FCM_VistaCuentaCobro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaCuentaCobroSelect.xaml.cs">
+      <DependentUpon>FCM_VistaCuentaCobroSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaFcmManualServicios.xaml.cs">
+      <DependentUpon>FCM_VistaFcmManualServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaFCMResolucionDian.xaml.cs">
+      <DependentUpon>FCM_VistaFCMResolucionDian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaFcmsoatmanualma.xaml.cs">
+      <DependentUpon>FCM_VistaFcmsoatmanualma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaRegistroAmbulatorio.xaml.cs">
+      <DependentUpon>FCM_VistaRegistroAmbulatorio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_Transacpagoservicios.xaml.cs">
+      <DependentUpon>FCM_Transacpagoservicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaFcmcenproduccio.xaml.cs">
+      <DependentUpon>FCM_VistaFcmcenproduccio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaFcmManualdeserviciosIPS.xaml.cs">
+      <DependentUpon>FCM_VistaFcmManualdeserviciosIPS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_VistaOrdenesmedicas.xaml.cs">
+      <DependentUpon>FCM_VistaOrdenesmedicas.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConfigAsistencial\ConfigAsistencial.csproj">
+      <Project>{5b066a73-7694-423d-8240-9b3bd2c16ac1}</Project>
+      <Name>ConfigAsistencial</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{5ddc9e85-775c-4683-87ad-c0adc9646713}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GestorReportes\HistoriasClinicasGestor.csproj">
+      <Project>{e733358e-704e-4f6a-baeb-3ae563b5f788}</Project>
+      <Name>HistoriasClinicasGestor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reportes\Reportes.csproj">
+      <Project>{a0d067f1-64f8-45f8-a573-353980a3c3c3}</Project>
+      <Name>Reportes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sistema\Sistema.csproj">
+      <Project>{5cfde7c0-9ab2-460c-af8c-3618c010daa6}</Project>
+      <Name>Sistema</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Vista\crtBuscar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_AutorizarDescuento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_ControlDetallesPqx.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_ControlDetallesPqxr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_ControlVistaAutorizacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaBrowserRips.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaCompletarRips.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaCuentaCobro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaCuentaCobroSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaFcmManualServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaFCMResolucionDian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaFcmsoatmanualma.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\FCM_VistaRegistroAmbulatorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_Transacpagoservicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_VistaFcmcenproduccio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\FCM_VistaFcmManualdeserviciosIPS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\FCM_VistaOrdenesmedicas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

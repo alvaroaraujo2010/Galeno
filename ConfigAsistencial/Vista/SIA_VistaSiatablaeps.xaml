@@ -1,0 +1,426 @@
+﻿<!-- MARMOTA-GENCODE: VERSION 2.0 - 09/08/2015 10:58:48 AM -->
+<Window x:Class="ConfigAsistencial.Vista.VistaSiatablaeps"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Path=VistaModeloSiatablaeps, Source={StaticResource SIA_Locator}}"
+        Title="Lista de EPS o seguradores"
+        Icon="/Sistema;component/Imagenes/sis_logo40.png"
+        Width="750"
+        Height="600"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="42" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="118" />
+            <RowDefinition Height="46*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource styleBorderFondoForm}"
+                Grid.RowSpan="5"
+                Grid.Row="1">
+        </Border>
+        <Image HorizontalAlignment="Left"
+               Height="40"
+               Width="Auto"
+               Margin="0,0,0,0"
+               VerticalAlignment="Top"
+               Grid.Row="1"
+               Source="/Sistema;component/Imagenes/sys_barratitulo.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Margin="5,1,0,0"
+               VerticalAlignment="Top"
+               Width="50"
+               Grid.RowSpan="2"
+               Source="/Sistema;component/Imagenes/sis_logo40.png"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown" />
+        <TextBlock Text="Maestro EPS o seguradores"
+                   Grid.Row="1"
+                   Style="{StaticResource styleTituloForm}"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Button Name="cmdCerrar"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource styleButtonImgEdtFormTouchExit}"
+                    TabIndex="50"
+                    Click="cmdSalir_Click"
+                    IsEnabled="{Binding GlgSIS_ModoDefault}"
+                    ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image Name="imgExit"
+                           Source="/Sistema;component/Imagenes/sis_cerrar01.png">
+                </Image>
+            </StackPanel>
+        </Button>
+        <Image HorizontalAlignment="Left"
+               Height="50"
+               Width="Auto"
+               Margin="1,3,1,0"
+               VerticalAlignment="Top"
+               Grid.Row="5"
+               Source="/Sistema;component/Imagenes/sis_fondo40.png"
+               StretchDirection="UpOnly"
+               Stretch="Fill"/>
+        <Rectangle HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Height="40"
+               Width="698"
+               Grid.Row="2"
+               OpacityMask="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+               Fill="#FFF6F8F9"
+               Margin="1,0,0,0"/>
+        <TextBlock Height="23"
+                   Grid.Row="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="19,7,0,0"
+                   Name="lblFiltro"
+                   Width="109"
+                   FontSize="16"
+                   FontFamily="Arial Unicode MS" >
+        <Run Language="es-co" Text="BUSCAR"/>
+        </TextBlock>
+        <TextBox Height="23"
+             Grid.Row="2"
+             Margin="153,7,0,0"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             Name="txtFiltroDatos"
+             Width="373"
+             Style="{StaticResource styleTextBoxForm}"
+             Text="{Binding GcrFiltroDatos, UpdateSourceTrigger=PropertyChanged}"
+             TabIndex="1"
+             KeyDown="fcvMoverFocus_KeyDown"
+             GotFocus="fcvTextBox_GotFocus"/>
+        <!-- Filtro -->
+        <Button Content="Filtro..."
+                Height="26"
+                HorizontalAlignment="Left"
+                Margin="395,7,0,0"
+                Name="cmdFilVista1"
+                VerticalAlignment="Top"
+                Width="89"
+                Visibility="Hidden"
+                Command="{Binding CmdFIL}"/>
+        <!-- Fin Filtro-->
+        <!-- Perfil Usuario -->
+        <TextBox Name="lblSysUsuIdUsuario"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuIdUsuario,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <TextBox Name="lblSysUsuCodigoPerfil"
+                 HorizontalAlignment="Left"
+                 Visibility="Hidden"
+                 Text="{Binding Path=GcrUsuCodigoPerfil,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Height="23"
+                 Width="89"/>
+        <!-- Fin Perfil Usuario -->
+        <Grid Grid.Row="3" Margin="8,2,8,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1sia_codeps_teps"
+                                           ToolTip="Código de Eps o Asegurador según códigos asignados por la supersalud"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Código EPS"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sia_codeps_teps"
+                                         TabIndex="1"
+                                         Text="{Binding Path=G1Sia_codeps_teps, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         MaxLength="6"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoAdicion}"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <TextBlock Name="lblG1sia_codnit_teps"
+                           ToolTip="Numero del Nit de la EPS o Asegurador"
+                           Grid.Column="2"
+                           Style="{StaticResource styleEtiquetasFormResize}">
+                        <Run Language="es-co" Text="Numero Nit EPS"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sia_codnit_teps"
+                         TabIndex="4"
+                         Text="{Binding Path=G1Sia_codnit_teps, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         Style="{StaticResource styleTextBoxFormResize}"
+                         MaxLength="20"
+                         TouchEnter="fcvTouchEnterTeclado"
+                         Grid.Column="3"
+                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                         KeyDown="fcvMoverFocus_KeyDown"
+                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtG1Sia_desase_sita"
+                                         TabIndex="146"
+                                         Text="{Binding Path=G1Sia_desase_sita, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResizeDisable}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="3"
+                                         Focusable="False"
+                                         KeyDown="fcvMoverFocus_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+                <Button Name="cmdG1Sia_tipase_sita"
+                                        Content="..."
+                                        Style="{StaticResource styleButtonMiniFormBrows}"
+                                        TabIndex="146"
+                                        Click="cmdG1Sia_tipase_sita_Click"
+                                        Grid.Column="2"
+                                        IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                        ToolTip="Código tipo asegurador de salud:  01=Adminstradora  de Riesgos laborales 02=Entidades aseguradoras regimen subsidiado … otros"/>
+                <TextBlock Name="lblG1sia_tipase_sita"
+                                           ToolTip="Código tipo asegurador de salud:  01=Adminstradora  de Riesgos laborales 02=Entidades aseguradoras regimen subsidiado … otros"
+                                           Grid.Column="0"
+                                           Style="{StaticResource styleEtiquetasFormResize}">
+                                           <Run Language="es-co" Text="Código tipo asegurador"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sia_tipase_sita"
+                                         TabIndex="46"
+                                         Text="{Binding Path=G1Sia_tipase_sita, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource styleTextBoxFormResize}"
+                                         TouchEnter="fcvTouchEnterTeclado"
+                                         Grid.Column="1"
+                                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                                         KeyDown="txtG1Sia_tipase_sita_KeyDown"
+                                         GotFocus="fcvTextBox_GotFocus"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblG1sia_deseps_teps"
+                           ToolTip="Descripción Eps o Asegurador según códigos asignados por la supersalud"
+                           Grid.Column="0"
+                           Style="{StaticResource styleEtiquetasFormResize}" 
+                           Margin="4,5,2,37">
+                       <Run Language="es-co" Text="Nombre EPS"/>
+                </TextBlock>
+                <TextBox Name="txtG1Sia_deseps_teps"
+                         TabIndex="3"
+                         Text="{Binding Path=G1Sia_deseps_teps, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         Style="{StaticResource styleTextBoxFormResize}"
+                         TextWrapping="Wrap"
+                         TouchEnter="fcvTouchEnterTeclado"
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
+                         KeyDown="fcvMoverFocus_KeyDown"
+                         GotFocus="fcvTextBox_GotFocus" 
+                         Height="47" 
+                         Margin="4,5,2,5"/>
+            </Grid>
+        </Grid>
+        <DataGrid AutoGenerateColumns="False"
+                  Grid.Row="4"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  Margin="10,10,10,10"
+                  Name="grdDetalles"
+                  ItemsSource="{Binding TmpG1ListaBrow, UpdateSourceTrigger=PropertyChanged}"
+                  CanUserAddRows="False"
+                  TabIndex="100">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Sia_codeps_teps}"
+                                    Header="Código EPS"
+                                    Width="80"
+                                    IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Sia_codnit_teps}"
+                                    Header="Nit EPS"
+                                    Width="150"
+                                    IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Sia_deseps_teps}"
+                                    Header="Nombre EPS"
+                                    Width="470"
+                                    IsReadOnly="True">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger
+            		EventName="SelectionChanged">
+                    <cmd:EventToCommand
+            			Command="{Binding SelectionChangedCommand, Mode=TwoWay}"
+            			CommandParameter="{Binding SelectedItem, ElementName=grdDetalles}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+        <Button Name="cmdGuardar"
+                Margin="220,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="4"
+                Command="{Binding CmdSAV}"
+                Click="fcvGuardarRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para guardar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgGuardar"
+                           Source="/Sistema;component/Imagenes/sis_edt_guardar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblGuardar"
+                               Text="Guardar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdAdicionar"
+                Margin="220,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="5"
+                Command="{Binding CmdADD}"
+                Click="fcvNuevoRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para crear un nuevo registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgAdicionar"
+                           Source="/Sistema;component/Imagenes/sis_edt_adicionar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblAdicionar"
+                               Text="Nuevo"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdCancelar"
+                Margin="323,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="6"
+                Command="{Binding CmdCAN}"
+                Click="fcvCancelarRegistro"
+                Grid.Row="5"
+                ToolTip="Cancelar los cambios">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgCancelar"
+                           Source="/Sistema;component/Imagenes/sis_edt_cancelar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblCancelar"
+                               Text="Cancelar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdModificar"
+                Margin="323,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="7"
+                Command="{Binding CmdEDT}"
+                Click="fcvModificarRegistro"
+                Grid.Row="5"
+                ToolTip="Haga clic aqui para modificar el registro activo">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgModificar"
+                           Source="/Sistema;component/Imagenes/sis_edt_modificar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblModificar"
+                               Text="Modificar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdEliminar"
+                Margin="426,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="8"
+                Command="{Binding CmdDEL}"
+                Grid.Row="5"
+                ToolTip="Eliminar este registro">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgEliminar"
+                           Source="/Sistema;component/Imagenes/sis_edt_eliminar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblEliminar"
+                               Text="Eliminar"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdSalir"
+                Margin="0,10,10,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="9"
+                Command="{Binding CmdSAL}"
+                Click="cmdSalir_Click"
+                Grid.Row="5"
+                ToolTip="Salir de esta pantalla">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgSalir"
+                           Source="/Sistema;component/Imagenes/sis_edt_salir.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblSalir"
+                               Text="Salir"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+        <Button Name="cmdLogErrores"
+                Margin="10,10,0,0"
+                Style="{StaticResource styleButtonImgForm}"
+                TabIndex="10"
+                Command="{Binding CmdERR}"
+                Click="fcvVistaLogErrores"
+                Grid.Row="5"
+                ToolTip="Ver registro de errores">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource styleStackPanelBotonesForm}">
+                <Image x:Name="imgLogErrores"
+                           Source="/Sistema;component/Imagenes/sis_edt_agrupar.png"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="UniformToFill"/>
+                <TextBlock x:Name="lblLogErrores"
+                               Text="Errores"
+            	               Style="{StaticResource styleLblBotonesForm}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

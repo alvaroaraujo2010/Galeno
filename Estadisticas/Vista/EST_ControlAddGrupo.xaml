@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Estadisticas.Vista.ControlAddGrupo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="150" 
+             d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtControlAddGrupo" Visibility="Collapsed"/>
+            <TextBox Name="txtIdItemSelect"
+                     Style="{StaticResource styleTextBoxFormResizeDisable}"
+                     Grid.Column="0"
+                     Visibility="Collapsed"/>
+            <ComboBox Name="cboListItems"
+                      Grid.Column="0"
+                      Style="{StaticResource styleComboBoxFormResize}"
+                      SelectedIndex="0"
+                      FontSize="16"
+                      Height="26"
+                      IsEnabled="False"
+                      SelectionChanged="SeleccionComboBoxOpcion"
+                      DisplayMemberPath="{Binding Path=NombreOpcion}"
+                      SelectedValuePath="{Binding Path=ValorSeleccion}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NombreOpcion}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Name="cmdAddItem"
+                    Style="{StaticResource styleButtonImgForm}"
+                    TabIndex="9"
+                    Width="68"
+                    Height="28"
+                    IsEnabled="False"
+                    Grid.Column="2"
+                    ToolTip="Clic aqui para Agregar item" 
+                    Click="cmdAddItem_Click">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource styleStackPanelBotonesForm}">
+                    <Image Source="/Sistema;component/Imagenes/sis_edt_aceptar.png"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource styleImagBotonesForm}"
+                           Stretch="Uniform"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <ScrollViewer Name="PanelScroll" 
+                      HorizontalAlignment="Stretch" 
+                      Margin="10,0,10,5"
+                      Width="Auto"
+                      Height="Auto"
+                      Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      PanningMode="HorizontalFirst"
+                      CanContentScroll="False">
+            <StackPanel Name="stkAgrupar"
+					Grid.Row="2"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    Orientation="Vertical"
+                    Height="Auto">
+            <WrapPanel Name="wraAgrupar" 
+                       Margin="0,0,0,0"
+                       Background="Transparent"
+                       Style="{StaticResource styleWrapPanelEdtFondoEditor}" 
+                       Orientation="Horizontal">
+            </WrapPanel>
+        </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

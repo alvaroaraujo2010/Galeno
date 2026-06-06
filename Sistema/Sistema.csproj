@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CFDE7C0-9AB2-460C-AF8C-3618C010DAA6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sistema</RootNamespace>
+    <AssemblyName>Sistema</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=0e27b6f8be9b2ef7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=eabbf6a5f5af5004, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit">
+      <HintPath>Ensamblados\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.7\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.7\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.7\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.7\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.7\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Ensamblados\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Ensamblados\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.9.8.99, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Ensamblados\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Ensamblados\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>Ensamblados\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Clases\Class_Browser01.cs" />
+    <Compile Include="Clases\Class_EstructTemp.cs" />
+    <Compile Include="FactElectronica\FCM_FeConfigNodosBase.cs" />
+    <Compile Include="FactElectronica\FCM_FeDocumentoAuxiliar.cs" />
+    <Compile Include="FactElectronica\FCM_FeDocumentoXmlFactura.cs" />
+    <Compile Include="FactElectronica\FCM_FeDocumentoGenerar.cs" />
+    <Compile Include="FactElectronica\FCM_FeDocumentoXmlAttached.cs" />
+    <Compile Include="FactElectronica\FCM_FeDocumentoXmlNotaCredito.cs" />
+    <Compile Include="FactElectronica\FCM_FeDocumentoXmlNotaDebito.cs" />
+    <Compile Include="FactElectronica\FCM_FeParametrosCliente.cs" />
+    <Compile Include="FactElectronica\FCM_FeParametrosDian.cs" />
+    <Compile Include="FactElectronica\FCM_FeParametrosEmpresa.cs" />
+    <Compile Include="FactElectronica\FCM_FeUtilidades.cs" />
+    <Compile Include="FactElectronica\FCM_FeUtilidadesFirma.cs" />
+    <Compile Include="FactElectronica\FCM_FeUtilidadesGeneral.cs" />
+    <Compile Include="FactElectronica\FCM_FeUtilidadesGlobal.cs" />
+    <Compile Include="Modelo\ADM_Admision.cs" />
+    <Compile Include="Modelo\CAR_Modelo.cs" />
+    <Compile Include="Modelo\CAR_ModeloGestionCorreos.cs" />
+    <Compile Include="Modelo\CTO_Modelo.cs" />
+    <Compile Include="Modelo\FAR_Modelo.cs" />
+    <Compile Include="Modelo\FCM_Modelo.cs" />
+    <Compile Include="Modelo\FCM_ModeloFcmsecrfacturas.cs" />
+    <Compile Include="Modelo\FCM_ModeloFeFacturaMa.cs" />
+    <Compile Include="Modelo\FCM_ModeloFeFacturaMd.cs" />
+    <Compile Include="Modelo\FCM_ModeloFeRazonSocial.cs" />
+    <Compile Include="Modelo\HCL_Modelo.cs" />
+    <Compile Include="Modelo\HCL_ModeloHcEventos.cs" />
+    <Compile Include="Modelo\HOS_Modelo.cs" />
+    <Compile Include="Modelo\INV_Modelo.cs" />
+    <Compile Include="Modelo\ODN_Modelo.cs" />
+    <Compile Include="Modelo\SIA_Modelo.cs" />
+    <Compile Include="Modelo\SIS_ModeloSismaesplavalid.cs" />
+    <Compile Include="Modelo\SIS_ModeloSismaesterceros.cs" />
+    <Compile Include="Modelo\SSP_Modelo.cs" />
+    <Compile Include="Modelo\SYS_Modelo.cs" />
+    <Compile Include="Modelo\SYS_UtilidadesModelo.cs" />
+    <Compile Include="Servicios\Notificaciones.cs" />
+    <Compile Include="Servicios\Onairis.cs" />
+    <Compile Include="Servicios\AdmServicios.cs" />
+    <Compile Include="Utilidades\Adm_Browser01.cs" />
+    <Compile Include="Utilidades\Adm_Browser02.cs" />
+    <Compile Include="Utilidades\Adm_Funciones.cs" />
+    <Compile Include="Utilidades\Adm_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Car_Browser01.cs" />
+    <Compile Include="Utilidades\Car_Browser02.cs" />
+    <Compile Include="Utilidades\Car_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Cit_Browser01.cs" />
+    <Compile Include="Utilidades\Cit_Browser02.cs" />
+    <Compile Include="Utilidades\Cit_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Con_Browser01.cs" />
+    <Compile Include="Utilidades\Con_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Cto_Browser02.cs" />
+    <Compile Include="Utilidades\Est_Browser01.cs" />
+    <Compile Include="Utilidades\Est_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Far_Browser01.cs" />
+    <Compile Include="Utilidades\Far_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Grc_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Grp_Browser01.cs" />
+    <Compile Include="Utilidades\Grp_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Hcl_Browser01.cs" />
+    <Compile Include="Utilidades\Hcl_Browser02.cs" />
+    <Compile Include="Utilidades\Hcl_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Inv_Browser01.cs" />
+    <Compile Include="Utilidades\Mci_Browser01.cs" />
+    <Compile Include="Utilidades\Mci_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Odn_Browser01.cs" />
+    <Compile Include="Utilidades\Odn_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Sia_ValidarDatos.cs" />
+    <Compile Include="Utilidades\Sis_Browser01.cs" />
+    <Compile Include="Utilidades\Cto_Browser01.cs" />
+    <Compile Include="Utilidades\Cto_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Encriptacion.cs" />
+    <Compile Include="Utilidades\Fcm_Browser01.cs" />
+    <Compile Include="Utilidades\Fcm_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Hos_ValidarCodigoTabla.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Inv_ValidarCodigoTabla.cs" />
+    <Compile Include="Clases\Class_Browser02.cs" />
+    <Compile Include="Utilidades\Sia_Browser01.cs" />
+    <Compile Include="Utilidades\Sia_Browser02.cs" />
+    <Compile Include="Utilidades\Sia_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\SIS_Funciones.cs" />
+    <Compile Include="Utilidades\SIS_PasswordBoxAssistant.cs" />
+    <Compile Include="Utilidades\Sis_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\Ssp_Browser01.cs" />
+    <Compile Include="Utilidades\Ssp_ValidarCodigoTabla.cs" />
+    <Compile Include="Utilidades\SYS_Aplicacion.cs" />
+    <Compile Include="Utilidades\Sys_Browser01.cs" />
+    <Compile Include="Utilidades\Sys_GestionNotificaciones.cs" />
+    <Compile Include="Utilidades\SYS_IUMetro.cs" />
+    <Compile Include="Utilidades\Sys_ValidarCodigoTabla.cs" />
+    <Compile Include="Validacion\FCM_Procesos.cs" />
+    <Compile Include="Validacion\FCM_ValidarRips.cs" />
+    <Compile Include="Validacion\HOS_Procesos.cs" />
+    <Compile Include="Validacion\SIS_Interfaces.cs" />
+    <Compile Include="Validacion\SIS_Scripts.cs" />
+    <Compile Include="VistaModelo\ADM_VistaModeloAdmision.cs" />
+    <Compile Include="VistaModelo\CAR_VistaModeloGestorCorreos.cs" />
+    <Compile Include="VistaModelo\CAR_VistaModeloGestorCorreosBase.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloTransacCajaFacturacion.cs" />
+    <Compile Include="VistaModelo\FCM_VistaModeloTransacCajaFacturacionBase.cs" />
+    <Compile Include="VistaModelo\LocalizadorVistaModelo.cs" />
+    <Compile Include="VistaModelo\SIS_VistaModeloSismaesplavalid.cs" />
+    <Compile Include="VistaModelo\SIS_VistaModeloSismaesplavalidBase.cs" />
+    <Compile Include="Vista\Browser01Ex.xaml.cs">
+      <DependentUpon>Browser01Ex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Browser02.xaml.cs">
+      <DependentUpon>Browser02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CAR_VistaEnviarCorreos.xaml.cs">
+      <DependentUpon>CAR_VistaEnviarCorreos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CAR_VistaGestorCorreos.xaml.cs">
+      <DependentUpon>CAR_VistaGestorCorreos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CIT_VistaFiltroturnos.xaml.cs">
+      <DependentUpon>CIT_VistaFiltroturnos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificaciones.xaml.cs">
+      <DependentUpon>ControlNotificaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificacionReg.xaml.cs">
+      <DependentUpon>ControlNotificacionReg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificacionRegLinea.xaml.cs">
+      <DependentUpon>ControlNotificacionRegLinea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificacionRegTexto.xaml.cs">
+      <DependentUpon>ControlNotificacionRegTexto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificacionRegTitulo.xaml.cs">
+      <DependentUpon>ControlNotificacionRegTitulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificacionTituloGrupo.xaml.cs">
+      <DependentUpon>ControlNotificacionTituloGrupo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlNotificacionVerMas.xaml.cs">
+      <DependentUpon>ControlNotificacionVerMas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlVistaRegErrores.xaml.cs">
+      <DependentUpon>ControlVistaRegErrores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\crtBuscar.xaml.cs">
+      <DependentUpon>crtBuscar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DialogProgressBar.xaml.cs">
+      <DependentUpon>DialogProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DialogProgressBarEx.xaml.cs">
+      <DependentUpon>DialogProgressBarEx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DialogVistaErrores.xaml.cs">
+      <DependentUpon>DialogVistaErrores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DialogVistaErroresEjecucion.xaml.cs">
+      <DependentUpon>DialogVistaErroresEjecucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DialogVistaNotificaciones.xaml.cs">
+      <DependentUpon>DialogVistaNotificaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DialogVistaResponse.xaml.cs">
+      <DependentUpon>DialogVistaResponse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CAR_ControltemArchivo.xaml.cs">
+      <DependentUpon>CAR_ControltemArchivo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_FacturacionFacAbiertas.xaml.cs">
+      <DependentUpon>FCM_FacturacionFacAbiertas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_FacturacionResumenFiltro.xaml.cs">
+      <DependentUpon>FCM_FacturacionResumenFiltro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FCM_TransaccionCajaFacturacion.xaml.cs">
+      <DependentUpon>FCM_TransaccionCajaFacturacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SIS_VistaPlantillaValidacion.xaml.cs">
+      <DependentUpon>SIS_VistaPlantillaValidacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Tiles01.xaml.cs">
+      <DependentUpon>Tiles01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Tiles02.xaml.cs">
+      <DependentUpon>Tiles02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TilesNotificacion.xaml.cs">
+      <DependentUpon>TilesNotificacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TituloGrupoTiles.xaml.cs">
+      <DependentUpon>TituloGrupoTiles.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Skins\EditorReportesDiseño.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Skins\EstiloSistema.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Skins\EstiloSistemaTouch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\Browser01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modelo\SIS_clBaseInpc.cs" />
+    <Compile Include="Utilidades\Hos_Browser01.cs" />
+    <Compile Include="Utilidades\Hos_Browser02.cs" />
+    <Compile Include="Utilidades\SIS_Interface.cs" />
+    <Compile Include="Vista\Browser01.xaml.cs">
+      <DependentUpon>Browser01.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Vista\Browser01Ex.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Browser02.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\CAR_VistaEnviarCorreos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\CAR_VistaGestorCorreos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\CIT_VistaFiltroturnos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\ControlNotificaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlNotificacionReg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlNotificacionRegLinea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlNotificacionRegTexto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlNotificacionRegTitulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlNotificacionTituloGrupo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlNotificacionVerMas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlVistaRegErrores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\crtBuscar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\DialogProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\DialogProgressBarEx.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\DialogVistaErrores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\DialogVistaErroresEjecucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\DialogVistaNotificaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\DialogVistaResponse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\CAR_ControltemArchivo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\FCM_FacturacionFacAbiertas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_FacturacionResumenFiltro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\FCM_TransaccionCajaFacturacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\SIS_VistaPlantillaValidacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Tiles01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Tiles02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\TilesNotificacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\TituloGrupoTiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ensamblados\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{5ddc9e85-775c-4683-87ad-c0adc9646713}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FirmaXadesNet\SistemaFirmaXadesNet.csproj">
+      <Project>{84b87815-dd45-4c60-b343-c11d45847bdf}</Project>
+      <Name>SistemaFirmaXadesNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Xades\SistemaMicrosoft.Xades.csproj">
+      <Project>{ee1dc57a-344a-4b0a-82ce-5fd328c14894}</Project>
+      <Name>SistemaMicrosoft.Xades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_cerrar40.png" />
+    <Resource Include="Imagenes\sis_edt_abrir.png" />
+    <Resource Include="Imagenes\sis_edt_aceptar.png" />
+    <Resource Include="Imagenes\sis_edt_adicionar.png" />
+    <Resource Include="Imagenes\sis_edt_buscar.png" />
+    <Resource Include="Imagenes\sis_edt_cancelar.png" />
+    <Resource Include="Imagenes\sis_edt_configurar.png" />
+    <Resource Include="Imagenes\sis_edt_eliminar.png" />
+    <Resource Include="Imagenes\sis_edt_guardar.png" />
+    <Resource Include="Imagenes\sis_edt_modificar.png" />
+    <Resource Include="Imagenes\sis_edt_salir.png" />
+    <Resource Include="Imagenes\sis_fondo40.png" />
+    <Resource Include="Imagenes\sis_logo40.png" />
+    <Resource Include="Imagenes\sys_act01.png" />
+    <Resource Include="Imagenes\sys_adm01.png" />
+    <Resource Include="Imagenes\sys_atm01.png" />
+    <Resource Include="Imagenes\sys_barratitulo.png" />
+    <Resource Include="Imagenes\sys_car01.png" />
+    <Resource Include="Imagenes\sys_cerrar.png" />
+    <Resource Include="Imagenes\sys_cit01.png" />
+    <Resource Include="Imagenes\sys_con01.png" />
+    <Resource Include="Imagenes\sys_cto01.png" />
+    <Resource Include="Imagenes\sys_dba01.png" />
+    <Resource Include="Imagenes\sys_enf01.png" />
+    <Resource Include="Imagenes\sys_far01.png" />
+    <Resource Include="Imagenes\sys_fcm01.png" />
+    <Resource Include="Imagenes\sys_fondo.png" />
+    <Resource Include="Imagenes\sys_ger01.png" />
+    <Resource Include="Imagenes\sys_his01.png" />
+    <Resource Include="Imagenes\sys_hos01.png" />
+    <Resource Include="Imagenes\sys_inf01.png" />
+    <Resource Include="Imagenes\sys_inv01.png" />
+    <Resource Include="Imagenes\sys_lab01.png" />
+    <Resource Include="Imagenes\sys_logo.png" />
+    <Resource Include="Imagenes\sys_logomidwssoft2.png" />
+    <Resource Include="Imagenes\sys_minimizar.png" />
+    <Resource Include="Imagenes\sys_nom01.png" />
+    <Resource Include="Imagenes\sys_odn01.png" />
+    <Resource Include="Imagenes\sys_panelsistema.png" />
+    <Resource Include="Imagenes\sys_panel_adminstrador.png" />
+    <Resource Include="Imagenes\sys_panel_ayuda.png" />
+    <Resource Include="Imagenes\sys_panel_configuracion.png" />
+    <Resource Include="Imagenes\sys_panel_fondo.png" />
+    <Resource Include="Imagenes\sys_panel_salir.png" />
+    <Resource Include="Imagenes\sys_pre01.png" />
+    <Resource Include="Imagenes\sys_pyp01.png" />
+    <Resource Include="Imagenes\sys_rax01.png" />
+    <Resource Include="Imagenes\sys_sia01.png" />
+    <Resource Include="Imagenes\sys_sig01.png" />
+    <Resource Include="Imagenes\sys_sis01.png" />
+    <Resource Include="Imagenes\sys_sys01.png" />
+    <Resource Include="Imagenes\sys_tes01.png" />
+    <Resource Include="Imagenes\sys_tiles_amarillo.png" />
+    <Resource Include="Imagenes\sys_tiles_azul.png" />
+    <Resource Include="Imagenes\sys_tiles_azulmarino.png" />
+    <Resource Include="Imagenes\sys_tiles_morado.png" />
+    <Resource Include="Imagenes\sys_tiles_naranja.png" />
+    <Resource Include="Imagenes\sys_tiles_rojo.png" />
+    <Resource Include="Imagenes\sys_tiles_rojofucsia.png" />
+    <Resource Include="Imagenes\sys_tiles_verdaceituna.png" />
+    <Resource Include="Imagenes\sys_tiles_verde.png" />
+    <Resource Include="Imagenes\sys_tiles_verdemarino.png" />
+    <Resource Include="Imagenes\sys_tiles_verdeseco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_cit02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_est01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_cit03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_usu01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_panel_fondo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_panel_fondo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_panel_fondo1.png" />
+    <Resource Include="Imagenes\sys_panel_fondo4.png" />
+    <Resource Include="Imagenes\sys_panel_fondo5.png" />
+    <Resource Include="Imagenes\sys_panel_fondo6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_tiles2_verdemarino.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_tiles2_azul.png" />
+    <Resource Include="Imagenes\sys_tiles2_morado.png" />
+    <Resource Include="Imagenes\sys_tiles2_naranja.png" />
+    <Resource Include="Imagenes\sys_tiles2_rojo.png" />
+    <Resource Include="Imagenes\sys_tiles2_rojofucsia.png" />
+    <Resource Include="Imagenes\sys_tiles2_verdaceituna.png" />
+    <Resource Include="Imagenes\sys_tiles2_verdeseco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_edt_abierto.png" />
+    <Resource Include="Imagenes\sis_edt_anulado.png" />
+    <Resource Include="Imagenes\sis_edt_cerrado.png" />
+    <Resource Include="Imagenes\sis_edt_imprimir.png" />
+    <Resource Include="Imagenes\sys_panel_fondo7.png" />
+    <Resource Include="Imagenes\sys_varios_calendario.png" />
+    <Resource Include="Imagenes\sys_varios_citas.png" />
+    <Resource Include="Imagenes\sys_varios_grupos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_tiles2_gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_cit04.png" />
+    <Resource Include="Imagenes\sys_cit05.png" />
+    <Resource Include="Imagenes\sys_fondocomponentes.png" />
+    <Resource Include="Imagenes\sys_varios_buscararchivo.png" />
+    <Resource Include="Imagenes\sys_varios_buscarregistro.png" />
+    <Resource Include="Imagenes\sys_varios_citasconfirmada.png" />
+    <Resource Include="Imagenes\sys_varios_factura.png" />
+    <Resource Include="Imagenes\sys_varios_filtro.png" />
+    <Resource Include="Imagenes\sys_varios_imprimir.png" />
+    <Resource Include="Imagenes\sys_varios_vistaprevia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_ssp01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_varios_agrupar.png" />
+    <Resource Include="Imagenes\sys_varios_vistatiles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_edt_agrupar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_edt_hora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_edt_organizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_panel_fondo8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_hist_vista_abierto.png" />
+    <Resource Include="Imagenes\Edt_hist_vista_anulado.png" />
+    <Resource Include="Imagenes\Edt_hist_vista_confirmado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_contraer3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_contraer.png" />
+    <Resource Include="Imagenes\Edt_edt_contraer1.png" />
+    <Resource Include="Imagenes\Edt_edt_contraer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_cancelar1.png" />
+    <Resource Include="Imagenes\Edt_edt_cancelar2.png" />
+    <Resource Include="Imagenes\Edt_edt_configurar.png" />
+    <Resource Include="Imagenes\Edt_edt_confirmar.png" />
+    <Resource Include="Imagenes\Edt_edt_copiar.png" />
+    <Resource Include="Imagenes\Edt_edt_eliminarobjeto.png" />
+    <Resource Include="Imagenes\Edt_edt_guardar.png" />
+    <Resource Include="Imagenes\Edt_edt_historial.png" />
+    <Resource Include="Imagenes\Edt_edt_icono.png" />
+    <Resource Include="Imagenes\Edt_edt_imprimir.png" />
+    <Resource Include="Imagenes\Edt_edt_modificar.png" />
+    <Resource Include="Imagenes\Edt_edt_pegar.png" />
+    <Resource Include="Imagenes\Edt_edt_propiedades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_abrir.png" />
+    <Resource Include="Imagenes\Edt_edt_adicionar.png" />
+    <Resource Include="Imagenes\Edt_edt_adicionarpagina.png" />
+    <Resource Include="Imagenes\Edt_edt_anular.png" />
+    <Resource Include="Imagenes\Edt_edt_archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_controles_xuser_captura.png" />
+    <Resource Include="Imagenes\Edt_controles_xuser_triage.png" />
+    <Resource Include="Imagenes\Edt_hist_exportar.png" />
+    <Resource Include="Imagenes\Edt_hist_importar.png" />
+    <Resource Include="Imagenes\Edt_hist_ver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_excel.png" />
+    <Resource Include="Imagenes\Edt_edt_importar.png" />
+    <Resource Include="Imagenes\Edt_edt_pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_excelx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_eliminarpagina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_cortar.png" />
+    <Resource Include="Imagenes\Edt_edt_ejecutar.png" />
+    <Resource Include="Imagenes\Edt_edt_guardar2.png" />
+    <Resource Include="Imagenes\sys_progress_panelcirculo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_numerolineas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_listerror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_filtro1.png" />
+    <Resource Include="Imagenes\Edt_edt_filtro2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_hist_vista_aplicado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_hoja.png" />
+    <Resource Include="Imagenes\sys_notific_pago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_triage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_admhosp.png" />
+    <Resource Include="Imagenes\sys_notific_admurg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_archivar.png" />
+    <Resource Include="Imagenes\sys_notific_citas.png" />
+    <Resource Include="Imagenes\sys_notific_descuento.png" />
+    <Resource Include="Imagenes\sys_notific_egreso.png" />
+    <Resource Include="Imagenes\sys_notific_enfermeria.png" />
+    <Resource Include="Imagenes\sys_notific_historial.png" />
+    <Resource Include="Imagenes\sys_notific_hospitalizacion.png" />
+    <Resource Include="Imagenes\sys_notific_notaenfermeria.png" />
+    <Resource Include="Imagenes\sys_notific_salida.png" />
+    <Resource Include="Imagenes\sys_notific_traslado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_ambulatoria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_planmanejo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_cobrocaja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_hos02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_hos03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_odontologia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_edt_eliminaregistro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_cerrar01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Emt_estados_valid01.png" />
+    <Resource Include="Imagenes\Emt_estados_valid02.png" />
+    <Resource Include="Imagenes\Emt_estados_valid03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Emt_estados_valid04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_tiles2_verde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sis_edt_filtro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_usu02.png" />
+    <Resource Include="Imagenes\sys_varios_treegrupos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Edt_hist_vista_anuladoex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_cexmedicam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Emt_estados_valid05.png" />
+    <Resource Include="Imagenes\Emt_estados_valid06.png" />
+    <Resource Include="Imagenes\Emt_estados_valid07.png" />
+    <Resource Include="Imagenes\Emt_estados_valid08.png" />
+    <Resource Include="Imagenes\Emt_estados_valid09.png" />
+    <Resource Include="Imagenes\Emt_estados_valid10.png" />
+    <Resource Include="Imagenes\Emt_estados_valid11.png" />
+    <Resource Include="Imagenes\Emt_estados_valid12.png" />
+    <Resource Include="Imagenes\Emt_estados_valid13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_notific_triagepr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sys_cerrar01.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen02.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen03.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen04.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen05.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen06.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen01.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen07.png" />
+    <Resource Include="Imagenes\Gcorreo_imagen08.png" />
+    <Content Include="Servicios\Recursos\Data_1.wav" />
+    <Content Include="Servicios\Recursos\Data_10.wav" />
+    <Content Include="Servicios\Recursos\Data_11.wav" />
+    <Content Include="Servicios\Recursos\Data_12.wav" />
+    <Content Include="Servicios\Recursos\Data_13.wav" />
+    <Content Include="Servicios\Recursos\Data_14.wav" />
+    <Content Include="Servicios\Recursos\Data_15.wav" />
+    <Content Include="Servicios\Recursos\Data_16.wav" />
+    <Content Include="Servicios\Recursos\Data_17.wav" />
+    <Content Include="Servicios\Recursos\Data_18.wav" />
+    <Content Include="Servicios\Recursos\Data_2.wav" />
+    <Content Include="Servicios\Recursos\Data_3.wav" />
+    <Content Include="Servicios\Recursos\Data_4.wav" />
+    <Content Include="Servicios\Recursos\Data_5.wav" />
+    <Content Include="Servicios\Recursos\Data_6.wav" />
+    <Content Include="Servicios\Recursos\Data_7.wav" />
+    <Content Include="Servicios\Recursos\Data_8.wav" />
+    <Content Include="Servicios\Recursos\Data_9.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

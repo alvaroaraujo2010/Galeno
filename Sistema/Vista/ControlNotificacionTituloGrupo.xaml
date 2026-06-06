@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Sistema.Vista.ControlNotificacionTituloGrupo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="25" 
+             Width="510">
+    <Grid>
+        <Border Name="Fondo" 
+                BorderThickness="0,0,0,0.6"
+                BorderBrush="#FF33BCE4"
+                Grid.Row="1"
+                Background="White"/>
+        <TextBlock Name="txtTitulo"
+                   FontSize="15"
+                   Margin="8,2,4,1" 
+                   Foreground="#FF33BCE4">
+                <Run Language="es-co" Text="Lunes 25 de febrero de 2016"/>
+        </TextBlock>
+    </Grid>
+</UserControl>

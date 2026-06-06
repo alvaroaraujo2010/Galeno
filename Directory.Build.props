@@ -1,0 +1,9 @@
+<Project>
+ <PropertyGroup>
+    <Deterministic>true</Deterministic>
+	<RunCodeAnalysis>false</RunCodeAnalysis>
+	<CodeAnalysisRuleSet>Path/OurRules.ruleset</CodeAnalysisRuleSet>
+	<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	<StyleCopTreatErrorsAsWarnings>true</StyleCopTreatErrorsAsWarnings>   
+ </PropertyGroup>
+</Project>
