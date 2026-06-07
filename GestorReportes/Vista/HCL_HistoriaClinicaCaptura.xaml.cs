@@ -1416,8 +1416,8 @@ namespace GestorReportes.Vista
                     #endregion
                 }
                 #region Cargar datos triage no admitidos
-                var lcrLineaSql = "SELECT count(*) FROM hclregiseventos WHERE adm_secadm_rgad='' AND sia_idesec_usua = '" + gcrParamIdRegistro + "'";
-                var lcrValor = Funciones.fcrConsultaSqlComando(lcrLineaSql);
+                var lcrLineaSql = "SELECT count(*) FROM hclregiseventos WHERE adm_secadm_rgad='' AND sia_idesec_usua = @idRegistro";
+                var lcrValor = Funciones.fcrConsultaSqlComando(lcrLineaSql, new Dictionary<string, object> { { "@idRegistro", gcrParamIdRegistro } });
                 if (lcrValor != "*1*" && lcrValor != "0")
                 {
                     // Generar registro para triage sin admision
