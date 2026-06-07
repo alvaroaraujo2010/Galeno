@@ -7390,7 +7390,7 @@
           <Property Name="sys_codusu_usux" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="sys_ideusu_usux" Type="varchar" MaxLength="20" />
           <Property Name="sys_nomusu_usux" Type="varchar" MaxLength="50" />
-          <Property Name="sys_clausu_usux" Type="varchar" MaxLength="50" />
+          <Property Name="sys_clausu_usux" Type="varchar" MaxLength="100" />
           <Property Name="sys_codper_perf" Type="varchar" MaxLength="5" />
           <Property Name="sys_imagen_usux" Type="varchar" MaxLength="150" />
           <Property Name="sys_estusu_usux" Type="varchar" MaxLength="1" />
@@ -8307,7 +8307,7 @@
           <Property Name="sys_codusu_usux" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
           <Property Name="sys_ideusu_usux" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="sys_nomusu_usux" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="sys_clausu_usux" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="sys_clausu_usux" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="sys_codper_perf" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
           <Property Name="sys_imagen_usux" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="sys_estusu_usux" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
