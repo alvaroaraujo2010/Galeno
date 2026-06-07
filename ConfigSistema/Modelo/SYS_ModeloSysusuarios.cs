@@ -303,7 +303,7 @@ namespace Systemas.Modelo
                         };
                         if (tobjModelo.lcrTmpClave == tobjModelo.lcrTmpConfirmar)
                         {
-                            lobjRegistro.sys_clausu_usux = Encriptacion.fcSISEncritar(tobjModelo.lcrTmpClave);
+                            lobjRegistro.sys_clausu_usux = Encriptacion.HashPassword(tobjModelo.lcrTmpClave);
                             lobjRegistro.sys_codusu_usux = lcrCodigoGen;
                             _context.AddToSysusuarios(lobjRegistro);
                             _context.SaveChanges();
@@ -349,7 +349,7 @@ namespace Systemas.Modelo
                         #endregion
                         if (tobjModelo.lcrTmpClave == tobjModelo.lcrTmpConfirmar)
                         {
-                            lobjRegistro.sys_clausu_usux = Encriptacion.fcSISEncritar(tobjModelo.lcrTmpClave);
+                            lobjRegistro.sys_clausu_usux = Encriptacion.HashPassword(tobjModelo.lcrTmpClave);
                             _context.SaveChanges();
                         }
                         else

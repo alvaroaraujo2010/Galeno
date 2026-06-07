@@ -98,9 +98,15 @@ namespace Inicio.Vista
 
                 if (!string.IsNullOrEmpty(oApp.gcrUsuIdUsuario))
                 {
-                    llglogeado = Encriptacion.fcSISExtraerHash(UsuarioDeSistema.sys_clausu_usux, txtpass.Password);
+                    var lcrVerificacion = Encriptacion.VerifyPassword(UsuarioDeSistema.sys_clausu_usux, txtpass.Password);
+                    llglogeado = lcrVerificacion != PasswordVerificationResult.Failed;
                     if (llglogeado)
                     {
+                        if (lcrVerificacion == PasswordVerificationResult.SuccessNeedsRehash)
+                        {
+                            UsuarioDeSistema.sys_clausu_usux = Encriptacion.HashPassword(txtpass.Password);
+                            baseDatos.SaveChanges();
+                        }
                         DialogResult = true;
                     }
                     else

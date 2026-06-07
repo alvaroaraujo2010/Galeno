@@ -1,86 +1,229 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Sistema.Utilidades
 {
+    public enum PasswordVerificationResult
+    {
+        Failed,
+        Success,
+        SuccessNeedsRehash
+    }
+
     public class Encriptacion
     {
+        private const int SaltSize = 16;
+        private const int HashSize = 32;
+        private const int Iterations = 100000;
+        private const int LegacySaltSize = 4;
+        private const int LegacyHashSize = 20;
+        private const string V2Prefix = "v2$";
+
         //********************************************************************
-        // fcSISEncritar
+        // HashPassword (PBKDF2-SHA256, formato v2$)
         //********************************************************************
         /// <summary>
-        /// fcSISEncritar
+        /// Genera un hash seguro con PBKDF2-HMAC-SHA256.
+        /// Formato: v2${iteraciones}${salt Base64}${hash Base64}.
         /// </summary>
-        /// <param name="tcrTextoaCifrar">Texto a Encriptar</param>
-        /// <returns>Retorna el Texto Encriptado</returns>
-        public static String fcSISEncritar(String tcrTextoaCifrar)
+        public static String HashPassword(String password)
         {
-            int lnuCantSal = 4;
-            RandomNumberGenerator rng = RandomNumberGenerator.Create();
-            byte[] salero = new byte[lnuCantSal];
-            //Genera numeros aleatorios diferentes de cero y los pone en el arreglo
-            rng.GetNonZeroBytes(salero);
-            //Convertir el texto password a un arreglo de bytes
-            byte[] bytededatos = Encoding.UTF8.GetBytes(tcrTextoaCifrar);
-            //General otro arreglo para guardar los datos + la sal
-            byte[] datossalados = new byte[salero.Length + bytededatos.Length];
-            //Copiar la sal a datossalados
-            Array.Copy(salero, 0, datossalados, 0, salero.Length);
-            //copiar los datos leidos a datos salados
-            Array.Copy(bytededatos, 0, datossalados, salero.Length, bytededatos.Length);
-            //crear instancia de herramienta de herramienta de creación de Hash
-            SHA1CryptoServiceProvider csp = new SHA1CryptoServiceProvider();
-            //crear el Hash
-            byte[] byteconHash = csp.ComputeHash(datossalados);
-            //Crear el arreglo final con el tamaño "total" + sal
-            byte[] resultadodeByte = new byte[salero.Length + byteconHash.Length];
-            //Copiar la sal al resultado
-            Array.Copy(salero, 0, resultadodeByte, 0, salero.Length);
-            //Copiar los datos convertidos al resultado
-            Array.Copy(byteconHash, 0, resultadodeByte, salero.Length, byteconHash.Length);
-            //Crear un Archivo y meter ahi el arreglo de bytes en modo texto
-            return Convert.ToBase64String(resultadodeByte);
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentException("La contraseña no puede ser nula ni vacía.", nameof(password));
+
+            byte[] salt = new byte[SaltSize];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+
+            byte[] hash;
+            using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, Iterations, HashAlgorithmName.SHA256))
+            {
+                hash = pbkdf2.GetBytes(HashSize);
+            }
+
+            return string.Format("{0}{1}${2}${3}",
+                V2Prefix,
+                Iterations,
+                Convert.ToBase64String(salt),
+                Convert.ToBase64String(hash));
         }
 
         //********************************************************************
-        // fcSISExtraerHash
+        // FixedTimeEquals (comparación en tiempo constante)
         //********************************************************************
-        public static bool fcSISExtraerHash(String pasSistema, String pasUser)
+        private static bool FixedTimeEquals(byte[] a, byte[] b)
         {
-            String ClaveSaladaconHash = pasSistema;
-            const int lnuCantSal = 4;
+            if (a == null || b == null || a.Length != b.Length)
+                return false;
+            int diff = 0;
+            for (int i = 0; i < a.Length; i++)
+                diff |= a[i] ^ b[i];
+            return diff == 0;
+        }
 
-            //Extraer la sal
-            byte[] claveSaladaconHashBytes = Convert.FromBase64String(ClaveSaladaconHash);
-            int sal = BitConverter.ToInt32(claveSaladaconHashBytes, 0);
+        //********************************************************************
+        // VerifyPassword
+        //********************************************************************
+        /// <summary>
+        /// Verifica una contraseña contra un hash almacenado.
+        /// Soporta:
+        ///   - v2$iter$salt$hash  (PBKDF2-SHA256, formato nuevo generado por HashPassword)
+        ///   - Base64(4 bytes sal + 20 bytes hash)  (SHA1 legacy, migrar a v2 al re-hash)
+        /// Firma: VerifyPassword(storedHash, password).
+        /// </summary>
+        public static PasswordVerificationResult VerifyPassword(String storedHash, String password)
+        {
+            if (string.IsNullOrEmpty(password))
+                return PasswordVerificationResult.Failed;
+            if (string.IsNullOrEmpty(storedHash))
+                return PasswordVerificationResult.Failed;
 
-            //Extrae el Hash sin la sal
-            byte[] claveHashBytes = new byte[claveSaladaconHashBytes.Length - lnuCantSal];
-            Array.Copy(claveSaladaconHashBytes, lnuCantSal, claveHashBytes, 0, claveHashBytes.Length);
+            if (storedHash.StartsWith(V2Prefix, StringComparison.Ordinal))
+                return VerifyHashedPasswordV2(storedHash, password);
 
-            //Combina la clave de usuario y la sal
-            byte[] claveDelUsuarioBytes = Encoding.UTF8.GetBytes(pasUser);
-            byte[] salero = BitConverter.GetBytes(sal);
-            byte[] claveSaladaconBytes = new byte[salero.Length + claveDelUsuarioBytes.Length];
-            Array.Copy(salero, 0, claveSaladaconBytes, 0, salero.Length);
-            Array.Copy(claveDelUsuarioBytes, 0, claveSaladaconBytes, salero.Length, claveDelUsuarioBytes.Length);
+            return VerifyLegacySha1(storedHash, password)
+                ? PasswordVerificationResult.SuccessNeedsRehash
+                : PasswordVerificationResult.Failed;
+        }
 
-            //Calcula el valor del Hash
-            SHA1CryptoServiceProvider csp = new SHA1CryptoServiceProvider();
-            byte[] claveConHash = csp.ComputeHash(claveSaladaconBytes);
+        //********************************************************************
+        // VerifyHashedPasswordV2
+        //********************************************************************
+        private static PasswordVerificationResult VerifyHashedPasswordV2(string storedHash, string password)
+        {
+            var partes = storedHash.Split('$');
+            if (partes.Length != 4)
+                return PasswordVerificationResult.Failed;
 
-            //Devuelve la clave con Hash
-            for (int ixByte = 0; ixByte < claveHashBytes.Length; ixByte++)
+            int iteraciones;
+            if (!int.TryParse(partes[1], out iteraciones))
+                return PasswordVerificationResult.Failed;
+
+            byte[] salt, expectedHash;
+            try
             {
-                if (claveConHash[ixByte] != claveHashBytes[ixByte])
+                salt = Convert.FromBase64String(partes[2]);
+                expectedHash = Convert.FromBase64String(partes[3]);
+            }
+            catch (FormatException)
+            {
+                return PasswordVerificationResult.Failed;
+            }
+
+            // Probar primero SHA256 (formato generado por HashPassword) y, si no
+            // coincide, SHA1 (compatibilidad con hashes generados con la sobrecarga
+            // de 3 argumentos de Rfc2898DeriveBytes).
+            bool coincide = false;
+            try
+            {
+                using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iteraciones, HashAlgorithmName.SHA256))
                 {
-                    return false;
+                    coincide = FixedTimeEquals(pbkdf2.GetBytes(expectedHash.Length), expectedHash);
                 }
             }
-            return true;
+            catch (Exception) { /* probar SHA1 */ }
+
+            if (!coincide)
+            {
+                try
+                {
+                    using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iteraciones))
+                    {
+                        coincide = FixedTimeEquals(pbkdf2.GetBytes(expectedHash.Length), expectedHash);
+                    }
+                }
+                catch (Exception)
+                {
+                    return PasswordVerificationResult.Failed;
+                }
+            }
+
+            if (!coincide)
+                return PasswordVerificationResult.Failed;
+
+            if (iteraciones < Iterations)
+                return PasswordVerificationResult.SuccessNeedsRehash;
+
+            return PasswordVerificationResult.Success;
         }
+
+        //********************************************************************
+        // VerifyLegacySha1 (LEGACY - solo para migración a v2$)
+        //********************************************************************
+#pragma warning disable CA5350, CA5351
+        /// <summary>
+        /// Verifica una contraseña contra un hash legacy SHA1.
+        /// Formato: Base64(4 bytes sal + 20 bytes SHA1(sal + UTF8(password))).
+        /// </summary>
+        private static bool VerifyLegacySha1(string storedHash, string password)
+        {
+            byte[] storedBytes;
+            try { storedBytes = Convert.FromBase64String(storedHash); }
+            catch (FormatException) { return false; }
+
+            if (storedBytes.Length != LegacySaltSize + LegacyHashSize)
+                return false;
+
+            byte[] salt = new byte[LegacySaltSize];
+            byte[] expectedHash = new byte[LegacyHashSize];
+            Array.Copy(storedBytes, 0, salt, 0, LegacySaltSize);
+            Array.Copy(storedBytes, LegacySaltSize, expectedHash, 0, LegacyHashSize);
+
+            byte[] data = Encoding.UTF8.GetBytes(password);
+            byte[] salted = new byte[salt.Length + data.Length];
+            Array.Copy(salt, 0, salted, 0, salt.Length);
+            Array.Copy(data, 0, salted, salt.Length, data.Length);
+
+            using (var sha1 = new SHA1CryptoServiceProvider())
+            {
+                byte[] actualHash = sha1.ComputeHash(salted);
+                return FixedTimeEquals(actualHash, expectedHash);
+            }
+        }
+#pragma warning restore CA5350, CA5351
+
+        //********************************************************************
+        // fcSISEncritar (LEGACY - usar HashPassword en código nuevo)
+        //********************************************************************
+#pragma warning disable CA5350, CA5351
+        /// <summary>
+        /// Método legacy con SHA1. Mantener solo para compatibilidad con hashes antiguos.
+        /// </summary>
+        [Obsolete("Use HashPassword instead. SHA1 is cryptographically broken.")]
+        public static String fcSISEncritar(String tcrTextoaCifrar)
+        {
+            int lnuCantSal = LegacySaltSize;
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            byte[] salero = new byte[lnuCantSal];
+            rng.GetNonZeroBytes(salero);
+            byte[] bytededatos = Encoding.UTF8.GetBytes(tcrTextoaCifrar);
+            byte[] datossalados = new byte[salero.Length + bytededatos.Length];
+            Array.Copy(salero, 0, datossalados, 0, salero.Length);
+            Array.Copy(bytededatos, 0, datossalados, salero.Length, bytededatos.Length);
+            SHA1CryptoServiceProvider csp = new SHA1CryptoServiceProvider();
+            byte[] byteconHash = csp.ComputeHash(datossalados);
+            byte[] resultadodeByte = new byte[salero.Length + byteconHash.Length];
+            Array.Copy(salero, 0, resultadodeByte, 0, salero.Length);
+            Array.Copy(byteconHash, 0, resultadodeByte, salero.Length, byteconHash.Length);
+            return Convert.ToBase64String(resultadodeByte);
+        }
+#pragma warning restore CA5350, CA5351
+
+        //********************************************************************
+        // fcSISExtraerHash (LEGACY - usar VerifyPassword en código nuevo)
+        //********************************************************************
+#pragma warning disable CA5350, CA5351
+        /// <summary>
+        /// Verifica una contraseña contra un hash legacy SHA1. Solo para migración.
+        /// </summary>
+        [Obsolete("Use VerifyPassword instead.")]
+        public static bool fcSISExtraerHash(String pasSistema, String pasUser)
+        {
+            return VerifyLegacySha1(pasSistema, pasUser);
+        }
+#pragma warning restore CA5350, CA5351
     }
 }
