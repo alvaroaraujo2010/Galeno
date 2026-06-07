@@ -10,6 +10,10 @@
 *.key
 GaleriaRecursos/FacturacionEletronica/Certificado/
 
+# Logs
+logs/
+*.log
+
 # User-specific files
 *.rsuser
 *.suo

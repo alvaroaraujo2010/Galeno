@@ -119,11 +119,13 @@ namespace Inicio.Vista
                 }
                 else
                 {
+                    Log.Warn("Login: usuario no existe", new { usuario = lcrUsuarioLogin });
                     MessageBox.Show("Usuario " + lcrUsuarioLogin + " No existe en sistema.");
                 }
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Error de conexion en login");
                 MessageBox.Show(ex.Message, "Error de conexión");
             }
             

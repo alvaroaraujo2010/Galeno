@@ -259,6 +259,7 @@
     <Compile Include="Utilidades\Cto_Browser01.cs" />
     <Compile Include="Utilidades\Cto_ValidarCodigoTabla.cs" />
     <Compile Include="Utilidades\Encriptacion.cs" />
+    <Compile Include="Utilidades\Logging.cs" />
     <Compile Include="Utilidades\Fcm_Browser01.cs" />
     <Compile Include="Utilidades\Fcm_ValidarCodigoTabla.cs" />
     <Compile Include="Utilidades\Hos_ValidarCodigoTabla.cs">
