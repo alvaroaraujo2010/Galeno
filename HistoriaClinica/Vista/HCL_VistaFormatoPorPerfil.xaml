@@ -234,8 +234,7 @@
                           SelectedIndex="0"
                           SelectionChanged="SeleccionComboBoxOpcion"
                           ItemsSource="{Binding Path=G1CbSys_estper_perf}"
-                          DisplayMemberPath="{Binding Path=NombreOpcion}"
-                          SelectedValuePath="{Binding Path=ValorSeleccion}">
+                          SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -624,8 +623,7 @@
                         					      SelectedIndex="0"
                         					      SelectionChanged="SeleccionComboBoxOpcion"
                         					      ItemsSource="{Binding G2CbHcl_accvis_hcpr}"
-                        					      DisplayMemberPath="{Binding NombreOpcion}"
-                        					      SelectedValuePath="{Binding ValorSeleccion}">
+                        					      SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -663,8 +661,7 @@
                         			              SelectedIndex="0"
                         					      SelectionChanged="SeleccionComboBoxOpcion"
                         					      ItemsSource="{Binding G2CbHcl_accedt_hcpr}"
-                        					      DisplayMemberPath="{Binding NombreOpcion}"
-                        					      SelectedValuePath="{Binding ValorSeleccion}">
+                        					      SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -702,8 +699,7 @@
                         					      SelectedIndex="0"
                         					      SelectionChanged="SeleccionComboBoxOpcion"
                         					      ItemsSource="{Binding G2CbHcl_accprn_hcpr}"
-                        					      DisplayMemberPath="{Binding NombreOpcion}"
-                        					      SelectedValuePath="{Binding ValorSeleccion}">
+                        					      SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -741,8 +737,7 @@
                         					      SelectedIndex="0"
                         					      SelectionChanged="SeleccionComboBoxOpcion"
                         					      ItemsSource="{Binding G2CbHcl_accges_hcpr}"
-                        					      DisplayMemberPath="{Binding NombreOpcion}"
-                        					      SelectedValuePath="{Binding ValorSeleccion}">
+                        					      SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -779,8 +774,7 @@
                         					      SelectedIndex="0"
                         					      SelectionChanged="SeleccionComboBoxOpcion"
                         					      ItemsSource="{Binding G2CbHcl_estfor_hcpr}"
-                        					      DisplayMemberPath="{Binding NombreOpcion}"
-                        					      SelectedValuePath="{Binding ValorSeleccion}">
+                        					      SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -850,3 +844,4 @@
         </Grid>
     </Grid>
 </Window>
+

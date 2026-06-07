@@ -273,8 +273,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbSsp_estper_peri}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                    	SelectedValuePath="ValorSeleccion">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

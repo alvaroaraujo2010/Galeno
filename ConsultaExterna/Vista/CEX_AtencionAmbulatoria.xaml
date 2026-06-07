@@ -549,8 +549,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbAdm_codoad_toad}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                    	SelectedValuePath="ValorSeleccion" FontSize="12">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -584,8 +583,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbAdm_codcex_tcex}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                    	SelectedValuePath="ValorSeleccion" FontSize="12">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -619,8 +617,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbAdm_coddsa_tdsa}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                    	SelectedValuePath="ValorSeleccion" FontSize="12">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -654,8 +651,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbAdm_pacemb_rgad}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                    	SelectedValuePath="ValorSeleccion" FontSize="12">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -859,8 +855,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbFcm_serpos_sips}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -935,8 +930,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbSia_codfco_fcon}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                            	SelectedValuePath="ValorSeleccion" FontSize="12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -970,8 +964,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbAdm_codcex_tcex}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                            	SelectedValuePath="ValorSeleccion" FontSize="12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -1030,8 +1023,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbSia_tipdxp_tdix}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                            	SelectedValuePath="ValorSeleccion" FontSize="12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -1148,8 +1140,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbFcm_codtse_sips}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}" FontSize="12">
+                            	SelectedValuePath="ValorSeleccion" FontSize="12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -1208,8 +1199,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbSia_codfpr_fpor}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

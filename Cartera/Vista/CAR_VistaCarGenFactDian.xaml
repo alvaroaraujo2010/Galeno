@@ -284,8 +284,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbFcm_typdoc_fctd}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -556,8 +555,7 @@
 									SelectedIndex="0"
 									SelectionChanged="SeleccionComboBoxOpcion"
 									ItemsSource="{Binding Path=G1CbFcm_metpag_mfac}"
-									DisplayMemberPath="{Binding Path=NombreOpcion}"
-									SelectedValuePath="{Binding Path=ValorSeleccion}">
+									SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -653,8 +651,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbCar_tipfac_camf}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -1954,8 +1951,7 @@
                             	                  SelectedIndex="0"
                             	                  SelectionChanged="SeleccionComboBoxOpcion"
                             	                  ItemsSource="{Binding Path=G1CbCar_prnobs_camf}"
-                            	                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	                  SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	                  SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -2008,8 +2004,7 @@
                             	                  SelectedIndex="0"
                             	                  SelectionChanged="SeleccionComboBoxOpcion"
                             	                  ItemsSource="{Binding Path=G1CbCar_prnnot_camf}"
-                            	                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	                  SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	                  SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">

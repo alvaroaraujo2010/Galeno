@@ -174,8 +174,7 @@
                               Height="24"
                               SelectedIndex="0"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}">
+                              SelectedValuePath="ValorSeleccion">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">

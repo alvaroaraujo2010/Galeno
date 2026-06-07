@@ -206,8 +206,7 @@
                                           FontSize="14"
                             	          SelectionChanged="SeleccionComboBoxOpcion"
                             	          ItemsSource="{Binding Path=G1CbOdn_tgrafi_odev}"
-                            	          DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	          SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                            	          SelectedValuePath="ValorSeleccion" 
                                           Height="24"                                           
                                           Margin="0,2,2,3">
                                           <ComboBox.ItemTemplate>
@@ -381,8 +380,7 @@
 											SelectedIndex="0"
 											SelectionChanged="SeleccionComboBoxOpcion"
 											ItemsSource="{Binding Path=G1CbOdn_estado_odev}"
-											DisplayMemberPath="{Binding Path=NombreOpcion}"
-											SelectedValuePath="{Binding Path=ValorSeleccion}">
+											SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">

@@ -3060,11 +3060,7 @@ namespace ContratoAseguramiento.Vista
                         lobReg.Sia_tipdis_tdis = lobReg.Sia_tipdis_tdis != null ? lobReg.Sia_tipdis_tdis.Trim() : "";
                         lobReg.Sia_valibc_usua = lobReg.Sia_valibc_usua != null ? lobReg.Sia_valibc_usua : "0";
                         lobReg.Sia_codper_pret = lobReg.Sia_codper_pret != null ? lobReg.Sia_codper_pret.Trim() : "6";
-                        lobReg.Sia_edapac_usua = lobReg.Sia_edapac_usua != null ? lobReg.Sia_edapac_usua : 0;
                         lobReg.Sia_codmed_tmed = lobReg.Sia_codmed_tmed != null ? lobReg.Sia_codmed_tmed.Trim() : "1";
-                        lobReg.Sia_edaano_usua = lobReg.Sia_edaano_usua != null ? lobReg.Sia_edaano_usua : 0;
-                        lobReg.Sia_edames_usua = lobReg.Sia_edames_usua != null ? lobReg.Sia_edames_usua : 0;
-                        lobReg.Sia_edadia_usua = lobReg.Sia_edadia_usua != null ? lobReg.Sia_edadia_usua : 0;
                         lobReg.Sia_codcat_ceat = lobReg.Sia_codcat_ceat != null ? lobReg.Sia_codcat_ceat.Trim() : "";
                         lobReg.Sys_codusu_usux = lobReg.Sys_codusu_usux != null ? lobReg.Sys_codusu_usux.Trim() : "";
                         lobReg.Sia_fecedt_usua = Funciones.FdaFechaActual();

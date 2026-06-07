@@ -57,7 +57,7 @@ namespace FirmaXadesNet.Validation
                 // Verifica las huellas de las referencias y la firma
                 sigDocument.XadesSignature.CheckXmldsigSignature();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 result.IsValid = false;
                 result.Message = "La verificación de la firma no ha sido satisfactoria";

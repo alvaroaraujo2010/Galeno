@@ -228,8 +228,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -256,8 +255,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -284,8 +282,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                
                       FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -407,8 +404,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
                       FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -435,8 +431,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                    
                       FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -463,8 +458,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -587,8 +581,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -615,8 +608,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -643,8 +635,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -766,8 +757,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -794,8 +784,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -822,8 +811,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -946,8 +934,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -974,8 +961,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1002,8 +988,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1125,8 +1110,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1153,8 +1137,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1181,8 +1164,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1305,8 +1287,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1333,8 +1314,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1361,8 +1341,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1484,8 +1463,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1512,8 +1490,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1540,8 +1517,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1664,8 +1640,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1692,8 +1667,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent"
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1720,8 +1694,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1843,8 +1816,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -1871,8 +1843,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="13">
                 <ComboBox.ItemTemplate>
@@ -1899,8 +1870,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -2023,8 +1993,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -2051,8 +2020,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -2079,8 +2047,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -2202,8 +2169,7 @@
                       BorderBrush="White" 
                       Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -2230,8 +2196,7 @@
                       BorderBrush="White" 
                       Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>
@@ -2258,8 +2223,7 @@
 					  BorderBrush="White" 
 					  Background="Transparent" 
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}"
+                      SelectedValuePath="ValorSeleccion"
                       Loaded="fcvCboLoaded"                      
 					  FontSize="10">
                 <ComboBox.ItemTemplate>

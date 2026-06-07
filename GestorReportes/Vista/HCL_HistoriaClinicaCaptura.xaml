@@ -500,8 +500,7 @@
                                       ToolTip="Tamaño Control de arrastre objetos"
                                       SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                       ItemsSource="{Binding PropCboTamAdornos}"
-                                      DisplayMemberPath="{Binding Descripcion}"
-                                      SelectedValuePath="{Binding Codigo}" 
+                                      SelectedValuePath="Codigo" 
                                       Margin="2,17,0,0" 
                                       Width="82" 
                                       Height="28">
@@ -1413,7 +1412,7 @@
                                  Style="{StaticResource styleTabItemEdtPropiedades}">
                             <Grid Style="{StaticResource styleGridTabItemEdtPropiedades}" Margin="-1,0,1,8">
                                 <Grid/>
-                                <Button Visibility="Collapsed" Command="{Binding CmdPropCamposTexto}"/>
+                                <Button Visibility="Collapsed"/>
                                 <ScrollViewer Name="PanelScrollProp"
                                               HorizontalAlignment="Stretch" 
                                               Width="Auto"
@@ -1493,8 +1492,7 @@
                                                               SelectedIndex="0"
                                                               SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                                               ItemsSource="{Binding PropCboBorder}"
-                                                              DisplayMemberPath="{Binding Descripcion}"
-                                                              SelectedValuePath="{Binding Codigo}" 
+                                                              SelectedValuePath="Codigo" 
                                                               Margin="160,2,0,0" 
                                                               Width="200">
                                                         <ComboBox.ItemTemplate>
@@ -1571,8 +1569,7 @@
                                                               ToolTip="Plantillas para etiquetas de datos"
                                                               SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                                               ItemsSource="{Binding tmpEtiquetaItems}"
-                                                              DisplayMemberPath="{Binding Descripcion}"
-                                                              SelectedValuePath="{Binding Codigo}" 
+                                                              SelectedValuePath="Codigo" 
                                                               Margin="160,2,0,0" 
                                                               Width="200">
                                                         <ComboBox.ItemTemplate>
@@ -1594,8 +1591,7 @@
                                                                       SelectedIndex="0"
                                                                       SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                                                       ItemsSource="{Binding PropCboFontFamily}"
-                                                                      DisplayMemberPath="{Binding Descripcion}"
-                                                                      SelectedValuePath="{Binding Codigo}" Margin="5,4,0,0" Width="208">
+                                                                      SelectedValuePath="Codigo" Margin="5,4,0,0" Width="208">
                                                                 <ComboBox.ItemTemplate>
                                                                     <DataTemplate>
                                                                         <StackPanel Orientation="Horizontal">
@@ -1616,8 +1612,7 @@
                                                                       SelectedIndex="0"
                                                                       SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                                                       ItemsSource="{Binding PropCboFontSize}"
-                                                                      DisplayMemberPath="{Binding Descripcion}"
-                                                                      SelectedValuePath="{Binding Codigo}" Margin="266,4,0,0" Width="86">
+                                                                      SelectedValuePath="Codigo" Margin="266,4,0,0" Width="86">
                                                                 <ComboBox.ItemTemplate>
                                                                     <DataTemplate>
                                                                         <StackPanel Orientation="Horizontal">
@@ -1668,8 +1663,7 @@
                                                               SelectedIndex="0"
                                                               SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                                               ItemsSource="{Binding PropCboStretch}"
-                                                              DisplayMemberPath="{Binding Descripcion}"
-                                                              SelectedValuePath="{Binding Codigo}" Margin="160,2,0,0" Width="200">
+                                                              SelectedValuePath="Codigo" Margin="160,2,0,0" Width="200">
                                                         <ComboBox.ItemTemplate>
                                                             <DataTemplate>
                                                                 <StackPanel Orientation="Horizontal">
@@ -1692,8 +1686,7 @@
                                                               SelectedIndex="0"
                                                               SelectionChanged="fcvSetObjSeleccionComboBoxPropiedad"
                                                               ItemsSource="{Binding PropCboStretchDirection}"
-                                                              DisplayMemberPath="{Binding Descripcion}"
-                                                              SelectedValuePath="{Binding Codigo}" Margin="160,2,0,0" Width="200">
+                                                              SelectedValuePath="Codigo" Margin="160,2,0,0" Width="200">
                                                         <ComboBox.ItemTemplate>
                                                             <DataTemplate>
                                                                 <StackPanel Orientation="Horizontal">
@@ -1729,7 +1722,6 @@
                                                                     Click="fcvGetObjRecursoImportar"
 				                                                    Style="{StaticResource styleButtonMiniForm}"
 				                                                    TabIndex="46"
-				                                                    Command="{Binding CmdEtiquetaNuevo}"
 				                                                    ToolTip="Buscar archivo de recurso (imagene, video y otros)" Width="143" Height="52" Grid.RowSpan="2"/>
                                                         </Grid>
                                                         <Grid Name="propRecursoArchivoTipo" Style="{StaticResource styleTabControlEdtGridPropiedades}">

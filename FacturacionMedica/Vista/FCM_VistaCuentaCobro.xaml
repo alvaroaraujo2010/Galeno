@@ -320,8 +320,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbFcm_tipfac_mfcb}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

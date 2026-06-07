@@ -498,8 +498,7 @@
                                 	SelectedIndex="0"
                                 	SelectionChanged="SeleccionComboBoxOpcion"
                                 	ItemsSource="{Binding Path=G4CbFcm_aplcad_ades}"
-                                	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                                	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                	SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -777,8 +776,7 @@
                                     	SelectedIndex="0"
                                     	SelectionChanged="SeleccionComboBoxOpcion"
                                     	ItemsSource="{Binding Path=G4CbFcm_estaut_ades}"
-                                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                    	SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">

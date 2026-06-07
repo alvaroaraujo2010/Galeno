@@ -416,8 +416,7 @@
 								  SelectedIndex="0"
 							      SelectionChanged="SeleccionComboBoxOpcion"
 							      ItemsSource="{Binding G1CbAdm_pacemb_rgad}"
-								  DisplayMemberPath="{Binding NombreOpcion}"
-							      SelectedValuePath="{Binding ValorSeleccion}">
+							      SelectedValuePath="ValorSeleccion">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -539,8 +538,7 @@
 								  SelectedIndex="0"
 								  SelectionChanged="SeleccionComboBoxOpcion"
 								  ItemsSource="{Binding G1CbAdm_codcex_tcex}"
-								  DisplayMemberPath="{Binding NombreOpcion}"
-								  SelectedValuePath="{Binding ValorSeleccion}">
+								  SelectedValuePath="ValorSeleccion">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -778,8 +776,7 @@
 								 SelectedIndex="0"
 								 SelectionChanged="SeleccionComboBoxOpcion"
 								 ItemsSource="{Binding G1CbSia_tipusu_regi}"
-								 DisplayMemberPath="{Binding NombreOpcion}"
-								 SelectedValuePath="{Binding ValorSeleccion}">
+								 SelectedValuePath="ValorSeleccion">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -818,8 +815,7 @@
 								SelectedIndex="0"
 								SelectionChanged="SeleccionComboBoxOpcion"
 								ItemsSource="{Binding G1CbSia_tippob_tpob}"
-								DisplayMemberPath="{Binding NombreOpcion}"
-								SelectedValuePath="{Binding ValorSeleccion}">
+								SelectedValuePath="ValorSeleccion">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -975,8 +971,7 @@
 									SelectedIndex="0"
 									SelectionChanged="SeleccionComboBoxOpcion"
 									ItemsSource="{Binding Path=G1CbAdm_dessal_regr}"
-									DisplayMemberPath="{Binding Path=NombreOpcion}"
-									SelectedValuePath="{Binding Path=ValorSeleccion}">
+									SelectedValuePath="ValorSeleccion">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -1249,7 +1244,6 @@
             <Button.ContextMenu>
                 <ContextMenu Style="{StaticResource styleMenuContextButton}">
                     <MenuItem Name="opCON"
-                              Command="{Binding CmdCNF}"
                               Click="fcvConfirmarRegistro"
                               Style="{StaticResource styleMenuItemContextButton}"
                               Header="Confirmar registro de atención">
@@ -1425,3 +1419,4 @@
         </Grid>
     </Grid>
 </Window>
+

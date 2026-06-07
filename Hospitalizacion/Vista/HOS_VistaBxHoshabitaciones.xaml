@@ -191,8 +191,7 @@
         	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
         	Style="{StaticResource styleComboBoxForm}"
         	SelectionChanged="SeleccionComboBoxOpcion"
-        	DisplayMemberPath="{Binding Path=NombreOpcion}"
-        	SelectedValuePath="{Binding Path=ValorSeleccion}">
+        	SelectedValuePath="ValorSeleccion">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -365,8 +364,7 @@
         	IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
         	Style="{StaticResource styleComboBoxForm}"
         	SelectionChanged="SeleccionComboBoxOpcion"
-        	DisplayMemberPath="{Binding Path=NombreOpcion}"
-        	SelectedValuePath="{Binding Path=ValorSeleccion}">
+        	SelectedValuePath="ValorSeleccion">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

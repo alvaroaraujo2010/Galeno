@@ -1638,7 +1638,9 @@ namespace SaludPublica.Modelo
     public class ModeloSpaActivRegApEventos : clBaseInpc
     {
         #region Modelo Attributos
+#pragma warning disable CS0169
         private static DbAplicacion _context;
+#pragma warning restore CS0169
         #region Modelo Propiedades Notificacion
         #region Sia_idesec_usua: Código único del paciente
         private String _sia_idesec_usua;

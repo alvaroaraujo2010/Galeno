@@ -987,8 +987,7 @@
                                                       FontSize="14"
 									                  SelectionChanged="SeleccionComboBoxOpcion"
 									                  ItemsSource="{Binding Path=G1cboEstructuraArchivos}"
-									                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-									                  SelectedValuePath="{Binding Path=ValorSeleccion}">
+									                  SelectedValuePath="ValorSeleccion">
                                                 <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
@@ -1028,8 +1027,7 @@
                                                       FontSize="14"
 									                  SelectionChanged="SeleccionComboBoxOpcion"
 									                  ItemsSource="{Binding Path=G1cboFormatoArchivos}"
-									                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-									                  SelectedValuePath="{Binding Path=ValorSeleccion}">
+									                  SelectedValuePath="ValorSeleccion">
                                                 <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
@@ -1342,8 +1340,7 @@
                                                       ToolTip="Que hacer con registros existentes en base de datos"
 									                  SelectionChanged="SeleccionComboBoxOpcion"
 									                  ItemsSource="{Binding Path=G1cboRegistrosBdatos}"
-									                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-									                  SelectedValuePath="{Binding Path=ValorSeleccion}">
+									                  SelectedValuePath="ValorSeleccion">
                                                 <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">

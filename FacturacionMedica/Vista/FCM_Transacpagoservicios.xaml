@@ -394,8 +394,7 @@
                 	SelectedIndex="0"
                 	SelectionChanged="SeleccionComboBoxOpcion"
                 	ItemsSource="{Binding Path=G3cbFcm_tipdes_mfac}"
-                	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                	SelectedValuePath="ValorSeleccion">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -575,7 +574,6 @@
                     Margin="22,26,0,0"
                     Style="{StaticResource styleButtonImgForm}"
                     TabIndex="16"
-                    Command="{Binding CmdAUTDESCUENTO}"
                     Visibility="Hidden"
                     ToolTip="Generar Solicitud para autorización de descuento" Width="168">
                 <StackPanel Orientation="Horizontal"
@@ -797,8 +795,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbFcm_tipefe_mtrc}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                    	SelectedValuePath="ValorSeleccion">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

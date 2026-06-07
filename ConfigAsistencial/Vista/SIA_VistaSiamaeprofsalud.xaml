@@ -427,8 +427,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbSis_estreg_esrg}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -470,7 +469,6 @@
                                 Click="fcvGetObjRecursoImportar"
 				                Style="{StaticResource styleButtonMiniForm}"
 				                TabIndex="46"
-				                Command="{Binding CmdEtiquetaNuevo}"
 				                ToolTip="Buscar archivo firma (imagen jpg/png ...)" 
                                 IsEnabled="{Binding Path=GlgSIS_ModoEdicion}"
                                 Width="143" 
@@ -610,8 +608,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G2CbSis_estreg_esrg}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

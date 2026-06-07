@@ -842,7 +842,6 @@
             <Button.ContextMenu>
                 <ContextMenu Style="{StaticResource styleMenuContextButton}">
                     <MenuItem Name="opSECART"
-                              Command="{Binding CmdBTSECART}"
                               Click="fcvConfiguracion"
                               Style="{StaticResource styleMenuItemContextButton}"
                               Header="Captura Secuencial de Articulo">
@@ -853,7 +852,6 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Name="opCODAUX"
-                              Command="{Binding CmdBTCODAUX}"
                               Click="fcvConfiguracion"
                               Style="{StaticResource styleMenuItemContextButton}"
                               Header="Captura Codigo Auxiliar del Articulo">
@@ -864,7 +862,6 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Name="opCODBAR"
-                              Command="{Binding CmdBTCODBAR}"
                               Click="fcvConfiguracion"
                               Style="{StaticResource styleMenuItemContextButton}"
                               Header="Captura Codigo de Barras">

@@ -63,7 +63,9 @@ namespace Inicio.Vista
                 Funciones.flgSetConfiguracionConexionSql(lcrIdconexion);
 
                 DbAplicacion baseDatos = new DbAplicacion();
-                EFsysusuarios UsuarioDeSistema = baseDatos.Sysusuarios.SingleOrDefault(us => us.sys_ideusu_usux.Equals(txtuser.Text, StringComparison.InvariantCultureIgnoreCase));
+                var lcrUsuarioLogin = txtuser.Text.Trim().ToUpperInvariant();
+                txtuser.Text = lcrUsuarioLogin;
+                EFsysusuarios UsuarioDeSistema = baseDatos.Sysusuarios.SingleOrDefault(us => us.sys_ideusu_usux.Equals(lcrUsuarioLogin, StringComparison.InvariantCultureIgnoreCase));
                 // verificar 
                 if (Funciones.fnuDevolverPosElemento("database=betagaleno", ";", oApp.gcrAppBdatosSqlLineaConexion) > 0)
                 {
@@ -111,7 +113,7 @@ namespace Inicio.Vista
                 }
                 else
                 {
-                    MessageBox.Show("Usuario " + txtuser.Text + " No existe en sistema.");
+                    MessageBox.Show("Usuario " + lcrUsuarioLogin + " No existe en sistema.");
                 }
             }
             catch (Exception ex)

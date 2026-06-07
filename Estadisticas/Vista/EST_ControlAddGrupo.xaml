@@ -30,8 +30,7 @@
                       Height="26"
                       IsEnabled="False"
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}">
+                      SelectedValuePath="ValorSeleccion">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -84,3 +83,4 @@
         </ScrollViewer>
     </Grid>
 </UserControl>
+

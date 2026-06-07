@@ -319,8 +319,7 @@
                 	                        SelectedIndex="0"
                 	                        SelectionChanged="SeleccionComboBoxOpcion"
                 	                        ItemsSource="{Binding Path=G3cbFcm_tipdes_mfac}"
-                	                        DisplayMemberPath="{Binding Path=NombreOpcion}"
-                	                        SelectedValuePath="{Binding Path=ValorSeleccion}" Margin="10,5,10,6">
+                	                        SelectedValuePath="ValorSeleccion" Margin="10,5,10,6">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -660,8 +659,7 @@
 										SelectedIndex="0"
 										SelectionChanged="SeleccionComboBoxOpcion"
 										ItemsSource="{Binding Path=G1CbFcm_tipefe_mtrc}"
-										DisplayMemberPath="{Binding Path=NombreOpcion}"
-										SelectedValuePath="{Binding Path=ValorSeleccion}">
+										SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -839,3 +837,4 @@
         </Grid>
     </Grid>
 </Window>
+

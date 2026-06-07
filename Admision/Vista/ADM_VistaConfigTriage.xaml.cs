@@ -524,7 +524,6 @@ namespace Admision.Vista
             {
                 if (llgObjetosCargados == true)
                 {
-                    var lcrUri = "/Sistema;component/Imagenes/";
                     var lcrImagenVista = "sys_usu02.png";
                     var lcrColorNivelC = "#FFF3F3F3";
 

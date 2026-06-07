@@ -171,8 +171,7 @@
                          SelectedIndex="0"
                          SelectionChanged="SeleccionComboBoxOpcion"
                          ItemsSource="{Binding Path=G1CbFar_estreg_fama}"
-                         DisplayMemberPath="{Binding Path=NombreOpcion}"
-                         SelectedValuePath="{Binding Path=ValorSeleccion}">
+                         SelectedValuePath="ValorSeleccion">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -889,8 +888,7 @@
                                                   SelectedIndex="0"
                                                   SelectionChanged="SeleccionComboBoxOpcion"
                                                   ItemsSource="{Binding Path=G1CbFar_tiprol_fama}"
-                                                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-                                                  SelectedValuePath="{Binding Path=ValorSeleccion}">
+                                                  SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -1300,8 +1298,7 @@
                         					        SelectedIndex="0"
                         					        SelectionChanged="SeleccionComboBoxOpcion"
                         					        ItemsSource="{Binding G2CbFar_estreg_famd}"
-                        					        DisplayMemberPath="{Binding NombreOpcion}"
-                        					        SelectedValuePath="{Binding ValorSeleccion}">
+                        					        SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -1370,3 +1367,4 @@
         </Grid>
     </Grid>
 </Window>
+

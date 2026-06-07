@@ -72,8 +72,7 @@
 				  Style="{StaticResource styleComboBoxFormResize}"
 				  SelectedIndex="0"
 				  SelectionChanged="SeleccionComboBoxOpcion"
-				  DisplayMemberPath="{Binding Path=NombreOpcion}"
-				  SelectedValuePath="{Binding Path=ValorSeleccion}" 
+				  SelectedValuePath="ValorSeleccion" 
                   Margin="115,91,0,0">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -98,6 +97,7 @@
                      VerticalAlignment="Top" 
                      Width="225" 
                      Text="" 
+                     CharacterCasing="Upper"
                      TouchEnter="fcvTouchEnterTeclado"
                      GotFocus="fcvTextBox_GotFocus" 
                      TabIndex="1" 
@@ -162,4 +162,5 @@
 
     </Grid>
 </Window>
+
 

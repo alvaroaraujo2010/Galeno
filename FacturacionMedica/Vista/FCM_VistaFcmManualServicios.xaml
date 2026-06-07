@@ -687,8 +687,7 @@
                             	            SelectedIndex="0"
                             	            SelectionChanged="SeleccionComboBoxOpcion"
                             	            ItemsSource="{Binding Path=G1CbFcm_perman_mant}"
-                            	            DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	            SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	            SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -729,8 +728,7 @@
                             	            SelectedIndex="0"
                             	            SelectionChanged="SeleccionComboBoxOpcion"
                             	            ItemsSource="{Binding Path=G1CbFcm_tipccp_mant}"
-                            	            DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	            SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	            SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -767,8 +765,7 @@
                             	            SelectedIndex="0"
                             	            SelectionChanged="SeleccionComboBoxOpcion"
                             	            ItemsSource="{Binding Path=G1CbFcm_estser_mant}"
-                            	            DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	            SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	            SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -947,8 +944,7 @@
                             	        SelectedIndex="0"
                             	        SelectionChanged="SeleccionComboBoxOpcion"
                             	        ItemsSource="{Binding Path=G1CbFcm_facpln_mant}"
-                            	        DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	        SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	        SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -987,8 +983,7 @@
                             	            SelectedIndex="0"
                             	            SelectionChanged="SeleccionComboBoxOpcion"
                             	            ItemsSource="{Binding Path=G1CbFcm_facvmc_mant}"
-                            	            DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	            SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	            SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -1041,8 +1036,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbFcm_alcamb_mant}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -1081,8 +1075,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbFcm_alcurg_mant}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -1121,8 +1114,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbFcm_alchos_mant}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -1161,8 +1153,7 @@
                             	SelectedIndex="0"
                             	SelectionChanged="SeleccionComboBoxOpcion"
                             	ItemsSource="{Binding Path=G1CbFcm_aplfus_sips}"
-                            	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                            	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                            	SelectedValuePath="ValorSeleccion">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">

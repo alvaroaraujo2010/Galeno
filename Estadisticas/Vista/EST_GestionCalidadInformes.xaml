@@ -154,8 +154,7 @@
                                   SelectedIndex="0"
                                   FontSize="14"
                                   SelectionChanged="SeleccionComboBoxOpcion"
-                                  DisplayMemberPath="{Binding Path=NombreOpcion}"
-                                  SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                                  SelectedValuePath="ValorSeleccion" 
                                   Height="24" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -442,3 +441,4 @@
         </Button>
     </Grid>
 </Window>
+

@@ -103,8 +103,7 @@
                               FontSize="9"
                               ToolTip="Familiares muertos del corazón Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -151,8 +150,7 @@
                               FontSize="9"
                               ToolTip="infarto o derrame cerebral Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -208,8 +206,7 @@
                               FontSize="9"
                               ToolTip="infarto o derrame cerebral Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -256,8 +253,7 @@
                               FontSize="9"
                               ToolTip="Le han econtrado alguna vez tension arterial alta Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -304,8 +300,7 @@
                               FontSize="9"
                               ToolTip="Toma regularmente medicamentos para la tensión arterial alta  Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -352,8 +347,7 @@
                               FontSize="9"
                               ToolTip="Le han encontrado alguna vez azúcar en sangre Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -466,8 +460,7 @@
                               FontSize="9"
                               ToolTip="Paciente fumador Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -512,8 +505,7 @@
                               FontSize="9"
                               ToolTip="Paciente fumador Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -750,8 +742,7 @@
                               FontSize="9"
                               ToolTip="Paciente diabetico Si/No"
                               SelectionChanged="SeleccionComboBoxOpcion"
-                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                              SelectedValuePath="ValorSeleccion" 
                               Height="17"
                               Margin="2">
                         <ComboBox.ItemTemplate>
@@ -855,3 +846,4 @@
         </Grid>
     </Grid>
 </UserControl>
+

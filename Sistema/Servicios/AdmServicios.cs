@@ -39,9 +39,7 @@ namespace Sistema.Servicios
         #endregion
         // Variables de control 
         #region Variables publicas
-        private bool llgFinalizar            = false;
         private bool llgPausar               = false;
-        private bool llgErrorProceso         = false;
         private bool llgOnairisAddMens       = false;
         private bool llgOnairisHablando      = false;
         public String lcrMensajeAccion       = "Iniciando...";
@@ -72,9 +70,6 @@ namespace Sistema.Servicios
         public int lnuTiempoBuzon          = 0;
         public int lnuContadorAddMensaje   = 0;
         #endregion
-
-        Thread gobTarea = null;
-
         // Clase principal
         #region Clase principal
         private static AdmServicios ObServicios;
@@ -214,7 +209,6 @@ namespace Sistema.Servicios
             {
                 ObOnairis.Finalizar();
                 Monitor.PulseAll(this);
-                this.llgFinalizar = true;
                 llgReturn = true;
             }
             return llgReturn;

@@ -438,8 +438,7 @@
                             				        SelectedIndex="0"
                             				        SelectionChanged="SeleccionComboBoxOpcion"
                             				        ItemsSource="{Binding G1CbAdm_clasif_tria}"
-                            				        DisplayMemberPath="{Binding NombreOpcion}"
-                            				        SelectedValuePath="{Binding ValorSeleccion}">
+                            				        SelectedValuePath="ValorSeleccion">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -478,8 +477,7 @@
                             				        SelectedIndex="0"
                             				        SelectionChanged="SeleccionComboBoxOpcion"
                             				        ItemsSource="{Binding G1CbAdm_remisi_tria}"
-                            				        DisplayMemberPath="{Binding NombreOpcion}"
-                            				        SelectedValuePath="{Binding ValorSeleccion}">
+                            				        SelectedValuePath="ValorSeleccion">
                                                     <ComboBox.ItemTemplate>
                                                         <DataTemplate>
                                                             <StackPanel Orientation="Horizontal">
@@ -623,8 +621,7 @@
                             				        SelectedIndex="0"
                             				        SelectionChanged="SeleccionComboBoxOpcion"
                             				        ItemsSource="{Binding G1CbAdm_estreg_adct}"
-                            				        DisplayMemberPath="{Binding NombreOpcion}"
-                            				        SelectedValuePath="{Binding ValorSeleccion}">
+                            				        SelectedValuePath="ValorSeleccion">
                                            <ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">

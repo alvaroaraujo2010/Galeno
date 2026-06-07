@@ -185,8 +185,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbSys_nivusu_perf}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                    	SelectedValuePath="ValorSeleccion">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -223,8 +222,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G1CbSys_estper_perf}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                    	SelectedValuePath="ValorSeleccion">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -391,8 +389,7 @@
                     	SelectedIndex="0"
                     	SelectionChanged="SeleccionComboBoxOpcion"
                     	ItemsSource="{Binding Path=G2CbSys_estccp_cper}"
-                    	DisplayMemberPath="{Binding Path=NombreOpcion}"
-                    	SelectedValuePath="{Binding Path=ValorSeleccion}">
+                    	SelectedValuePath="ValorSeleccion">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

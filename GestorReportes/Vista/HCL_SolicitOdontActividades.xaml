@@ -874,8 +874,7 @@
                                                               FontSize="14"
                                                               ToolTip="Diagnostico relacionado al servicio"
                                                               SelectionChanged="SeleccionComboBoxOpcion"
-                                                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                                                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                                                              SelectedValuePath="ValorSeleccion" 
                                                               Height="25" 
                                                               Margin="4,3,2,2">
                                                         <ComboBox.ItemTemplate>
@@ -1011,8 +1010,7 @@
                                                               FontSize="12"
                                                               ToolTip="Servicio del plan de tratamiento relacionado a la actividad"
                                                               SelectionChanged="SeleccionComboBoxOpcion"
-                                                              DisplayMemberPath="{Binding Path=NombreOpcion}"
-                                                              SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                                                              SelectedValuePath="ValorSeleccion" 
                                                               Height="23" 
                                                               Margin="4,3,2,2">
                                                         <ComboBox.ItemTemplate>

@@ -172,8 +172,7 @@
                       Style="{StaticResource styleComboBoxFormResize}"
                       SelectedIndex="0"
                       SelectionChanged="SeleccionComboBoxOpcion"
-                      DisplayMemberPath="{Binding Path=NombreOpcion}"
-                      SelectedValuePath="{Binding Path=ValorSeleccion}" 
+                      SelectedValuePath="ValorSeleccion" 
                       Height="24" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
