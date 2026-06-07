@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Certificados y claves (no commitear)
+*.p12
+*.pfx
+*.cer
+*.key
+GaleriaRecursos/FacturacionEletronica/Certificado/
+
 # User-specific files
 *.rsuser
 *.suo

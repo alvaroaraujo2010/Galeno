@@ -133,7 +133,7 @@ namespace Inicio.Vista
         {
             oApp.gcrUsuIdUsuario    = String.Empty;
             oApp.gcrUsuNickUsuario  = String.Empty;
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void fcvTextBox_GotFocus(object sender, RoutedEventArgs e)

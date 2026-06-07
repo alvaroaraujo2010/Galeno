@@ -1,0 +1,38 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [main, master, Release_*]
+  pull_request:
+    branches: [main, master, Release_*]
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore NuGet
+        run: nuget restore Galeno40.sln
+
+      - name: Build solution
+        run: msbuild Galeno40.sln /t:Build /p:Configuration=Debug /p:Platform="Any CPU" /m:4 /v:minimal
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Test
+        run: dotnet test Galeno40.Tests/Galeno40.Tests.csproj --configuration Debug --nologo
+
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
