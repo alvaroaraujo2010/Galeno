@@ -3425,13 +3425,15 @@ namespace Sistema.Utilidades
         /// <summary>
         /// <para>fcrConsultaSqlComando()</para>
         /// <para>DESCRIPCIÓN</para>
-        /// <para>Ejecuta una consulta tipo comando SQl</para>
+        /// <para>Ejecuta una consulta tipo comando SQl (MySql/SqlServer) y devuelve el primer valor escalar.</para>
         /// <para>PARAMETROS:</para>
-        /// <para>tcrLineaComando: String linea para consulta Sql/MySql/FireBird/Oracle y otros</para>
-        /// <para>VALOR RETORNO: devuelve un valor tipo texto segun seal el comando enviado al motor sql</para>
-        /// <para>devuelve la expresion "*ERROR*"cuando falla la consulta / "*-1*" cuando la consulta resulta vacia</para>
+        /// <para>tcrLineaComando: String linea para consulta Sql/MySql. Si usa parametros, nombrarlos con prefijo @ (ej: "@idUsuario").</para>
+        /// <para>tdcParametros: (opcional) Diccionario nombre→valor para enlazar con AddWithValue. Si es null, se ejecuta el SQL tal cual (modo legacy, vulnerable a SQL injection si los valores vienen del usuario).</para>
+        /// <para>VALOR RETORNO: devuelve un valor tipo texto segun sea el comando enviado al motor sql</para>
+        /// <para>devuelve la expresion "*ERROR*" cuando falla la consulta / "*-1*" cuando la consulta resulta vacia</para>
+        /// <para>SEGURIDAD: para evitar SQL injection, preferir siempre la sobrecarga con tdcParametros y nunca concatenar variables del usuario en tcrLineaComando.</para>
         /// </summary>
-        public static String fcrConsultaSqlComando(String tcrLineaStringSql)
+        public static String fcrConsultaSqlComando(String tcrLineaStringSql, Dictionary<String, Object> tdcParametros = null)
         {
             Aplicacion oApp = Aplicacion.Instancia();
             var lcrReturn = "*-1*";
@@ -3448,13 +3450,21 @@ namespace Sistema.Utilidades
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = gobSqlConexion; // establecemos la conexion
 
+                if (tdcParametros != null)
+                {
+                    foreach (var kv in tdcParametros)
+                    {
+                        cmd.Parameters.AddWithValue(kv.Key, kv.Value ?? (Object)DBNull.Value);
+                    }
+                }
+
                 gobSqlConexion.Open();
                 luxObjetoValue = cmd.ExecuteScalar(); // ejecuta la consulta y de vuelve el primer registro del objeto
                 gobSqlConexion.Close();
 
                 if (luxObjetoValue == null)
                 {
-                    lcrReturn = "*1*"; 
+                    lcrReturn = "*1*";
                 }
                 else
                 {
@@ -3473,6 +3483,14 @@ namespace Sistema.Utilidades
                 cmd.CommandText = tcrLineaStringSql; // esta es la cadena que se ejecutará por SQL
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = gobSqlConexion;     // establecemos la conexion
+
+                if (tdcParametros != null)
+                {
+                    foreach (var kv in tdcParametros)
+                    {
+                        cmd.Parameters.AddWithValue(kv.Key, kv.Value ?? (Object)DBNull.Value);
+                    }
+                }
 
                 gobSqlConexion.Open();
                 luxObjetoValue = cmd.ExecuteScalar(); // ejecuta la consulta y de vuelve el primer registro del objeto

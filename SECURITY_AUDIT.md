@@ -17,7 +17,9 @@ Total: 67 hallazgos.
 
 ---
 
-## CRITICO 1: SQL Injection (58 ubicaciones)
+## CRITICO 1: SQL Injection (3 callers activos, 58 candidatos totales)
+
+**Aclaracion importante**: el audit detecto 58 lineas con SQL concatenado en el codigo, pero solo 3 llaman a `fcrConsultaSqlComando` (la funcion central). Las otras 55 lineas son SQL que se ejecuta via otros paths (comandos EF directos, `DataContext.ExecuteStoreCommand`, codigo que arma queries sin pasar por esta funcion).
 
 **Patron**: `"SELECT/UPDATE/DELETE/INSERT ... " + variable` en `fcrConsultaSqlComando()` que pasa el string a `MySqlCommand` / `SqlCommand` sin parametrizar.
 
@@ -148,11 +150,11 @@ No se encontro uso en codigo actual de `HashPassword`/`fcSISEncritar` para este 
 
 ### Sprint 1 (critico, 1-2 semanas)
 1. **Rotar password MySQL** del root y mover a variable de entorno.
-2. **Refactorizar `fcrConsultaSqlComando`** para soportar parametros.
-3. **Migrar las 17 SQL injections de Estadisticas** (el archivo mas afectado).
+2. ~~**Refactorizar `fcrConsultaSqlComando`** para soportar parametros~~ ✅ **HECHO 2026-06-07** (commit 76d7fb5 o posterior). Nueva firma: `fcrConsultaSqlComando(string, Dictionary<string, object> tdcParametros = null)`. Backward compatible: 0 breaking changes. 19/19 tests pasan.
+3. **Migrar las 17 SQL injections de Estadisticas** (el archivo mas afectado) - solo las que pasan por `fcrConsultaSqlComando` (3 callers reales en total).
 
 ### Sprint 2 (alto, 1 semana)
-4. **Migrar las SQL injections restantes** (Sistema, GestorReportes, SaludPublica).
+4. **Auditar las 55 SQL concatenaciones restantes** que NO pasan por `fcrConsultaSqlComando`. Pueden ser `DataContext.ExecuteStoreCommand`, queries directos, etc. Determinar mecanismo de migracion por caso.
 5. **Actualizar SHA1 a SHA-256 en FirmaXadesNet**.
 6. **Verificar XadesSignedXml** con SHA-256 contra requisitos DIAN.
 
@@ -163,6 +165,23 @@ No se encontro uso en codigo actual de `HashPassword`/`fcSISEncritar` para este 
 ### Backlog (preventivo)
 9. Activar .editorconfig estricto para prevenir nuevos patterns inseguros.
 10. Code review checklist con items de seguridad.
+
+### Guia de uso de la nueva firma
+
+```csharp
+// LEGACY (NO hacer mas en codigo nuevo):
+var lcrSql = "SELECT * FROM x WHERE id = '" + variable + "'";
+var valor = Funciones.fcrConsultaSqlComando(lcrSql);
+
+// NUEVO (seguro contra SQL injection):
+var lcrSql = "SELECT * FROM x WHERE id = @id";
+var valor = Funciones.fcrConsultaSqlComando(lcrSql, new Dictionary<string, object>
+{
+    { "@id", variable }
+});
+```
+
+El prefijo `@` es requerido por `MySqlCommand` y `SqlCommand` para enlazar el parametro. Si el valor es null, se envia `DBNull.Value` automaticamente.
 
 ---
 
@@ -177,3 +196,4 @@ Ademas del reporte, se aplicaron estos fixes preventivos:
 - **Fase 4**: Logger estructurado minimalista (rolling files, sin dependencias externas).
 - **Bonus**: Cancel button en FrmLogin cierra el proceso completo.
 - **Bonus**: `sys_clausu_usux` MaxLength 10→100 (CSDL) y 50→100 (SSDL) en .edmx y en el dump SQL de 3.2GB.
+- **Bonus (en este mismo dia)**: `fcrConsultaSqlComando` ahora soporta `Dictionary<string, object>` para evitar SQL injection. Backward compatible. 19/19 tests pasan.
