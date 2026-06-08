@@ -19,6 +19,26 @@ namespace Datos
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            // Inyectar password desde variable de entorno (o fallback para desarrollo)
+            var envPassword = Environment.GetEnvironmentVariable("GALENO_DB_PASSWORD");
+            string password = !string.IsNullOrEmpty(envPassword) ? envPassword : "ingAlv4r0";
+            try
+            {
+                string configPath = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory, "Galeno40.exe.config");
+                string xml = File.ReadAllText(configPath);
+                string newXml = xml.Replace("__GALENO_DB_PASSWORD__", password);
+                if (newXml != xml)
+                {
+                    File.WriteAllText(configPath, newXml);
+                }
+            }
+            catch
+            {
+                // Si falla (ej: permisos de escritura), se procesa con la cadena del archivo.
+            }
+
             try
             {
                 string basePath = Path.Combine(
