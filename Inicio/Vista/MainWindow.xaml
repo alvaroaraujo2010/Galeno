@@ -93,7 +93,7 @@
                Cursor="Hand"
                TouchDown="MinimizeButton_TouchDown"
                Source="/Sistema;component/Imagenes/sys_minimizar.png"
-               Margin="0,0,80,0" />
+               Margin="0,6,58,0" />
         <!-- Fondo del Sistema -->
         <Image HorizontalAlignment="Left" 
                VerticalAlignment="Top" 

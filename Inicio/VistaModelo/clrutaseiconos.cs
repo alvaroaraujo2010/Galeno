@@ -41,10 +41,25 @@ namespace Inicio.VistaModelo
                     // con estos codigos vamos a la tabla EFsysmodulosistem y obtenemos el nombre a ser mostrado
                     // y la imagen para el tile.
                     lArModulos = (List<EFsysmodulosistem>)fcListaModulos(lArModXper);
+                    var larCodigosGrupo = lArModulos
+                        .Select(x => x.sys_codgru_grmo)
+                        .Where(x => !string.IsNullOrWhiteSpace(x))
+                        .Distinct()
+                        .ToList();
+                    var larGrupos = db.Sysgrupomodusis
+                        .Where(x => larCodigosGrupo.Contains(x.sys_codgru_grmo))
+                        .ToList()
+                        .GroupBy(x => x.sys_codgru_grmo)
+                        .ToDictionary(x => x.Key, x => x.First().sys_desgru_grmo);
+
                     int lnuIndice = 0;
                     foreach (var p in lArModulos)
                     {
-                        var lcrTitulo = db.Sysgrupomodusis.FirstOrDefault(x => x.sys_codgru_grmo == p.sys_codgru_grmo).sys_desgru_grmo;
+                        string lcrTitulo;
+                        if (string.IsNullOrWhiteSpace(p.sys_codgru_grmo) || !larGrupos.TryGetValue(p.sys_codgru_grmo, out lcrTitulo))
+                        {
+                            lcrTitulo = "Sin grupo";
+                        }
 
                         gArDicRutaseIconos.Add(p.sys_codmod_modu.Trim(), new String[] {lnuIndice.ToString().Trim(), 
                                                 p.sys_codmod_modu.Trim(), p.sys_nommod_modu.Trim(),
@@ -88,15 +103,25 @@ namespace Inicio.VistaModelo
         {
             using (DbAplicacion dbs = new DbAplicacion())
             {
-                List<EFsysmodulosistem> lAraux = new List<EFsysmodulosistem>();
                 List<EFsysmodulosistem> lArModulos = new List<EFsysmodulosistem>();
+                var larCodigosModulo = tlArModXper
+                    .Select(x => x.sys_codmod_modu)
+                    .Where(x => !string.IsNullOrWhiteSpace(x))
+                    .Distinct()
+                    .ToList();
+                var larModulosPorCodigo = dbs.Sysmodulosistem
+                    .Where(reg => larCodigosModulo.Contains(reg.sys_codmod_modu))
+                    .ToList()
+                    .GroupBy(x => x.sys_codmod_modu)
+                    .ToDictionary(x => x.Key, x => x.First());
+
                 foreach (var p in tlArModXper)
                 {
-                    lAraux = (from reg in dbs.Sysmodulosistem
-                              where reg.sys_codmod_modu == p.sys_codmod_modu
-                              select reg).ToList();
-
-                    lArModulos.AddRange(lAraux);
+                    EFsysmodulosistem lobModulo;
+                    if (larModulosPorCodigo.TryGetValue(p.sys_codmod_modu, out lobModulo))
+                    {
+                        lArModulos.Add(lobModulo);
+                    }
                 }
                 return lArModulos.ToList();
             }
@@ -110,14 +135,25 @@ namespace Inicio.VistaModelo
         {
             using (DbAplicacion dbs = new DbAplicacion())
             {
-                List<EFsyscomponentes> lAraux = new List<EFsyscomponentes>();
                 List<EFsyscomponentes> lArComponentes = new List<EFsyscomponentes>();
+                var larCodigosComponente = tlArComXper
+                    .Select(x => x.sys_codcom_comp)
+                    .Where(x => !string.IsNullOrWhiteSpace(x))
+                    .Distinct()
+                    .ToList();
+                var larComponentesPorCodigo = dbs.Syscomponentes
+                    .Where(reg => larCodigosComponente.Contains(reg.sys_codcom_comp))
+                    .ToList()
+                    .GroupBy(x => x.sys_codcom_comp)
+                    .ToDictionary(x => x.Key, x => x.First());
+
                 foreach (var p in tlArComXper)
                 {
-                    lAraux = (from reg in dbs.Syscomponentes
-                              where reg.sys_codcom_comp == p.sys_codcom_comp
-                              select reg).ToList();
-                    lArComponentes.AddRange(lAraux);
+                    EFsyscomponentes lobComponente;
+                    if (larComponentesPorCodigo.TryGetValue(p.sys_codcom_comp, out lobComponente))
+                    {
+                        lArComponentes.Add(lobComponente);
+                    }
                 }
                 return lArComponentes.ToList();
             }

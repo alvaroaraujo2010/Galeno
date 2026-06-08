@@ -413,7 +413,9 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+    <MakeDir Directories="$(OutputPath)Modelos" />
+    <Copy SourceFiles="..\Datos\obj\$(Configuration)\edmxResourcesToEmbed\Modelos\GalenoModelo.csdl;..\Datos\obj\$(Configuration)\edmxResourcesToEmbed\Modelos\GalenoModelo.ssdl;..\Datos\obj\$(Configuration)\edmxResourcesToEmbed\Modelos\GalenoModelo.msl" DestinationFolder="$(OutputPath)Modelos" SkipUnchangedFiles="true" Condition="Exists('..\Datos\obj\$(Configuration)\edmxResourcesToEmbed\Modelos\GalenoModelo.csdl')" />
+  </Target>
 </Project>

@@ -6,7 +6,6 @@ using System.Windows.Media.Animation;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Collections.Generic;
-using System.Security.Principal;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
@@ -71,11 +70,6 @@ namespace Inicio.Vista
         /// </summary>
         public MainWindow()
         {
-            if (!flgLlamarLogin())
-            {
-                Application.Current.Shutdown(-1);
-            }
-            if (String.IsNullOrWhiteSpace(oApp.gcrUsuCodigoPerfil))  { Application.Current.Shutdown(-1); }
             //- Iniciar
             InitializeComponent();
 
@@ -395,30 +389,6 @@ namespace Inicio.Vista
             }
             flgActivateVista = true;
             oApp.gcrSysActivoIdModulo = String.Empty; // Limpiar par que el recolector carge todo del perfil
-        }
-        #endregion
-        //------------------------------------------------------------
-        // Login de Ingreso
-        //------------------------------------------------------------
-        #region Login de Ingreso
-        private bool flgLlamarLogin()
-        {
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
-
-            if (login.llglogeado)
-            {
-                //Indicar que el usuario es generico.
-                AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.UnauthenticatedPrincipal);
-                IIdentity gobUsuario = new GenericIdentity(login.txtuser.Text, "DataBase");
-                //Crear una lista de roles
-                String[] roles = { "Usuario", "Administrador" };
-                //Crear la credencial
-                GenericPrincipal credencial = new GenericPrincipal(gobUsuario, roles);
-                //Asignar esta credencial a la aplicación
-                System.Threading.Thread.CurrentPrincipal = credencial;
-            }
-            return login.llglogeado;
         }
         #endregion
         //------------------------------------------------------------

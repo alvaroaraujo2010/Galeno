@@ -57,15 +57,23 @@ namespace Inicio.Vista
             //MessageBox.Show("Total " + lstListaBDatos.Count.ToString());
             //return;
 
-            llglogeado = true;
+            llglogeado = false;
             try
             {
                 Funciones.flgSetConfiguracionConexionSql(lcrIdconexion);
 
                 DbAplicacion baseDatos = new DbAplicacion();
+
                 var lcrUsuarioLogin = txtuser.Text.Trim().ToUpperInvariant();
                 txtuser.Text = lcrUsuarioLogin;
-                EFsysusuarios UsuarioDeSistema = baseDatos.Sysusuarios.SingleOrDefault(us => us.sys_ideusu_usux.Equals(lcrUsuarioLogin, StringComparison.InvariantCultureIgnoreCase));
+                EFsysusuarios UsuarioDeSistema = baseDatos.Sysusuarios.SingleOrDefault(us => us.sys_ideusu_usux == lcrUsuarioLogin);
+                if (UsuarioDeSistema == null)
+                {
+                    UsuarioDeSistema = baseDatos.Sysusuarios
+                        .Where(us => us.sys_ideusu_usux != null)
+                        .AsEnumerable()
+                        .SingleOrDefault(us => us.sys_ideusu_usux.Equals(lcrUsuarioLogin, StringComparison.InvariantCultureIgnoreCase));
+                }
                 // verificar 
                 if (Funciones.fnuDevolverPosElemento("database=betagaleno", ";", oApp.gcrAppBdatosSqlLineaConexion) > 0)
                 {
@@ -99,14 +107,15 @@ namespace Inicio.Vista
                 if (!string.IsNullOrEmpty(oApp.gcrUsuIdUsuario))
                 {
                     var lcrVerificacion = Encriptacion.VerifyPassword(UsuarioDeSistema.sys_clausu_usux, txtpass.Password);
-                    llglogeado = lcrVerificacion != PasswordVerificationResult.Failed;
-                    if (llglogeado)
+                    var llgPasswordValido = lcrVerificacion != PasswordVerificationResult.Failed;
+                    if (llgPasswordValido)
                     {
                         if (lcrVerificacion == PasswordVerificationResult.SuccessNeedsRehash)
                         {
                             UsuarioDeSistema.sys_clausu_usux = Encriptacion.HashPassword(txtpass.Password);
                             baseDatos.SaveChanges();
                         }
+                        llglogeado = true;
                         DialogResult = true;
                     }
                     else
@@ -119,13 +128,11 @@ namespace Inicio.Vista
                 }
                 else
                 {
-                    Log.Warn("Login: usuario no existe", new { usuario = lcrUsuarioLogin });
                     MessageBox.Show("Usuario " + lcrUsuarioLogin + " No existe en sistema.");
                 }
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error de conexion en login");
                 MessageBox.Show(ex.Message, "Error de conexión");
             }
             
@@ -133,9 +140,11 @@ namespace Inicio.Vista
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            oApp.gcrUsuIdUsuario    = String.Empty;
-            oApp.gcrUsuNickUsuario  = String.Empty;
-            Application.Current.Shutdown();
+            llglogeado = false;
+            oApp.gcrUsuIdUsuario = String.Empty;
+            oApp.gcrUsuNickUsuario = String.Empty;
+            oApp.gcrUsuCodigoPerfil = String.Empty;
+            DialogResult = false;
         }
 
         private void fcvTextBox_GotFocus(object sender, RoutedEventArgs e)

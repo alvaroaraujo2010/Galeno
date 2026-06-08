@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Security.Principal;
 using System.Windows;
 using GalaSoft.MvvmLight.Threading;
+using Inicio.Vista;
 using Sistema.Utilidades;
 
-namespace Datos
+namespace Galeno
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -39,26 +41,35 @@ namespace Datos
                 // Si falla (ej: permisos de escritura), se procesa con la cadena del archivo.
             }
 
-            try
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
+            if (!flgLlamarLogin() || String.IsNullOrWhiteSpace(Aplicacion.Instancia().gcrUsuCodigoPerfil))
             {
-                string basePath = Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory, "logs");
-                Log.Configure(basePath, LogLevel.Info);
-                Log.Info("Aplicacion iniciando", new { version = "1.0", pid = System.Diagnostics.Process.GetCurrentProcess().Id });
+                Shutdown(-1);
+                return;
             }
-            catch (Exception ex)
-            {
-                // Si el logger falla, continuar sin logging.
-                System.Diagnostics.Debug.WriteLine("No se pudo inicializar Log: " + ex.Message);
-            }
+
+            var mainWindow = new MainWindow();
+            MainWindow = mainWindow;
+            ShutdownMode = ShutdownMode.OnMainWindowClose;
+            mainWindow.Show();
         }
 
-        protected override void OnExit(ExitEventArgs e)
+        private bool flgLlamarLogin()
         {
-            try { Log.Info("Aplicacion finalizando", new { codigo = e.ApplicationExitCode }); }
-            catch { }
-            Log.Shutdown();
-            base.OnExit(e);
+            frmLogin login = new frmLogin();
+            bool? llgDialogResult = login.ShowDialog();
+
+            if (llgDialogResult == true && login.llglogeado)
+            {
+                AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.UnauthenticatedPrincipal);
+                IIdentity gobUsuario = new GenericIdentity(login.txtuser.Text, "DataBase");
+                String[] roles = { "Usuario", "Administrador" };
+                GenericPrincipal credencial = new GenericPrincipal(gobUsuario, roles);
+                System.Threading.Thread.CurrentPrincipal = credencial;
+            }
+
+            return llgDialogResult == true && login.llglogeado;
         }
     }
 }
